@@ -54,11 +54,18 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                       @if(count($users) > 0)
+                                                      @foreach ($users as $uu )
                                                         <tr>
-                                                            <td class="tb-col-os">Lagos NG</td>
-                                                            <td class="tb-col-ip"><span class="sub-text">86.188.154.225</span></td>
-                                                            <td class="tb-col-time"><span class="sub-text">Nov 20, 2019 <span class="d-none d-sm-inline-block">10:34 PM</span></span></td>
+                                                            <td class="tb-col-os">
+                                                             @php $details = json_decode(file_get_contents("http://ipinfo.io/197.210.28.209/json"));
+                                                            echo $details->city.", ".$details->country;
+                                                            @endphp</td>
+                                                            <td class="tb-col-ip"><span class="sub-text">{{$uu->login_ip}}</span></td>
+                                                            <td class="tb-col-time"><span class="sub-text">{{$uu->created_at->format('d M Y h:s')}}<span class="d-none d-sm-inline-block">10:34 PM</span></span></td>
                                                         </tr>
+                                                        @endforeach
+                                                        @endif
                                                     </tbody>
                                                 </table>
                                             </div><!-- .nk-block-head -->
@@ -87,7 +94,7 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                                     <ul class="link-list-menu">
                                                         <li><a class="active" href="{{ route('account') }}"><em class="icon ni ni-user-fill-c"></em><span>Personal Infomation</span></a></li>
                                                         <li><a href="{{ route('account.activities') }}"><em class="icon ni ni-activity-round-fill"></em><span>Account Activity</span></a></li>
-                                                        <li><a href="{{ route('account') }}"><em class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a></li>
+                                                        <li><a href="{{ route('setting.profile') }}"><em class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a></li>
                                                     </ul>
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card-inner-group -->

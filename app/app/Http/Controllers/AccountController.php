@@ -7,6 +7,7 @@ use App\Models\Withdrawal;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\UserActivity;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
@@ -169,7 +170,7 @@ class AccountController extends Controller
     }
 
     public function activity(){
-
-        return view('account.activity');
+        return view('account.activity')
+        ->with('users', UserActivity::where('user_id', auth_user()->id)->get());
     }
 }

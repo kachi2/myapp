@@ -31,5 +31,6 @@ return array(
     '1158283b2001bb9a2ffd548337146074' => $vendorDir . '/kevupton/laravel-coinpayments/src/Kevupton/LaravelCoinpayments/Helpers/helpers.php',
     '0505beb5a1e8c9322e8a2f52470bde96' => $vendorDir . '/kevupton/laravel-coinpayments/src/Kevupton/LaravelCoinpayments/Helpers/constants.php',
     '8aa49bf73c4cf1a51559957fe8659d4e' => $vendorDir . '/rukhsar/laravel-active-route/src/helpers.php',
+    'a806c12c6e24e7e4e900847766218dba' => $vendorDir . '/uxweb/sweet-alert/src/SweetAlert/functions.php',
     'b4e3f29b106af37a2bb239f73cdf68c7' => $baseDir . '/app/helpers.php',
 );

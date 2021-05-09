@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -42,7 +43,7 @@ class PasswordController extends Controller
             ]
         ];
 
-        return view('setting.password', [
+        return view('account.settings', [
             'user' => $user,
             'breadcrumb' => $breadcrumb
         ]);
@@ -61,13 +62,13 @@ class PasswordController extends Controller
 
         $this->validate($request, [
             'old_password' => 'required|old_password:' . Auth::user()->password,
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
         ]);
 
         $user->update([
             'password' => bcrypt($request->input('password')),
         ]);
-
+        Session()->flash('success', 'Password Changed Successfully');
         return redirect()
             ->back()
             ->with('success', 'Password updated successfully');

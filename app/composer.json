@@ -23,18 +23,19 @@
     ],
     "require": {
         "php": "^7.2",
+        "ext-bcmath": "*",
         "ext-json": "*",
         "ext-openssl": "*",
+        "blockchain/api-v1-client-php": "dev-master",
         "fideloper/proxy": "^4.0",
         "gerardojbaez/money": "^0.3.1",
         "guzzlehttp/guzzle": "^6.5",
         "intervention/image": "^2.5",
         "kevupton/laravel-coinpayments": "^1.1",
-        "blockchain/api-v1-client-php": "dev-master",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
         "rukhsar/laravel-active-route": "^1.4",
-        "ext-bcmath": "*"
+        "uxweb/sweet-alert": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",

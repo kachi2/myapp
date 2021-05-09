@@ -65,7 +65,6 @@ class ProfileController extends Controller
             'state' => 'nullable',
             'phone' => 'nullable',
             'photo' => ['nullable', 'image:jpeg,jpg,png'],
-            'email' => 'required|email|unique:users,email,' . $user->id,
             'btc' => 'nullable',
             'eth' => 'nullable',
             'dge' => 'nullable',
@@ -80,7 +79,7 @@ class ProfileController extends Controller
         $data = [
             'first_name' => $firstName,
             'last_name' => $lastName,
-            'email' => $email,
+            'email' => auth_user()->email,
         ];
 
         if ($request->hasFile('photo')) {
@@ -118,6 +117,7 @@ class ProfileController extends Controller
             $data['bch'] = $request->input('bch');
         }
 
+        
         tap($user)->update($data);
 
         return redirect()

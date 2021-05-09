@@ -57,6 +57,8 @@
     <script src="{{asset('/asset/bundle.js?ver=2.2.0')}}"></script>
     <script src="{{asset('/asset/scripts.js?ver=2.2.0')}}"></script>
     <script src="{{asset('/asset/charts/chart-crypto.js?ver=2.2.0')}}"></script>
+       <script src="{{asset('/asset/example-sweetalert.js?ver=2.2.0')}}"></script>
+    @yield('scripts')
 </body>
 
 </html>

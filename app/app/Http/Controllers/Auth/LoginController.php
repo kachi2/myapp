@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Carbon;
 use Symfony\Component\HttpFoundation\Request;
+use App\UserActivity;
 
 class LoginController extends Controller
 {
@@ -45,10 +46,10 @@ class LoginController extends Controller
             'last_login' => Carbon::now()->toDateTimeString(),
             'login_ip'  => $request->getClientIp(),
         ]);
-        Activity::create([
-
-            
-
+        UserActivity::create([
+            'user_id' => $user->id,
+            'last_login' => Carbon::now()->toDateTimeString(),
+            'login_ip' => $request->Ip(),
         ]);
         //dd($user);
     }

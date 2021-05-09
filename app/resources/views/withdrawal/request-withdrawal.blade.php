@@ -1,5 +1,6 @@
-@extends('layouts.app', ['page_title' => 'Request Withdrawal'])
+@extends('layouts.app')
 @section('content')
+
     <div class="body-content row">
         <div class="col-lg-5">
             <div class="card">

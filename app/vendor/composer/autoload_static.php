@@ -32,6 +32,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         '1158283b2001bb9a2ffd548337146074' => __DIR__ . '/..' . '/kevupton/laravel-coinpayments/src/Kevupton/LaravelCoinpayments/Helpers/helpers.php',
         '0505beb5a1e8c9322e8a2f52470bde96' => __DIR__ . '/..' . '/kevupton/laravel-coinpayments/src/Kevupton/LaravelCoinpayments/Helpers/constants.php',
         '8aa49bf73c4cf1a51559957fe8659d4e' => __DIR__ . '/..' . '/rukhsar/laravel-active-route/src/helpers.php',
+        'a806c12c6e24e7e4e900847766218dba' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/functions.php',
         'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
@@ -48,6 +49,10 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         array (
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
+        ),
+        'U' => 
+        array (
+            'UxWeb\\SweetAlert\\' => 17,
         ),
         'T' => 
         array (
@@ -202,6 +207,10 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'UxWeb\\SweetAlert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -564,6 +573,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\Http\\Controllers\\Admin\\ReferralController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ReferralController.php',
         'App\\Http\\Controllers\\Admin\\SettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SettingController.php',
         'App\\Http\\Controllers\\Admin\\TestimonyController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TestimonyController.php',
+        'App\\Http\\Controllers\\Admin\\TokenController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TokenController.php',
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\Admin\\WithdrawalController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/WithdrawalController.php',
         'App\\Http\\Controllers\\Auth\\CompleteRegistrationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/CompleteRegistrationController.php',
@@ -585,7 +595,9 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\Http\\Controllers\\ReferralController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReferralController.php',
         'App\\Http\\Controllers\\Settings\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Settings/PasswordController.php',
         'App\\Http\\Controllers\\Settings\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Settings/ProfileController.php',
+        'App\\Http\\Controllers\\TermsController' => __DIR__ . '/../..' . '/app/Http/Controllers/TermsController.php',
         'App\\Http\\Controllers\\TestimonyController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestimonyController.php',
+        'App\\Http\\Controllers\\TokenController' => __DIR__ . '/../..' . '/app/Http/Controllers/TokenController.php',
         'App\\Http\\Controllers\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/WalletController.php',
         'App\\Http\\Controllers\\WelcomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/WelcomeController.php',
         'App\\Http\\Controllers\\WithdrawController' => __DIR__ . '/../..' . '/app/Http/Controllers/WithdrawController.php',
@@ -615,10 +627,10 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\Models\\Referral' => __DIR__ . '/../..' . '/app/Models/Referral.php',
         'App\\Models\\Setting' => __DIR__ . '/../..' . '/app/Models/Setting.php',
         'App\\Models\\Testimony' => __DIR__ . '/../..' . '/app/Models/Testimony.php',
+        'App\\Models\\Token' => __DIR__ . '/../..' . '/app/Models/Token.php',
         'App\\Models\\UserWallet' => __DIR__ . '/../..' . '/app/Models/UserWallet.php',
         'App\\Models\\Withdrawal' => __DIR__ . '/../..' . '/app/Models/Withdrawal.php',
         'App\\Modules\\BlockChain' => __DIR__ . '/../..' . '/app/Modules/BlockChain.php',
-        'App\\Modules\\PerfectMoney' => __DIR__ . '/../..' . '/app/Modules/PerfectMoney.php',
         'App\\Notifications\\DepositPaid' => __DIR__ . '/../..' . '/app/Notifications/DepositPaid.php',
         'App\\Notifications\\InvestmentAdded' => __DIR__ . '/../..' . '/app/Notifications/InvestmentAdded.php',
         'App\\Notifications\\InvestmentCompleted' => __DIR__ . '/../..' . '/app/Notifications/InvestmentCompleted.php',
@@ -637,6 +649,8 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\UserActivity' => __DIR__ . '/../..' . '/app/UserActivity.php',
+        'App\\modules\\PerfectMoney' => __DIR__ . '/../..' . '/app/Modules/PerfectMoney.php',
         'Barryvdh\\LaravelIdeHelper\\Alias' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Alias.php',
         'Barryvdh\\LaravelIdeHelper\\Console\\EloquentCommand' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Console/EloquentCommand.php',
         'Barryvdh\\LaravelIdeHelper\\Console\\GeneratorCommand' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Console/GeneratorCommand.php',
@@ -1063,6 +1077,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'Doctrine\\Common\\Cache\\PhpFileCache' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/PhpFileCache.php',
         'Doctrine\\Common\\Cache\\PredisCache' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/PredisCache.php',
         'Doctrine\\Common\\Cache\\RedisCache' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/RedisCache.php',
+        'Doctrine\\Common\\Cache\\RiakCache' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/RiakCache.php',
         'Doctrine\\Common\\Cache\\SQLite3Cache' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/SQLite3Cache.php',
         'Doctrine\\Common\\Cache\\Version' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/Version.php',
         'Doctrine\\Common\\Cache\\VoidCache' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/VoidCache.php',
@@ -3791,6 +3806,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'PHPUnit\\Framework\\TestResult' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestResult.php',
         'PHPUnit\\Framework\\TestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestSuite.php',
         'PHPUnit\\Framework\\TestSuiteIterator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestSuiteIterator.php',
+        'PHPUnit\\Framework\\UnexpectedValueException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/UnexpectedValueException.php',
         'PHPUnit\\Framework\\UnintentionallyCoveredCodeError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/UnintentionallyCoveredCodeError.php',
         'PHPUnit\\Framework\\Warning' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/Warning.php',
         'PHPUnit\\Framework\\WarningTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/WarningTestCase.php',
@@ -5499,6 +5515,12 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
+        'UxWeb\\SweetAlert\\ConvertMessagesIntoSweetAlert' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/ConvertMessagesIntoSweetAlert.php',
+        'UxWeb\\SweetAlert\\LaravelSessionStore' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/LaravelSessionStore.php',
+        'UxWeb\\SweetAlert\\SessionStore' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SessionStore.php',
+        'UxWeb\\SweetAlert\\SweetAlert' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SweetAlert.php',
+        'UxWeb\\SweetAlert\\SweetAlertNotifier' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SweetAlertNotifier.php',
+        'UxWeb\\SweetAlert\\SweetAlertServiceProvider' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SweetAlertServiceProvider.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',
@@ -5535,6 +5557,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Deprecated' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Deprecated.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Example' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Example.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Factory\\StaticMethod' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Factory/StaticMethod.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Factory\\Strategy' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Factory/Strategy.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter\\AlignFormatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter/AlignFormatter.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter\\PassthroughFormatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter/PassthroughFormatter.php',
