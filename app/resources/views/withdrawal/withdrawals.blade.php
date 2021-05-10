@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
        <div class="nk-content nk-content-fluid">
-                    <div class="container-xl wide-lg">
-                        <div class="nk-content-body">
+                     <div class="nk-content-body">
                             <div class="nk-block-head">
                                 <div class="nk-block-between-md g-4">
                                     <div class="nk-block-head-content">
@@ -17,9 +16,8 @@
                                     </div>
                                 </div>
                             </div><!-- .nk-block-head -->
-                             <div class="components-preview wide-md mx-auto">
-                         <div class="nk-block nk-block-lg">
-                                    
+                        <div class="components-preview wide-md mx-auto">
+                         <div class="nk-block nk-block-lg"> 
                                     <div class="card card-preview">
                                         <div class="card-inner">
                                             <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
@@ -27,11 +25,11 @@
                                                     <tr class="nk-tb-item nk-tb-head">
                                                        
                                                         <th class="nk-tb-col"><span class="sub-text">Ref</span></th>
-                                                        <th class="nk-tb-col tb-col-mb"><span class="sub-text">Amount</span></th>
+                                                        <th class="nk-tb-col "><span class="sub-text">Amount</span></th>
                                                         <th class="nk-tb-col tb-col-md"><span class="sub-text">Method</span></th>
                                                         <th class="nk-tb-col tb-col-lg"><span class="sub-text">Date</span></th>
-                                                        <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
-                                                        <th class="nk-tb-col nk-tb-col-tools text-right">Action
+                                                        <th class="nk-tb-col "><span class="sub-text">Status</span></th>
+                                                        <th class="nk-tb-col nk-tb-col-tools text-right">
                                                         </th>
                                                         
                                                     </tr>
@@ -40,10 +38,10 @@
                                                  @forelse($withdrawals as $withdrawal)
                                           
                                                     <tr class="nk-tb-item">
-                                                         <td class="nk-tb-col tb-col-mb" data-order="35040.34">
+                                                         <td class="nk-tb-col" data-order="35040.34">
                                                             <span class="tb-amount">{{ $withdrawal->ref }} </span>
                                                         </td>
-                                                        <td class="nk-tb-col tb-col-md">
+                                                        <td class="nk-tb-col">
                                                             <span>{{ moneyFormat($withdrawal->amount, 'USD') }}</span>
                                                         </td>
                                                         <td class="nk-tb-col tb-col-lg">
@@ -52,7 +50,7 @@
                                                         <td class="nk-tb-col tb-col-lg">
                                                             <span>{{ $withdrawal->created_at }}</span>
                                                         </td>
-                                                        <td class="nk-tb-col tb-col-md">
+                                                        <td class="nk-tb-col ">
                                                          @if( $withdrawal->status == \App\Models\Withdrawal::STATUS_PAID)
                                                             <span class="tb-status text-success">Processed</span>
                                                             @elseif ($withdrawal->status == \App\Models\Withdrawal::STATUS_CANCELED)
@@ -61,13 +59,32 @@
                                                               <span class="tb-status text-warning">Pending</span>
                                                                  @endif
                                                         </td>
-                                                        <td class="nk-tb-col nk-tb-col-tools">
-                                                          @if($withdrawal->status == \App\Models\Withdrawal::STATUS_PENDING)
-                                                          <form method="post" action="{{ route('withdrawals.cancel', ['id' => $withdrawal->id]) }}" id="form1"> 
-                                                          @csrf
-                                                            <button class="btn btn-danger" onclick="cancelWithdrawal()">Cancel</button>
-                                                            </form>
-                                                        @endif
+                                                        
+                                                        <td class="nk-tb-col">
+                                                        @if($withdrawal->status == \App\Models\Withdrawal::STATUS_PENDING)
+                                                      <ul class="nk-tb-actions gx-1">
+                                                               
+                                                                <li>
+                                                                    <div class="drodown">
+                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                                            <ul class="link-list-opt no-bdr">
+                                                                           
+                                                                                 <form method="post" action="{{ route('withdrawals.cancel', ['id' => $withdrawal->id]) }}" id="form1"> 
+                                                                                 @csrf
+                                                                                
+                                                                                </form>
+                                                                               
+                                                                                 
+                                                                                 <li><a href="{{ route('withdrawals.cancel', ['id' => $withdrawal->id]) }}" onclick="event.preventDefault(); document.getElementById('form1').submit()"><em class="icon ni text-danger ni-shield-star"></em><span class=" text-danger ">Cancel</span></a>
+                                                                                 </li>
+                                                                             
+                                                                             </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                            @endif
                                                         </td>
                                                     </tr><!-- .nk-tb-item  -->
                                                    
@@ -90,7 +107,7 @@
 
                         </div>
                     </div>
-                </div>
+               
 @endsection
 @section('scripts')
     <script>

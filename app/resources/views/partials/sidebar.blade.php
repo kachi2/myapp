@@ -148,7 +148,7 @@
                                         <h6 class="overline-title">Settings</h6>
                                     </li>
                                     <li class="nk-menu-item">
-                                        <a href="{{ route('setting.profile') }}" class="nk-menu-link">
+                                        <a href="{{ route('account') }}" class="nk-menu-link">
                                             <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
                                             <span class="nk-menu-text">Account Settings</span>
                                         </a>

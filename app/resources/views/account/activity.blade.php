@@ -94,7 +94,7 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                                     <ul class="link-list-menu">
                                                         <li><a class="active" href="{{ route('account') }}"><em class="icon ni ni-user-fill-c"></em><span>Personal Infomation</span></a></li>
                                                         <li><a href="{{ route('account.activities') }}"><em class="icon ni ni-activity-round-fill"></em><span>Account Activity</span></a></li>
-                                                        <li><a href="{{ route('setting.profile') }}"><em class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a></li>
+                                                        <li><a href="{{ route('setting.password') }}"><em class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a></li>
                                                     </ul>
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card-inner-group -->

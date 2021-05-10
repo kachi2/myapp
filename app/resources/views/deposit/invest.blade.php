@@ -1,52 +1,63 @@
-@extends('layouts.app', ['page_title' => 'Invest'])
+@extends('layouts.app')
 @section('content')
-    <div class="body-content row">
-        <div class="col-lg-5">
-            <div class="card">
-                <div class="card-body">
 
-                    <dl class="row mb-4 mt-3">
-                        <dt class="col-6 font-weight-bold" style="font-size: 16px;">Package :</dt>
-                        <dd class="col-6 font-weight-normal">{{ $plan->package->name }}</dd>
-
-                        <dt class="col-6 font-weight-bold" style="font-size: 16px;">Plan :</dt>
-                        <dd class="col-6 font-weight-normal" style="font-size: 16px;">{{ $plan->name }}</dd>
-
-                        <dt class="col-6 font-weight-bold" style="font-size: 16px;">Min Deposit :</dt>
-                        <dd class="col-6 font-weight-normal" style="font-size: 16px;">{{ moneyFormat($plan->min_deposit, 'USD') }}</dd>
-
-                        <dt class="col-6 font-weight-bold" style="font-size: 16px;">Max Deposit :</dt>
-                        <dd class="col-6 font-weight-normal" style="font-size: 16px;">{{ moneyFormat($plan->max_deposit, 'USD') }}</dd>
-
-                        <dt class="col-6 font-weight-bold" style="font-size: 16px;">Profit :</dt>
-                        <dd class="col-6 font-weight-normal" style="font-size: 16px;">{{ $plan->formatted_profit_rate }}</dd>
-
-                        <dt class="col-6 font-weight-bold" style="font-size: 16px;">Duration :</dt>
-                        <dd class="col-6 font-weight-normal" style="font-size: 16px;">{{ $plan->package->formatted_duration }}</dd>
-
-                        <dt class="col-6 font-weight-bold" style="font-size: 16px;">Account Balance :</dt>
-                        <dd class="col-6 font-weight-normal" style="font-size: 16px;">{{ moneyFormat($balance, 'USD') }}</dd>
-
-                        <dt class="col-6 font-weight-bold" style="font-size: 16px;">Bonus :</dt>
-                        <dd class="col-6 font-weight-normal" style="font-size: 16px;">{{ moneyFormat($bonus, 'USD') }}</dd>
-                    </dl>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <form method="post" action="{{ route('deposits.invest', ['id' => $plan->id]) }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="inputAmount">Amount</label>
-                                    <input type="number" name="amount" value="{{ old('amount', $plan->min_deposit) }}" class="form-control {{ form_invalid('amount') }}" id="inputAmount" aria-describedby="AmountHelp" placeholder="Enter amount">
-                                    <small id="AmountHelp" class="form-text text-muted">
-                                        Deposit amount in USD
-                                    </small>
-                                    @showError('amount')
+     <div class="nk-content nk-content-fluid">
+                    <div class="container-xl wide-lg">
+                        <div class="nk-content-body">
+                           <div class="nk-block-head">
+                                <div class="nk-block-between-md g-4">
+                                    <div class="nk-block-head-content">
+                                        <h5 class="nk-block-title fw-normal">Invest</h5>
+                                        
+                                    </div>
+                                    <div class="nk-block-head-content">
+                                        <ul class="nk-block-tools gx-3">
+                                            <li class="order-md-last">
+                                            <a href="{{ route('deposits') }}" class="btn btn-primary"><span>My Deposits</span> <em class="icon ni ni-arrow-long-right"></em></a></li>
+                                       </ul>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="buysell wide-xs m-auto">
+                               
+                               <form method="post" action="{{ route('deposits.invest', ['id' => $plan->id]) }}">
+                                @csrf
+                                <div class="buysell-block">
+                                    <form action="#" class="buysell-form">
+                                   
+                                            <div class="card-inner-group h-100 card-bordered">
+                                                <div class="card-inner">
+                                                     <center>  <h6>{{ $plan->package->name }} ({{ $plan->name }})</h6></center>
+                                                   <center> <h5 class="btn btn-light" style="margin-top:20px"> {{ $plan->profit_rate }}% / {{ $plan->package->formatted_payment_period_alt }}</h5></center>
+                                               </div>
+                                                <div class="card-inner">
+                                                    <ul class="list list-step">
+                                                        <li class="list-step-done">Minimum Deposit: {{ moneyFormat($plan->min_deposit, 'USD') }}</li>
+                                                        <li class="list-step-done">Maximum Deposit: {{ moneyFormat($plan->max_deposit, 'USD') }}</li>
+                                                         <li class="list-step-done">Duration:       {{ $plan->package->formatted_duration }}</li>
+                                                        <li class="list-step-done">Wallet Balance: {{ moneyFormat($balance, 'USD') }}</li>
+                                                         <li class="list-step-done">Bonus Balance: {{ moneyFormat($bonus, 'USD') }}</li>
+                                                        
+                                                    </ul>
+                                                        <div class="buysell-field form-group">
+                                            <div class="form-label-group">
+                                                <label class="form-label">Amount</label>
+                                            </div>
+                                            <div class="dropdown buysell-cc-dropdown">
+                                            <input type="number" name="amount" value="{{ old('amount', $plan->min_deposit) }}" class="form-control {{ form_invalid('amount') }}" id="inputAmount" aria-describedby="AmountHelp" placeholder="Enter amount">
+                                               </div>
+                                                <small id="AmountHelp" class="form-text text-muted">
+                                                    Deposit amount in USD
+                                                </small>
+                                                @showError('amount')
+                                        </div>
 
-                                <div class="form-group">
-                                    <label for="inputPaymentMethod">Payment method</label>
-                                    <select type="text" class="form-control {{ form_invalid('payment_method') }}" name="payment_method" id="inputPaymentMethod" aria-describedby="paymentMethodHelp">
+                                          <div class="buysell-field form-group">
+                                            <div class="form-label-group">
+                                                <label class="form-label">Payment Method</label>
+                                            </div>
+                                            <div class="dropdown buysell-cc-dropdown">
+                                             <select type="text" class="form-control {{ form_invalid('payment_method') }}" name="payment_method" id="inputPaymentMethod" aria-describedby="paymentMethodHelp">
                                         @foreach(get_payment_methods() as $oKey => $oValue)
                                             @if($oKey == 'wallet')
                                                 @if(($balance + $bonus) >= $plan->min_deposit)
@@ -57,18 +68,24 @@
                                             @endif
                                         @endforeach
                                     </select>
-                                    <small id="paymentMethodHelp" class="form-text text-muted">
-                                        Select deposit payment method
-                                    </small>
-                                    @showError('payment_method')
+                                            </div>
+                                            <small id="paymentMethodHelp" class="form-text text-muted">
+                                                Select Withdrawal payment method
+                                            </small>
+                                            @showError('payment_method')<!-- .dropdown -->
+                                        </div>
+                                             <div class="buysell-field form-action">
+                                        <button type="submit" class="btn btn-lg btn-block btn-primary">Submit</button>
+                                     </div>
+                                                </div>
+                                        
+                                         
+                                        </div>
                                 </div>
-
-                                <button type="submit" class="btn btn-primary">Invest Now</button>
-                            </form>
+                                </form><!-- .buysell-block -->
+                            </div><!-- .buysell -->
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+      
 @endsection

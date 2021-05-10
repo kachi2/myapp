@@ -1,9 +1,24 @@
 @extends('layouts.app', ['page_title' => 'Transfer Fund'])
 @section('content')
+       <div class="nk-content nk-content-fluid">
+                     <div class="nk-content-body">
+                            <div class="nk-block-head">
+                                <div class="nk-block-between-md g-4">
+                                    <div class="nk-block-head-content">
+                                        <h5 class="nk-block-title fw-normal">Transfer Funds</h5>
+                                        
+                                    </div>
+                                    <div class="nk-block-head-content">
+                                        <ul class="nk-block-tools gx-3">
+                                           
+                                       </ul>
+                                    </div>
+                                </div>
+                            </div>
     <div class="body-content row">
         <div class="col-lg-5">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="border:1px solid #eee">
 
                     <dl class="row mb-4 mt-3">
                         <dt class="col-sm-6 font-weight-bold">Account Balance :</dt>
@@ -46,7 +61,7 @@
 
         <div class="col-lg-5">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="border:1px solid #eee">
                    
                     <dl class="row mb-4 mt-3">
                         <dt class="col-sm-9 font-weight-bold"> Transfer Earnings to Wallet</dt>
@@ -85,6 +100,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+         </div>
         </div>
     </div>
 @endsection

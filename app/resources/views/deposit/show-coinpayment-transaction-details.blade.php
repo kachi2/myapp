@@ -1,5 +1,6 @@
-@extends('layouts.app', ['page_title' => 'Pay To Address'])
+@extends('layouts.app')
 @section('content')
+
 <style type="text/css">
     .padd {
         padding: 10px;
@@ -9,6 +10,23 @@
         height: 0.5px;
     }
 </style>
+     <div class="nk-content nk-content-fluid">
+                    <div class="container-xl wide-lg">
+                        <div class="nk-content-body">
+                           <div class="nk-block-head">
+                                <div class="nk-block-between-md g-4">
+                                    <div class="nk-block-head-content">
+                                        <h5 class="nk-block-title fw-normal">Invest</h5>
+                                        
+                                    </div>
+                                    <div class="nk-block-head-content">
+                                        <ul class="nk-block-tools gx-3">
+                                            <li class="order-md-last">
+                                            <a href="{{ route('deposits') }}" class="btn btn-primary"><span>My Deposits</span> <em class="icon ni ni-arrow-long-right"></em></a></li>
+                                       </ul>
+                                    </div>
+                                </div>
+                            </div>
     <div class="body-content row">
         <div class="col-lg-6">
             <div class="card">
@@ -66,6 +84,9 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </div>
+         </div>
         </div>
     </div>
 @endsection
