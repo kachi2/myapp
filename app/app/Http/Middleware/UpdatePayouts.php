@@ -24,7 +24,6 @@ class UpdatePayouts
            $this->updatePayouts();
             return 'foo';
         });
-
         return $next($request);
     }
 
@@ -36,6 +35,7 @@ class UpdatePayouts
            switch ($deposit->payment_period) {
                case Package::PERIOD_HOURLY:
                    $hoursGone = now()->diffInHours($deposit->created_at);
+                  // dd($hoursGone);
                    $payableAmount = (($deposit->amount * $deposit->profit_rate / 100) * $hoursGone) - $deposit->paid_amount;
                    break;
                case Package::PERIOD_DAILY:
@@ -90,7 +90,7 @@ class UpdatePayouts
                }
            }
 
-           if ($deposit->expires_at <= now()) {
+           if ($deposit->expires_at == now()) {
                if ($deposit->paid_amount < $deposit->profit) {
                    $amountToPay = $deposit->profit - $deposit->paid_amount;
                    Payout::create([
@@ -102,7 +102,7 @@ class UpdatePayouts
                        'deposit_id' => $deposit->id,
                    ]);
                    $deposit->paid_amount = $deposit->profit;
-                   $deposit->status = Deposit::STATUS_COMPLETED;
+                   $deposit->status = 1;
                    $deposit->save();
                    UserWallet::addAmount($deposit->user, $amountToPay);
                }

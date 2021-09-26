@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Settings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 
 class ProfileController extends Controller
@@ -119,6 +120,10 @@ class ProfileController extends Controller
 
         
         tap($user)->update($data);
+        Session::flash('alert', 'success');
+        Session::flash('message', 'Account Updated Successfully');
+            
+       
 
         return redirect()
             ->back()

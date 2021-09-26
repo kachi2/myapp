@@ -28,7 +28,7 @@
                                             <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
                                                 <thead>
                                                     <tr class="nk-tb-item nk-tb-head">
-                                                       
+                                                       <th class="nk-tb-col"><span class="sub-text">Id</span></th>
                                                         <th class="nk-tb-col"><span class="sub-text">Ref</span></th>
                                                         <th class="nk-tb-col "><span class="sub-text">Plan</span></th>
                                                         <th class="nk-tb-col tb-col-md"><span class="sub-text">Amount</span></th>
@@ -45,7 +45,10 @@
                                                  @forelse($deposits as $deposit)
                                           
                                                     <tr class="nk-tb-item">
-                                                         <td class="nk-tb-col" data-order="35040.34">
+                                                        <td class="nk-tb-col" >
+                                                            <span class="tb-amount">{{ $deposit->id }} </span>
+                                                        </td>
+                                                         <td class="nk-tb-col" >
                                                             <span class="tb-amount">{{ $deposit->ref }} </span>
                                                         </td>
                                                         <td class="nk-tb-col">

@@ -1,5 +1,24 @@
 @extends('layouts.admin', ['page_title' => 'Add Withdrawal'])
 @section('content')
+<div class="nk-content nk-content-fluid">
+                    <div class="container-xl wide-lg">
+                        <div class="nk-content-body">
+                            <div class="components-preview wide-md mx-auto">
+                                 <div class="nk-block-head">
+                                <div class="nk-block-between-md g-4">
+                                    <div class="nk-block-head-content">
+                                        <h5 class="nk-block-title fw-normal">Add Package</h5>
+                                        
+                                    </div>
+                                    <div class="nk-block-head-content">
+                                        <ul class="nk-block-tools gx-3">
+                                            <li class="order-md-last">
+                                                   <a href="{{ route('admin.packages') }}" class="btn btn-primary"><i
+                                                    class='uil uil-plus mr-1'></i>Package</a> </li>
+                                       </ul>
+                                    </div>
+                                </div>
+                            </div>
     <div class="body-content row">
         <div class="col-lg-5">
             <div class="card">
@@ -142,6 +161,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+         </div>
             </div>
         </div>
     </div>

@@ -44,7 +44,7 @@ class DepositPaid extends Notification
     {
         return (new MailMessage)
                     ->subject('DEP0S|T Successful #'.$this->trade->ref)
-                    ->from('support@nixoncapital.cc', 'Nixoncapital')
+                    ->from('support@aldencapital.cc', 'Aldencapital')
                     ->view('emails.deposit-created', ['deposit' => $this->trade]);
     }
 

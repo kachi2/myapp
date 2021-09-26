@@ -10367,16 +10367,16 @@ body.nav-shown { overflow: hidden; }
 @media (min-width: 1200px) { .nk-sidebar-content .nk-sidebar-menu { padding-top: 1rem; padding-bottom: 1.5rem; }
   .nk-sidebar { transform: translateX(0); width: 290px; }
   .nk-sidebar + .nk-wrap { padding-left: 290px; }
-  .nk-sidebar + .nk-wrap > .nk-header-fixed { left: 290px; }
+  .nk-sidebar + .nk-wrap > .nk-header-fixed { left: 300px; }
   .nk-sidebar-overlay { display: none; } }
 
 @media (min-width: 1200px) { .nk-sidebar { transform: translateX(0); } }
 
-@media (min-width: 1200px) { .nk-sidebar { transform: translateX(0); width: 340px; }
+@media (min-width: 1200px) { .nk-sidebar { transform: translateX(0); width: 300px; }
   .nk-sidebar .nk-sidebar-content .nk-sidebar-menu { padding-top: 2.5rem; }
-  .nk-sidebar + .nk-wrap { padding-left: 340px; }
-  .nk-sidebar + .nk-wrap > .nk-header-fixed { left: 340px; }
-  .nk-sidebar .nk-sidebar-head { width: 340px; padding: 14px 40px; border-bottom: 0; background: transparent; }
+  .nk-sidebar + .nk-wrap { padding-left: 300px; }
+  .nk-sidebar + .nk-wrap > .nk-header-fixed { left: 300px; }
+  .nk-sidebar .nk-sidebar-head { width: 300px; padding: 14px 40px; border-bottom: 0; background: transparent; }
   .nk-sidebar .nk-sidebar-widget { padding-left: 40px; padding-right: 40px; }
   .nk-sidebar .nk-sidebar-widget-full { padding-left: 0; padding-right: 0; }
   .nk-sidebar .nk-sidebar-widget-full > * { padding-left: 40px; padding-right: 40px; }
@@ -10386,8 +10386,8 @@ body.nav-shown { overflow: hidden; }
   .nk-sidebar .nk-sidebar-footer .nk-menu { margin-left: -16px; margin-right: -16px; }
   .nk-sidebar-widget:first-child { padding-top: 0.5rem; } }
 
-@media (min-width: 1540px) { .nk-sidebar { width: 400px; }
-  .nk-sidebar + .nk-wrap { padding-left: 400px; }
+@media (min-width: 1540px) { .nk-sidebar { width: 300px; }
+  .nk-sidebar + .nk-wrap { padding-left: 300px; }
   .nk-sidebar + .nk-wrap > .nk-header-fluid, .nk-sidebar + .nk-wrap > .nk-footer-fluid { padding-left: 24px; padding-right: 24px; }
   .nk-sidebar + .nk-wrap > .nk-header-fixed { left: 400px; }
   .nk-sidebar .nk-sidebar-head { width: 400px; padding: 14px 56px; }

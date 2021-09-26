@@ -20,7 +20,9 @@ use App\Models\Referral;
 use App\Notifications\DepositPaid;
 use App\Notifications\InvestmentCreated;
 use App\User;
+use App\UserNotify;
 use Exception;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -76,7 +78,7 @@ class DepositController extends Controller
             $filter = strtolower($request->input('filter_by'));
             switch ($filter) {
                 case 'active':
-                    $query->where('status', Deposit::STATUS_ACTIVEG);
+                    $query->where('status', Deposit::STATUS_ACTIVE);
                     break;
                 case 'completed':
                     $query->where('status', Deposit::STATUS_COMPLETED);
@@ -91,7 +93,7 @@ class DepositController extends Controller
         if (count($sort) > 0 && in_array($sort[0], $this->sortable))
             $query->orderBy($sort[0], $sort[1]);
 
-        $deposits = $query->latest()->paginate(40);
+        $deposits = $query->latest()->get();
 
         $breadcrumb = [
             [
@@ -116,7 +118,7 @@ class DepositController extends Controller
      */
     public function destroyDeposit(Request $request, $id)
     {
-        $deposit = DepositTransaction::findOrFail($id);
+        $deposit = Deposit::findOrFail($id);
         $user = $deposit->user;
         $amount = $deposit->amount;
         $status = $deposit->status;
@@ -127,8 +129,11 @@ class DepositController extends Controller
             UserWallet::addAmount($user, $amount);
         }
 
+        Session::flash('msg', 'success');
+        Session::flash('message', 'Deposit deleted successfully'); 
         return redirect()
             ->back()
+            
             ->with('success', 'Deposit deleted successfully');
     }
 
@@ -244,19 +249,27 @@ class DepositController extends Controller
             'payment_period' => $plan->package->payment_period
         ]);                
         
+       
+        $notify = new UserNotify;
+            $notify->user_id = $deposit->user->id;
+            $notify->message = 'Dear'.$deposit->user->username.','.'Deposit completed Successfully, thanks for trusting us'; 
+            $notify->save();
+        Session::flash('msg', 'success');
+        Session::flash('message', 'Deposit Completed Successfully'); 
         $user->notify(new InvestmentCreated($deposit));
+       
         return redirect()->back()->with('success', 'Deposit added successfully');
     }
 
     public function approveIndex(){
         return view('admin.payment_request')
-                ->with('payment_request', PendingDeposit::latest()->paginate(20));
+                ->with('payment_request', PendingDeposit::latest()->paginate(70));
     }
 
     public function depositApprove($id){
         $id = decrypt($id);
         $deposit = PendingDeposit::whereId($id)->first();
-       // dd($deposit);
+        //dd($deposit);
         $update =  PendingDeposit::whereId($id)
                     ->update([
                         'status' => 1,
@@ -299,7 +312,14 @@ class DepositController extends Controller
         $update_ref_wallet = UserWallet::where('user_id', $ur->referrer_id)
                     ->update(['referrals' => $bonus + $ref_wallet->referrals]);
         }
+            $notify = new UserNotify;
+            $notify->user_id = $deposit->user->id;
+            $notify->message = 'Dear'.$deposit->user->username.','.'Your payment has been approved successfully, thanks for trusting us'; 
+            $notify->save();
         $deposit->user->notify(new InvestmentCreated($deposit));
+           Session::flash('msg', 'success');
+        Session::flash('message', 'Deposit Approved Successfully'); 
+     
         return redirect()->back()->with('success', 'Payment Approve Successfully');
         }
 
@@ -326,8 +346,31 @@ class DepositController extends Controller
             }
         }
 
+            $notify = new UserNotify;
+            $notify->user_id = $deposit->user->id;
+            $notify->message = 'Dear '.$deposit->user->username.','.' Your Deposit has been marked expired, if you are not sure about contact Us'; 
+            $notify->save();
         return redirect()
             ->back()
             ->with('success', 'Deposit marked expired successfully');
+    }
+    
+     public function markCompleted(Request $request, $id)
+    {
+        $deposit = Deposit::findOrFail($id);
+        $update = Deposit::where('id', $deposit->id)->update(['status' => 1]);
+            if(!$update){
+                Session::flash('msg', 'error');
+                Session::flash('message', 'Unable to mark the investment expired'); 
+                return redirect()->back();
+            }
+           
+            $notify = new UserNotify;
+            $notify->user_id = $deposit->user->id;
+            $notify->message = 'Dear '.$deposit->user->username.','.' Your investment is completed, and funds transfered to your wallet'; 
+            $notify->save();
+            Session::flash('msg', 'success');
+            Session::flash('message', 'Investment marked Completed successfully');
+        return redirect()->back();
     }
 }

@@ -1,5 +1,24 @@
 @extends('layouts.app', ['page_title' =>  'Add Testimony'])
 @section('content')
+    <div class="nk-content nk-content-fluid">
+                     <div class="nk-content-body">
+                            <div class="nk-block-head">
+                                <div class="nk-block-between-md g-4">
+                                    <div class="nk-block-head-content">
+                                        <h5 class="nk-block-title fw-normal">Testimony</h5>
+                                        
+                                    </div>
+                                    <div class="nk-block-head-content">
+                                        <ul class="nk-block-tools gx-3">
+                                            <li class="order-md-last">
+                                                 <a href="{{ route('testimonies') }}" class="btn btn-primary"><i
+                                    class='uil uil-plus mr-1'></i>My Testimony</a>
+                       
+                                            </li>
+                                       </ul>
+                                    </div>
+                                </div>
+                            </div>
     <div class="body-content row">
         <div class="col-lg-5">
             <div class="card">
@@ -35,4 +54,28 @@
             </div>
         </div>
     </div>
+        </div>
+</div>
+@endsection
+
+@section('scripts')
+
+
+<script>
+
+let message = {!! json_encode(Session::get('message')) !!};
+let msg = {!! json_encode(Session::get('alert')) !!};
+
+//alert(msg);
+if(message != null){
+toastr.clear();
+    NioApp.Toast(message , msg, {
+      position: 'top-right',
+        timeOut: 5000,
+    });
+}
+
+</script>
+
+
 @endsection

@@ -36,6 +36,7 @@ class Setting extends Model
         'key',
         'value',
         'description',
+        'dep'
     ];
 
     /**

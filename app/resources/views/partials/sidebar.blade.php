@@ -2,8 +2,8 @@
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
                         <a href="{{route('index')}}" class="logo-link nk-sidebar-logo">
-                            <img class="logo-light logo-img" src="{{asset('/asset/images/logo.png')}}" srcset="{{asset('/asset/images/logo.png')}} 2x" alt="logo">
-                            <img class="logo-dark logo-img" src="{{asset('/asset/images/logo.png')}}" srcset="{{asset('/asset/images/logo.png')}} 2x" alt="logo-dark">
+                            <img class="logo-light logo-img"  src="{{asset('/logo.png')}}" srcset="{{asset('/logo.png')}} 2x" alt="logo">
+                            <img class="logo-dark logo-img" src="{{asset('/logo.png')}}" srcset="{{asset('/logo.png')}} 2x" alt="logo-dark">
                         </a>
                     </div>
                     <div class="nk-menu-trigger mr-n2">
@@ -32,8 +32,8 @@
                                 </ul>
                                 <div class="user-account-actions">
                                     <ul class="g-3">
-                                        <li><a href="{{ route('deposits.invest') }}" class="btn btn-sm btn-primary"><span>Deposit</span></a></li>
-                                        <li><a href="{{ route('withdrawals.request') }}" class="btn btn-sm btn-warning"><span>Withdraw</span></a></li>
+                                        <li><a href="{{ route('user.packages') }}" class="btn btn-lg  btn-primary"><span>Deposit</span></a></li>
+                                        <li><a href="{{ route('withdrawals.request') }}" class="btn btn-lg  btn-warning"><span>Withdraw</span></a></li>
                                     </ul>
                                 </div>
                             </div><!-- .nk-sidebar-widget -->
@@ -114,31 +114,31 @@
                                     </li>
                                      <li class="nk-menu-item">
                                         <a href="{{ route('user.packages') }}" class="nk-menu-link">
-                                            <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
+                                            <span class="nk-menu-icon"><em class="icon ni ni-package"></em></span>
                                             <span class="nk-menu-text">Packages</span>
                                         </a>
                                     </li>
                                     <li class="nk-menu-item">
                                         <a href="{{ route('payouts') }}" class="nk-menu-link">
-                                            <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
+                                            <span class="nk-menu-icon"><em class="icon ni ni-cc-alt2"></em></span>
                                             <span class="nk-menu-text">Payouts</span>
                                         </a>
                                     </li>
                                     <li class="nk-menu-item">
                                         <a href="{{ route('transfer') }}" class="nk-menu-link">
-                                            <span class="nk-menu-icon"><em class="icon ni ni-repeat"></em></span>
+                                            <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
                                             <span class="nk-menu-text">Transfer</span>
                                         </a>
                                     </li>
                                     <li class="nk-menu-item">
                                         <a href="{{ route('referral') }}" class="nk-menu-link">
-                                            <span class="nk-menu-icon"><em class="icon ni ni-user"></em></span>
+                                            <span class="nk-menu-icon"><em class="icon ni ni-user-add"></em></span>
                                             <span class="nk-menu-text">My Referals</span>
                                         </a>
                                     </li>
                                     <li class="nk-menu-item">
                                         <a href="{{ route('testimonies') }}" class="nk-menu-link">
-                                            <span class="nk-menu-icon"><em class="icon ni ni-user"></em></span>
+                                            <span class="nk-menu-icon"><em class="icon ni ni-notes-alt"></em></span>
                                             <span class="nk-menu-text">Testimony</span>
                                         </a>
                                     </li>
@@ -149,14 +149,14 @@
                                     </li>
                                     <li class="nk-menu-item">
                                         <a href="{{ route('account') }}" class="nk-menu-link">
-                                            <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
+                                            <span class="nk-menu-icon"><em class="icon ni ni-account-setting"></em></span>
                                             <span class="nk-menu-text">Account Settings</span>
                                         </a>
                                     </li>
                                     @if(auth_user()->is_admin)
                                      <li class="nk-menu-item">
                                         <a href="{{ route('admin.home') }}" class="nk-menu-link">
-                                            <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
+                                            <span class="nk-menu-icon"><em class="icon ni ni-repeat"></em></span>
                                             <span class="nk-menu-text">Switch to Admin</span>
                                         </a>
                                     </li>
@@ -168,19 +168,19 @@
                             <div class="nk-sidebar-footer">
                                 <ul class="nk-menu nk-menu-footer">
                                     <li class="nk-menu-item">
-                                        <a href="#" class="nk-menu-link">
+                                        <a target="_blank" href="#"class="nk-menu-link">
                                             <span class="nk-menu-icon"><em class="icon ni ni-help-alt"></em></span>
                                             <span class="nk-menu-text">Support</span>
                                         </a>
                                     </li>
                                     <li class="nk-menu-item ml-auto">
                                         <div class="dropup">
-                                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout4').submit(); class="nk-menu-link dropdown-indicator has-indicator" data-toggle="dropdown" data-offset="0,10">
+                                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout4').submit();" class="nk-menu-link dropdown-indicator has-indicator" data-toggle="dropdown" data-offset="0,10">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-globe"></em></span>
                                                 <span class="nk-menu-text">Sign Out</span>
                                             </a>
-                                            
-                                        </div>
+                                                <form id="frm-logout4" action="{{ route('logout') }}" method="POST" style="display: none;"> {{ csrf_field() }}
+                                                </form>                                        </div>
                                     </li>
                                 </ul><!-- .nk-footer-menu -->
                             </div><!-- .nk-sidebar-footer -->

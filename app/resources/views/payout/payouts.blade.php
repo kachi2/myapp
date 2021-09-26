@@ -25,15 +25,15 @@
                          <div class="nk-block nk-block-lg"> 
                                     <div class="card card-preview">
                                         <div class="card-inner">
-                                            <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                                            <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="true">
                                                 <thead>
                                                     <tr class="nk-tb-item nk-tb-head">
                                                        
                                                      
-
+                                                             <th class="nk-tb-col"><span class="sub-text">Id</th>
                                                           <th class="nk-tb-col"><span class="sub-text">#Ref</th>
                                                           <th class="nk-tb-col"><span class="sub-text">Plan</th>
-                                                          <th class="nk-tb-col tb-col-lg"><span class="sub-text">Deposit</th>
+                                                          <th class="nk-tb-col"><span class="sub-text">Deposit</th>
                                                            <th class="nk-tb-col"><span class="sub-text">Amount</th>
                                                           <th class="nk-tb-col tb-col-lg"><span class="sub-text">Date</th>
                                                                         
@@ -43,11 +43,12 @@
                                                 <tbody>
                                                 @forelse($payouts as $payout)
                                         <tr>
+                                            <td  class="nk-tb-col">{{ $payout->id }}</td>
                                             <td  class="nk-tb-col">{{ $payout->ref }}</td>
                                             <td  class="nk-tb-col">{{ $payout->plan->formatted_name }}</td>
-                                            <td  class="nk-tb-col tb-col-lg"><a href="{{ $payout->deposit->url }}">{{ $payout->deposit->ref }}</a></td>
+                                            <td  class="nk-tb-col"><a href="{{ $payout->deposit->url }}">{{ $payout->deposit->ref }}</a></td>
                                             <td  class="nk-tb-col">{{ moneyFormat($payout->amount, 'USD') }}</td>
-                                            <td  class="nk-tb-col tb-col-lg">{{ $payout->created_at }}</td>
+                                            <td  class="nk-tb-col">{{ $payout->created_at }}</td>
                                         </tr>
                                     @empty
                                         <tr>

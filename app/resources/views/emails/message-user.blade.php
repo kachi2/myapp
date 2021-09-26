@@ -34,7 +34,7 @@
                 <tr>
             <td style="text-align:center;padding:10px;font-size:12px">
                 If you have any issues or complaints regarding any transaction,
-                kindly send us an email at <a href="mailto:support@nixoncapital.cc" target="_blank">support@nixoncapital.cc</a>
+                kindly send us an email at <a href="mailto:support@aldencapital.cc" target="_blank">support@aldencapital.</a>
                 <br><br>
                 Thank you for choosing our platform. <br>
                 Regards,
@@ -44,7 +44,7 @@
         
         <tr>
             <td style="text-align:center;padding:20px 10px">
-                {{ config('app.name') }} 2020
+                {{ config('app.name') }} 2021
             </td>
         </tr>
     </tbody></table>

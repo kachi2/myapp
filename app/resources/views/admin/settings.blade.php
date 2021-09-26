@@ -1,5 +1,22 @@
 @extends('layouts.admin', ['page_title' => 'Site settings'])
 @section('content')
+  <div class="nk-content nk-content-fluid">
+                    <div class="container-xl wide-lg">
+                        <div class="nk-content-body">
+                            <div class="components-preview wide-md mx-auto">
+                                 <div class="nk-block-head">
+                                <div class="nk-block-between-md g-4">
+                                    <div class="nk-block-head-content">
+                                        <h5 class="nk-block-title fw-normal">System Settings</h5>
+                                        
+                                    </div>
+                                    <div class="nk-block-head-content">
+                                        <ul class="nk-block-tools gx-3">
+                                           
+                                       </ul>
+                                    </div>
+                                </div>
+                            </div>
     <div class="body-content row">
         <div class="col-lg-7">
             <div class="card">
@@ -203,6 +220,10 @@
                         <button type="submit" class="btn btn-block btn-primary mt-4">Update</button>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+      </div>
             </div>
         </div>
     </div>

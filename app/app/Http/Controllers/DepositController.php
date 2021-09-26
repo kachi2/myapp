@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Models\Deposit;
 use App\Models\Package;
 use App\Models\PendingDeposit;
+use App\Models\Setting;
 use App\Models\Plan;
 use App\Models\UserWallet;
 use App\Modules\BlockChain;
@@ -18,6 +19,7 @@ use App\Modules\PerfectMoney;
 use App\Notifications\InvestmentCreated;
 use App\User;
 use Exception;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -106,7 +108,7 @@ class DepositController extends Controller
         if (count($sort) > 0 && in_array($sort[0], $this->sortable))
             $query->orderBy($sort[0], $sort[1]);
 
-        $deposits = $query->paginate();
+        $deposits = $query->latest()->get();
 
         $breadcrumb = [
             [
@@ -163,7 +165,7 @@ class DepositController extends Controller
         if (count($sort) > 0 && in_array($sort[0], $this->sortable))
             $query->orderBy($sort[0], $sort[1]);
 
-        $deposits = $query->paginate();
+        $deposits = $query->latest()->get();
 
         $breadcrumb = [
             [
@@ -300,16 +302,105 @@ class DepositController extends Controller
         if (!$transaction) {
             $transaction = Transaction::where('txn_id', $id)->firstOrFail();
         }
-        $breadcrumb = [
+        
+     //   dd($transaction);
+        //dgb coin
+        if($transaction->currency2 == "DGB"){
+            
+            
+             $breadcrumb = [
             [
                 'link' => route('deposits'),
                 'title' => 'Deposits'
             ],
             [
-                'link' => route('deposits.coinpayment_transaction', ['id', '1KCKuKgB54t3P5z6e7U7mugn2cT6jUKwK9']),
-                'title' => 'Deposit Transaction : ' . '1KCKuKgB54t3P5z6e7U7mugn2cT6jUKwK9'
+                'link' => route('deposits.coinpayment_transaction', ['id', 'D5rLgqeUB88TeEd5TJNuLb84XBy6ugQKLh']),
+                'title' => 'Deposit Transaction : ' . 'D5rLgqeUB88TeEd5TJNuLb84XBy6ugQKLh'
             ]
         ];
+        
+        
+        
+        $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
+        $plan = $deposit->plan;
+
+        return view('deposit.show-coinpayment-dg-transaction-details', [
+            'breadcrumb' => $breadcrumb,
+            'transaction' => $transaction,
+            'deposit' => $deposit,
+            'plan' => $plan
+        ]);
+        
+        }
+        //litecoins
+        
+        if($transaction->currency2 == "LTC"){
+            
+            
+             $breadcrumb = [
+            [
+                'link' => route('deposits'),
+                'title' => 'Deposits'
+            ],
+            [
+                'link' => route('deposits.coinpayment_transaction', ['id', 'LaPJqhcWvKAaeDJPvQ3EnYUnWnWtLfBkwH']),
+                'title' => 'Deposit Transaction : ' . 'LaPJqhcWvKAaeDJPvQ3EnYUnWnWtLfBkwH'
+            ]
+        ];
+        
+        
+        
+        $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
+        $plan = $deposit->plan;
+
+        return view('deposit.show-coinpayment-litecoins-transaction-details', [
+            'breadcrumb' => $breadcrumb,
+            'transaction' => $transaction,
+            'deposit' => $deposit,
+            'plan' => $plan
+        ]);
+        
+        }
+        
+        //eth transactions
+         if($transaction->currency2 == "ETH"){
+             $breadcrumb = [
+            [
+                'link' => route('deposits'),
+                'title' => 'Deposits'
+            ],
+            [
+                'link' => route('deposits.coinpayment_transaction', ['id', 'D5rLgqeUB88TeEd5TJNuLb84XBy6ugQKLh']),
+                'title' => 'Deposit Transaction : ' . 'D5rLgqeUB88TeEd5TJNuLb84XBy6ugQKLh'
+            ]
+        ];
+        
+        
+        
+        $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
+        $plan = $deposit->plan;
+
+        return view('deposit.show-coinpayment-eth-transaction-details', [
+            'breadcrumb' => $breadcrumb,
+            'transaction' => $transaction,
+            'deposit' => $deposit,
+            'plan' => $plan
+        ]);
+        
+          //  }
+         }
+                $breadcrumb = [
+            [
+                'link' => route('deposits'),
+                'title' => 'Deposits'
+            ],
+            [
+                'link' => route('deposits.coinpayment_transaction', ['id', '1EHsCPgCmFkZzUHxKw9Kc3Kad44XrvLNbS']),
+                'title' => 'Deposit Transaction : ' . '1EHsCPgCmFkZzUHxKw9Kc3Kad44XrvLNbS'
+            ]
+        ];
+        
+        
         
         $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
         $plan = $deposit->plan;
@@ -320,6 +411,8 @@ class DepositController extends Controller
             'deposit' => $deposit,
             'plan' => $plan
         ]);
+   //}
+
     }
 
     /**
@@ -342,6 +435,7 @@ class DepositController extends Controller
      */
     public function invest(Request $request, $id = null)
     {
+       
         $plans = Plan::with('package')->get();
         $packages = Package::with('plans')->get();
         $balance = $request->user()->wallet->amount;
@@ -367,7 +461,6 @@ class DepositController extends Controller
                 'bonus' => $bonus
             ]);
         }
-
         $plan = Plan::findOrFail($id);
         return view('deposit.invest', [
             'breadcrumb' => $breadcrumb,
@@ -437,7 +530,9 @@ class DepositController extends Controller
         } catch (Exception $exception) {
 
         }
-
+        Session::flash('msg', 'success');
+        Session::flash('message', 'Investment added successfully'); 
+       
         return redirect()->route('deposits')->with('success', 'Investment added successfully');
     }
 
@@ -458,15 +553,21 @@ class DepositController extends Controller
         try {
             /** @var Transaction $transaction */
             $transaction = Coinpayments::createTransactionSimple($cost, self::ITEM_CURRENCY, $currency, $additionalFields);
+      
             Log::info($transaction);
+            Session::flash('msg', 'success');
+            Session::flash('message', 'Deposit Completed Successfully'); 
+           
             return redirect()->route('deposits.coinpayment_transaction', ['id' => $transaction->txn_id]);
         } catch (Exception $exception) {
             Log::error($exception);
             $deposit->delete();
+            Session::flash('msg', 'error');
+            Session::flash('message', 'Unable to create deposit transaction'); 
+           
             return redirect()
                 ->back()
-                ->withInput()
-                ->with('error', 'Unable to create deposit transaction');
+                ->withInput();
         }
         
     }

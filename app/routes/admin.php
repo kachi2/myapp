@@ -15,6 +15,10 @@ Route::get('users/send-bonus/{id}', 'UserController@sendBonus')->name('admin.use
 Route::post('users/send-bonus/{id}', 'UserController@doSendBonus')->name('admin.users.send_bonus');
 Route::get('users/send-message/{id}', 'UserController@sendMessage')->name('admin.users.send_message');
 Route::post('users/send-message/{id}', 'UserController@doSendMessage')->name('admin.users.send_message');
+Route::get('/users/activities/{id}', 'UserController@activity')->name('admin.users.activity');
+Route::get('/users/settings/{id}', 'UserController@pass')->name('admin.users.settings');
+Route::post('/users/settings/update/{id}', 'UserController@settings')->name('admin.users.settings-update');
+
 Route::get('users/invest', 'UserController@invest')->name('admin.users.invest');
 Route::post('users/invest', 'UserController@doInvest')->name('admin.users.invest');
 Route::get('users/{id}/edit', 'UserController@editUser')->name('admin.users.edit');
@@ -52,6 +56,7 @@ Route::get('payment/request', 'DepositController@approveIndex')->name('admin.pay
 Route::get('deposits/add/{id?}', 'DepositController@addDeposit')->name('admin.deposits.add');
 Route::post('deposits/add/{id?}', 'DepositController@storeDeposit')->name('admin.deposits.add');
 Route::post('deposits/{id}/mark-expired', 'DepositController@markExpired')->name('admin.deposits.mark_expired');
+Route::post('deposits/{id}/mark-completed', 'DepositController@markCompleted')->name('admin.deposits.mark_completed');
 Route::post('deposits/request/{id}', 'DepositController@depositApprove')->name('admin.deposits.approve');
 
 Route::get('payouts', 'PayoutController@index')->name('admin.payouts');
@@ -82,3 +87,5 @@ Route::get('tokens', 'TokenController@index')->name('admin.tokens');
 Route::get('tokens/add', 'TokenController@addToken')->name('admin.tokens.add');
 Route::post('tokens/add', 'TokenController@storeToken')->name('admin.tokens.add');
 Route::post('tokens/{id}/delete', 'TokenController@destroy')->name('admin.tokens.delete');
+
+

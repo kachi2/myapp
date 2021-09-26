@@ -22,11 +22,16 @@ use App\Models\Withdrawal;
 use App\Notifications\InvestmentCreated;
 use App\User;
 use Exception;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\UserActivity;
+use App\UserNotify;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
@@ -92,7 +97,7 @@ class UserController extends Controller
             $query = $query->orderBy($sort[0], $sort[1]);
 
 
-        $users = $query->paginate();
+        $users = $query->get();
 
         $breadcrumb = [
             [
@@ -116,6 +121,7 @@ class UserController extends Controller
     public function showUser(Request $request, $id)
     {
         $user = User::findOrFail($id);
+       // dd($user);
 
         $breadcrumb = [
             [
@@ -198,32 +204,31 @@ class UserController extends Controller
      */
     public function updateUser(Request $request, $id)
     {
+      
         $user = User::findOrFail($id);
+       // if(is_tab('password')) {
+        //    $this->validate($request, [
+               // 'password' => 'required|confirmed|min:6',
+        //    ]);
 
-        if(is_tab('password')) {
+        //    $data = [
+        //        'password' => bcrypt($request->input('password')),
+        //    ];
+        //} else {
             $this->validate($request, [
-                'password' => 'required|confirmed|min:6',
-            ]);
-
-            $data = [
-                'password' => bcrypt($request->input('password')),
-            ];
-        } else {
-            $this->validate($request, [
-                'first_name' => 'required',
-                'last_name' => 'required',
+                'first_name' => 'nullable',
+                'last_name' => 'nullable',
                 'country' => 'nullable',
                 'city' => 'nullable',
                 'state' => 'nullable',
                 'phone' => 'nullable',
                 'photo' => ['nullable', 'image:jpeg,jpg,png'],
-                'email' => 'required|email|unique:users,email,' . $user->id,
+                'email' => 'nullable',
             ]);
 
-            $name = $request->input('first_name') . ' ' . $request->input('last_name');
+            $data['first_name'] = $request->input('first_name');
+            $data['last_name'] = $request->input('last_name');
             $email = $request->input('email');
-
-            $data = ['name' => $name, 'email', $email];
 
             if ($request->hasFile('photo')) {
                 $data['image_path'] = $request->file('photo')->store('files');
@@ -244,10 +249,11 @@ class UserController extends Controller
             if (!empty($request->input('phone'))) {
                 $data['phone'] = $request->input('phone');
             }
-        }
+       // }
 
         tap($user)->update($data);
-
+        Session::flash('msg', 'success');
+        Session::flash('message', 'User updated Successfully');
         return redirect()
             ->back()
             ->with('success', 'User details updated successfully');
@@ -401,7 +407,7 @@ class UserController extends Controller
 
             if ($request->input('notify')) {
                 try {
-                    $user->notify(new InvestmentCreated($deposit));
+                   $user->notify(new InvestmentCreated($deposit));
                 } catch (Exception $exception) {
 
                 }
@@ -415,6 +421,14 @@ class UserController extends Controller
             'amount' => $amount
         ]);
 
+            $notify = new UserNotify;
+            $notify->user_id = $user->id;
+            $notify->message = 'Dear '.$user->username.','.' You have been credited a bonus amount of '.$amount.' USD'; 
+            $notify->save();
+                        
+            Session::flash('msg', 'success');
+            Session::flash('message', 'Bonus send Successfully'); 
+            
         return redirect()->back()->with('success', 'Bonus transferred successfully');
     }
 
@@ -462,13 +476,14 @@ class UserController extends Controller
         $subject = $request->input('subject');
         $text = $request->input('message');
         $user = User::findOrFail($id);
-        
-            try {
+               // $notify = new UserNotify;
+               // $notify->user_id = $user->id;
+               // $notify->message = $text; 
+               // $notify->save();
                 $user->notify(new MessageUser($user, $text, $subject));
-            } catch (\Exception $e) {
-                Log::error($e);
-            }
-
+            Session::flash('alert', 'success');
+            Session::flash('message', 'User messaged successfully');
+          
         return redirect()->back()->with('success', 'User messaged successfully');
     }
 
@@ -575,6 +590,10 @@ class UserController extends Controller
 
                 if ($request->input('notify')) {
                     try {
+                        $notify = new UserNotify;
+                        $notify->user_id = $user->id;
+                        $notify->message = 'Dear '.$user->username.','.' You have been credited a bonus amount of '.$amount.' USD'; 
+                        $notify->save();
                         $user->notify(new InvestmentCreated($deposit));
                     } catch (Exception $exception) {
 
@@ -589,7 +608,9 @@ class UserController extends Controller
                 'amount' => $amount
             ]);
         }
-
+        Session::flash('alert', 'success');
+        Session::flash('message', 'Bonus transferred successfully');
+      
         return redirect()->back()->with('success', 'Bonus transferred successfully');
     }
 
@@ -651,4 +672,32 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.show', ['id' => $user->id])->with('success', 'User added successfully');
     }
-}
+
+    public function activity($id){
+        return view('admin.user-edit.activities')
+                ->with('user', User::where('id', $id)->first())
+                ->with('users', UserActivity::where('user_id', $id)->get());
+    }
+
+    public function pass($id){
+        return view('admin.user-edit.password')
+                ->with('user', User::where('id', $id)->first());
+    }
+
+    public function settings(Request $request, $id){
+        $user = User::where('id', $id)->first();
+
+        $this->validate($request, [
+            'password' => 'required|min:6',
+        ]);
+        $user->update([
+            'password' => bcrypt($request->input('password')),
+        ]);
+      Session::flash('alert', 'success');
+        Session::flash('message', 'Password Changed Successfully');
+        return redirect()
+            ->back()
+            ->with('success', 'Password updated successfully');
+    }
+    }
+

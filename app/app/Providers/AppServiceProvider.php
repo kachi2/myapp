@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use App\Observers\PendingDepositObserver;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Composer;
+use Illuminate\Support\Facades\Auth;
+use App\UserNotify;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +37,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {   
+            view()->composer('*', function($view){
+            if (Auth::check()) {
+                $notification = UserNotify::where('user_id', auth()->user()->id)->latest()->get();
+                $view->with('notification', $notification);
+            }
+
+            });
+          
+       
+          
         Deposit::observe(DepositObserver::class);
         PendingDeposit::observe(PendingDepositObserver::class);
         Blade::directive('showError', function ($expression) {
@@ -50,6 +64,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->setDbConfig();
+     
 
        // $investment = Deposit::WhereUserId(auth()->user()->id)->first();
     }

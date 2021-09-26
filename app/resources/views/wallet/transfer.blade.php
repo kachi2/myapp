@@ -15,7 +15,9 @@
                                     </div>
                                 </div>
                             </div>
+                   
     <div class="body-content row">
+
         <div class="col-lg-5">
             <div class="card">
                 <div class="card-body" style="border:1px solid #eee">
@@ -57,6 +59,8 @@
                     </div>
                 </div>
             </div>
+            
+           
         </div>
 
         <div class="col-lg-5">
@@ -105,4 +109,21 @@
          </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+let message = {!! json_encode(Session::get('message')) !!};
+let msg = {!! json_encode(Session::get('alert')) !!};
+
+//alert(msg);
+if(message != null){
+toastr.clear();
+    NioApp.Toast(message , msg, {
+      position: 'top-right',
+        timeOut: 5000,
+    });
+}
+
+ 
+    </script>
 @endsection

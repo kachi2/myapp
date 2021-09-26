@@ -1,108 +1,124 @@
 @extends('layouts.admin', ['page_title' => 'Users'])
 @section('content')
-    <div class="body-content row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
 
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <a href="{{ route('admin.users.add') }}" class="btn btn-primary"><i
-                                    class='uil uil-plus mr-1'></i>Add User</a>
-                            <a href="{{ route('admin.message_users') }}" class="btn btn-primary"><i
-                                    class='uil uil-message mr-1'></i>Mail Users</a>
-                        </div>
-                        <div class="col-sm-9">
-                            <div class="float-sm-right mt-3 mt-sm-0">
-                                <div class="task-search d-inline-block mb-3 mb-sm-0">
-                                    <form method="get">
-                                        <div class="input-group">
-                                            <input type="text" name="search" value="{{ request()->input('search') }}" class="form-control search-input"
-                                                   placeholder="Search..." />
-                                            <span class="uil uil-search icon-search"></span>
-                                            <div class="input-group-append">
-                                                <button class="btn btn-soft-primary" type="submit">
-                                                    <i class='uil uil-file-search-alt'></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        <i class='uil uil-sort-amount-down'></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{{ filter_url('all') }}">All</a>
-                                        <a class="dropdown-item" href="{{ filter_url('admins') }}">Admins</a>
-                                        <a class="dropdown-item" href="{{ filter_url('non-admins') }}">Non Admins</a>
+    <div class="nk-content nk-content-fluid">
+                    <div class="container-xl wide-lg">
+                        <div class="nk-content-body">
+                            <div class="components-preview wide-md mx-auto">
+                                 <div class="nk-block-head">
+                                <div class="nk-block-between-md g-4">
+                                    <div class="nk-block-head-content">
+                                        <h5 class="nk-block-title fw-normal">Users List</h5>
+                                        
+                                    </div>
+                                    <div class="nk-block-head-content">
+                                        <ul class="nk-block-tools gx-3">
+                                            <li class="order-md-last">
+                                                   <a href="{{ route('admin.users.add') }}" class="btn btn-primary"><i
+                                                    class='uil uil-plus mr-1'></i>Add Users</a>
+                                            <a href="{{ route('admin.message_users') }}" class="btn btn-primary ml-2"><i
+                                                    class='uil uil-chart mr-1'></i>Email User</a> 
+                                        
+                                            </li>
+                                       </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div><!-- .nk-block-head -->
+                                
+                                <div class="nk-block nk-block-lg">
+                                    <div class="card card-preview">
+                                        <div class="card-inner">
+                                            <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="true">
+                                                <thead>
+                                                    <tr class="nk-tb-item nk-tb-head">
+                                                    <th></th>
+                                                     <th class="nk-tb-col "><span class="sub-text">id</span></th>
+                                                        <th class="nk-tb-col "><span class="sub-text">User</span></th>
+                                                        <th class="nk-tb-col"><span class="sub-text">Reg.Date</span></th>
+                                                        <th class="nk-tb-col"><span class="sub-text">Balance</span></th>
+                                                        <th class="nk-tb-col "><span class="sub-text">Deposits</span></th>
+                                                        <th class="nk-tb-col "><span class="sub-text">Withdrawals</span></th>
+                                                          <th class="nk-tb-col "><span class="sub-text">Payouts</span></th>
+                                                           <th class="nk-tb-col "><span class="sub-text">Active Deposits</span></th>
+
+                                                        <th class="nk-tb-col nk-tb-col-tools text-right"> 
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                @forelse($users as $user)
+                                                    <tr class="nk-tb-item">
+                                                        <td class="nk-tb-col " >
+                                                            <span class="tb-amount">{{ $user->id }} </span>
+                                                        </td>
+                                                        <td class="nk-tb-col">
+                                                            <div class="user-card">
+                                                                <div class="user-avatar bg-dim-primary d-none d-sm-flex">
+                                                                    <span>{{substr($user->username,0,2) }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                         <td class="nk-tb-col " >
+                                                           <div class="user-info">
+                                                                    <span class="tb-lead">{{ $user->username }} <span class="dot dot-success d-md-none ml-1"></span></span>
+                                                                  
+                                                        </div>
+                                                        </td>
+                                                        <td class="nk-tb-col " >
+                                                            <span class="tb-amount">{{ $user->created_at }} </span>
+                                                        </td>
+                                                        <td class="nk-tb-col ">
+                                                            <span>{{ moneyFormat($user->wallet->total_amount, 'USD') }}</span>
+                                                        </td>
+                                                        <td class="nk-tb-col " >
+                                                             <span>{{ moneyFormat($user->deposits()->sum('amount'), 'USD') }}</span>      
+                                                        </td>
+                                                        <td class="nk-tb-col ">
+                                                            <span>{{ moneyFormat($user->withdrawals()->sum('amount'), 'USD') }}</span>
+                                                        </td>
+                                                         <td class="nk-tb-col ">
+                                                            <span>{{ moneyFormat($user->payouts()->sum('amount'), 'USD') }}</span>
+                                                        </td>
+                                                        <td class="nk-tb-col">
+                                                            <span>{{ moneyFormat($user->deposits()->where('status', \App\Models\Deposit::STATUS_ACTIVE)->sum('amount'), 'USD') }}</span>
+                                                        </td>
+                                                        <td class="nk-tb-col nk-tb-col-tools">
+                                                            <ul class="nk-tb-actions gx-1"> 
+                                                                <li>
+                                                                    <div class="drodown">
+                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                                            <ul class="link-list-opt no-bdr">
+                                                                                <li><a href="{{ route('admin.users.show', ['id' => $user->id]) }}"><em class="icon ni ni-focus"></em><span>Edit User</span></a></li>
+                                                                                <li><a href="{{ route('admin.users.show', ['id' => $user->id]) }}"><em class="icon ni ni-eye"></em><span>View User</span></a></li>
+                                                                                <li class="divider"></li>
+                                                                                
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                     @empty
+                                                <tr>
+                                                    <td><span>No Users Yet</span>
+                                                    <td>
+                                                </tr>
+                                            @endforelse
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div><!-- .card-preview -->
+                                </div> <!-- nk-block -->
+                            </div><!-- .components-preview -->
                         </div>
                     </div>
-
-                    <div class="row mt-4">
-                        <div class="col">
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">#Id</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Reg. Date</th>
-                                        <th scope="col">Balance</th>
-                                        <th scope="col">Deposits</th>
-                                        <th scope="col">Withdraws</th>
-                                        <th scope="col">Payouts</th>
-                                        <th scope="col">Active Dep</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @forelse($users as $user)
-                                        <tr>
-                                            <th scope="row">{{ $user->id }}</th>
-                                            <td>{{ $user->nam }} {{ '@' }}{{ $user->username }}</td>
-                                            <td>{{ $user->created_at }}</td>
-                                            <td>{{ moneyFormat($user->wallet->total_amount, 'USD') }}</td>
-                                            <td>{{ moneyFormat($user->deposits()->sum('amount'), 'USD') }}</td>
-                                            <td>{{ moneyFormat($user->withdrawals()->sum('amount'), 'USD') }}</td>
-                                            <td>{{ moneyFormat($user->payouts()->sum('amount'), 'USD') }}</td>
-                                            <td>{{ moneyFormat($user->deposits()->where('status', \App\Models\Deposit::STATUS_ACTIVE)->sum('amount'), 'USD') }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.users.show', ['id' => $user->id]) }}" class="btn btn-sm btn-danger">
-                                                    <i class='uil uil-eye'></i>
-                                                </a>
-                                                <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}" class="btn btn-sm btn-danger">
-                                                    <i class='uil uil-edit'></i>
-                                                </a>
-                                                <button class="btn btn-sm btn-danger" onclick="deleteUser('{{ route('admin.users.delete', ['id' => $user->id]) }}')">
-                                                    <i class='uil uil-trash'></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td><span>No Users Yet</span>
-                                            <td>
-                                        </tr>
-                                    @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col mt-4">
-                                {{ $users->links() }}
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </div>
-    </div>
+
+
 @endsection
 @push('scripts')
     <script>

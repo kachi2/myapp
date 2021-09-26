@@ -108,6 +108,8 @@ class InvestmentController extends Controller
             ->back()
             ->with('message', 'Investment marked expired successfully');
     }
+    
+     
 
     /**
      * @param Request $request

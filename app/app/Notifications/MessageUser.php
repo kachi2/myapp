@@ -63,7 +63,7 @@ class MessageUser extends Notification
     {
         return (new MailMessage)
                     ->subject($this->subject)
-                    ->from('support@nixoncapital.cc', 'Nixoncapital')
+                    ->from('support@aldencapital.cc', 'Aldencapital')
                     ->view('emails.message-user', ['user' => $this->user, 'text' => $this->text, 'subject' => $this->subject]);
     }
 

@@ -27,6 +27,7 @@ class CoinpaymentsController extends Controller
      */
     public function validateIpn(Request $request)
     {
+     
         Log::info($request);
         try {
             /** @var Ipn $ipn */
@@ -41,6 +42,7 @@ class CoinpaymentsController extends Controller
                     $this->updateReferral($activeDeposit);
                 }
             }
+          
 
             return response(Response::HTTP_OK);
         } catch (IpnIncompleteException $e) {

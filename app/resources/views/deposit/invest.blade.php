@@ -44,12 +44,13 @@
                                                 <label class="form-label">Amount</label>
                                             </div>
                                             <div class="dropdown buysell-cc-dropdown">
-                                            <input type="number" name="amount" value="{{ old('amount', $plan->min_deposit) }}" class="form-control {{ form_invalid('amount') }}" id="inputAmount" aria-describedby="AmountHelp" placeholder="Enter amount">
+                                            <input type="text" name="amount" value="{{ old('amount', $plan->min_deposit) }}" class="form-control {{ form_invalid('amount') }}" id="inputAmount" aria-describedby="AmountHelp" placeholder="Enter amount">
                                                </div>
                                                 <small id="AmountHelp" class="form-text text-muted">
                                                     Deposit amount in USD
                                                 </small>
-                                                @showError('amount')
+                                                 @showError('amount')
+                                               
                                         </div>
 
                                           <div class="buysell-field form-group">
@@ -70,7 +71,7 @@
                                     </select>
                                             </div>
                                             <small id="paymentMethodHelp" class="form-text text-muted">
-                                                Select Withdrawal payment method
+                                                Select Deposit payment method
                                             </small>
                                             @showError('payment_method')<!-- .dropdown -->
                                         </div>
@@ -88,4 +89,23 @@
                     </div>
                 </div>
       
+@endsection
+@section('scripts')
+
+<script>
+
+let message = {!! json_encode(Session::get('message')) !!};
+let msg = {!! json_encode(Session::get('alert')) !!};
+
+
+//alert(msg);
+if(message != null){
+toastr.clear();
+    NioApp.Toast(message , msg, {
+      position: 'top-right',
+        timeOut: 5000,
+    });
+}
+
+</script>
 @endsection

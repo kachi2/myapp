@@ -3,33 +3,13 @@ use \App\Models\Deposit;
 $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
 @endphp
 @extends('layouts.app')
-@section('content')
-                                     @if(isset($deposit) && $deposit->status == 0)
-                                    @php
-                                        //dd($dd);
-                                        $create_at = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', Now());
-                                        $ex = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $deposit->expires_at);
-                                           // $expiry = Deposit::where('status', 0)
-                                            $expirys =  $create_at->diffInDays($ex); 
-                                            if($expirys > 0){
-                                                 $expiry =  $create_at->diffInDays($ex); 
-                                                 $xx = 'Days';
-                                            }else{
-                                                $expiry =  $create_at->diffInMinutes($ex);
-                                                $xx = 'Minutes';
-                                            }
-                                    @endphp
-                                        <div class="card" >
-                                <span class="alert-primary p-3" role="alert" id="timers"> Your Investment is remaining <span style="color:red" id="timer"></span>  to be completed  </span></span>
-                                        </div> 
-                                          
-                                            @endif
+@section('content')                  
                     @if (session('status'))
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}
                 </div>
                  @endif
- <div class="nk-content nk-content-fluid">
+                <div class="nk-content nk-content-fluid">
                     <div class="container-xl wide-lg">
                         <div class="nk-content-body">
                             <div class="nk-block-head">
@@ -37,14 +17,14 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                 </div>
                                 <div class="nk-block-between-md g-4">
                                     <div class="nk-block-head-content">
-                                        <h2 class="nk-block-title fw-normal">@if(auth_user()->first_name != null) {{auth_user()->first_name}} @else {{auth_user()->username}} @endif</h2>
+                                        <h2 class="nk-block-title fw-normal">@if(auth_user()->first_name != null) {{strtoupper(auth_user()->first_name)}} @else {{strtoupper(auth_user()->username)}} @endif</h2>
                                         <div class="nk-block-des">
                                             <p>At a glance summary of your account.</p>
                                         </div>
                                     </div><!-- .nk-block-head-content -->
                                     <div class="nk-block-head-content">
                                         <ul class="nk-block-tools gx-3">
-                                            <li><a href="#" class="btn btn-primary"><span>View Transactions</span> <em class="icon ni ni-arrow-long-right"></em></a></li>
+                                            <li><a href="{{route('deposits.transactions')}}" class="btn btn-primary"><span>View Transactions</span> <em class="icon ni ni-arrow-long-right"></em></a></li>
                                             
                                         </ul>
                                     </div><!-- .nk-block-head-content -->
@@ -115,12 +95,69 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                                                     <h5 class="nk-wgw-title title">Referal Earning</h5>
                                                                 </div>
                                                                 <div class="nk-wgw-balance">
-                                                                    <div class="amount">{{ moneyFormat(auth()->user()->wallet->referrals, 'USD')}}</div>
+                                                                    <div class="amount">{{ moneyFormat(auth()->user()->wallet->referrals, 'USD')}}
+                                                                  
+                                                                    </div>
+                                                                    
                                                                 </div>
                                                             </a>
                                                         </div>
                                                     </div>
-                                                </div><!-- .col -->
+                                                </div>
+                                                
+                                                   @if(isset($deposit) && $deposit->status == 0)
+                                    @php
+                                        //dd($dd);
+                                        $create_at = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', Now());
+                                        $ex = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $deposit->expires_at);
+                                           // $expiry = Deposit::where('status', 0)
+                                            $expirys =  $create_at->diffInDays($ex); 
+                                            if($expirys > 0){
+                                                 $expiry =  $create_at->diffInDays($ex); 
+                                                 $xx = 'Days';
+                                            }else{
+                                                $expiry =  $create_at->diffInMinutes($ex);
+                                                $xx = 'Minutes';
+                                            }
+                                             @endphp
+                                 
+                                                      <div class="col-sm-4">
+                                                    <div class="card bg-light">
+                                                        <div class="nk-wgw sm">
+                                                            <a class="nk-wgw-inner" href="#">
+                                                                <div class="nk-wgw-name">
+                                                                    <div class="nk-wgw-icon">
+                                                                        <em class="icon ni ni-clock"></em>
+                                                                    </div>
+                                                                    <h5 class="nk-wgw-title title">Investment Countdown</h5>
+                                                                </div>
+                                                                <div class="nk-wgw-balance">
+                                                              <span role="alert" id="timers">  <span style="color:red; font-size:12px" id="timer"></span>   </span></span>
+                                                             </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @else
+                                            
+                                              <div class="col-sm-4">
+                                                    <div class="card bg-light">
+                                                        <div class="nk-wgw sm">
+                                                            <a class="nk-wgw-inner" href="#">
+                                                                <div class="nk-wgw-name">
+                                                                    <div class="nk-wgw-icon">
+                                                                        <em class="icon ni ni-clock"></em>
+                                                                    </div>
+                                                                    <h5 class="nk-wgw-title title">Investment Countdown</h5>
+                                                                </div>
+                                                                <div class="nk-wgw-balance">
+                                                              <span role="alert"> No active Investment </span>
+                                                             </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif<!-- .col -->
                                             </div><!-- .row -->
                                         </div><!-- .nk-block -->
                                         <!-- .nk-block -->
@@ -321,7 +358,7 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                                 </div>
                                             </div>
                                             <div class="nk-block-content flex-shrink-0">
-                                                <a href="#" class="btn btn-lg btn-outline-primary">Get Support Now</a>
+                                                <a href="https://chat.whatsapp.com/CackBqBGuvoK7513TbhtRq" class="btn btn-lg btn-outline-primary">Get Support Now</a>
                                             </div>
                                         </div>
                                     </div><!-- .card-inner -->
@@ -334,7 +371,7 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
 @endsection
 
 
-@section('script')
+@section('scripts')
 
 @php
 
@@ -360,11 +397,10 @@ let distance = countDownDates - now;
   let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("timer").innerHTML = days + "Days " + hours + "Hours "
-  + minutes + "Minutes " + seconds + "Seconds ";
+    document.getElementById("timer").innerHTML = days + "Days " + hours + "Hrs "+ minutes + "Mins " + seconds + "Secs ";
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("timers").innerHTML = "Congratulations!, Your Investment has been Completed Successfully";
+    document.getElementById("timers").innerHTML = "Completed";
   }
 }, 1000);
 </script>

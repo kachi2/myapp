@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -68,7 +68,8 @@ class PasswordController extends Controller
         $user->update([
             'password' => bcrypt($request->input('password')),
         ]);
-        Session()->flash('success', 'Password Changed Successfully');
+       Session::flash('alert', 'success');
+        Session::flash('message', 'Password Changed Successfully');
         return redirect()
             ->back()
             ->with('success', 'Password updated successfully');

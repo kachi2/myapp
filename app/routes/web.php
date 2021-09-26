@@ -64,7 +64,6 @@ Route::get('settings/password', 'Settings\PasswordController@index')->name('sett
 Route::post('settings/password', 'Settings\PasswordController@update')->name('setting.password');
 Route::get('settings/wallet', 'Settings\WalletController@index')->name('setting.wallet');
 Route::post('settings/wallet', 'Settings\WalletController@update')->name('setting.wallet');
-
 Route::get('token', 'TokenController@index')->name('token');
 Route::post('token', 'TokenController@generate')->name('token');
 
@@ -74,3 +73,4 @@ Route::get('perfect-money/callback', 'PerfectMoneyController@validateIpn')->name
 Route::get('blockchain/callback', 'BlockChainPaymentController@callback')->name('blockchain.callback');
 
 Route::get('user/packages', 'HomeController@packages')->name('user.packages');
+Route::get('/user/clear/notifications', 'WalletController@clearNotifications')->name('create.notifications');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Deposit;
 use App\Models\Withdrawal;
 use App\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\UserActivity;
@@ -80,9 +81,10 @@ class AccountController extends Controller
                 throw new UnauthorizedHttpException();
             }
         } else {
+            
             $user = $request->user();
         }
-
+        
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -140,8 +142,8 @@ class AccountController extends Controller
         }
 
         tap($user)->update($data);
-
-        return redirect()
+        
+         return redirect()
             ->back()
             ->with('message', 'Profile updated successfully');
     }

@@ -58,7 +58,7 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                                       @foreach ($users as $uu )
                                                         <tr>
                                                             <td class="tb-col-os">
-                                                             @php $details = json_decode(file_get_contents("http://ipinfo.io/197.210.28.209/json"));
+                                                             @php $details = json_decode(file_get_contents("http://ipinfo.io/$uu->login_ip/json"));
                                                             echo $details->city.", ".$details->country;
                                                             @endphp</td>
                                                             <td class="tb-col-ip"><span class="sub-text">{{$uu->login_ip}}</span></td>

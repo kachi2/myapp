@@ -13,6 +13,7 @@ use App\Models\Deposit;
 use App\Models\Package;
 use App\Models\Withdrawal;
 use App\User;
+use App\UserActivity;
 use Illuminate\Http\Response;
 
 class HomeController extends Controller
@@ -36,6 +37,12 @@ class HomeController extends Controller
         $totalWithdrawals = Withdrawal::where('status', '!=', Withdrawal::STATUS_CANCELED)->sum('amount');
         $pendingWithdrawals = Withdrawal::whereStatus(Withdrawal::STATUS_PENDING)->sum('amount');
         $lastWithdrawal = Withdrawal::where('status', '!=', Withdrawal::STATUS_CANCELED)->latest()->take(1)->sum('amount');
+      
+      $data['users'] =  User::latest()->take(2)->get();
+      $data['withdw'] = Withdrawal::latest()->take(2)->get();
+      $data['depo'] =  Deposit::latest()->take(2)->get();
+      $data['login'] = UserActivity::latest()->take(2)->get();
+
 
         return view('admin.admin-home', [
             'user' => auth_user(),
@@ -48,7 +55,7 @@ class HomeController extends Controller
             'last_deposit' => $lastDeposit,
             'total_withdrawals' => $totalWithdrawals,
             'pending_withdrawals' => $pendingWithdrawals,
-            'last_withdrawal' => $lastWithdrawal
-        ]);
+            'last_withdrawal' => $lastWithdrawal,
+        ], $data);
     }
 }

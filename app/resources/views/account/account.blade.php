@@ -20,8 +20,11 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                                 $xx = 'Minutes';
                                             }
                                     @endphp
+                                    
                                       
-                                          
+                                             <div class="card" >
+                                <span class="alert-primary p-3" role="alert" id="timers"> Your Investment is remaining <span style="color:red" id="timer"></span>  to be completed  </span></span>
+                                        </div>
                                             @endif
            <div class="nk-content nk-content-fluid">
                     <div class="container-xl wide-lg">
@@ -214,7 +217,7 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
     </div>
     </form>     
 @endsection
-@section('script')
+@section('scripts')
 
 @php
 
@@ -229,7 +232,18 @@ if(isset($deposit->expires_at)){
 @endphp
 <script>
 
+let message = {!! json_encode(Session::get('message')) !!};
+let msg = {!! json_encode(Session::get('alert')) !!};
 
+
+//alert(msg);
+if(message != null){
+toastr.clear();
+    NioApp.Toast(message , msg, {
+      position: 'top-right',
+        timeOut: 5000,
+    });
+}
 let countDownDate = {!! json_encode($deposit) !!}
 let countDownDates = new Date(countDownDate).getTime();
 let x = setInterval(function() {
@@ -242,10 +256,13 @@ let distance = countDownDates - now;
 
     document.getElementById("timer").innerHTML = days + "Days " + hours + "Hours "
   + minutes + "Minutes " + seconds + "Seconds ";
-  if (distance < 0) {
+  if (distance <  0) {
     clearInterval(x);
     document.getElementById("timers").innerHTML = "Congratulations!, Your Investment has been Completed Successfully";
   }
 }, 1000);
+
+
+ 
 </script>
 @endsection

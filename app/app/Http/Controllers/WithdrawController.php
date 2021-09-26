@@ -14,6 +14,7 @@ use App\Models\UserWallet;
 use App\Models\Withdrawal;
 use App\Modules\BlockChain;
 use App\Modules\PerfectMoney;
+use Illuminate\Support\Facades\Session;
 use App\Notifications\WithdrawalCanceled;
 use App\Notifications\WithdrawalRequested;
 use Exception;
@@ -21,6 +22,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use SweetAlert;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -94,7 +96,7 @@ class WithdrawController extends Controller
         if (count($sort) > 0 && in_array($sort[0], $this->sortable))
             $query = $query->orderBy($sort[0], $sort[1]);
 
-        $withdrawals = $query->paginate();
+        $withdrawals = $query->paginate(2000);
 
         $breadcrumb = [
             [
@@ -212,7 +214,8 @@ class WithdrawController extends Controller
                 }
             }
         }
-
+        Session::flash('msg', 'success');
+        Session::flash('message', 'Withdrawal request sent successfully.');
         return redirect()
             ->route('withdrawals')
             ->with('success', 'Withdrawal request successfully submitted.');
@@ -236,8 +239,9 @@ class WithdrawController extends Controller
                 try {
                     $withdrawal->user->notify(new WithdrawalCanceled($withdrawal));
                 } catch (Exception $exception) {
-
                 }
+                Session::flash('msg', 'success');
+                Session::flash('message', 'Withdrawal request canceled successfully.');
                 return redirect()
                     ->back()->with('success', 'Withdrawal request canceled successfully.');
             }

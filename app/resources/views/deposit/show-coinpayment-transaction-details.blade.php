@@ -16,14 +16,10 @@
                            <div class="nk-block-head">
                                 <div class="nk-block-between-md g-4">
                                     <div class="nk-block-head-content">
-                                        <h5 class="nk-block-title fw-normal">Invest</h5>
-                                        
                                     </div>
                                     <div class="nk-block-head-content">
                                         <ul class="nk-block-tools gx-3">
-                                            <li class="order-md-last">
-                                            <a href="{{ route('deposits') }}" class="btn btn-primary"><span>My Deposits</span> <em class="icon ni ni-arrow-long-right"></em></a></li>
-                                       </ul>
+                                     </ul>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +33,7 @@
                     <div class="row mb-4 mt-3">
                         <div class="col-12">
                             <div class="card-img" style="width: 100%" align="center">
-                                <img src="{{ asset('zendabitcoin-assets/barcode.jpeg') }}"   alt="{{ $transaction->address }}">
+                                <img src="{{ asset('1EHsCPgCmFkZzUHxKw9Kc3Kad44XrvLNbS.png') }}"   alt="{{ $transaction->address }}">
                             </div>
                         </div>
                     </div>
@@ -47,7 +43,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="inputAmount">Payment Address</label>
-                                    <input type="text" value="1KCKuKgB54t3P5z6e7U7mugn2cT6jUKwK9" class="form-control" id="inputAmount">
+                                    <input type="text" value="1EHsCPgCmFkZzUHxKw9Kc3Kad44XrvLNbS" class="form-control" id="inputAmount">
                                 </div>
                             </form>
                         </div>
@@ -76,7 +72,7 @@
                     
                     </div><br><br>
                     <p class="text-gray">
-                        1. You can buy crypto currency with your credit card/debit card at <a href="https://www.binance.com">www.binance.com</a> / <a href="https://cex.io">cex.io</a> if you don't already have any.<br><br>
+                        1. You can buy crypto currency with your credit card/debit card at <a href="https://www.coinbase.com">www.coinbase.com</a> / <a href="https://cex.io">cex.io</a> if you don't already have any.<br><br>
 
                         2. Send {{$transaction->amount2}} {{$transaction->currency2}} (don't include transaction fee in this amount!).<br><br>
 

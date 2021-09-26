@@ -56,7 +56,7 @@ class ReferralController extends Controller
                 $query = $query->orderBy($sort[0], $sort[1]);
         }
 
-        $referrals = $query->paginate();
+        $referrals = $query->get();
 
         $todayReferrals = Referral::where('created_at', '>=', today())->count();
         $referralCount = Referral::count();

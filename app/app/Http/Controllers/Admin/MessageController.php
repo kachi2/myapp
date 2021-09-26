@@ -12,10 +12,12 @@ use Notifiable;
 use App\Mail\MessageUsers;
 use App\User;
 use App\Notifications\MessageUser;
+use App\UserNotify;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
@@ -75,15 +77,27 @@ class MessageController extends Controller
                 $users = User::where('is_admin', '=', true)->get();
                 break;            
             default:
-                $users = User::all();
+                $users = User::latest()->get();
         }
 
         
         foreach ($users as $user) {
             try {
-                $user->notify(new MessageUser($user, $text, $subject));
+               
+           $user->notify(new MessageUser($user, $text, $subject));
+           
+            $notify = new UserNotify;
+            $notify->user_id = $user->id;
+            $notify->message =  $text; 
+            $notify->save();
+            Session::flash('msg', 'success');
+            Session::flash('message', 'Message Sent Successfully'); 
+            
+
             } catch (\Exception $e) {
-                Log::error($e);
+                
+              //  return $user;
+              //  Log::error($e);
             }
         }
         

@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Testimony;
 use Illuminate\Http\Request;
@@ -91,6 +92,8 @@ class TestimonyController extends Controller
      {
          $testimony = Testimony::whereId($id)->whereUserId($request->user()->id)->firstOrFail();
          $testimony->delete();
+         Session::flash('msg', 'success');
+         Session::flash('message', 'Testimony deleted successfully'); 
          return redirect()->back()->with('success', 'Testimony deleted successfully');
     }
 
@@ -138,7 +141,9 @@ class TestimonyController extends Controller
             'user_name' => $request->user()->name,
             'message' => $request->input('message'),
         ]);
-
+        Session::flash('msg', 'success');
+        Session::flash('message', 'Testimony added successfully'); 
+        
         return redirect()
             ->route('testimonies', 'sort_by=created_at.desc')
             ->with('success', 'Testimony added successfully');
@@ -194,7 +199,9 @@ class TestimonyController extends Controller
         }
 
         $testimony->save();
-
+        Session::flash('msg', 'success');
+        Session::flash('message', 'Testimony updated successfully'); 
+      
         return redirect()
             ->back()
             ->with('success', 'Testimony updated successfully');

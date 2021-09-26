@@ -11,6 +11,8 @@ namespace App\Http\Controllers;
 
 use App\Models\UserWallet;
 use App\User;
+use App\UserNotify;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
@@ -94,20 +96,17 @@ class WalletController extends Controller
         $toUser = User::where('username', $request->input('username'))->firstOrfail();
         UserWallet::reduceAmount($request->user(), $request->input('amount'));
         UserWallet::addAmount($toUser, $request->input('amount'));
-
+        Session::flash('msg', 'success');
+        Session::flash('message', 'Transfer Completed Successfully');
         return redirect()->back()->with('success', 'Fund transferred successfully');
     }
 
     public function TransferEarnings(Request $request){
 
-       $valid = $this->validate($request, [
+       $this->validate($request, [
             'amounts' => 'required|integer|min:0',
             'bonus' => 'required|integer'
         ]);
-        
-        if(!$valid){
-            return redirect()->back()->withErrors($valid)->withInput($request->all());
-        }else{
             if($request->bonus == 1){
                  $bonus = auth()->user()->wallet->bonus;
                 if($bonus >= $request->amounts){
@@ -115,8 +114,13 @@ class WalletController extends Controller
                     'bonus'=> $bonus - $request->input('amounts'),
                     'amount' => auth()->user()->wallet->amount + $request->input('amounts'),
                 ]);
+                Session::flash('alert', 'success');
+                Session::flash('message', 'Transfer Completed Successfully');
+               
                 return redirect()->back()->with('success', 'Transfer Completed');
                 }else{
+                    Session::flash('alert', 'error');
+                    Session::flash('message', 'Transfer failed, Your Bonus Wallet is less than'.' $'.$request->amounts);
                     return redirect()->back()->with('error', 'Your Bonus Wallet is less than'.' $'.$request->amounts);
                 }
                }else {
@@ -126,13 +130,26 @@ class WalletController extends Controller
                 'referrals'=> $bonus - $request->input('amounts'),
                 'amount' => auth()->user()->wallet->amount + $request->input('amounts'),
             ]);
+            Session::flash('alert', 'success');
+            Session::flash('message', 'Transfer Completed Successfully');
             return redirect()->back()->with('success', 'Transfer Completed');
         }else{
+            Session::flash('alert', 'error');
+            Session::flash('message', 'Transfer failed, Your Bonus Wallet is less than'.' $'.$request->amounts);
             return redirect()->back()->with('error', 'Your Referral Wallet is less than'.' $'.$request->amounts);
         }
                }
-        }
-
         $user_balance = $bonus = $request->user()->wallet->bonus;
+    }
+
+    public function clearNotifications(){
+            $notify = UserNotify::where('user_id', auth()->user()->id)->get();
+            foreach($notify as $dd){
+                $dd->delete();
+            }
+       
+            Session::flash('alert', 'success');
+            Session::flash('message', 'Notifications Clear Successfully');
+            return back();
     }
 }

@@ -20,14 +20,14 @@
                          <div class="nk-block nk-block-lg"> 
                                     <div class="card card-preview">
                                         <div class="card-inner">
-                                            <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                                            <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="true">
                                                 <thead>
                                                     <tr class="nk-tb-item nk-tb-head">
-                                                       
+                                                       <th class="nk-tb-col"><span class="sub-text">Id</span></th>
                                                         <th class="nk-tb-col"><span class="sub-text">Ref</span></th>
                                                         <th class="nk-tb-col "><span class="sub-text">Amount</span></th>
-                                                        <th class="nk-tb-col tb-col-md"><span class="sub-text">Method</span></th>
-                                                        <th class="nk-tb-col tb-col-lg"><span class="sub-text">Date</span></th>
+                                                        <th class="nk-tb-col "><span class="sub-text">Method</span></th>
+                                                        <th class="nk-tb-col "><span class="sub-text">Date</span></th>
                                                         <th class="nk-tb-col "><span class="sub-text">Status</span></th>
                                                         <th class="nk-tb-col nk-tb-col-tools text-right">
                                                         </th>
@@ -38,16 +38,19 @@
                                                  @forelse($withdrawals as $withdrawal)
                                           
                                                     <tr class="nk-tb-item">
-                                                         <td class="nk-tb-col" data-order="35040.34">
+                                                        <td class="nk-tb-col" >
+                                                            <span class="tb-amount">{{ $withdrawal->id}} </span>
+                                                        </td>
+                                                         <td class="nk-tb-col" >
                                                             <span class="tb-amount">{{ $withdrawal->ref }} </span>
                                                         </td>
                                                         <td class="nk-tb-col">
                                                             <span>{{ moneyFormat($withdrawal->amount, 'USD') }}</span>
                                                         </td>
-                                                        <td class="nk-tb-col tb-col-lg">
+                                                        <td class="nk-tb-col ">
                                                              <span>{{ $withdrawal->formatted_payment_method }}</span>
                                                         </td>
-                                                        <td class="nk-tb-col tb-col-lg">
+                                                        <td class="nk-tb-col">
                                                             <span>{{ $withdrawal->created_at }}</span>
                                                         </td>
                                                         <td class="nk-tb-col ">
@@ -76,7 +79,7 @@
                                                                                 </form>
                                                                                
                                                                                  
-                                                                                 <li><a href="{{ route('withdrawals.cancel', ['id' => $withdrawal->id]) }}" onclick="event.preventDefault(); document.getElementById('form1').submit()"><em class="icon ni text-danger ni-shield-star"></em><span class=" text-danger ">Cancel</span></a>
+                                                                                 <li><span type="submit" onclick="cancelWithdrawal()"><em class="icon ni text-danger ni-shield-star"></em><span class=" text-danger ">Cancel</span></span>
                                                                                  </li>
                                                                              
                                                                              </ul>
@@ -111,7 +114,7 @@
 @endsection
 @section('scripts')
     <script>
-        function cancelWithdrawal(url) {
+        function cancelWithdrawal() {
             Swal.fire({
                 title: 'Are you sure?',
                 icon: 'warning',
@@ -119,9 +122,23 @@
                 confirmButtonText: 'Yes, do it!'
             }).then((result) => {
                 if(result.value) {
-                   form1.submit();
+                   document.getElementById('form1').submit();
                 }
             })
         }
+
+let message = {!! json_encode(Session::get('message')) !!};
+let msg = {!! json_encode(Session::get('alert')) !!};
+
+//alert(msg);
+if(message != null){
+toastr.clear();
+    NioApp.Toast(message , msg, {
+      position: 'top-right',
+        timeOut: 5000,
+    });
+}
+
+ 
     </script>
 @endsection

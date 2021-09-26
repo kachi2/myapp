@@ -25,19 +25,19 @@
                          <div class="nk-block nk-block-lg"> 
                                     <div class="card card-preview">
                                         <div class="card-inner">
-                                            <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                                            <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="true">
                                                 <thead>
                                                     <tr class="nk-tb-item nk-tb-head">
-                                                       
+                                                        <th class="nk-tb-col"><span class="sub-text">Id</span></th>
                                                         <th class="nk-tb-col"><span class="sub-text">Ref</span></th>
                                                         <th class="nk-tb-col "><span class="sub-text">Plan</span></th>
-                                                        <th class="nk-tb-col tb-col-md"><span class="sub-text">Amount</span></th>
-                                                        <th class="nk-tb-col tb-col-lg"><span class="sub-text">Profit</span></th>
+                                                        <th class="nk-tb-col"><span class="sub-text">Amount</span></th>
+                                                        <th class="nk-tb-col"><span class="sub-text">Profit</span></th>
                                                         <th class="nk-tb-col "><span class="sub-text">Paid</span></th>
-                                                         <th class="nk-tb-col tb-col-md "><span class="sub-text">Method</span></th>
+                                                         <th class="nk-tb-col "><span class="sub-text">Method</span></th>
                                                          <th class="nk-tb-col "><span class="sub-text">Status</span></th>
-                                                        <th class="nk-tb-col tb-col-md "><span class="sub-text">Date</span></th>
-                                                         <th class="nk-tb-col tb-col-md"><span class="sub-text">Expire At</span></th>
+                                                        <th class="nk-tb-col "><span class="sub-text">Date</span></th>
+                                                         <th class="nk-tb-col"><span class="sub-text">Expire At</span></th>
                                                         
                                                         
                                                     </tr>
@@ -46,7 +46,10 @@
                                                  @forelse($deposits as $deposit)
                                           
                                                     <tr class="nk-tb-item">
-                                                         <td class="nk-tb-col" data-order="35040.34">
+                                                         <td class="nk-tb-col" >
+                                                            <span class="tb-amount">{{ $deposit->id }} </span>
+                                                        </td>
+                                                         <td class="nk-tb-col" >
                                                             <span class="tb-amount">{{ $deposit->ref }} </span>
                                                         </td>
                                                         <td class="nk-tb-col">
@@ -55,13 +58,13 @@
                                                         <td class="nk-tb-col ">
                                                              <span>{{ moneyFormat($deposit->amount, 'USD') }}</span>
                                                         </td>
-                                                        <td class="nk-tb-col tb-col-lg">
+                                                        <td class="nk-tb-col ">
                                                             <span>{{ moneyFormat($deposit->profit, 'USD') }}</span>
                                                         </td>
-                                                        <td class="nk-tb-col tb-col-lg">
+                                                        <td class="nk-tb-col ">
                                                             <span>{{ moneyFormat($deposit->paid_amount, 'USD') }}</span>
                                                         </td>
-                                                        <td class="nk-tb-col tb-col-lg">
+                                                        <td class="nk-tb-col">
                                                             <span>{{ $deposit->formatted_payment_method }}</span>
                                                         </td> 
                                                         <td class="nk-tb-col ">
@@ -73,8 +76,8 @@
                                                                 <span class="tb-status text-success">Active</span>
                                                             @endif
                                                         </td>
-                                                        <td class="nk-tb-col tb-col-lg">{{ $deposit->created_at }}</td>
-                                                        <td class="nk-tb-col tb-col-lg">{{ $deposit->expires_at->diffForHumans() }}</td>
+                                                        <td class="nk-tb-col ">{{ $deposit->created_at }}</td>
+                                                        <td class="nk-tb-col ">{{ $deposit->expires_at->diffForHumans() }}</td>
                                                     </tr><!-- .nk-tb-item  -->
                                                    
                                                    @empty
@@ -100,17 +103,18 @@
 @endsection
 @section('scripts')
     <script>
-        function cancelWithdrawal(url) {
-            Swal.fire({
-                title: 'Are you sure?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, do it!'
-            }).then((result) => {
-                if(result.value) {
-                   form1.submit();
-                }
-            })
-        }
-    </script>
+
+let message = {!! json_encode(Session::get('message')) !!};
+let msg = {!! json_encode(Session::get('alert')) !!};
+
+
+if(message != null){
+toastr.clear();
+    NioApp.Toast(message , msg, {
+      position: 'top-right',
+        timeOut: 5000,
+    });
+}
+
+</script>
 @endsection

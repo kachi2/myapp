@@ -1,36 +1,10 @@
-@php
-use \App\Models\Deposit;
-$deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
-@endphp
-
 @extends('layouts.app')
 @section('content')
-                                    @if(isset($deposit) && $deposit->status == 0)
-                                    @php
-                                        //dd($dd);
-                                        $create_at = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', Now());
-                                        $ex = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $deposit->expires_at);
-                                           // $expiry = Deposit::where('status', 0)
-                                            $expirys =  $create_at->diffInDays($ex); 
-                                            if($expirys > 0){
-                                                 $expiry =  $create_at->diffInDays($ex); 
-                                                 $xx = 'Days';
-                                            }else{
-                                                $expiry =  $create_at->diffInMinutes($ex);
-                                                $xx = 'Minutes';
-                                            }
-                                    @endphp
-                                      
-                                          
-                                            @endif
                 <div class="nk-content nk-content-fluid">
                     <div class="container-xl wide-lg">
                         <div class="nk-content-body">
                             <div class="nk-block">
                                 <div class="card card-bordered">
-                                
-                                   
-
                                     <div class="card-aside-wrap">
                                         <div class="card-inner card-inner-lg">
                                             <div class="nk-block-head nk-block-head-lg">
@@ -218,39 +192,20 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
     </form>  
    
 @endsection
-@section('script')
+@section('scripts')
 
-@php
-
-if(isset($deposit->expires_at)){
-
-    $deposit = $deposit->expires_at;
-}else{
-
-    $deposit = 0;    
-}
-
-@endphp
 <script>
 
 
-let countDownDate = {!! json_encode($deposit) !!}
-let countDownDates = new Date(countDownDate).getTime();
-let x = setInterval(function() {
-let now = new Date().getTime();
-let distance = countDownDates - now;
- let days = Math.floor(distance / (1000 * 60 * 60 * 24));
- let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+let message = {!! json_encode(Session::get('message')) !!};
+let msg = {!! json_encode(Session::get('alert')) !!};
 
-    document.getElementById("timer").innerHTML = days + "Days " + hours + "Hours "
-  + minutes + "Minutes " + seconds + "Seconds ";
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("timers").innerHTML = "Congratulations!, Your Investment has been Completed Successfully";
-  }
-}, 1000);
-
+if(message != null){
+toastr.clear();
+    NioApp.Toast(message , msg, {
+      position: 'top-right',
+        timeOut: 5000,
+    });
+}
 </script>
 @endsection

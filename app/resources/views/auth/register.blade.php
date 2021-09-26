@@ -1,38 +1,47 @@
-  @extends('layouts.auths')
+ 
+ @extends('layouts.auths')
  @section('content')
- <div class="nk-app-root">
-        <div class="nk-split nk-split-page nk-split-md">
-            <div class="nk-split-content nk-block-area nk-block-area-column nk-auth-container bg-white">
-                <div class="absolute-top-right d-lg-none p-3 p-sm-5">
-                    <a href="#" class="toggle btn-white btn btn-icon btn-light" data-target="athPromo"><em class="icon ni ni-info"></em></a>
-                </div>
-                <div class="nk-block nk-block-middle nk-auth-body">
-                    <div class="brand-logo pb-5">
-                        <a href="html/index.html" class="logo-link">
-                            <img class="logo-light logo-img logo-img-lg" src="{{asset('/asset/images/logo.png')}}" srcset="{{asset('/asset/images/logo2x.png 2x')}}" alt="logo">
-                            <img class="logo-dark logo-img logo-img-lg" src="{{asset('/asset/images/logo.png')}}" srcset="{{asset('/asset/images/logo-dark2x.png 2x')}}" alt="logo-dark">
-                        </a>
-                    </div>
-                    <div class="nk-block-head">
-                        <div class="nk-block-head-content">
-                            <h5 class="nk-block-title">Register</h5>
-                            <div class="nk-block-des">
-                                <p>Create new account.</p>
-                            </div>
+  <div class="nk-app-root">
+        <!-- main @s -->
+        <div class="nk-main ">
+            <!-- wrap @s -->
+            <div class="nk-wrap nk-wrap-nosidebar">
+                <!-- content @s -->
+                <div class="nk-content ">
+                    <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
+                        <div class="brand-logo pb-4 text-center">
+                            <a href="{{route('index')}}" class="logo-link">
+                                <img class="logo-light logo-img logo-img-lg" width="250px"  src="{{asset('logo-dark.png')}}" srcset="{{asset('logo-dark.png')}} 2x" alt="logo">
+                                <img class="logo-dark logo-img logo-img-lg" width="250px" src="{{asset('logo-dark.png')}}" srcset="{{asset('logo-dark.png')}} 2x" alt="logo-dark">
+                            </a>
                         </div>
-                    </div><!-- .nk-block-head -->
-                      <form class="text-left" method="post" action="{{ route('register') }}">
+                        <div class="card card-bordered">
+                            <div class="card-inner card-inner-lg">
+                                <div class="nk-block-head">
+                                    <div class="nk-block-head-content">
+                                        <h4 class="nk-block-title">Register</h4>
+                                        <div class="nk-block-des">
+                                            <p>Create new account.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form class="text-left" method="post" action="{{ route('register') }}">
                             @csrf
-                             <div class="form-group">
+                                     <div class="form-group">
                             <div class="form-label-group">
                                 <label class="form-label" for="default-01">Email</label>
                             </div>
                             <input type="text" name="email" class="form-control form-control-lg {{ form_invalid('email') }}" id="default-01" placeholder="Enter your email address">
                             @showError('email')
                         </div><!-- .foem-group -->
-                        <div class="form-group">
-                           
-                            <div class="form-control-wrap">
+                                    <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="password">Password</label>
+                                @if (Route::has('password.request'))
+                                <a class="link link-primary link-sm" tabindex="-1" href="{{ route('password.request') }}">Forgot Password?</a>
+                                @endif
+                            </div>
+                                     <div class="form-control-wrap">
                                 <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch" data-target="password">
                                     <em onclick="showPass() " class="passcode-icon icon-show icon ni ni-eye"></em>
                                     <em onclick="hidePass()" class="passcode-icon icon-hide icon ni ni-eye-off"></em>
@@ -40,7 +49,7 @@
                                 <input type="password" name="password" class="form-control form-control-lg {{ form_invalid('password') }}" id="password" placeholder="Enter your pasword">
                               @showError('password')
                             </div>
-                              <script>
+                            <script>
                                             function showPass() {
                                         var x = document.getElementById("passwordLogin");
                                         if (x.type === "password") {
@@ -55,23 +64,47 @@
                                         
                                         }
                                         </script>
-                                
-                        </div><!-- .foem-group -->
-                        <div class="form-group">
-                            <button class="btn btn-lg btn-primary btn-block">Register</button>
+                                     </div><!-- .foem-group -->
+                                    <div class="form-group">
+                                        <button class="btn btn-lg btn-primary btn-block">Register</button>
+                                    </div>
+                                </form><!-- form -->
+                                <div class="form-note-s2 pt-4"> Have Account? <a href="{{route('login')}}">login</a>
+                                </div>
+                            </div>
                         </div>
-                    </form><!-- form -->
-                    <div class="form-note-s2 pt-4"> Already have Account? <a href="{{route('login')}}">Login</a>
                     </div>
-                </div><!-- .nk-block -->
-              <!-- .nk-block -->
-            </div><!-- .nk-split-content -->
-            <div class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true" style="background-image:url('{{asset('/asset/images/wall1.jpg ')}}'); background-repeat: no-repeat; background-size: cover">
-                <div class="slider-wrap w-100 w-max-550px p-3 p-sm-5 m-auto" >
-                  
-                </div><!-- .slider-wrap -->
-            </div><!-- .nk-split-content -->
-        </div><!-- .nk-split -->
+                    <div class="nk-footer nk-auth-footer-full">
+                        <div class="container wide-lg">
+                            <div class="row g-3">
+                                <div class="col-lg-6 order-lg-last">
+                                    <ul class="nav nav-sm justify-content-center justify-content-lg-end">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('terms')}}">Terms & Condition</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('faq')}}">FAQ</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('contact')}}">Help?</a>
+                                        </li>
+                                      
+                                    </ul>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="nk-block-content text-center text-lg-left">
+                                        <p class="text-soft">&copy; {{date('Y')}} Acrabuscapital All Rights Reserved.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- wrap @e -->
+            </div>
+            <!-- content @e -->
+        </div>
+        <!-- main @e -->
     </div>
 
     @endsection

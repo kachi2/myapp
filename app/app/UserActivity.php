@@ -12,4 +12,9 @@ class UserActivity extends Model
         'login_ip',
         'last_login'
     ];
+
+    public function user(){
+
+        return $this->belongsTo(User::class);
+    }
 }

@@ -2,230 +2,440 @@
 @section('content')
 
 
-            <div class="row">
-                  
-                <div class="col-md-4 grid-margin">
-                    <div class="card">
-                        <div class="card-body red-card">
-                            <h4 class="card-title mb-0 text-white">Accumulate Balance</h4>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-inline-block pt-3">
-                                    <div class="d-md-flex">
-                                        <h2 class="mb-0 text-white">{{ moneyFormat(get_admin_stats()['wallet_balance'], 'USD') }}</h2>
+
+<div class="nk-content nk-content-fluid">
+                    <div class="container-xl wide-lg">
+                        <div class="nk-content-body">
+                            <div class="nk-block-head">
+                                <div class="nk-block-head-sub"><span>Admin</span> </div><!-- .nk-block-head-sub -->
+                                <div class="nk-block-between-md g-4">
+                                    <div class="nk-block-head-content">
+                                        <h4 class="nk-block-title fw-normal">Admin Dashboard</h4>
+                                        <div class="nk-block-des">
+                                            <p>Here is the list of your assets / wallets!</p>
+                                        </div>
+                                    </div>
+                                    <div class="nk-block-head-content">
                                         
                                     </div>
-                                    <small class="text-gray">Total Account Balance</small>
-                                </div>
-                                <!-- <div class="d-inline-block">
-                                    <i class="fas fa-chart-pie text-warning icon-lg"></i>                                    
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-margin">
-                    <div class="card">
-                        <div class="card-body red-card">
-                            <h4 class="card-title mb-0 text-white">Accumulate Bonus</h4>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-inline-block pt-3">
-                                    <div class="d-md-flex">
-                                        <h2 class="mb-0 text-white">{{ moneyFormat(get_admin_stats()['bonus'], 'USD') }}</h2>
-                                        <!-- <div class="d-flex align-items-center ml-md-2 mt-2 mt-md-0">
-                                            <i class="far fa-clock text-muted"></i>
-                                            <small class="ml-1 mb-0">Updated: now</small>
-                                        </div> -->
+                                </div><!-- .nk-block-between -->
+                            </div><!-- .nk-block-head -->
+                            <div class="nk-block">
+                                <div class="nk-block-head-sm">
+                                    <div class="nk-block-head-content">
                                     </div>
-                                    <small class="text-gray">Total Bonus Earnings</small>
                                 </div>
-                                <!-- <div class="d-inline-block">
-                                    <i class="fas fa-cube text-warning icon-lg"></i>                                    
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 grid-margin">
-                    <div class="card">
-                        <div class="card-body red-card">
-                            <h4 class="card-title mb-0 text-white">Accumulate Referral Earnings</h4>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-inline-block pt-3">
-                                    <div class="d-md-flex">
-                                        <h2 class="mb-0 text-white">{{ moneyFormat(get_admin_stats()['referral_bonus'], 'USD') }}</h2>
-                                        <!-- <div class="d-flex align-items-center ml-md-2 mt-2 mt-md-0">
-                                            <i class="far fa-clock text-muted"></i>
-                                            <small class="ml-1 mb-0">Updated: now</small>
-                                        </div> -->
+                                <div class="row g-gs">
+                                    <div class="col-sm-4 col-lg-4 col-xl-4 col-xxl-4">
+                                        <div class="card card-bordered is-dark">
+                                            <div class="nk-wgw">
+                                                <div class="nk-wgw-inner">
+                                                    <a class="nk-wgw-name" href="#">
+                                                        <div class="nk-wgw-icon ">
+                                                            <em class="icon ni ni-sign-usd"></em>
+                                                        </div>
+                                                        <h5 class="nk-wgw-title title">Accumulated Balance</h5>
+                                                    </a>
+                                                    <div class="nk-wgw-balance">
+                                                        <div class="amount">{{ moneyFormat(get_admin_stats()['wallet_balance'], 'USD') }}</div>
+                                                      
+                                                    </div>
+                                                </div>
+                                                <div class="nk-wgw-actions">
+                                                    <ul>
+                                                        <li><a href="#"><em class="icon ni ni-arrow-up-right"></em> <span>Total Account Balance</span></a></li>
+                                                    </ul>
+                                                </div>
+                                                
+                                            </div>
+                                        </div><!-- .card -->
                                     </div>
-                                    <small class="text-gray">Total Referral Earnings</small>
-                                </div>
-                                <!-- <div class="d-inline-block">
-                                    <i class="fas fa-cube text-warning icon-lg"></i>                                    
-                                </div> -->
+                                    
+                                     <div class="col-sm-4 col-lg-4 col-xl-4 col-xxl-4">
+                                        <div class="card card-bordered is-dark">
+                                            <div class="nk-wgw">
+                                                <div class="nk-wgw-inner">
+                                                    <a class="nk-wgw-name" href="#">
+                                                        <div class="nk-wgw-icon ">
+                                                            <em class="icon ni ni-sign-usd"></em>
+                                                        </div>
+                                                        <h5 class="nk-wgw-title title">Accumulate Bonus</h5>
+                                                    </a>
+                                                    <div class="nk-wgw-balance">
+                                                        <div class="amount">{{ moneyFormat(get_admin_stats()['bonus'], 'USD') }}</div>
+                                                      
+                                                    </div>
+                                                </div>
+                                                <div class="nk-wgw-actions">
+                                                    <ul>
+                                                        <li><a href="#"><em class="icon ni ni-arrow-up-right"></em> <span>Total Bonus Balance</span></a></li>
+                                                    </ul>
+                                                </div>
+                                                
+                                            </div>
+                                        </div><!-- .card -->
+                                    </div>
+                                    
+                                     <div class="col-sm-4 col-lg-4 col-xl-4 col-xxl-4">
+                                        <div class="card card-bordered is-dark">
+                                            <div class="nk-wgw">
+                                                <div class="nk-wgw-inner">
+                                                    <a class="nk-wgw-name" href="#">
+                                                        <div class="nk-wgw-icon ">
+                                                            <em class="icon ni ni-sign-usd"></em>
+                                                        </div>
+                                                        <h5 class="nk-wgw-title title">Accumulate Referral Earnings</h5>
+                                                    </a>
+                                                    <div class="nk-wgw-balance">
+                                                        <div class="amount">{{ moneyFormat(get_admin_stats()['referral_bonus'], 'USD') }}</div>
+                                                     
+                                                    </div>
+                                                </div>
+                                                <div class="nk-wgw-actions">
+                                                    <ul>
+                                                        <li><a href="#"><em class="icon ni ni-arrow-up-right"></em> <span>Total Referrals Earnings</span></a></li>
+                                                    </ul>
+                                                </div>
+                                                
+                                            </div>
+                                        </div><!-- .card -->
+                                    </div>
+                                    
+                                    <!-- .col -->
+                                  <!-- .col -->
+                                </div><!-- .row -->
                             </div>
+                         <div class="nk-block nk-block-lg">
+                                <div class="row gy-gs">
+                                    <div class="col-md-4">
+                                        <div class="card-head">
+                                           <div class="card-title  mb-0">
+                                                <h5 class="title">Users</h5>
+                                            </div>
+                                        </div><!-- .card-head -->
+                                        <div class="tranx-list card card-bordered">
+                                            <div class="tranx-item">
+                                                <div class="tranx-col">
+                                                    <div class="tranx-info">
+                                                        <div class="tranx-data">
+                                                            <div class="tranx-label">Total Users</div>
+                                                            <div class="tranx-date">{{ $total_users }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tranx-col">
+                                                    <div class="tranx-amount">
+                                                        <div class="number">{{ $total_users }}</div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .tranx-item -->
+                                            <div class="tranx-item">
+                                                <div class="tranx-col">
+                                                    <div class="tranx-info">
+                                                        <div class="tranx-data">
+                                                            <div class="tranx-label">Total Admin <span class="tranx-icon sm"><img src="./images/coins/eth.svg" alt=""></span></div>
+                                                            <div class="tranx-date">{{ $admin_users }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tranx-col">
+                                                    <div class="tranx-amount">
+                                                        <div class="number">{{ $admin_users }}</div>   
+                                                    </div>
+                                                </div>
+                                            </div><!-- .tranx-item -->
+                                            <div class="tranx-item">
+                                                <div class="tranx-col">
+                                                    <div class="tranx-info">
+                                                        <div class="tranx-data">
+                                                            <div class="tranx-label">Today Users </div>
+                                                            <div class="tranx-date">{{ $today_users }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tranx-col">
+                                                    <div class="tranx-amount">
+                                                        <div class="number">{{ $today_users }}</div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .tranx-item -->
+                                            <!-- .tranx-item -->
+                                        </div><!-- .tranx-list -->
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card-head">
+                                            <div class="card-title  mb-0">
+                                                <h5 class="title">Deposit History</h5>
+                                            </div>
+                                        </div><!-- .card-head -->
+                                        <div class="tranx-list card card-bordered">
+                                            <div class="tranx-item">
+                                                <div class="tranx-col">
+                                                    <div class="tranx-info">
+                                                        <div class="tranx-data">
+                                                            <div class="tranx-label">Total Deposits</div>
+                                                            <div class="tranx-date">{{ moneyFormat($total_deposits, 'USD') }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tranx-col">
+                                                    <div class="tranx-amount">
+                                                        <div class="number">{{ moneyFormat($total_deposits, 'USD') }}</div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .tranx-item -->
+                                            <div class="tranx-item">
+                                                <div class="tranx-col">
+                                                    <div class="tranx-info">
+                                                        <div class="tranx-data">
+                                                            <div class="tranx-label">Active Deposits<span class="tranx-icon sm"><img src="./images/coins/eth.svg" alt=""></span></div>
+                                                            <div class="tranx-date">{{ moneyFormat($active_deposits, 'USD') }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tranx-col">
+                                                    <div class="tranx-amount">
+                                                        <div class="number">{{ moneyFormat($active_deposits, 'USD') }}</div>
+                                                      
+                                                    </div>
+                                                </div>
+                                            </div><!-- .tranx-item -->
+                                            <div class="tranx-item">
+                                                <div class="tranx-col">
+                                                    <div class="tranx-info">
+                                                        <div class="tranx-data">
+                                                            <div class="tranx-label">Last Deposits </div>
+                                                            <div class="tranx-date">{{ moneyFormat($last_deposit, 'USD') }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tranx-col">
+                                                    <div class="tranx-amount">
+                                                        <div class="number">{{ moneyFormat($last_deposit, 'USD') }} </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .tranx-item -->
+                                            <!-- .tranx-item -->
+                                        </div><!-- .tranx-list -->
+                                    </div>
+                                     <div class="col-md-4">
+                                        <div class="card-head">
+                                            <div class="card-title  mb-0">
+                                                <h5 class="title">Withdrawal History</h5>
+                                            </div>
+                                        </div><!-- .card-head -->
+                                        <div class="tranx-list card card-bordered">
+                                            <div class="tranx-item">
+                                                <div class="tranx-col">
+                                                    <div class="tranx-info">
+                                                        <div class="tranx-data">
+                                                            <div class="tranx-label">Total Withdrawal</div>
+                                                            <div class="tranx-date">{{ moneyFormat($total_withdrawals, 'USD') }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tranx-col">
+                                                    <div class="tranx-amount">
+                                                        <div class="number">{{ moneyFormat($total_withdrawals, 'USD') }}</div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .tranx-item -->
+                                            <div class="tranx-item">
+                                                <div class="tranx-col">
+                                                    <div class="tranx-info">
+                                                        <div class="tranx-data">
+                                                            <div class="tranx-label">Pending Withdrawal<span class="tranx-icon sm"><img src="./images/coins/eth.svg" alt=""></span></div>
+                                                            <div class="tranx-date">{{ moneyFormat($pending_withdrawals, 'USD') }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tranx-col">
+                                                    <div class="tranx-amount">
+                                                        <div class="number">{{ moneyFormat($pending_withdrawals, 'USD') }}</div>
+                                                      
+                                                    </div>
+                                                </div>
+                                            </div><!-- .tranx-item -->
+                                            <div class="tranx-item">
+                                                <div class="tranx-col">
+                                                    <div class="tranx-info">
+                                                        <div class="tranx-data">
+                                                            <div class="tranx-label">Last Withdrawal </div>
+                                                            <div class="tranx-date">{{ moneyFormat($last_withdrawal, 'USD') }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tranx-col">
+                                                    <div class="tranx-amount">
+                                                        <div class="number">{{ moneyFormat($last_withdrawal, 'USD') }} </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .tranx-item -->
+                                            <!-- .tranx-item -->
+                                        </div><!-- .tranx-list -->
+                                    </div><!-- .col -->
+                                    <!-- .col -->
+                                </div><!-- .row -->
+                            </div><!-- .nk-block -->
+
+                             <div class="nk-content nk-content-fluid">
+                    <div class="container-xl wide-lg">
+                        <div class="nk-content-body">
+            <!-- .nk-block-head -->
+                            <div class="nk-block">
+                                <div class="card card-bordered card-stretch">
+                                    <div class="card-inner-group">
+                                        <div class="card-inner">
+                                            <div class="card-title-group">
+                                                <div class="card-title">
+                                                    <h5 class="title">Recent Activities</h5>
+                                                </div>
+                                              <!-- .card-search -->
+                                            </div><!-- .card-title-group -->
+                                        </div><!-- .card-inner -->
+                                        <div class="card-inner p-0">
+                                            <div class="nk-tb-list nk-tb-tnx">
+                                                <div class="nk-tb-item nk-tb-head">
+                                                    <div class="nk-tb-col"><span>Activity</span></div>
+                                                    <div class="nk-tb-col "><span>User</span></div>
+                                                    <div class="nk-tb-col tb-col-lg"><span>Info</span></div>
+                                                    <div class="nk-tb-col nk-tb-col-status"><span class="sub-text d-none d-md-block">Status</span></div>
+                                                    
+                                                </div><!-- .nk-tb-item -->
+                                                @if(count($users)> 0 || count($login) > 0 || count($depo) > 0)
+                                                @foreach ($users as $uu)
+                                                <div class="nk-tb-item">
+                                                    <div class="nk-tb-col">
+                                                        <div class="nk-tnx-type">
+                                                            <div class="nk-tnx-type-icon bg-success-dim text-success">
+                                                                <em class="icon ni ni-arrow-right"></em>
+                                                            </div>
+                                                            <div class="nk-tnx-type-text">
+                                                                <span class="tb-lead">New Registration</span>
+                                                                <span class="tb-date">{{$uu->created_at->DiffForHumans()}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nk-tb-col ">
+                                                        <span class="tb-lead-sub">{{$uu->username}}</span>
+                                                        <span class="tb-sub">{{$uu->first_name." ".$uu->last_name}}</span>
+                                                    </div>
+                                                    <div class="nk-tb-col ">
+                                                        <span class="tb-lead-sub">{{$uu->email}}</span>
+                                                        <span class="badge badge-dot badge-success">@if($uu->email_verified_at == null) Email Unverified @else Verified @endif</span>
+                                                    </div>
+                                                   
+                                                    <div class="nk-tb-col nk-tb-col-status">
+                                                        <div class="dot dot-success d-md-none"></div>
+                                                        <span class="badge badge-sm badge-dim badge-outline-success d-none d-md-inline-flex">Active</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                  @endforeach
+                                                        @foreach ($login as $ll)
+                                                <div class="nk-tb-item">
+                                                    <div class="nk-tb-col">
+                                                        <div class="nk-tnx-type">
+                                                            <div class="nk-tnx-type-icon bg-success-dim text-success">
+                                                                <em class="icon ni ni-arrow-right"></em>
+                                                            </div>
+                                                            <div class="nk-tnx-type-text">
+                                                                <span class="tb-lead">Recent Login Users</span>
+                                                                <span class="tb-date">{{$ll->created_at->DiffForHumans()}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nk-tb-col ">
+                                                        <span class="tb-lead-sub">{{$ll->user->username}}</span>
+                                                        <span class="tb-sub">{{$ll->user->email}}</span>
+                                                    </div>
+                                                    <div class="nk-tb-col ">
+                                                        <span class="tb-lead-sub">{{$user->updated_at}}</span>
+                                                        <span class="badge badge-dot badge-success">{{$ll->created_at->DiffForHumans()}}</span>
+                                                    </div>
+                                                   
+                                                    <div class="nk-tb-col nk-tb-col-status">
+                                                        <div class="dot dot-success d-md-none"></div>
+                                                        <span class="badge badge-sm badge-dim badge-outline-success d-none d-md-inline-flex">Completed</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                  @endforeach
+                                                        @foreach ($depo as $dd)
+                                                <div class="nk-tb-item">
+                                                    <div class="nk-tb-col">
+                                                        <div class="nk-tnx-type">
+                                                            <div class="nk-tnx-type-icon bg-success-dim text-success">
+                                                                <em class="icon ni ni-arrow-right"></em>
+                                                            </div>
+                                                            <div class="nk-tnx-type-text">
+                                                                <span class="tb-lead">New Deposit</span>
+                                                                <span class="tb-date">{{$dd->created_at->DiffForHumans()}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nk-tb-col ">
+                                                        <span class="tb-lead-sub">{{$dd->user->username}}</span>
+                                                        <span class="tb-sub">{{ moneyFormat($dd->amount, 'USD') }}</span>
+                                                    </div>
+                                                    <div class="nk-tb-col ">
+                                                        <span class="tb-lead-sub">{{$dd->created_at}}</span>
+                                                        <span class="badge badge-dot badge-success">{{$dd->created_at->DiffForHumans()}}</span>
+                                                    </div>
+                                                   
+                                                    <div class="nk-tb-col nk-tb-col-status">
+                                                        <div class="dot dot-success d-md-none"></div>
+                                                        <span class="badge badge-sm badge-dim badge-outline-success d-none d-md-inline-flex">@if($dd->status == 0) Active @elseif($dd->status == 1) Completed @else Cancelled @endif</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                  @endforeach
+                                                      @foreach ($withdw as $ww)
+                                                <div class="nk-tb-item">
+                                                    <div class="nk-tb-col">
+                                                        <div class="nk-tnx-type">
+                                                            <div class="nk-tnx-type-icon bg-success-dim text-success">
+                                                                <em class="icon ni ni-arrow-right"></em>
+                                                            </div>
+                                                            <div class="nk-tnx-type-text">
+                                                                <span class="tb-lead">New Withdrawal</span>
+                                                                <span class="tb-date">{{$ww->created_at->DiffForHumans()}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nk-tb-col ">
+                                                        <span class="tb-lead-sub">{{$ww->user->username}}</span>
+                                                        <span class="tb-sub">{{ moneyFormat($dd->amount, 'USD') }}</span>
+                                                    </div>
+                                                    <div class="nk-tb-col ">
+                                                        <span class="tb-lead-sub">{{$ww->created_at}}</span>
+                                                        <span class="badge badge-dot badge-success">{{$ww->created_at->DiffForHumans()}}</span>
+                                                    </div>
+                                                   
+                                                    <div class="nk-tb-col nk-tb-col-status">
+                                                        <div class="dot dot-success d-md-none"></div>
+                                                        <span class="badge badge-sm badge-dim badge-outline-success d-none d-md-inline-flex">@if($ww->status == 0) Active @elseif($ww->status == 1) Completed @else Cancelled @endif</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                  @endforeach
+
+                                                @endif<!-- .nk-tb-item -->
+                                            <!-- .nk-tb-item -->
+                                            </div><!-- .nk-tb-list -->
+                                        </div><!-- .card-inner -->
+                                        <div class="card-inner">
+                                           
+                                        </div><!-- .card-inner -->
+                                    </div><!-- .card-inner-group -->
+                                </div><!-- .card -->
+                            </div><!-- .nk-block -->
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-xl-4">
-                    <div class="card">
-                        <div class="card-body p-0">
-                            <h5 class="card-title header-title border-bottom p-3 mb-0" style="background: #fff; color: #111; border-left: 4px solid #c32a36">Users</h5>
-                            <!-- stat 1 -->
-                            <div class="media px-3 py-2 border-bottom badge-light">
-                                <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $total_users }}</h4>
-                                    <span class="text-muted">Total Users</span>
-                                </div>
-                                <i class="fa fa-users"></i>
-                            </div>
-
-                            <!-- stat 2 -->
-                            <div class="media px-3 py-2 border-bottom">
-                                <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $admin_users }}</h4>
-                                    <span class="text-muted">Admin Users</span>
-                                </div>
-                                <i class="fa fa-user-shield"></i>
-                            </div>
-
-                            <!-- stat 3 -->
-                            <div class="media px-3 py-2  badge-light">
-                                <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ $today_users }}</h4>
-                                    <span class="text-muted">Today Users</span>
-                                </div>
-                                <i class="fa fa-user-plus"></i>
-                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-xl-4">
-                    <div class="card">
-                        <div class="card-body p-0">
-                            <h5 class="card-title header-title border-bottom p-3 mb-0" style="background: #fff; color: #111; border-left: 4px solid #c32a36">Deposit History</h5>
-                            <!-- stat 1 -->
-                            <div class="media px-3 py-2 border-bottom  badge-light">
-                                <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ moneyFormat($total_deposits, 'USD') }}</h4>
-                                    <span class="text-muted">Total Deposits</span>
-                                </div>
-                                <i class="fa fa-comment-dollar"></i>
-                            </div>
-
-                            <!-- stat 2 -->
-                            <div class="media px-3 py-2 border-bottom">
-                                <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ moneyFormat($active_deposits, 'USD') }}</h4>
-                                    <span class="text-muted">Active Deposits</span>
-                                </div>
-                                <i class="fa fa-comment-dollar"></i>
-                            </div>
-
-                            <!-- stat 3 -->
-                            <div class="media px-3 py-2  badge-light">
-                                <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ moneyFormat($last_deposit, 'USD') }}</h4>
-                                    <span class="text-muted">Last Deposit</span>
-                                </div>
-                                <i class="fa fa-comment-dollar"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-4">
-                    <div class="card">
-                        <div class="card-body p-0">
-                            <h5 class="card-title header-title border-bottom p-3 mb-0" style="background: #fff; color: #111; border-left: 4px solid #c32a36">Withdrawal History</h5>
-                            <!-- stat 1 -->
-                            <div class="media px-3 py-2 border-bottom  badge-light">
-                                <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ moneyFormat($total_withdrawals, 'USD') }}</h4>
-                                    <span class="text-muted">Total Withdrawals</span>
-                                </div>
-                                <i class="fa fa-comment-dollar"></i>
-                            </div>
-
-                            <!-- stat 2 -->
-                            <div class="media px-3 py-2 border-bottom">
-                                <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ moneyFormat($pending_withdrawals, 'USD') }}</h4>
-                                    <span class="text-muted">Pending Withdrawals</span>
-                                </div>
-                                <i class="fa fa-comment-dollar"></i>
-                            </div>
-
-                            <!-- stat 3 -->
-                            <div class="media px-3 py-2  badge-light">
-                                <div class="media-body">
-                                    <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{ moneyFormat($last_withdrawal, 'USD') }}</h4>
-                                    <span class="text-muted">Last Withdrawal</span>
-                                </div>
-                                <i class="fa fa-comment-dollar"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                
-                
-                    
-
-                
-                    
-                
-            <div class="row">
-                @forelse($packages as $package)
-                    @foreach($package->plans as $plan)
-
-                        <div class="col-md-3 col-sm-12" style="margin-bottom: 10px;">
-                          <div class="pricingTable">
-                              <div class="pricingTable-header">
-                                  <h3 class="title">{{ $plan->package->name }} ({{ $plan->name }})</h3>
-                                  <span class="duration">{{ $plan->profit_rate }}% / {{ $plan->package->formatted_payment_period_alt }}</span>
-                              </div>
-                              <div class="pricing-content">
-                                  <div class="price-value">
-                                      <span class="amount">{{ $plan->profit_rate }}%</span>
-                                  </div>
-                                  <ul class="inner-content">
-                                    <li class="text-black">Minimum Deposit: {{ moneyFormat($plan->min_deposit, 'USD') }}</li>
-                                    <li class="text-black">Maximum Deposit: {{ moneyFormat($plan->max_deposit, 'USD') }}</li>
-                                    <li class="text-black"><i class="fa fa-check"></i> Automatic Withdrawal</li>
-                                    <li class="text-black"><i class="fa fa-check"></i> 24x7 Support</li>              
-                                  </ul>
-                                  <div class="pricingTable-signup">
-                                      <a href="{{ route('deposits.invest', ['id' => $plan->id]) }}" class="pricing_action">Choose plan</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                        
-                    @endforeach
-                @empty
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body p-4">
-                                No Package yet
-                            </div>
-                        </div>
-                    </div>
-                @endforelse          
-            </div>
-
-
-
-
-
-
-
 
         
     

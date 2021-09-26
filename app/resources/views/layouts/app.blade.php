@@ -4,11 +4,14 @@
 <head>
     <base href="../../">
     <meta charset="utf-8">
-    <meta name="author" content="Softnio">
+    <meta name="author" content="AldenCapital">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
+    <meta name="keywords" content="crypto, Trading, Cryptocurrency, Cryptocurrency Trading, Investments, Trading comapany, Brokers, Bitcoin, Bitcoin trading">
+    <meta name="description" content="AldenCapital is a highly trusted crypto Trading comapany, helping millions of individuals and firms across the globe to safely Trade and earn more with crypto currency.">
+   
+ 
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="./images/favicon.png">
+    <link rel="shortcut icon" href="{{asset('/fav.png')}}">
     <!-- Page Title  -->
    <title>
         @section('title')
@@ -57,8 +60,12 @@
     <script src="{{asset('/asset/bundle.js?ver=2.2.0')}}"></script>
     <script src="{{asset('/asset/scripts.js?ver=2.2.0')}}"></script>
     <script src="{{asset('/asset/charts/chart-crypto.js?ver=2.2.0')}}"></script>
-       <script src="{{asset('/asset/example-sweetalert.js?ver=2.2.0')}}"></script>
+    <script src="{{asset('/asset/example-sweetalert.js?ver=2.2.0')}}"></script>
+      <script src="{{asset('/asset/example-toastr.js?ver=2.2.0')}}"></script>
     @yield('scripts')
+<!--Start of Tawk.to Script-->
+
+<!--End of Tawk.to Script-->
 </body>
 
 </html>

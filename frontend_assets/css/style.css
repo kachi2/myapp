@@ -1049,16 +1049,17 @@ ul.nav.nav-tabs li a:hover, ul.nav.nav-tabs li.active a:hover {
 }
 
 #main-slide .item.item-1 {
-  background-image: url('../cc/btc3.webp');
+  background: url('../cc/news2.jpg');
+    background-size: auto cover;
 }
 
 #main-slide .item.item-2 {
-  background-image: url('../cc/btc5.webp');
+  background: url('../cc/grid3.jpg');
+    background-size: auto cover;
 }
 
 #main-slide .item:after {
   content: "";
-  background: rgba(0,0,0,.6);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -3926,7 +3927,7 @@ h4.panel-title a.collapsed:before {
   font-size: 13px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  text-transform: uppercase;
+ /***  text-transform: uppercase; ***/
 }
 
 /*** Social Icons ***/
