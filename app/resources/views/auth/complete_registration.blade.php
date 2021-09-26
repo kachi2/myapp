@@ -42,6 +42,22 @@
                             </div>
                                     
                                     </div><!-- .foem-group -->
+                         <div class="form-group">
+                              <label class="form-label" for="default-01">Phone</label>
+                            <div class="form-control-wrap">
+                                <input type="text" name="country" class="form-control form-control-lg {{ form_invalid('country') }}" id="country" placeholder="Enter country">
+                              @showError('country')
+                            </div>
+                                    
+                                    </div><!-- .foem-group -->
+                        <div class="form-group">
+                              <label class="form-label" for="default-01">Phone</label>
+                            <div class="form-control-wrap">
+                                <input type="text" name="state" class="form-control form-control-lg {{ form_invalid('state') }}" id="state" placeholder="Enter State">
+                              @showError('state')
+                            </div>
+                                    
+                                    </div><!-- .foem-group -->
                         <div class="form-group">
                             <button class="btn btn-lg btn-primary btn-block">Complete Registration</button>
                         </div>

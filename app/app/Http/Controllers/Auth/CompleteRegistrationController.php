@@ -15,7 +15,7 @@ class CompleteRegistrationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/account';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -57,8 +57,9 @@ class CompleteRegistrationController extends Controller
             //'first_name' => ['required', 'string', 'max:120'],
             //'last_name' => ['required', 'string', 'max:120'],
             'username' => ['required', 'alpha_num', 'max:120', 'unique:users'],
-            //'photo' => ['required', 'image:jpeg,jpg,png'],
-            'phone' => 'nullable'
+            'country' => 'nullable',
+            'phone' => 'nullable',
+            'state'=>'nullable'
         ]);
 
         //$firstName = $request->input('first_name');
@@ -76,6 +77,12 @@ class CompleteRegistrationController extends Controller
 
         if (!empty($request->input('phone'))) {
             $data['phone'] = $request->input('phone');
+        }
+        if (!empty($request->input('phone'))) {
+            $data['country'] = $request->input('country');
+        }
+        if (!empty($request->input('phone'))) {
+            $data['state'] = $request->input('state');
         }
 
         $bonusAmount = 20;

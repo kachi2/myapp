@@ -118,7 +118,7 @@
                             <!-- fun_text  -->
                             <div class="fun_text">
                               <span class="counter-icon"><i class="flaticon-043-world"></i></span>
-                                <span class="counter">80</span>
+                                <span class="counter">8</span>
                                 <h4>World Country</h4>
                             </div>
                         </div>
