@@ -43,7 +43,7 @@
                                     
                                     </div><!-- .foem-group -->
                          <div class="form-group">
-                              <label class="form-label" for="default-01">Phone</label>
+                              <label class="form-label" for="default-01">Country</label>
                             <div class="form-control-wrap">
                                 <input type="text" name="country" class="form-control form-control-lg {{ form_invalid('country') }}" id="country" placeholder="Enter country">
                               @showError('country')
@@ -51,7 +51,7 @@
                                     
                                     </div><!-- .foem-group -->
                         <div class="form-group">
-                              <label class="form-label" for="default-01">Phone</label>
+                              <label class="form-label" for="default-01">State</label>
                             <div class="form-control-wrap">
                                 <input type="text" name="state" class="form-control form-control-lg {{ form_invalid('state') }}" id="state" placeholder="Enter State">
                               @showError('state')
