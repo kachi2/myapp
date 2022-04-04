@@ -47,7 +47,7 @@ class WithdrawalRequested extends Notification
     {
         return (new MailMessage)
                     ->subject('Withdrawal Requested #'.$this->withdrawal->ref)
-                    ->from('support@nixoncapital.cc', 'Nixoncapital')
+                    ->from('billing@zenithcapital.cc', 'Zenithcapital')
                     ->view('emails.withdrawal-requested', ['withdrawal' => $this->withdrawal]);
     }
 

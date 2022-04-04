@@ -1,31 +1,7 @@
-@php
-use \App\Models\Deposit;
-$deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
-@endphp
+
 
 @extends('layouts.app')
 @section('content')
-                                    @if(isset($deposit) && $deposit->status == 0)
-                                    @php
-                                        //dd($dd);
-                                        $create_at = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', Now());
-                                        $ex = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $deposit->expires_at);
-                                           // $expiry = Deposit::where('status', 0)
-                                            $expirys =  $create_at->diffInDays($ex); 
-                                            if($expirys > 0){
-                                                 $expiry =  $create_at->diffInDays($ex); 
-                                                 $xx = 'Days';
-                                            }else{
-                                                $expiry =  $create_at->diffInMinutes($ex);
-                                                $xx = 'Minutes';
-                                            }
-                                    @endphp
-                                    
-                                      
-                                             <div class="card" >
-                                <span class="alert-primary p-3" role="alert" id="timers"> Your Investment is remaining <span style="color:red" id="timer"></span>  to be completed  </span></span>
-                                        </div>
-                                            @endif
            <div class="nk-content nk-content-fluid">
                     <div class="container-xl wide-lg">
                         <div class="nk-content-body">
@@ -51,14 +27,14 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                             <div class="nk-block">
                                                 <div class="nk-data data-list">
                                                     <div class="data-head">
-                                                        <h6 class="overline-title">Basics</h6>
+                                                  
                                                     </div>
                                                     <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                         <div class="data-col">
                                                             <span class="data-label">Full Name</span>
                                                             <span class="data-value">{{auth_user()->first_name." ".auth_user()->last_name}}</span>
                                                         </div>
-                                                        <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                                                        <div class="data-col data-col-end"><span class="data-more"><em class=""></em></span></div>
                                                     </div><!-- data-item -->
                                                     <!-- data-item -->
                                                      <div class="data-item">
@@ -90,12 +66,17 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                                         </div>
                                                         <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                     </div><!-- data-item -->
-                                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit" data-tab-target="#address">
+                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit" data-tab-target="#address">
                                                     <div class="data-col">
                                                             <span class="data-label">Country</span>
                                                             <span class="data-value">{{auth_user()->country}}</span>
                                                         </div>
                                                         <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                                                    </div>
+                                                    
+                                                    <div class="data-item" data-toggle="modal" data-target="#profile-edit" data-tab-target="#address">
+                                                   <button type="button" class="btn btn-primary">Update Profile</button>
+                                                       
                                                     </div>
                                                 </div><!-- data-list -->
                                             <!-- data-list -->
@@ -115,12 +96,7 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
                                                         
                                                     </div><!-- .user-card -->
                                                 </div><!-- .card-inner -->
-                                                <div class="card-inner">
-                                                    <div class="user-account-info py-0">
-                                                        <h6 class="overline-title-alt">Wallet Balance</h6>
-                                                        <div class="user-balance">{{moneyFormat(auth_user()->wallet->amount, 'USD')}} </div>
-                                                    </div>
-                                                </div><!-- .card-inner -->
+                                                <!-- .card-inner -->
                                                 <div class="card-inner p-0">
                                                     <ul class="link-list-menu">
                                                         <li><a class="active" href="{{ route('account') }}"><em class="icon ni ni-user-fill-c"></em><span>Personal Infomation</span></a></li>
@@ -218,18 +194,6 @@ $deposit = Deposit::where('user_id', auth()->user()->id)->latest()->first();
     </form>     
 @endsection
 @section('scripts')
-
-@php
-
-if(isset($deposit->expires_at)){
-
-    $deposit = $deposit->expires_at;
-}else{
-
-    $deposit = 0;    
-}
-
-@endphp
 <script>
 
 let message = {!! json_encode(Session::get('message')) !!};
@@ -244,25 +208,5 @@ toastr.clear();
         timeOut: 5000,
     });
 }
-let countDownDate = {!! json_encode($deposit) !!}
-let countDownDates = new Date(countDownDate).getTime();
-let x = setInterval(function() {
-let now = new Date().getTime();
-let distance = countDownDates - now;
- let days = Math.floor(distance / (1000 * 60 * 60 * 24));
- let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("timer").innerHTML = days + "Days " + hours + "Hours "
-  + minutes + "Minutes " + seconds + "Seconds ";
-  if (distance <  0) {
-    clearInterval(x);
-    document.getElementById("timers").innerHTML = "Congratulations!, Your Investment has been Completed Successfully";
-  }
-}, 1000);
-
-
- 
 </script>
 @endsection

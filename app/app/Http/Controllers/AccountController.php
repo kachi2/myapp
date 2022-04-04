@@ -173,6 +173,6 @@ class AccountController extends Controller
 
     public function activity(){
         return view('account.activity')
-        ->with('users', UserActivity::where('user_id', auth_user()->id)->get());
+        ->with('users', UserActivity::where('user_id', auth_user()->id)->latest()->take(10)->get());
     }
 }

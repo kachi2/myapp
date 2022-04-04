@@ -2,7 +2,6 @@
 <html lang="zxx" class="js">
 
 <head>
-    <base href="../../../">
     <meta charset="utf-8">
     <meta name="author" content="Softnio">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,7 +9,7 @@
     <!-- Fav Icon  -->
        <link rel="shortcut icon" href="{{asset('/fav.png')}}">
     <!-- Page Title  -->
-    <title>Nixoncapital | Erros</title>
+    <title>Errors | 419</title>
     <!-- StyleSheets  -->
       <link rel="stylesheet" href="{{asset('/asset/css/dashlite.css?ver=2.2.0')}}">
     <link id="skin-default" rel="stylesheet" href="{{asset('/asset/css/theme.css?ver=2.2.0')}}">
@@ -28,8 +27,7 @@
                         <div class="nk-block-content nk-error-ld text-center">
                             <h3 class="nk-error-title">Error Occured</h3>
                             <h3 class="nk-error-title">Opps!, Seems this page is broken</h3>
-                            <p class="nk-error-text">We are very sorry for inconvenience, If you think this issue is from us, <a href="https://chat.whatsapp.com/CackBqBGuvoK7513TbhtRq"> report here</a></p>
-                            <a href="{{route('home')}}" class="btn btn-lg btn-primary mt-2">Back To Home</a>
+                            <a href="{{route('home')}}" class="btn btn-lg btn-success mt-2">Back To Home</a>
                         </div>
                     </div><!-- .nk-block -->
                 </div>

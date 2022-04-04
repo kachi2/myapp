@@ -252,7 +252,7 @@ class DepositController extends Controller
        
         $notify = new UserNotify;
             $notify->user_id = $deposit->user->id;
-            $notify->message = 'Dear'.$deposit->user->username.','.'Deposit completed Successfully, thanks for trusting us'; 
+            $notify->message = 'Dear '.$deposit->user->username.','.' Deposit completed Successfully, thanks for trusting us'; 
             $notify->save();
         Session::flash('msg', 'success');
         Session::flash('message', 'Deposit Completed Successfully'); 
@@ -294,7 +294,7 @@ class DepositController extends Controller
                 $expireDate->addDays($deposit->duration);
         }
         $deposit = Deposit::create([
-            'ref' => generate_reference(),
+            'ref' => $deposit->ref,
             'user_id' => $deposit->user_id,
             'plan_id' => $deposit->plan_id,
             'payment_method' => $deposit->payment_method,
@@ -314,7 +314,7 @@ class DepositController extends Controller
         }
             $notify = new UserNotify;
             $notify->user_id = $deposit->user->id;
-            $notify->message = 'Dear'.$deposit->user->username.','.'Your payment has been approved successfully, thanks for trusting us'; 
+            $notify->message = 'Dear '.$deposit->user->username.','.' Your payment has been approved successfully, thanks for trusting us'; 
             $notify->save();
         $deposit->user->notify(new InvestmentCreated($deposit));
            Session::flash('msg', 'success');

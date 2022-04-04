@@ -7,9 +7,6 @@ $fmg-file-icon-width-lg :    72px;
 /// Layout for FMG
 .nk-fmg{
     position: relative;
-    background-color: $white;
-    min-height: calc(100vh - (#{$header-height} + 64px));
-    background-color: rgba($lighter,.6);
     &-aside{
         position: fixed;
         width: $fmg-aside-width;
@@ -50,14 +47,12 @@ $fmg-file-icon-width-lg :    72px;
         }
         &-top{
             margin-bottom: auto;
-            margin-bottom: 30px;
         }
     }
     &-menu{
         padding: 1rem;
         li{
             margin: 2px 0;
-            
         }
         &-item{
             position: relative;
@@ -179,15 +174,9 @@ $fmg-file-icon-width-lg :    72px;
             padding: .75rem 1.25rem;
             border-bottom: 1px solid $border-color;
             background-color: $white;
+            position: sticky;
+            top: $header-height;
             z-index: 9;
-            position: relative;
-            top: 0;
-            @if($rtl==false){
-                border-top-right-radius: $border-radius;
-            }
-            @if($rtl==true){
-                border-top-left-radius: $border-radius;
-            }
         }
         &-content{
             padding:1.125rem 1.25rem;
@@ -216,7 +205,7 @@ $fmg-file-icon-width-lg :    72px;
         }
     }
     &-switch{
-        background-color: transparent;
+        background-color: $light;
         border-top: 1px solid $border-light;
         > div{
             width: 100%;
@@ -259,9 +248,6 @@ $fmg-file-icon-width-lg :    72px;
                 padding-bottom: 1.25rem;
             }
         }
-        &-aside-top{
-            margin-bottom: 100px;
-        }
     }
 }
 @include media-breakpoint-up(lg){
@@ -276,22 +262,14 @@ $fmg-file-icon-width-lg :    72px;
             transform: none;
             transition: none;
             width: $fmg-aside-width;
-            position: absolute;
-            top: 0;
             @if($rtl==false){
-                left: 0;
-                border-top-left-radius: $border-radius;
-                border-bottom-left-radius: $border-radius;
+                left: $sidebar-width-apps;
             }
             @if($rtl==true){
-                right: 0;
-                border-top-right-radius: $border-radius;
-                border-bottom-right-radius: $border-radius;
+                right: $sidebar-width-apps;
             }
-            min-height: 100%;
-            max-height: 100%;
             &-top{
-                flex-grow: 0;
+                flex-grow: 1;
             }
         }
         &-body{
@@ -307,17 +285,8 @@ $fmg-file-icon-width-lg :    72px;
 }
 @include media-breakpoint-up(xl){
     .nk-fmg{
-        @if($rtl==false){
-            padding-left: $fmg-aside-width-small;
-        }
-        @if($rtl==true){
-            padding-right: $fmg-aside-width-small;
-        }
         &-filter.toggle-expand-content {
             display: block !important;
-        }
-        &-aside{
-            width: $fmg-aside-width-small;
         }
     }
 }
@@ -462,6 +431,8 @@ $fmg-file-icon-width-lg :    72px;
                 font-family: $nk-dashlite-font;
                 position: absolute;
                 top: 50%;
+                font-size: 11px;
+                line-height: 10px;
                 @if($rtl==false){
                     left: 0;
                     transform: translate(-50%,-50%);
@@ -470,8 +441,6 @@ $fmg-file-icon-width-lg :    72px;
                     right: 0;
                     transform: translate(50%,-50%);
                 }
-                font-size: 11px;
-                line-height: 10px;
                 opacity: .8;
             }
         }
@@ -670,21 +639,21 @@ $fmg-file-icon-width-lg :    72px;
                 border-bottom: 1px solid $border-color;
                 height: 4rem;
                 background-color: $white;
-                &:first-child{
-                    @if($rtl==false){
+                @if($rtl==false){
+                    &:first-child{
                         border-left: 1px solid $border-color;
                         padding-left: 1.25rem;
                     }
-                    @if($rtl==true){
+                    &:last-child{
+                        border-right: 1px solid $border-color;
+                    }
+                }
+                @if($rtl==true){
+                    &:first-child{
                         border-right: 1px solid $border-color;
                         padding-right: 1.25rem;
                     }
-                }
-                &:last-child{
-                    @if($rtl==false){
-                        border-right: 1px solid $border-color;
-                    }
-                    @if($rtl==true){
+                    &:last-child{
                         border-left: 1px solid $border-color;
                     }
                 }
@@ -697,46 +666,21 @@ $fmg-file-icon-width-lg :    72px;
                 > div{
                     border-top: 1px solid $border-color;
                     &:first-child{
-                        @if($rtl==false){
-                            border-top-left-radius: $border-radius;
-                        }
-                        @if($rtl==true){
-                            border-top-right-radius: $border-radius;
-                        }
+                        border-top-left-radius: $border-radius;
                     }
                     &:last-child{
-                        @if($rtl==false){
-                            border-top-right-radius: $border-radius;
-                        }
-                        @if($rtl==true){
-                            border-top-left-radius: $border-radius;
-                        }
+                        border-top-right-radius: $border-radius;
                     }
                 }
             }
             &:last-child{
                 > div{
                     &:first-child{
-                        @if($rtl==false){
-                            border-bottom-left-radius: $border-radius;
-                        }
-                        @if($rtl==true){
-                            border-bottom-right-radius: $border-radius;
-                        }
+                        border-bottom-left-radius: $border-radius;
                     }
                     &:last-child{
-                        @if($rtl==false){
-                            border-bottom-right-radius: $border-radius;
-                        }
-                        @if($rtl==true){
-                            border-bottom-left-radius: $border-radius;
-                        }
+                        border-bottom-right-radius: $border-radius;
                     }
-                }
-            } 
-            &:not(:last-child){
-                > div{
-                    border-bottom: 1px solid $border-color;
                 }
             } 
             .custom-checkbox{
@@ -841,8 +785,8 @@ $fmg-file-icon-width-lg :    72px;
             position: relative;
             margin: 8px;
             background: $white;
-            border-radius: $border-radius;
             border: 1px solid $border-color;
+            border-radius: $border-radius;
             .nk-file-members{
                 display: none;
             }
@@ -1011,21 +955,12 @@ $fmg-file-icon-width-lg :    72px;
         }
         &-group {
             .nk-file{
-                width: calc(100% - 16px);
-            }
-        }
-    }
-}
-
-@media (min-width:660px){
-    .nk-files-view{
-        &-group {
-            .nk-file{
                 width: calc(50% - 16px);
             }
         }
     }
 }
+
 
 @include media-breakpoint-up(xl){
     .nk-files-view{
@@ -1036,7 +971,7 @@ $fmg-file-icon-width-lg :    72px;
         }
         &-group {
             .nk-file{
-                width: calc(50% - 16px);
+                width: calc(33.33% - 16px);
             }
         }
     }
@@ -1051,7 +986,7 @@ $fmg-file-icon-width-lg :    72px;
         }
         &-group {
             .nk-file{
-                width: calc(33.33% - 16px);
+                width: calc(25% - 16px);
             }
         }
     }
@@ -1066,7 +1001,7 @@ $fmg-file-icon-width-lg :    72px;
         }
         &-group {
             .nk-file{
-                width: calc(25% - 16px);
+                width: calc(20% - 16px);
             }
         }
     }
@@ -1097,15 +1032,6 @@ $fmg-file-icon-width-lg :    72px;
                 }
             }
         } 
-    }
-}
-@media (max-width:359px){
-    .nk-files-view{
-        &-grid {
-            .nk-file{
-                width: 100%;
-            }
-        }
     }
 }
 

@@ -96,7 +96,7 @@ class WithdrawController extends Controller
         if (count($sort) > 0 && in_array($sort[0], $this->sortable))
             $query = $query->orderBy($sort[0], $sort[1]);
 
-        $withdrawals = $query->paginate(2000);
+        $withdrawals = $query->paginate(20);
 
         $breadcrumb = [
             [

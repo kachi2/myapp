@@ -1,104 +1,171 @@
 @extends('layouts.app')
 @section('content')
-       <div class="nk-content nk-content-fluid">
-                     <div class="nk-content-body">
-                            <div class="nk-block-head">
-                                <div class="nk-block-between-md g-4">
-                                    <div class="nk-block-head-content">
-                                        <h5 class="nk-block-title fw-normal">My Deposits</h5>
-                                        
-                                    </div>
-                                    <div class="nk-block-head-content">
-                                        <ul class="nk-block-tools gx-3">
-                                            <li class="order-md-last">
-                                                   <a href="{{ route('user.packages') }}" class="btn btn-primary"><i
-                                                    class='uil uil-plus mr-1'></i>Make Deposit</a>
-                                            <a href="{{ route('deposits.transactions') }}" class="btn btn-primary ml-2"><i
-                                                    class='uil uil-chart mr-1'></i>View Transactions</a>
-                                        
-                                            </li>
-                                       </ul>
-                                    </div>
-                                </div>
-                            </div><!-- .nk-block-head -->
-                        <div class="components-preview wide-md mx-auto">
-                         <div class="nk-block nk-block-lg"> 
-                                    <div class="card card-preview">
-                                        <div class="card-inner">
-                                            <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="true">
-                                                <thead>
-                                                    <tr class="nk-tb-item nk-tb-head">
-                                                        <th class="nk-tb-col"><span class="sub-text">Id</span></th>
-                                                        <th class="nk-tb-col"><span class="sub-text">Ref</span></th>
-                                                        <th class="nk-tb-col "><span class="sub-text">Plan</span></th>
-                                                        <th class="nk-tb-col"><span class="sub-text">Amount</span></th>
-                                                        <th class="nk-tb-col"><span class="sub-text">Profit</span></th>
-                                                        <th class="nk-tb-col "><span class="sub-text">Paid</span></th>
-                                                         <th class="nk-tb-col "><span class="sub-text">Method</span></th>
-                                                         <th class="nk-tb-col "><span class="sub-text">Status</span></th>
-                                                        <th class="nk-tb-col "><span class="sub-text">Date</span></th>
-                                                         <th class="nk-tb-col"><span class="sub-text">Expire At</span></th>
-                                                        
-                                                        
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                 @forelse($deposits as $deposit)
-                                          
-                                                    <tr class="nk-tb-item">
-                                                         <td class="nk-tb-col" >
-                                                            <span class="tb-amount">{{ $deposit->id }} </span>
-                                                        </td>
-                                                         <td class="nk-tb-col" >
-                                                            <span class="tb-amount">{{ $deposit->ref }} </span>
-                                                        </td>
-                                                        <td class="nk-tb-col">
-                                                            <span>{{ $deposit->plan->formatted_name }}</span>
-                                                        </td>
-                                                        <td class="nk-tb-col ">
-                                                             <span>{{ moneyFormat($deposit->amount, 'USD') }}</span>
-                                                        </td>
-                                                        <td class="nk-tb-col ">
-                                                            <span>{{ moneyFormat($deposit->profit, 'USD') }}</span>
-                                                        </td>
-                                                        <td class="nk-tb-col ">
-                                                            <span>{{ moneyFormat($deposit->paid_amount, 'USD') }}</span>
-                                                        </td>
-                                                        <td class="nk-tb-col">
-                                                            <span>{{ $deposit->formatted_payment_method }}</span>
-                                                        </td> 
-                                                        <td class="nk-tb-col ">
-                                                            @if( $deposit->status == \App\Models\Deposit::STATUS_COMPLETED)
-                                                                <span class="tb-status text-success">Completed</span>
-                                                            @elseif ($deposit->status == \App\Models\Deposit::STATUS_CANCELED)
-                                                                <span class="tb-status text-danger">Cancelled</span>
-                                                            @else
-                                                                <span class="tb-status text-success">Active</span>
-                                                            @endif
-                                                        </td>
-                                                        <td class="nk-tb-col ">{{ $deposit->created_at }}</td>
-                                                        <td class="nk-tb-col ">{{ $deposit->expires_at->diffForHumans() }}</td>
-                                                    </tr><!-- .nk-tb-item  -->
-                                                   
-                                                   @empty
-                                                 <tr>
-                                                <td><span>No Deposits Yet</span></td>
-                                                
-                                            </tr>
-                                        @endforelse
-                                                   
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div><!-- .card-preview -->
-                                </div> 
-                                </div>
+     <div class="nk-content ">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
+                                <div class="nk-block-head nk-block-head-sm">
+                                    <div class="nk-block-between g-3">
+                                        <div class="nk-block-head-content">
+                                            <h3 class="nk-block-title page-title">Deposit Transaction</h3>
+                                            <div class="nk-block-des text-soft">
+                                                <p>You have total {{count($deposits)}} Transactions.</p>
+                                            </div>
+                                        </div><!-- .nk-block-head-content -->
+                                         <div class="alert alert-primary alert-thick alert-plain">
+                                                <div class="alert-cta flex-wrap flex-md-nowrap g-2">
+                                                    <div class="alert-text has-icon">
+                                                        <em class="icon ni ni-info-fill text-primary"></em>
+                                                        <span style="color:#000">You have {{count($pending)}} Deposit awaiting Approval</span>
+                                                       
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        <div class="nk-block-head-content">
+                                            <div class="toggle-wrap nk-block-tools-toggle">
+                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
+                                                <div class="toggle-expand-content" data-content="pageMenu">
+                                                    <ul class="nk-block-tools g-3">
+                                                        <li><a href="{{ route('user.packages') }}" class="btn btn-white btn-dim btn-outline-light"><em class="icon ni ni-arrow-up"></em><span>Make New Deposit</span></a></li>
                          
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div><!-- .nk-block-head-content -->
+                                    </div><!-- .nk-block-between -->
+                                </div><!-- .nk-block-head -->
+                                <div class="nk-block">
+                                    <div class="card card-bordered card-stretch">
+                                        <div class="card-inner-group">
+                                            <div class="card-inner">
+                                                <div class="card-title-group">
+                                                    <div class="card-title">
+                                                        <h5 class="title">Deposits</h5>
+                                                    </div>
+                                                    <div class="card-tools mr-n1">
+                                                        <ul class="btn-toolbar gx-1">
+                                                            <li>
+                                                                <a href="#" class="search-toggle toggle-search btn btn-icon" data-target="search"><em class="icon ni ni-search"></em></a>
+                                                            </li><!-- li -->
+                                                            <li class="btn-toolbar-sep"></li><!-- li -->
+                                                            <li>
+                                                                <div class="dropdown">
+                                                                    <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
+                                                                        <div class="badge badge-circle badge-primary">3</div>
+                                                                        <em class="icon ni ni-filter-alt"></em>
+                                                                    </a>
+                                                                    <div class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-right">
+                                                                        <div class="dropdown-head">
+                                                                            <span class="sub-title dropdown-title">Advance Filter</span>
+                                                                            
+                                                                        </div>
+                                                                        <div class="dropdown-body dropdown-body-rg">
+                                                                            <div class="row gx-6 gy-4">
+                                                                               
+                                                                                <div class="col-12">
+                                                                                    <div class="form-group">
+                                                                                        <ul class="link-check">
+                                                                            <li><a  href="{{ filter_url('all') }}">All Deposits</a></li>
+                                                                            <li><a href="{{ filter_url('active') }}">Active Deposits</a></li>
+                                                                            <li><a href="{{ filter_url('completed') }}">Completed Deposits</a></li>
+                                                                   
+                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><!-- .filter-wg -->
+                                                                </div><!-- .dropdown -->
+                                                            </li><!-- li -->
+                                                            <li>
+                                                                
+                                                            </li><!-- li -->
+                                                        </ul><!-- .btn-toolbar -->
+                                                    </div><!-- .card-tools -->
+                                                    <div class="card-search search-wrap" data-search="search">
+                                                        <form method="get">
+                                                        <div class="search-content">
+                                                            <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                                                            <input type="text" name="search" value="{{ request()->input('search') }}" 
+                                                   placeholder="Search..."  class="form-control border-transparent form-focus-none" >
+                                                            <button class="search-submit btn btn-icon" type="submit"><em class="icon ni ni-search"></em></button>
+                                                        </div>
+                                                        </form>
+                                                    </div><!-- .card-search -->
+                                                </div><!-- .card-title-group -->
+                                            </div><!-- .card-inner -->
+                                            <div class="card-inner p-0">
+                                                <div class="nk-tb-list nk-tb-tnx">
+                                                    <div class="nk-tb-item nk-tb-head">
+                                                        <div class="nk-tb-col"><span>#Ref</span></div>
+                                                        <div class="nk-tb-col"><span>Plan</span></div>
+                                                        <div class="nk-tb-col tb-col-lg"><span>Paid</span></div>
+                                                        <div class="nk-tb-col "><span>Profit</span></div>
+                                                        <div class="nk-tb-col  tb-col-sm"><span>Method</span></div>
+                                                         <div class="nk-tb-col nk-tb-col-status"><span >Status</span></div>
+                                                        <div class="nk-tb-col  tb-col-sm"><span>Created At</span></div>
+                                                        <div class="nk-tb-col  tb-col-sm"><span>Expires At</span></div>
+                                                       
+                                                    </div><!-- .nk-tb-item -->
+                                                @foreach ($deposits as $deposit )
+                                                    <div class="nk-tb-item">
+                                                        <div class="nk-tb-col">
+                                                            <div class="nk-tnx-type">
+                                                               
+                                                                <div class="nk-tnx-type-text">
+                                                                    <span class="tb-lead">{{$deposit->ref}}</span>
+                                                                    <span class="tb-date">{{$deposit->created_at->format('d/m/y h:s A')}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="nk-tb-col tb-col-lg">
+                                                            <span class="tb-lead-sub">{{ $deposit->plan->name }}</span>
+                                                            <span class="badge badge-dot badge-success">{{ $deposit->plan->profit_rate}}% Daily for {{ $deposit->plan->package->duration}} Days</span>
+                                                        </div>
+                                                        <div class="nk-tb-col ">
+                                                            <span class="tb-amount">{{moneyFormat($deposit->amount,'USD')}}</span>
+                                                        </div>
+                                                        <div class="nk-tb-col  tb-col-sm">
+                                                            <span class="tb-amount">{{moneyFormat($deposit->paid_amount,'USD')}}</span>
+                                                        </div>
+                                                        <div class="nk-tb-col  tb-col-sm">
+                                                            <span class="tb-amount">{{$deposit->payment_method}}</span>
+                                                        </div>
+                                                       
+                                                        <div class="nk-tb-col nk-tb-col-status">
+                                                            <div class="dot dot-success d-md-none"></div>
+                                                             @if( $deposit->status == \App\Models\Deposit::STATUS_COMPLETED)
+                                                            <span class="badge badge-sm badge-dim badge-outline-success d-none d-md-inline-flex">Completed</span>
+                                                            @elseif ($deposit->status == \App\Models\Deposit::STATUS_CANCELED)
+                                                            <span class="badge badge-sm badge-dim badge-outline-warning d-none d-md-inline-flex">Cancelled</span>
+                                                            @else
+                                                             <span class="badge badge-sm badge-dim badge-outline-primary d-none d-md-inline-flex">Active</span>
+                                                            @endif
+                                                        </div>
 
+                                                         <div class="nk-tb-col tb-col-sm">
+                                                            <span class="tb-amount">{{$deposit->created_at}}</span>
+                                                        </div>
+                                                         <div class="nk-tb-col  tb-col-sm">
+                                                            <span class="tb-amount">{{$deposit->expires_at->diffForHumans()}}</span>
+                                                        </div>
+                                                    </div><!-- .nk-tb-item --> 
+                                                @endforeach
 
-
+                                                    
+                                                </div><!-- .nk-tb-list -->
+                                            </div><!-- .card-inner -->
+                                            <div class="card-inner">
+                                               {{$deposits->links()}}
+                                            </div><!-- .card-inner -->
+                                        </div><!-- .card-inner-group -->
+                                    </div><!-- .card -->
+                                </div><!-- .nk-block -->
+                            </div>
                         </div>
                     </div>
+                </div>
                
 @endsection
 @section('scripts')

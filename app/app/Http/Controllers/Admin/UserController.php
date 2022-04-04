@@ -96,8 +96,9 @@ class UserController extends Controller
         if (count($sort) > 0 && in_array($sort[0], $this->sortable))
             $query = $query->orderBy($sort[0], $sort[1]);
 
-
-        $users = $query->get();
+     $userss = $query->get();
+        $users = $query->paginate(10);
+        
 
         $breadcrumb = [
             [
@@ -109,6 +110,7 @@ class UserController extends Controller
         return view('admin.users', [
             'breadcrumb' => $breadcrumb,
             'users' => $users,
+            'userss' => $userss
         ]);
     }
 

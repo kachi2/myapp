@@ -1,486 +1,384 @@
-
-@extends('layouts.landing', ['page_title' => 'Home', 'heading' => 'Home', 'sub_heading' => 'Enjoy real benefits and rewards on your accrue mining.'])
+@extends('layouts.landing', ['page_title' => 'Home', 'heading' => 'Home'])
 @section('content')
   @include('partials.landing-header') 
-        <div class="intro-area">
-           <div class="main-overly"></div>
-            <div class="intro-carousel">
-                <div class="intro-content">
-                    <div class="slider-images">
-                        <img src="{{asset('/frontend/img/slider.jpg')}}" alt="">
-                    </div>
-                    <div class="slider-content">
-                        <div class="display-table">
-                            <div class="display-table-cell">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <!-- Start Slider content -->
-                                            <div class="slide-content text-center">
-                                                <h2 class="title2">Best secure investment plan</h2>
-                                                <div class="layer-1-3">
-                                                    <a href="{{route('register')}}" class="ready-btn left-btn" >Get started</a>
-                                                </div>
-                                            </div>
-                                            <!-- End Slider content -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+   <section id="main-content" class="">
+         <div id="demos">
+            <h2 style="display:none;">heading</h2>
+            <div id="carouselTicker" class="carouselTicker">
+               <ul class="carouselTicker__list">
+               @if(count($coins) > 0)
+               @foreach ($coins as  $coin )
+                  <li class="carouselTicker__item">
+                     <div class="coin_info">
+                        <div class="inner">
+                           <div class="coin_name">
+                              {{$coin['name']}}
+                              @if($coin['market_cap_change_percentage_24h'] > 0)
+                              <span class="update_change_plus">{{$coin['market_cap_change_percentage_24h']}}</span>
+                              @else
+                              <span class="update_change_minus">{{$coin['market_cap_change_percentage_24h']}}</span>
+                              @endif
+                           </div>
+                           <div class="coin_price">
+                             ${{number_format($coin['current_price'],2)}}
+                             @if($coin['price_change_24h'] > 0) 
+                             <span class="scsl__change_plus" style="color:lightgreen">{{$coin['price_change_24h']}}%</span>
+                             @else
+                             <span class="scsl__change_minus">{{$coin['price_change_24h']}}%</span>
+                             @endif
+                           </div>
+                           <div class="coin_time">
+                              ${{$coin['market_cap']}}
+                           </div>
                         </div>
-                    </div>
-                </div>
-                <div class="intro-content">
-                    <div class="slider-images">
-                        <img src="{{asset('/frontend/img/slider1.jpg')}}" alt="">
-                    </div>
-                    <div class="slider-content">
-                        <div class="display-table">
-                            <div class="display-table-cell">
-                                <div class="container">
-                                    <div class="row">
-                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <!-- Start Slider content -->
-                                            <div class="slide-content text-center">
-                                                <h2 class="title2">Acrabuscapital is a trading comapany you can trust</h2>
-                                                <div class="layer-1-3">
-                                                    <a href="{{route('register')}}" class="ready-btn left-btn" >Get started</a>
-                                                </div>
-                                            </div>
-                                            <!-- End Slider content -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                     </div>
+                  </li>  
+               @endforeach
+               @endif
+               </ul>
             </div>
-        </div>
-        <!-- End Slider Area -->
-          <div class="feature-area bg-color fix area-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="feature-content">
-                            <div class="feature-images">
-                                <img src="{{asset('/frontend/img/feature/f1.jpg')}}" alt="">
-                            </div>
+         </div>
+      </section>
+      <!-- market value slider end -->
+      <!-- full slider parallax section -->
+      <section id="full_slider" class="full_slider_inner padding_0">
+         <div class="main_slider">
+            <div id="bootstrap-touch-slider" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
+               <!-- Wrapper For Slides -->
+               <div class="carousel-inner" role="listbox">
+                  <!-- first Slide -->
+                  <div class="item active">
+                     <!-- Slide Background -->
+                     <img src="{{asset('/frontend_assets/images/slider_img2.png')}}" alt="Zenithcapital slider" class="slide-image"/>
+                          
+                     <div class="container">
+                        <div class="row">
+                            
+                           <!-- Slide Text Layer -->
+                           <div class="slide-text slide_style_left white_fonts">
+                              <h2 data-animation="animated">Secured  and <span style="color: #e9d16f;"> Easy </span><br> Way to <span style="color: #e9d16f;"> Trade  </span><br> <span style="color: #e9d16f;">Crytocurrency</span></h2>
+                              <a href="{{route('register')}}" class="btn btn-default active">Get started</a>
+                                <span > <img style="margin-top:-220px; margin-left:380px; width:90%" src="{{asset('/asset/image2.PNG')}}"  ></span>
+                           </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div class="feature-text">
-                            <h3>WE RE-INVENTED CRYPTO TRADING</h3>
-						    <p>Acrabuscapital is a highly trusted crypto Trading comapany, helping millions of individuals and firms across the globe to safely Trade and earn more with crypto currency</p>
-                            <ul>
-                               <li><a href="#">Automated and Robot analyzed trading system</a></li>
-                                <li><a href="#">Trading made easy, simple and fast</a></li>
-                                <li><a href="#">Safe secure platform, you are very much safe with Acrabuscapital system</a></li>
-                            </ul>
-                            <a class="feature-btn" href="{{route('index')}}">Register Now</a>
-                        </div>
-                    </div>
-                </div>
-             
-            </div>
-        </div>
-        <!-- Start Count area -->
-        <div class="counter-area fix area-padding-2">
-            <div class="container">
-                <!-- Start counter Area -->
-                 <div class="row">
-                    <div class="fun-content">
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <!-- fun_text  -->
-                            <div class="fun_text">
-                                <span class="counter-icon"><i class="flaticon-035-savings"></i></span>
-                                <span class="counter">$5974544</span>
-                                <h4>Total Deposited</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <!-- fun_text  -->
-                            <div class="fun_text">
-                               <span class="counter-icon"><i class="flaticon-034-reward"></i></span>
-                                <span class="counter">2209</span>
-                                <h4>Total Members</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <!-- fun_text  -->
-                            <div class="fun_text">
-                               <span class="counter-icon"><i class="flaticon-016-graph"></i></span>
-                                <span class="counter">$3974544</span>
-                                <h4>Total Payments</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <!-- fun_text  -->
-                            <div class="fun_text">
-                              <span class="counter-icon"><i class="flaticon-043-world"></i></span>
-                                <span class="counter">8</span>
-                                <h4>World Country</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Count area -->
-        <!-- Start Invest area -->
-        <div class="invest-area bg-color area-padding-2">
-            <div class="container">
-                <div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="section-headline text-center">
-                            <h3>The best investment plan</h3>
-                            <p>Choose the best plan for you.</p>
-						</div>
-					</div>
-				</div>
-                <div class="row">
-                    <div class="pricing-content">
-                     @foreach($packages as $package)
-                               @foreach($package->plans as $plan)
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="pri_table_list">
-                                <div class="top-price-inner">
-                                <span style="font-size:12px">{{ $package->name }}({{ $plan->name }})</span>
-                                   <div class="rates">
-                                        <span class="prices">{{ $plan->profit_rate }}%</span><span class="users"></span>
-                                    </div>
-                                    <span class="per-day">{{ $package->formatted_payment_period_alt2 }}</span>
-                                </div>
-                                <ol class="pricing-text">
-                                    <li class="check">Minimum Investment: {{ moneyFormat($plan->min_deposit, 'USD') }}</li>
-                                    <li class="check">Maximum Investment: {{ moneyFormat($plan->max_deposit, 'USD') }}</li>
-                                </ol>
-                                <div class="price-btn blue">
-                                    <a class="blue" href="#">Select Plan</a>
-                                </div>
-                            </div>
-                        </div>
-                           @endforeach
-                             @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Invest area -->
-        <!-- Start Support-service Area -->
-        <div class="support-service-area fix area-padding-2">
-            <div class="container">
-                <div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="section-headline text-center">
-                            <h3>Why choose Us</h3>
-                            <p>JOIN THE REVOLUTION AND START EARNING.</p>
-						</div>
-					</div>
-				</div>
-                <div class="row">
-                    <div class="support-all">
-                        <!-- Start About -->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="support-services wow ">
-                                <a class="support-images" href="#"><i class="flaticon-023-management"></i></a>
-                                <div class="support-content">
-                                    <h4>Expert Management</h4>
-                                    <p>We understands that crypto investment is a highly risky business, our trained expertize and robot systems enable us to make decisions</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Start About -->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="support-services ">
-                                <a class="support-images" href="#"><i class="flaticon-036-security"></i></a>
-                                <div class="support-content">
-                                    <h4>Secure investment</h4>
-                                    <p>Our user data and digital assets are secure stored in highly secured cloud system against DDoS attacks and our data are fully encrypted</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Start services -->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="support-services ">
-                                <a class="support-images" href="#"><i class="flaticon-003-approve"></i></a>
-                                <div class="support-content">
-                                    <h4>Investment Returns</h4>
-                                    <p>We work with professional Bitcoin analysts with years of experience in Bitcoin trading to bring more returns to your Trading.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Start services -->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="support-services">
-                                <a class="support-images" href="#"><i class="flaticon-042-wallet"></i></a>
-                                <div class="support-content">
-                                    <h4>Instant withdrawal</h4>
-                                    <p>Your investment is automatically sent to your wallet at the completion your compaigne without human intervention</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Start services -->
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Support-service Area -->
-        <!-- Start Self-area -->
-        
-        <!-- End Self-area -->
-        <!-- Start Work proses Area -->
-        <div class="work-proses fix bg-color area-padding-2">
-			<div class="container">
-			    <div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="section-headline text-center">
-                            <h3>Referral bonus level</h3>
-                            <p>There is a great reward for every hardwork, our referral program is perfect for everyone.</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="row">
-							<div class="work-proses-inner text-center">
-							    <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="single-proses">
-                                        <div class="proses-content">
-                                            <div class="proses-icon point-blue">
-                                                <span class="point-view">01</span>
-                                                <a href="#"><i class="ti-briefcase"></i></a>
-                                            </div>
-                                            <div class="proses-text">
-                                                <h4>Starter Account, instant $10</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End column -->
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="single-proses">
-                                        <div class="proses-content">
-                                            <div class="proses-icon point-orange">
-                                               <span class="point-view">02</span>
-                                                <a href="#"><i class="ti-layers"></i></a>
-                                            </div>
-                                            <div class="proses-text">
-                                                <h4>Regular Account, instant $15</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End column -->
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="single-proses last-item">
-                                        <div class="proses-content">
-                                            <div class="proses-icon point-green">
-                                               <span class="point-view">03</span>
-                                                <a href="#"><i class="ti-bar-chart-alt"></i></a>
-                                            </div>
-                                            <div class="proses-text">
-                                                <h4>Premium Account instant $25</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End column -->
-							</div>
-						</div>
-                    </div>
-				</div>
-			</div>
-		</div>
-        <!-- End Work proses Area -->
-        <!--Start payment-history area -->
-    
-        <!-- End payment-history area -->
-        <!-- Start Banner Area -->
-        <div class="banner-area area-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="banner-all area-80 text-center">
-                        
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                     <div><center><h2 style="color:#fff; font-weight:bold"> Crypto Live Updates</h2></center>
-                                <embed src="https://coinmarkets.today" style="width:100%; height: 400px;">
-                              
-                                <coingecko-coin-compare-chart-widget coin-ids="bitcoin,ethereum,eos,ripple,litecoin" currency="usd" locale="en"></coingecko-coin-compare-chart-widget>
-                            </div>
+                     </div>
                   </div>
+                  <div class="item">
+                     <!-- Slide Background -->
+                     <img src="{{asset('/frontend_assets/images/slider_img1.png')}}" alt="Bootstrap Touch Slider" class="slide-image" />
+                     <div class="container">
+                        <div class="row">
+                           <!-- Slide Text Layer -->
+                           <div class="slide-text slide_style_left white_fonts">
+                              <h2 data-animation="animated">Crypto <span style="color: #e9d16f;">Trading</span><br> Platform You can  <br><span style="color: #e9d16f;">Trust</span> Always</h2>
+                              <a href="{{route('register')}}" class="btn btn-default active">Get started</a>
+                               <span > <img style="margin-top:-270px; margin-left:450px; width:90%" src="{{asset('/asset/image3.PNG')}}"  ></span>
+                           </div>
                         </div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+                  <!-- second of Slide -->
+               </div>
+               <!-- End of Wrapper For Slides -->
+               <!-- Left Control -->
+               <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+               <span class="fa fa-angle-left" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+               </a>
+               <!-- Right Control -->
+               <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+               <span class="fa fa-angle-right" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+               </a>
             </div>
-        </div>
-        <!-- End Banner Area -->
-        <!-- Start Blog Area-->
+            <!-- End  bootstrap-touch-slider Slider -->
+         </div>
+      </section>
+       <section class="layout_padding">
+         <div class="container">
+            <div class="row">
+            
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="full our_work_type">
+                     <div class="center"><img src="{{asset('/frontend_assets/images/icon_3_b.png')}}" alt="#" /></div>
+                     <div class="center">
+                        <h4>Instant Trading</h4>
+                     </div>
+                     <div class="center">
+                        <p>Very simple and easy to use</p>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="full our_work_type">
+                     <div class="center"><img src="{{asset('/frontend_assets/images/icon_2_b.png')}}" alt="#" /></div>
+                     <div class="center">
+                        <h4>No Hidden Fees</h4>
+                     </div>
+                     <div class="center">
+                        <p>We are operating a clearly 100% transparent system.</p>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="full our_work_type">
+                     <div class="center"><img src="{{asset('/frontend_assets/images/icon_4_b.png')}}" alt="#" /></div>
+                     <div class="center">
+                        <h4>Secured and 24/7 Uptime</h4>
+                     </div>
+                     <div class="center">
+                        <p>Your privacy is our top priority.</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="full our_work_type">
+                     <div class="center"><img src="{{asset('/frontend_assets/images/icon_1_b.png')}}" alt="#" /></div>
+                     <div class="center">
+                        <h4>24/7 Customer Care Support</h4>
+                     </div>
+                     <div class="center">
+                        <p>We are always here to assist you.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <hr>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end section -->
+       <section class="layout_padding dark_bg">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="full">
+                     <div class="heading_main">
+                        <h2><span>Our Pricing Plan</span></h2>
+                        <p>Choose a plan that fits your lifestyle</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+             @foreach($packages as $package)
+            @foreach($package->plans as $plan)
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="full">
+                     <div class="coin_selling_bt">
+                        <ul>
+                           <li><a class="active" href="#">{{ $package->name }}</a></li>
+                           <li><a href="#">{{ $plan->name }}</a></li>
+                        </ul>
+                        <div class="coin_price_table">
+                           <h3> {{$plan->profit_rate }}% Daily - 7 Days</h3>
+                             <p>Minimum Investment: {{ moneyFormat($plan->min_deposit, 'USD') }}</p>
+                           <p>Maximum Investment: {{ moneyFormat($plan->max_deposit, 'USD') }}</p>
+                           <div class="center">
+                              <a class="pay_btn" href="{{route('register')}}">Buy Now</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               @endforeach
+               @endforeach
+            </div>
+         </div>
+      </section>
       
-        <!-- End Blog Area-->
-        <!-- Start reviews Area -->
-        <div class="reviews-area fix area-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="reviews-top">
-                        <div class="col-md-5 col-sm-5 col-xs-12">
-                            <div class="testimonial-inner">
-                                <div class="review-head">
-                                    <h3>What our customers say about Us</h3>
-                                    <p>Good work deserves good testimonies, read few of our customers testimonies. you can always drop your testimony on the dashoard</p>
-                                    <a class="reviews-btn" href="{{route('register')}}">Get Started</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-sm-7 col-xs-12">
-                            <div class="reviews-content">
-                                <!-- start testimonial carousel -->
-                                <div class="testimonial-carousel item-indicator">
-                                    <div class="single-testi">
-                                        <div class="testi-text">
-                                            <div class="clients-text">
-                                                <p>I am so delighted to be part of this campaign, you help me grow my savings weekly, am so glad</p>
-                                            </div>
-                                            <div class="testi-img ">
-                                                <div class="guest-details">
-                                                    <h4>James Wills</h4>
-                                                    <span class="guest-rev"><i class="fa fa-facebook"></i> - <a href="https://web.facebook.com/james.mills.5832">James Wills</a></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End single item -->
-                                    <div class="single-testi">
-                                        <div class="testi-text">
-                                            <div class="clients-text">
-                                              
-                                                <p>I started using this platform over 3 years and i must confess, am glad am here</p>
-                                            </div>
-                                            <div class="testi-img ">
-                                                <div class="guest-details">
-                                                    <h4>Henry Woods</h4>
-                                                    <span class="guest-rev"><i class="fa fa-facebook"></i> - <a href="https://web.facebook.com/henry.woods.3956">Angella Woods</a></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End single item -->
-                                    <div class="single-testi">
-                                        <div class="testi-text">
-                                            <div class="clients-text">
-                                                
-                                                <p>My friend James introduced me to Acrabuscapital last year, and since then, i have enjoyed my returns</p>
-                                            </div>
-                                            <div class="testi-img ">
-                                                <div class="guest-details">
-                                                    <h4>Arthur Rodriguez</h4>
-                                                    <span class="guest-rev"><i class="fa fa-facebook"></i> - <a href="https://web.facebook.com/arthur.rodriguez">Arthur Rodriguez</a></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End single item -->
-                                  
-                                    <!-- End single item -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <section class="layout_padding ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="full">
+                        <h6 class="heading_style2">Fast and Reliable withdrawal System</h6>
+                        <hr>
+                        <h3 class="">Withdrawals are 100% automated, you can withdraw anytime, any day you desires. </h3>
+                     </div>
                 </div>
+                 <div class="col-md-6 col-sm-12 col-xs-12">
+                 <img src="{{asset('/asset/image7.PNG')}}" style="width:140%">
+                 </div>
             </div>
         </div>
-        <!-- End reviews Area -->
-        <!-- Start FAQ area -->
-        <div class="faq-area bg-color area-padding">
-            <div class="container">
-               <div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="section-headline text-center">
-                            <h3>Most Frequently asked questions</h3>
-                            <hr>
-                       </div>
-					</div>
-				</div>
-                <div class="row">
-                    <!-- Start Column Start -->
-                    <div class="col-md-12 col-sm-8 col-xs-12">
-                        <div class="company-faq">
-                            <div class="faq-full">
-								<div class="faq-details">
-									<div class="panel-group" id="accordion">
-										<!-- Panel Default -->
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<h4 class="check-title">
-													<a data-toggle="collapse" class="active" data-parent="#accordion" href="#check1">
-														<span class="acc-icons"></span>HOW CAN I INVEST WITH ACRABUSCAPITAL
-													</a>
-												</h4>
-											</div>
-											<div id="check1" class="panel-collapse collapse in">
-												<div class="panel-body">
-													     <p>To invest on our system, you must be a registered member . Once you are signed up, you can make your first deposit. You can login using the member username and password you receive when signup.</p>
-								
-												</div>
-											</div>
-										</div>
-										<!-- End Panel Default -->
-										<!-- Panel Default -->
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<h4 class="check-title">
-													<a data-toggle="collapse" data-parent="#accordion" href="#check2">
-														<span class="acc-icons"></span>I WISH TO INVEST WITH ACRABUSCAPITAL BUT I DON'T HAVE AN ANY ECURRENCY ACCOUNT. WHAT SHOULD I DO?
-													</a>
-												</h4>
-											</div>
-											<div id="check2" class="panel-collapse collapse">
-												<div class="panel-body">
-													<p>
-														You can open a free Bitcoin account here: www.coinbase.com
-													</p>										
-												</div>
-											</div>
-										</div>
-										<!-- End Panel Default -->
-										<!-- Panel Default -->
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<h4 class="check-title">
-													<a data-toggle="collapse" data-parent="#accordion" href="#check3">
-														<span class="acc-icons"></span>HOW CAN I WITHDRAW FUNDS? 
-													</a>
-												</h4>
-											</div>
-											<div id="check3" class="panel-collapse collapse ">
-												<div class="panel-body">
-													<p>
-														Login to your account using your username and password and check the Withdrawal section.
-													</p>	
-												</div>
-											</div>
-										</div>
-										<!-- End Panel Default -->	
-										<!-- Panel Default -->
-									
-										<!-- End Panel Default -->
-										<!-- Panel Default -->
-										
-										<!-- End Panel Default -->										
-									</div>
-								</div>
-								<!-- End FAQ -->
-							</div>
-                        </div>
-                    </div>
-                    <!-- End Column -->
-             
-                    <!-- End Column -->
+    </section> 
+           <hr style="background:#000; height:20px">
+        
+      <section class="layout_padding ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="full">
+                        <h6 class="heading_style2"> 100% transparent system</h6>
+                        <hr>
+                        <h3 class="">You can cleary monitor your daily payouts, our system is trusted by over 5000 investors across the globe</h3>
+                     </div>
                 </div>
+                 <div class="col-md-6 col-sm-12 col-xs-12">
+                 <img src="{{asset('/asset/image6.PNG')}}" style="width:140%">
+                 </div>
             </div>
         </div>
+    </section>
+      <!-- section -->
+      <section class="layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="full">
+                     <div class="heading_main">
+                        <h2><span>Crypto Live Exchange Rates</span></h2>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="full table-responsive">
+                     <table class="table table-striped">
+                        <thead>
+                           <tr>
+                              <th>Symbol</th>
+                              <th>Name</th>
+                              <th>USD</th>
+                              <th>Change 1h</th>
+                              <th>Change 12h</th>
+                              <th>Change 24h</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($coins as $cc )
+                           <tr class="active_table">
+                              <td>{{strtoupper($cc['symbol'])}}</td>
+                              <td>{{$cc['name']}}</td>
+                              <td>{{number_format($cc['current_price'])}}</td>
+                            @if($cc['price_change_percentage_24h'] > 0)  <td style="color:lightgreen">{{$cc['price_change_percentage_24h']}}%</td> @else
+                            <td style="color:red">{{$cc['price_change_percentage_24h']}}%</td>
+                            @endif
+
+                             @if($cc['market_cap_change_percentage_24h'] > 0)  <td style="color:lightgreen">{{$cc['market_cap_change_percentage_24h']}}%</td> @else
+                            <td style="color:red">{{$cc['market_cap_change_percentage_24h']}}%</td>
+                            @endif
+
+                             @if($cc['market_cap_change_percentage_24h'] > 0)  <td style="color:lightgreen">{{$cc['market_cap_change_percentage_24h']}}%</td> @else
+                            <td style="color:red">{{$cc['market_cap_change_percentage_24h']}}%</td>
+                            @endif
+                           </tr>
+                          @endforeach
+                         
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end section -->
+      <!-- section -->
+      
+      <section class="layout_padding dark_bg white_fonts">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="full">
+                     <div class="heading_main">
+                        <h2><span>Why Choose Zenithcapital?</span></h2>
+                        <p> Join the revolution and start earning</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row" style="margin-top:20px;">
+               <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="full">
+                     <div class="cryto_feature">
+                        <ul>
+                           <li>
+                              <div class="pull-left"><img src="{{asset('/frontend_assets/images/f2.png')}}" alt="#" /></div>
+                              <div>
+                                 <h3>Seamless Transaction</h3>
+                                 <p>Providing 24/7 server uptime</p>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="pull-left"><img src="{{asset('/frontend_assets/images/f3.png')}}" alt="#" /></div>
+                              <div>
+                                 <h3>Secure and Stable</h3>
+                                 <p>Our user data and digital assets are secure with fully data encryption</p>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="pull-left"><img src="{{asset('/frontend_assets/images/f4.png')}}" alt="#" /></div>
+                              <div>
+                                 <h3>Amazing Returns</h3>
+                                 <p>We work with professional Bitcoin analysts with years of experience in Bitcoin trading to bring more returns to your Trading.</p>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="full digital_earth">
+                     <img src="{{asset('/frontend_assets/images/bg3_new.png')}}" alt="#" />
+                  </div>
+               </div>
+               <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="full">
+                     <div class="cryto_feature right_text">
+                        <ul>
+                           <li>
+                              <div>
+                                 <h3>Cost Efficiency</h3>
+                                 <p>Reasonable trading fees for takers and all market makers</p>
+                              </div>
+                              <div class="pull-right"><img src="{{asset('/frontend_assets/images/f5.png')}}" alt="#" /></div>
+                           </li>
+                           <li>
+                              <div>
+                                 <h3>24/7 Trading</h3>
+                                 <p>Our Team are available 24h/7 to attend to your request</p>
+                              </div>
+                              <div class="pull-right"><img src="{{asset('/frontend_assets/images/f6.png')}}" alt="#" /></div>
+                           </li>
+                           <li>
+                              <div>
+                                 <h3>Free Consulting</h3>
+                                 <p>No matter what the issues is, your account can never be charged for support rendered</p>
+                              </div>
+                              <div class="pull-right"><img src="{{asset('/frontend_assets/images/f1.png')}}" alt="#" /></div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end section -->
+      <!-- section -->
+      <section class="layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="full">
+                     <div class="heading_main">
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-2 col-sm-12 col-xs-12"></div>
+            </div>
+         </div>
+      </section>
+    
 
   @include('partials.landing-footer')
 @endsection

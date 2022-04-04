@@ -129,7 +129,7 @@
 }
 @if($rtl==true){
     .ni {
-        &[class*="left"],&[class*="right"], &[class*="back-ios"], &[class*="forward-ios"]  {
+        &[class*="left"],&[class*="right"], &[class*="back-ios"], &[class*="forward-ios"] {
         transform: scale(-1);
             .btn > span + & {
                 @if($rtl==false){

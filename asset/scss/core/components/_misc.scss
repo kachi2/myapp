@@ -54,12 +54,12 @@
     font-family: $base-font-family !important;
     color: $base-color !important;
     @if($rtl==false){
-        margin-left: 0 !important;
         left: 0;
+        margin-left: 0 !important;
     }
     @if($rtl==true){
-        margin-right: 0 !important;
         right: 0;
+        margin-right: 0 !important;
     }
     border: none;
     &:focus{

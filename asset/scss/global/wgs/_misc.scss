@@ -75,11 +75,11 @@
 		position: relative;
 		@if($rtl==false){
 			padding-left: 2rem;
-			padding-right: .5rem;
+			padding-right: 1rem;
 		}
 		@if($rtl==true){
 			padding-right: 2rem;
-			padding-left: .5rem;
+			padding-left: 1rem;
 		}
 		.icon{
 			font-size: 1.5rem;

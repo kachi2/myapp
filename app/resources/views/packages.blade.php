@@ -4,46 +4,33 @@
 <div class="nk-content nk-content-fluid">
                     <div class="container-xl wide-lg">
                         <div class="nk-content-body">
-                            <div class="nk-block-head nk-block-head-lg wide-xs mx-auto">
-                                <div class="nk-block-head-content text-center">
-                                    <h4 class="nk-block-title fw-normal">Select Investment Package</h4>
-                                   
-                                </div>
-                            </div><!-- .nk-block-head -->
+                           <div class="nk-block-between g-3 p-2">
+                               <div class="nk-block-head-content">
+                                   <h3 class="nk-block-title page-title">Investment Package</h3>
+                                   <div class="nk-block-des text-soft"><p>Select Investment Package and start enjoying our service.</p>
+                                   </div></div></div><!-- .nk-block-head -->
                             <div class="nk-block">
                                 <div class="card card-custom-s1 ">
                                     <div class="row no-gutters">
                                     @forelse($packages as $package)
                                         @foreach($package->plans as $plan)
-                                        <div class="col-lg-4">
-                                            <div class="card-inner-group h-100 card-bordered">
-                                                <div class="card-inner">
-                                                     <center>  <h6>{{ $plan->package->name }} ({{ $plan->name }})</h6></center>
-                                                   <center> <h5 class="btn btn-light" style="margin-top:20px"> {{ $plan->profit_rate }}% / {{ $plan->package->formatted_payment_period_alt }}</h5></center>
-                                               </div>
-                                                <div class="card-inner">
-                                                    <ul class="list list-step">
-                                                        <li class="list-step-done">Minimum Deposit: {{ moneyFormat($plan->min_deposit, 'USD') }}</li>
-                                                        <li class="list-step-done">Maximum Deposit: {{ moneyFormat($plan->max_deposit, 'USD') }}</li>
-                                                        <li class="list-step-done">Automatic Withdrawal</li>
-                                                        <li class="list-step-done">24x7 Support</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="card-inner">
-                                                    <div class="align-center gx-3">
-                                                        <div class="flex-item">
-                                                            <div  style="width:50px">
-                                                               
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-item">
-                                                            <a href="{{ route('deposits.invest', ['id' => $plan->id]) }}" class="btn btn-primary">Select Package</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                             @endforeach
+                                      <div class="col-md-6 col-xxl-3"><div class="card card-bordered pricing">
+                                <div class="pricing-head"><div class="pricing-title">
+                                    <h4 class="card-title title">{{ $package->name }}({{ $plan->name }})</h4>
+                                    <p class="sub-text">  invest  in {{ $plan->name }} &amp; earn {{ $plan->profit_rate }}% interest.</p></div>
+                                    <div class="card-text"><div class="row"><div class="col-6">
+                                        <span class="h4 fw-500">{{ $plan->profit_rate }}%</span><span class="sub-text">{{ $package->formatted_payment_period_alt2 }} Interest</span></div>
+                                        <div class="col-6"><span class="h4 fw-500">7</span><span class="sub-text">Days</span></div></div></div>
+                                        </div><div class="pricing-body"><ul class="pricing-features"><li><span class="w-50">Min Deposit</span> - <span class="ml-auto">{{ moneyFormat($plan->min_deposit, 'USD') }}</span></li>
+                                        <li><span class="w-50">Max Deposit</span> - <span class="ml-auto">{{ moneyFormat($plan->max_deposit, 'USD') }}</span></li>
+                                        <li ><span class="w-50">24x7 Support</span> - <span class="ml-auto">Yes</span></li>
+                                        <li><span class="w-50">Automatic Withdrawal</span> - <span class="ml-auto">Yes</span></li>
+                                        
+                                        </ul>
+                                        <div class="pricing-action">
+                                            <a href="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}" class="btn btn-primary">Choose this plan</a>
+                                            </div></div></div></div>
+                                     @endforeach
                                         @empty
                                          @endforelse 
                                         <!-- .col -->

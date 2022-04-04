@@ -2,24 +2,62 @@
 @section('content')
   @include('partials.landing-header') 
      <!-- Banner Area Starts -->
-           <div class="page-area">
-            <div class="breadcumb-overlay"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="breadcrumb text-center">
-                            <div class="section-headline white-headline">
-                                <h3>FAQ</h3>
-                            </div>
-                            <ul class="breadcrumb-bg">
-                                <li class="home-bread">Home</li>
-                                <li>FAQ</li>
+   <section id="main-content" class="">
+         <div id="demos">
+            <h2 style="display:none;">heading</h2>
+            <div id="carouselTicker" class="carouselTicker">
+               <ul class="carouselTicker__list">
+               @if(count($coins) > 0)
+               @foreach ($coins as  $coin )
+                  <li class="carouselTicker__item">
+                     <div class="coin_info">
+                        <div class="inner">
+                           <div class="coin_name">
+                              {{$coin['name']}}
+                              @if($coin['market_cap_change_percentage_24h'] > 0)
+                              <span class="update_change_plus">{{$coin['market_cap_change_percentage_24h']}}</span>
+                              @else
+                              <span class="update_change_minus">{{$coin['market_cap_change_percentage_24h']}}</span>
+                              @endif
+                           </div>
+                           <div class="coin_price">
+                             ${{number_format($coin['current_price'],2)}}
+                             @if($coin['price_change_24h'] > 0) 
+                             <span class="scsl__change_plus" style="color:lightgreen">{{$coin['price_change_24h']}}%</span>
+                             @else
+                             <span class="scsl__change_minus">{{$coin['price_change_24h']}}%</span>
+                             @endif
+                           </div>
+                           <div class="coin_time">
+                              ${{$coin['market_cap']}}
+                           </div>
+                        </div>
+                     </div>
+                  </li>  
+               @endforeach
+               @endif
+               </ul>
+            </div>
+         </div>
+      </section>
+        <section id="inner_page_infor" class="innerpage_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="full">
+                        <div class="inner_page_info">
+                            <h3>FAQ</h3>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><i class="fa fa-angle-right"></i></li>
+                                <li><a href="#">FAQ</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
         <!-- Banner Area Ends -->
         <!-- Section FAQ Starts -->
            <div class="faq-area bg-color area-padding">
@@ -44,7 +82,7 @@
 											<div class="panel-heading">
 												<h4 class="check-title">
 													<a data-toggle="collapse" class="active" data-parent="#accordion" href="#check1">
-														<span class="acc-icons"></span>HOW CAN I INVEST WITH Acrabuscapital
+														<span class="acc-icons"></span>HOW CAN I INVEST WITH ZENITHCAPITAL
 													</a>
 												</h4>
 											</div>
@@ -61,7 +99,7 @@
 											<div class="panel-heading">
 												<h4 class="check-title">
 													<a data-toggle="collapse" data-parent="#accordion" href="#check2">
-														<span class="acc-icons"></span>I WISH TO INVEST WITH Acrabuscapital BUT I DON'T HAVE AN ANY ECURRENCY ACCOUNT. WHAT SHOULD I DO?
+														<span class="acc-icons"></span>I WISH TO INVEST WITH ZENITHCAPITAL BUT I DON'T HAVE AN ANY ECURRENCY ACCOUNT. WHAT SHOULD I DO?
 													</a>
 												</h4>
 											</div>

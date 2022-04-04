@@ -46,7 +46,7 @@ class InvestmentAdded extends Notification
     {
         return (new MailMessage)
                     ->subject('Deposit Successful #'.$this->trade->ref)
-                    ->from('support@aldencapital.cc', 'Aldencapital')
+                    ->from('support@zenithcapital.cc', 'Zenithcapital')
                     ->view('emails.deposit-created', ['deposit' => $this->trade]);
     }
 

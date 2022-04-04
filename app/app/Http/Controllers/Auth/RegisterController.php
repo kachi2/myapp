@@ -5,12 +5,16 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Mail\Register;
 use App\Models\Referral;
+use App\Models\UserWallet;
 use App\User;
 use Exception;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -35,7 +39,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/complete-registration';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -61,6 +65,7 @@ class RegisterController extends Controller
             //'username' => ['required', 'alpha_num', 'max:120', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
+            'username' => ['required', 'alpha_num', 'max:120', 'unique:users'],
         ]);
     }
 
@@ -70,15 +75,39 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create_user(Request $data)
     {
-        return User::create([
+        
+         $validate = $this->validate($data, [
+            //'first_name' => ['required', 'string', 'max:120'],
+            //'last_name' => ['required', 'string', 'max:120'],
+            //'username' => ['required', 'alpha_num', 'max:120', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'username' => ['required', 'alpha_num', 'max:120', 'unique:users'],
+        ]);
+        
+        if(!$validate){
+            return back()->withInput($data->all())->InputErrors($validate);
+        }
+        
+        $create =  User::create([
             //'first_name' => $data['first_name'],
            // 'last_name' => $data['last_name'],
            // 'username' => $data['username'],
             'email' => $data['email'],
+            'username' => $data['username'],
             'password' => Hash::make($data['password']),
         ]);
+        
+        if($create){
+            $users = User::latest()->first();
+            $bonusAmount = 10;
+        UserWallet::addBonus($users, $bonusAmount);
+        Auth::login($users);
+        return redirect()
+            ->to($this->redirectTo);
+    }
     }
 
     protected function registered(Request $request, $user)
@@ -95,6 +124,7 @@ class RegisterController extends Controller
 
         }
 
+        
         return $this->traitRegistered($request, $user);
     }
 
@@ -106,4 +136,5 @@ class RegisterController extends Controller
             'interest' => 0
         ]);
     }
+    
 }

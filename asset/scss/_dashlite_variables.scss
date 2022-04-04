@@ -49,15 +49,15 @@ $base-light:  		$base-400;
 $base-dim:  		mix($base-color,$white, 8%);
 
 // Base/Default color @used for text
-$accent-100:        #e1eeff;
-$accent-200:        #cee3ff;
-$accent-300:        #a9cdff;
-$accent-400:        #6baafe;
-$accent-500:        #3a8dfe;
+$accent-100:  		#eff1ff;
+$accent-200:  		#e3e7fe;
+$accent-300:  		#c4cefe;
+$accent-400:  		#9cabff;
+$accent-500:  		#798bff;
 
-$accent-color:      #0971fe;
-$accent-light:      $accent-300;
-$accent-dark:       #0b3175;
+$accent-color:  	#6576ff;
+$accent-light:  	$accent-300;
+$accent-dark:  		#2c3782;
 $accent-dim:  	    #e3e7fe;
 
 
@@ -161,7 +161,7 @@ $stretch-gap-x:          (4px + ($gutter-width/2));
 
 $base-font-family: 		Roboto, sans-serif;
 $base-line-height:		1.65;
-$alt-font-family: 		Nunito, sans-serif;
+$alt-font-family: 		$base-font-family;
 
 $lg-base:				$base-line-height;
 $lh-rg:					$base-line-height;
@@ -729,6 +729,8 @@ $sidebar-width-fat:                 400px;
 $sidebar-width-fat-tablet:          340px;
 $sidebar-gap-x-fat:                 32px;
 $sidebar-gap-x-fat-tablet:          16px;
+$sidebar-fat-transition-name:       ease;
+$sidebar-fat-transition-duration:   450ms;
 
 // Apps Sidebar
 $sidebar-width-apps:                 80px;
@@ -756,7 +758,7 @@ $sidebar-toogle-btn-color:			$base-500;
 
 // Content
 $content-gap-x:                     20px - ($gutter-width/2);
-$content-gap-x-sm:                  36px - ($gutter-width/2);
+$content-gap-x-sm:                  28px - ($gutter-width/2);
 $content-gap-y:                     24px;
 $content-sidebar-width:             280px;
 

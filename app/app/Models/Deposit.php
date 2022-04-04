@@ -75,7 +75,8 @@ class Deposit extends Model
         'payment_method',
         'paid_amount',
         'expires_at',
-        'status'
+        'status',
+        'hash_no'
     ];
 
     /**
@@ -204,4 +205,6 @@ class Deposit extends Model
     {
         return route('deposit', ['ref' => $this->ref]);
     }
+
+   
 }

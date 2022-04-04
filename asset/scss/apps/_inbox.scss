@@ -109,16 +109,16 @@ $ibx-aside-width :      260px;
     position: relative;
     display: flex;
     overflow: hidden;
-    min-height: calc(100vh - (#{$header-height} + 64px));
-    max-height: calc(100vh - (#{$header-height} + 64px));
+    min-height: calc(100vh - #{$header-height});
+    max-height: calc(100vh - #{$header-height});
     background: $white;
     &-aside{
         position: absolute;
         background: $white;
         width: $ibx-aside-width;
         overflow: hidden;
-        height: 100%;
-        max-height: 100%;
+        min-height: calc(100vh - #{$header-height});
+        max-height: calc(100vh - #{$header-height});
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -135,10 +135,14 @@ $ibx-aside-width :      260px;
         transition: transform .4s linear;
         + .toggle-overlay{
             z-index: 90;
-            position: absolute;
         }
         &.content-active{
             transform: none;
+        }
+        .simplebar-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
     }
     &-nav{
@@ -146,11 +150,6 @@ $ibx-aside-width :      260px;
         flex-grow: 1;
         height: 100%;
         max-width: 100%;
-        .simplebar-content{
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
         &-head{
             display: flex;
             align-items: center;
@@ -358,9 +357,9 @@ $ibx-aside-width :      260px;
         padding-bottom: 1.75rem;
     }
     &-status{
-        margin-top: auto;
         background: $lighter;
         padding: 1.5rem 1.5rem;
+        margin-top: auto;
         &-info{
             margin-bottom: 0.5rem;
             .icon{
@@ -630,7 +629,7 @@ $ibx-aside-width :      260px;
             position: static;
             transform: none;
             transition: none;
-            height: calc(100vh - 128px);
+            height: calc(100vh - 150px);
         }
         &-menu,&-label,&-contact{
             padding-left: 1rem;
@@ -757,6 +756,7 @@ $ibx-aside-width :      260px;
             }
             &-user{
                 flex-grow: 1;
+                // width: calc(100% - 40px);
                 .user-avatar{
                     height: 28px;
                     width: 28px;
@@ -862,7 +862,6 @@ $ibx-aside-width :      260px;
         }
     }
 }
-
 @include media-breakpoint-between(sm,md){
     .nk-ibx{
         &-aside {
@@ -872,7 +871,7 @@ $ibx-aside-width :      260px;
            padding-left: 1.5rem; 
            padding-right: 1.5rem; 
         }
-        &-nav-head, &-status {
+        &-nav-head{
             padding-left: 2.25rem;
             padding-right: 2.25rem;
         }

@@ -13,33 +13,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=10;IE=edge">
     <meta name="keywords" content="crypto, Trading, Cryptocurrency, Cryptocurrency Trading, Investments, Trading comapany, Brokers, Bitcoin, Bitcoin trading">
     <meta name="description" content="{{config('app.name')}} is a highly trusted crypto Trading comapany, helping millions of individuals and firms across the globe to safely Trade and earn more with crypto currency.">
+<meta name="google-site-verification" content="_cvnv3B2JCbGPq6_kmNxoIa_CisW_8P8S96-Bh2nN4Q" />
+	<link rel="icon" href="{{asset('/frontend_assets/images/fevicon/fav.png')}}" type="image/gif" />
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{{asset('/frontend_assets/css/bootstrap.min.css')}}" />
+      <!-- Site CSS -->
+      <link rel="stylesheet" href="{{asset('/frontend_assets/css/style.css')}}" />
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="{{asset('/frontend_assets/css/responsive.css')}}" />
+      <!-- Colors CSS -->
+      <link rel="stylesheet" href="{{asset('/frontend_assets/css/colors.css')}}" />
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="{{asset('/frontend_assets/css/custom.css')}}" />
+      <!-- Counter CSS -->
+      <link rel="stylesheet" href="{{asset('/frontend_assets/css/jquery.countdown.css')}}" />
+      <!-- Wow Animation CSS -->
+      <link rel="stylesheet" href="{{asset('/frontend_assets/css/animate.css')}}" />
+      <!-- Market value slider CSS -->
+      <link rel="stylesheet" type="text/css" href="{{asset('/frontend_assets/css/carouselTicker.css')}}" media="screen" />
+      <link href="{{asset('/frontend_assets/animate.css/3.5.2/animate.min.css')}}" rel="stylesheet" media="all">
+      
+      <style type="text/css">
+ 
+ /*google translate Dropdown */
+ 
+ #google_translate_element select{
+ background:#f6edfd;
+ color:#383ffa;
+ border: none;
+ border-radius:3px;
+ padding: 3px;
+ margin: 2px 2px 2px 8px;
+ }
+ 
+ /*google translate link | logo */
+   .goog-logo-link{
+   display:none!important;
+   }
+ .goog-te-gadget{
+ color:transparent!important;
+ }
+ 
+ /* google translate banner-frame */
+ 
+ .goog-te-banner-frame{
+ display:none !important;
+ }
+ 
+ #goog-gt-tt, .goog-te-balloon-frame{display: none !important;}
+.goog-text-highlight { background: none !important; box-shadow: none !important;}
+ 
+ body{top:0!important;}
+   </style>
 
-		<!-- favicon -->		
-		<link rel="shortcut icon" type="image/x-icon" href="{{asset('/fav.png')}}">
+   <script>
+ function googleTranslateElementInit() {
+ new google.translate.TranslateElement({
+ pageLanguage: 'en',
+ autoDisplay: 'true',
+ layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+ }, 'google_translate_element');
+ }
+ </script>
+ <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
 
-		<!-- all css here -->
-		<!-- bootstrap v3.3.6 css -->
-		<link rel="stylesheet" href="{{asset('/frontend/css/bootstrap.min.css')}}">
-		<!-- owl.carousel css -->
-		<link rel="stylesheet" href="{{asset('/frontend/css/owl.carousel.css')}}">
-		<link rel="stylesheet" href="{{asset('/frontend/css/owl.transitions.css')}}">
-       <!-- Animate css -->
-        <link rel="stylesheet" href="{{asset('/frontend/css/animate.css')}}">
-        <!-- meanmenu css -->
-        <link rel="stylesheet" href="{{asset('/frontend/css/meanmenu.min.css')}}">
-		<!-- font-awesome css -->
-		<link rel="stylesheet" href="{{asset('/frontend/css/font-awesome.min.css')}}">
-		<link rel="stylesheet" href="{{asset('/frontend/css/themify-icons.css')}}">
-		<link rel="stylesheet" href="{{asset('/frontend/css/flaticon.css')}}">
-		<!-- magnific css -->
-        <link rel="stylesheet" href="{{asset('/frontend/css/magnific.min.css')}}">
-		<!-- style css -->
-		<link rel="stylesheet" href="{{asset('/frontend/style.css')}}">
-		<!-- responsive css -->
-		<link rel="stylesheet" href="{{asset('/frontend/css/responsive.css')}}">
-
-		<!-- modernizr css -->
-		<script src="{{asset('/frontend/js/vendor/modernizr-2.8.3.min.js')}}"></script>
 	</head>
 		<body>
 
@@ -48,44 +85,22 @@
 		<!-- all js here -->
 
 		<!-- jquery latest version -->
-		<script src="{{asset('/frontend/js/vendor/jquery-1.12.4.min.js')}}"></script>
-		<!-- bootstrap js -->
-		<script src="{{asset('/frontend/js/bootstrap.min.js')}}"></script>
-		<!-- owl.carousel js -->
-		<script src="{{asset('/frontend/js/owl.carousel.min.js')}}"></script>
-		  <!-- stellar js -->
-        <script src="{{asset('/frontend/js/jquery.stellar.min.js')}}"></script>
-		<!-- magnific js -->
-        <script src="{{asset('/frontend/js/magnific.min.js')}}"></script>
-        <!-- wow js -->
-        <script src="{{asset('/frontend/js/wow.min.js')}}"></script>
-        <!-- meanmenu js -->
-        <script src="{{asset('/frontend/js/jquery.meanmenu.js')}}"></script>
-		<!-- Form validator js -->
-		<script src="{{asset('/frontend/js/form-validator.min.js')}}"></script>
-		<!-- plugins js -->
-		<script src="{{asset('/frontend/js/plugins.js')}}"></script>
-		<!-- main js -->
-		<script src="{{asset('/frontend/js/main.js')}}"></script>
+		<script src="{{asset('/frontend_assets/js/jquery.min.js')}}"></script>
+      <!-- custom js -->
+      <script src="{{asset('/frontend_assets/js/custom.js')}}"></script>
 
-
-           <div class="" style="position: fixed; left: 0; bottom: 0; width: 100%; text-align: center; height: 40px; display: flex;">
-    <p style="flex: 0.90;"></p>
-    <script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
-    <coingecko-coin-price-marquee-widget coin-ids="bitcoin,ethereum,eos,ripple,litecoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
-    </div>
-	<!--Start of Tawk.to Script-->
+<!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
-s1.src='https://embed.tawk.to/614fe9f225797d7a8900d7dd/1fgg2jnp8';
+s1.src='https://embed.tawk.to/61e72346b84f7301d32bb46b/1fpne3jo7';
 s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<!--End of Tawk.to Script-->
-	</body>
+ 
+<!--End of Tawk.to Script-->	</body>
 </html>

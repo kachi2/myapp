@@ -7,7 +7,7 @@
     flex-direction: column;
     padding-top: 1rem;
 	&-ck{
-		height: 160px;
+		height: 200px;
 		margin: auto 0;
 	}
 	&-group{
@@ -75,10 +75,10 @@
 			.dot{
 				@if($rtl==false){
 					margin-right: 0.5rem;
-                }
-                @if($rtl==true){
+				}
+				@if($rtl==true){
 					margin-left: 0.5rem;
-                }
+				}
 			}
 		}
 		.amount{
@@ -131,10 +131,10 @@
                 width: 100%;
 				@if($rtl==false){
 					padding-left: 1.25rem;
-                }
-                @if($rtl==true){
+				}
+				@if($rtl==true){
 					padding-right: 1.25rem;
-                }
+				}
             }
         }
     }
@@ -176,10 +176,10 @@
 		font-size: $fx-sz-13;
 		@if($rtl==false){
 			margin-left: -0.125rem;
-		}
-		@if($rtl==true){
+        }
+        @if($rtl==true){
 			margin-right: -0.125rem;
-		}
+        }
 	}
 	.subtitle{
 		font-size: $fx-sz-12;
@@ -251,11 +251,11 @@
 		@if($rtl==false){
 			text-align: right;
 			margin-left: .5rem;
-		}
-		@if($rtl==true){
+        }
+        @if($rtl==true){
 			text-align: left;
 			margin-right: .5rem;
-		}
+        }
 	}
 }
 @media (min-width:420px) and (max-width:767px){
@@ -313,7 +313,7 @@
 				text-align: right;
 			}
 			@if($rtl==true){
-				text-align: left;
+				text-align: right;
 			}
 			color:$base-light;
 		}

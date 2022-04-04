@@ -14,6 +14,7 @@ use App\User;
 use App\UserNotify;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Models\Deposit;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 
@@ -88,6 +89,12 @@ class WalletController extends Controller
     public function doTransfer(Request $request)
     {
         $wallet = $request->user()->wallet->transferable_amount;
+        $ss = Deposit::where('user_id', $request->user()->id)->sum('amount');
+        if($ss < 2000){
+            Session::flash('msg', 'danger');
+            Session::flash('message', 'Request failed, your deposit history is too low for this service');
+            return redirect()->back();
+           }
         $this->validate($request, [
             'amount' => 'required|integer|max:' . $wallet,
             'username' => 'required|exists:users',
@@ -107,6 +114,13 @@ class WalletController extends Controller
             'amounts' => 'required|integer|min:0',
             'bonus' => 'required|integer'
         ]);
+
+        $ss = Deposit::where('user_id', $request->user()->id)->sum('amount');
+        if($ss < 5000){
+            Session::flash('msg', 'danger');
+            Session::flash('message', 'Request failed, your deposit history is too low for this service');
+            return redirect()->back();
+           }
             if($request->bonus == 1){
                  $bonus = auth()->user()->wallet->bonus;
                 if($bonus >= $request->amounts){
@@ -149,7 +163,7 @@ class WalletController extends Controller
             }
        
             Session::flash('alert', 'success');
-            Session::flash('message', 'Notifications Clear Successfully');
+            Session::flash('message', 'Notifications cleared Successfully');
             return back();
     }
 }

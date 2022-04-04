@@ -89,12 +89,7 @@
                                                         
                                                     </div><!-- .user-card -->
                                                 </div><!-- .card-inner -->
-                                                <div class="card-inner">
-                                                    <div class="user-account-info py-0">
-                                                        <h6 class="overline-title-alt">Wallet Balance</h6>
-                                                        <div class="user-balance">{{moneyFormat(auth_user()->wallet->amount, 'USD')}} </div>
-                                                    </div>
-                                                </div><!-- .card-inner -->
+                                               <!-- .card-inner -->
                                                 <div class="card-inner p-0">
                                                     <ul class="link-list-menu">
                                                         <li><a class="active" href="{{ route('account') }}"><em class="icon ni ni-user-fill-c"></em><span>Personal Infomation</span></a></li>

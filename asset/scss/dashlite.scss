@@ -29,12 +29,11 @@
 $rtl: false;
 
 // Included Global Variables and Functions
-@import "_dashlite_variables";
+@import "dashlite_variables";
 
 // Included Fonts
 /** 01. FONTS */
 @import "core/fonts/roboto";
-@import "core/fonts/nunito";
 
 // Included Bootstarp
 @import "extend/bootstrap/variables";
@@ -51,9 +50,6 @@ $rtl: false;
 
 ////// GLOBAL INCLUDED
 @import "global/style";
-
-//////  INDIVIDUL CONCEPTS 
-@import "crypto/style";
 
 //////  APPLICATONS - Common Uses
 @import "apps/asterisk"; 

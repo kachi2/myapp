@@ -10,15 +10,18 @@
                 <div class="nk-content ">
                     <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
                         <div class="brand-logo pb-4 text-center">
-                            <a href="{{route('index')}}" class="logo-link">
-                                <img class="logo-light logo-img logo-img-lg" width="250px" src="{{asset('logo-dark.png')}} " srcset="{{asset('logo-dark.png')}}  2x" alt="logo">
-                                <img class="logo-dark logo-img logo-img-lg" width="250px" src="{{asset('logo-dark.png')}} " srcset="{{asset('logo-dark.png')}}  2x" alt="logo-dark">
-                            </a>
+                            
                         </div>
                         <div class="card card-bordered">
                             <div class="card-inner card-inner-lg">
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
+                                    <center>
+                                    <a href="{{route('index')}}" class="logo-link">
+                                <img class="logo-light logo-img logo-img-lg" width="100px" src="{{asset('logo-dark.png')}} " srcset="{{asset('logo-dark.png')}}  2x" alt="logo">
+                                <img class="logo-dark logo-img logo-img-lg" width="100px" src="{{asset('logo-dark.png')}} " srcset="{{asset('logo-dark.png')}}  2x" alt="logo-dark">
+                            </a>
+                            </center>
                                         <h4 class="nk-block-title">Register</h4>
                                         <div class="nk-block-des">
                                             <p>Complete Registeration</p>
@@ -42,22 +45,24 @@
                             </div>
                                     
                                     </div><!-- .foem-group -->
-                         <div class="form-group">
-                              <label class="form-label" for="default-01">Country</label>
-                            <div class="form-control-wrap">
-                                <input type="text" name="country" class="form-control form-control-lg {{ form_invalid('country') }}" id="country" placeholder="Enter country">
-                              @showError('country')
-                            </div>
+                         <!--<div class="form-group">-->
+                         <!--     <label class="form-label" for="default-01">Country</label>-->
+                         <!--   <div class="form-control-wrap">-->
+                         <!--       <input type="text" name="country" class="form-control form-control-lg {{ form_invalid('country') }}" id="country" placeholder="Enter country">-->
+                         <!--     @showError('country')-->
+                         <!--   </div>-->
                                     
-                                    </div><!-- .foem-group -->
-                        <div class="form-group">
-                              <label class="form-label" for="default-01">State</label>
-                            <div class="form-control-wrap">
-                                <input type="text" name="state" class="form-control form-control-lg {{ form_invalid('state') }}" id="state" placeholder="Enter State">
-                              @showError('state')
-                            </div>
+                         <!--           </div>-->
+                                    <!-- .foem-group -->
+                        <!--<div class="form-group">-->
+                        <!--      <label class="form-label" for="default-01">State</label>-->
+                        <!--    <div class="form-control-wrap">-->
+                        <!--        <input type="text" name="state" class="form-control form-control-lg {{ form_invalid('state') }}" id="state" placeholder="Enter State">-->
+                        <!--      @showError('state')-->
+                        <!--    </div>-->
                                     
-                                    </div><!-- .foem-group -->
+                        <!--            </div>-->
+                                    <!-- .foem-group -->
                         <div class="form-group">
                             <button class="btn btn-lg btn-primary btn-block">Complete Registration</button>
                         </div>
@@ -87,7 +92,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="nk-block-content text-center text-lg-left">
-                                        <p class="text-soft">&copy; {{date('Y')}} Acrabuscapital All Rights Reserved.</p>
+                                        <p class="text-soft">&copy; {{date('Y')}} Zenithcapital. All Rights Reserved.</p>
                                     </div>
                                 </div>
                             </div>

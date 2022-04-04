@@ -155,12 +155,7 @@
             align-items: center;
             &-end{
                 width: 200px;
-                @if($rtl==false){
-                    text-align: right;
-                }
-                @if($rtl==true){
-                    text-align: left;
-                }
+                text-align: right;
                 justify-content: flex-end;
             }
         }

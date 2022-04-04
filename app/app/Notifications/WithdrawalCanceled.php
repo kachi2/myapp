@@ -44,8 +44,8 @@ class WithdrawalCanceled extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Withdrawal Canceled #'.$this->withdrawal->ref)
-                    ->from('support@nixoncapital.cc', 'Nixoncapital')
+                    ->subject('Withdrawal Cancelled #'.$this->withdrawal->ref)
+                    ->from('billing@zenithcapital.cc', 'Zenithcapital')
                     ->view('emails.withdrawal-canceled', ['withdrawal' => $this->withdrawal]);
     }
 

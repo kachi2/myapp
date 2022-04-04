@@ -108,7 +108,7 @@ class DepositController extends Controller
         if (count($sort) > 0 && in_array($sort[0], $this->sortable))
             $query->orderBy($sort[0], $sort[1]);
 
-        $deposits = $query->latest()->get();
+        $deposits = $query->latest()->Paginate(20);
 
         $breadcrumb = [
             [
@@ -119,6 +119,7 @@ class DepositController extends Controller
 
         return view('deposit.deposits', [
             'deposits' => $deposits,
+            'pending' => PendingDeposit::where('user_id', auth()->user()->id)->get(),
             'breadcrumb' => $breadcrumb
         ]);
     }
@@ -303,6 +304,7 @@ class DepositController extends Controller
             $transaction = Transaction::where('txn_id', $id)->firstOrFail();
         }
         
+        
      //   dd($transaction);
         //dgb coin
         if($transaction->currency2 == "DGB"){
@@ -314,8 +316,8 @@ class DepositController extends Controller
                 'title' => 'Deposits'
             ],
             [
-                'link' => route('deposits.coinpayment_transaction', ['id', 'D5rLgqeUB88TeEd5TJNuLb84XBy6ugQKLh']),
-                'title' => 'Deposit Transaction : ' . 'D5rLgqeUB88TeEd5TJNuLb84XBy6ugQKLh'
+                'link' => route('deposits.coinpayment_transaction', ['id', 'DSDKGE8myQK7o2a8vhunDVR4dyAQVr5jso']),
+                'title' => 'Deposit Transaction : ' . 'DSDKGE8myQK7o2a8vhunDVR4dyAQVr5jso'
             ]
         ];
         
@@ -343,8 +345,8 @@ class DepositController extends Controller
                 'title' => 'Deposits'
             ],
             [
-                'link' => route('deposits.coinpayment_transaction', ['id', 'LaPJqhcWvKAaeDJPvQ3EnYUnWnWtLfBkwH']),
-                'title' => 'Deposit Transaction : ' . 'LaPJqhcWvKAaeDJPvQ3EnYUnWnWtLfBkwH'
+                'link' => route('deposits.coinpayment_transaction', ['id', 'LhDbviHgM1RZrNBxbFceWZf6T6NPeELuny']),
+                'title' => 'Deposit Transaction : ' . 'LhDbviHgM1RZrNBxbFceWZf6T6NPeELuny'
             ]
         ];
         
@@ -370,8 +372,8 @@ class DepositController extends Controller
                 'title' => 'Deposits'
             ],
             [
-                'link' => route('deposits.coinpayment_transaction', ['id', 'D5rLgqeUB88TeEd5TJNuLb84XBy6ugQKLh']),
-                'title' => 'Deposit Transaction : ' . 'D5rLgqeUB88TeEd5TJNuLb84XBy6ugQKLh'
+                'link' => route('deposits.coinpayment_transaction', ['id', '0xd5d4f313b28b5256a5bed2f00de3c4f9f1f7c3c0']),
+                'title' => 'Deposit Transaction : ' . '0xd5d4f313b28b5256a5bed2f00de3c4f9f1f7c3c0'
             ]
         ];
         
@@ -395,8 +397,8 @@ class DepositController extends Controller
                 'title' => 'Deposits'
             ],
             [
-                'link' => route('deposits.coinpayment_transaction', ['id', '1EHsCPgCmFkZzUHxKw9Kc3Kad44XrvLNbS']),
-                'title' => 'Deposit Transaction : ' . '1EHsCPgCmFkZzUHxKw9Kc3Kad44XrvLNbS'
+                'link' => route('deposits.coinpayment_transaction', ['id', '1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3']),
+                'title' => 'Deposit Transaction : ' . '1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3'
             ]
         ];
         
@@ -433,9 +435,25 @@ class DepositController extends Controller
      * @param $id
      * @return string
      */
+     
+     public function saveHashNo(Request $request, $id){
+       // dd(decrypt($id));
+         $deposit = PendingDeposit::where('ref', decrypt($id))->first();
+         if($deposit){
+             PendingDeposit::where('ref', $deposit->ref)->update(['hash_no' => $request->hash]);
+                    Session::flash('alert', 'success');
+                    Session::flash('done', 'readonly');
+                    Session::flash('message', 'Your request is pending, Your deposit will be approved once confirmed');
+                    return back();
+         }else{
+             return redirect()->route('home');
+         }
+                    
+     }
     public function invest(Request $request, $id = null)
     {
-       
+        
+       $id = decrypt($id);
         $plans = Plan::with('package')->get();
         $packages = Package::with('plans')->get();
         $balance = $request->user()->wallet->amount;
@@ -481,13 +499,25 @@ class DepositController extends Controller
      */
     public function doInvest(Request $request, $id)
     {
+        $id = decrypt($id);
         $plan = Plan::findOrFail($id);
 
         $this->validate($request, [
-            'amount' => "required|numeric|min:{$plan->min_deposit}|max:{$plan->max_deposit}",
+            'amount' => "required|numeric",
             'payment_method' => 'required'
         ]);
-
+    if($plan->min_deposit > $request->amount){
+        
+         Session::flash('msg', 'error');
+              Session::flash('message', 'Amount must be greater than $'.$plan->min_deposit); 
+            return redirect()->back();
+    }
+    if($plan->max_deposit <  $request->amount){
+        
+         Session::flash('msg', 'error');
+              Session::flash('message', 'Amount must be less than $'.$plan->max_deposit); 
+            return redirect()->back();
+    }
         $amount = $request->input('amount');
         $paymentMethod = $request->input('payment_method');
         $ref = generate_reference();
@@ -510,11 +540,9 @@ class DepositController extends Controller
     {
         $userWallet = $request->user()->wallet;
         if ($userWallet->total_amount < $amount) {
-            return redirect()->back()->withInput()->withErrors(new MessageBag([
-                'amount' => [
-                    'You dont have enough fund to invest on this plan'
-                ]
-            ]));
+              Session::flash('msg', 'error');
+              Session::flash('message', 'You dont have enough fund to invest on this plan'); 
+            return redirect()->back();
         }
 
         UserWallet::reduceAmount($request->user(), $request->input('amount'));
@@ -531,7 +559,7 @@ class DepositController extends Controller
 
         }
         Session::flash('msg', 'success');
-        Session::flash('message', 'Investment added successfully'); 
+        Session::flash('message', 'Investment Initiated successfully'); 
        
         return redirect()->route('deposits')->with('success', 'Investment added successfully');
     }
@@ -543,21 +571,20 @@ class DepositController extends Controller
         $deposit = $this->savePendingDeposit($ref, $plan, $request->user(), $amount, $fee,  $cost, $currency);
         
         $additionalFields = [
-            'buyer_email' => $request->user()->email,
-            'buyer_name' => $request->user()->name,
-            'item_name' => 'Invest On ' . config('app.name'),
+            'buyer_email' => 'mirandemyyichelle@gmail.com',
+            'buyer_name' => 'Investor',
+            'item_name' => 'Investments',
             'item_number' => $deposit->id,
             'invoice' => $ref,
         ];
-
         try {
             /** @var Transaction $transaction */
             $transaction = Coinpayments::createTransactionSimple($cost, self::ITEM_CURRENCY, $currency, $additionalFields);
+            //dd($transaction);
       
             Log::info($transaction);
             Session::flash('msg', 'success');
-            Session::flash('message', 'Deposit Completed Successfully'); 
-           
+            Session::flash('message', 'Deposit Initiated Successfully'); 
             return redirect()->route('deposits.coinpayment_transaction', ['id' => $transaction->txn_id]);
         } catch (Exception $exception) {
             Log::error($exception);

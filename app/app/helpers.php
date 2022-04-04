@@ -380,11 +380,9 @@ if (!function_exists('get_payment_methods')) {
         return [
             'wallet' => 'From Wallet',
             //Deposit::PAYMENT_METHOD_PM => 'Perfect Money',
-            Deposit::PAYMENT_METHOD_BTC => 'Bitcoin',
-            Deposit::PAYMENT_METHOD_DGB => 'DGE',
+            Deposit::PAYMENT_METHOD_BTC => 'BTC',
             Deposit::PAYMENT_METHOD_ETH => 'ETH',
             Deposit::PAYMENT_METHOD_LTC => 'LTC',
-            Deposit::PAYMENT_METHOD_BCH => 'BCH'
         ];
     }
 }
@@ -397,11 +395,9 @@ if (!function_exists('get_withdrawal_methods')) {
     {
         return [
             'wallet' => 'From Wallet',
-            Deposit::PAYMENT_METHOD_BTC => 'Bitcoin',
-            Deposit::PAYMENT_METHOD_DGB => 'DGE',
+            Deposit::PAYMENT_METHOD_BTC => 'BTC',
             Deposit::PAYMENT_METHOD_ETH => 'ETH',
             Deposit::PAYMENT_METHOD_LTC => 'LTC',
-            Deposit::PAYMENT_METHOD_BCH => 'BCH'
         ];
     }
 }

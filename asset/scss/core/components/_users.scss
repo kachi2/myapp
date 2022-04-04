@@ -292,14 +292,7 @@ $avatar-adj-colors: (
     &-account{
         &-info{
             padding-top: 1.5rem;
-            padding-bottom: 1rem;
-            &:first-child {
-                padding-top: 0.5rem;
-                // @io-200
-                .nk-profile-content & {
-                    padding-top: 1.5rem;       
-                }
-            }
+            padding-bottom: 1.25rem;
         }
         &-data{
             li{

@@ -1,87 +1,75 @@
-<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-<div style="background-color:#efefef;font-family:'Ubuntu',sans-serif;font-size:15px;padding:50px 20px">
-    <table style="border:1px solid #e0e0e0;width:100%;max-width:500px;margin:auto;background-color:#fff">
+<div width="100%" style="margin:0;padding:0!important;background-color:#f5f6fa">
+<center style="width:100%;background-color:#f5f6fa">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#f5f6fa">
         <tbody><tr>
-            <td style="text-align:center;background-color: #000;">
-                <h2 style="color: #fff;"> {{ config('app.name') }} </h2>
-            </td> 
-        </tr>
-                <tr>
-            <td style="text-align:center;font-weight:bold;margin:10px"><br>
-                <u>Pay-Out SUCCESSFUL</u> <br>
-                <p>Hello {{ $withdrawal->user->name }}</p>
-                <p style="font-size: 14px;">Your Pay-out of {{ moneyFormat($withdrawal->amount, 'USD') }} was Successful!</p>
+            <td style="padding:30px 0">
+                <table style="width:100%;max-width:620px;margin:0 auto">
+        <tbody>
+        <tr>
+            <td style="text-align:center;padding-bottom:15px">
+                <img style="max-height:50px;width:auto" src="https://zenithcapital.cc/logo-dark.png" alt="Zenithcapital logo" class="CToWUd">
             </td>
         </tr>
+        </tbody>
+    </table>
+                    <table style="width:100%;max-width:620px;margin:0 auto;background-color:#ffffff">
+        <tbody>
+                <tr>
+            <td style="padding:10px 30px 10px">
+                Hello  {{ $withdrawal->user->username }}
+            </td>
+        </tr>
+                
         <tr>
-            <td style="border-collapse:collapse;padding:10px">
-                <table width="100%" style="border-collapse:collapse">
-                    
-                    <tbody>
-                    <tr>
-                        <td style="padding:15px 10px;border:1px solid #f5f5f5;width:35%">
-                            Pay-out Ref:
-                        </td>
-                        <td style="padding:15px 10px;border:1px solid #f5f5f5;width:65%">
-                            {{ $withdrawal->ref }}
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="padding:15px 10px;border:1px solid #f5f5f5;width:35%">
-                            Pay-out Method:
-                        </td>
-                        <td style="padding:15px 10px;border:1px solid #f5f5f5;width:65%">
-                            {{ $withdrawal->formatted_payment_method }}
-                        </td>
-                    </tr>                                    
-
-                    <tr>
-                        <td style="padding:15px 10px;border:1px solid #f5f5f5;width:35%">
-                            Amount:
-                        </td>
-                        <td style="padding:15px 10px;border:1px solid #f5f5f5;width:65%">
-                            {{ moneyFormat($withdrawal->amount, 'USD') }}
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="padding:15px 10px;border:1px solid #f5f5f5;width:35%">
-                            Status:
-                        </td>
-                        <td style="padding:15px 10px;border:1px solid #f5f5f5;width:65%">
-                            @if( $withdrawal->status == \App\Models\Withdrawal::STATUS_PAID)
+            <td style="padding:0 30px">
+                <p>Your Pay-out of {{ moneyFormat($withdrawal->amount, 'USD') }} was Successful!</p>
+<table width="100%">
+<tbody><tr>
+<td width="150"> Pay-out Ref</td>
+<td width="25">&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+<td> {{ $withdrawal->ref }}</td>
+</tr>
+<tr>
+<td width="150">Paid Amount</td>
+<td width="25">&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+<td>{{ moneyFormat($withdrawal->amount, 'USD') }} </td>
+</tr>
+<tr>
+<td width="150">Payout Method</td>
+<td width="25">&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+<td> {{ $withdrawal->formatted_payment_method }}</td>
+</tr>
+<tr>
+<td width="150">Status</td>
+<td width="25">&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+<td> @if( $withdrawal->status == \App\Models\Withdrawal::STATUS_PAID)
                                 <span style="color: green;">Processed</span>
                             @elseif ($withdrawal->status == \App\Models\Withdrawal::STATUS_CANCELED)
                                 <span style="color: red;">Canceled</span>
                             @else
                                 <span style="color: green;">Pending</span>
                             @endif
-                        </td>
-                    </tr>
+                            </td>
+</tr>
+</tbody></table>
+<p>If you have any issues or complaints regarding any transaction, kindly send us an email at support@zenithcapital.cc</p>
 
-                    
-                                        
-                    
-                </tbody></table>
             </td>
         </tr>
-        
-                <tr>
-            <td style="text-align:center;padding:10px;font-size:12px">
-                If you have any issues or complaints regarding any transaction,
-                kindly send us an email at <a href="mailto:support@aldencapital.cc" target="_blank">support@aldencapital.cc</a>
-                <br><br>
-                Thank you for choosing our platform. <br>
-                Regards,
-                {{ config('app.name') }}.
-            </td>
-        </tr>
-        
-        <tr>
-            <td style="text-align:center;padding:20px 10px">
-                {{ config('app.name') }} 2020
+
+                </tbody>
+    </table>
+                <table style="width:100%;max-width:620px;margin:0 auto">
+    <tbody>
+    <tr>
+        <td style="text-align:center;padding:25px 20px 0">
+            <p style="font-size:13px">Zenithcapital © {{Date('Y')}}.</p>
+                    </td>
+    </tr>
+    </tbody>
+</table>
             </td>
         </tr>
     </tbody></table>
-</div>
+</center><div class="yj6qo"></div><div class="adL">
+</div></div>

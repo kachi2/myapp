@@ -10,22 +10,25 @@
                 <div class="nk-content ">
                     <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
                         <div class="brand-logo pb-4 text-center">
-                            <a href="{{route('index')}}" class="logo-link">
-                                <img class="logo-light logo-img logo-img-lg" width="250px"  src="{{asset('logo-dark.png')}}" srcset="{{asset('logo-dark.png')}} 2x" alt="logo">
-                                <img class="logo-dark logo-img logo-img-lg" width="250px" src="{{asset('logo-dark.png')}}" srcset="{{asset('logo-dark.png')}} 2x" alt="logo-dark">
-                            </a>
+                           
                         </div>
                         <div class="card card-bordered">
                             <div class="card-inner card-inner-lg">
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
+                                    <center>
+                                     <a href="{{route('index')}}" class="logo-link">
+                                <img class="logo-light logo-img logo-img-lg" width="100px"  src="{{asset('logo-dark.png')}}" srcset="{{asset('logo-dark.png')}} 2x" alt="logo">
+                                <img class="logo-dark logo-img logo-img-lg" width="100px" src="{{asset('logo-dark.png')}}" srcset="{{asset('logo-dark.png')}} 2x" alt="logo-dark">
+                            </a>
+                            </center>
                                         <h4 class="nk-block-title">Register</h4>
                                         <div class="nk-block-des">
                                             <p>Create new account.</p>
                                         </div>
                                     </div>
                                 </div>
-                                <form class="text-left" method="post" action="{{ route('register') }}">
+                                <form class="text-left" method="post" action="{{ route('register_user') }}">
                             @csrf
                                      <div class="form-group">
                             <div class="form-label-group">
@@ -34,6 +37,14 @@
                             <input type="text" name="email" class="form-control form-control-lg {{ form_invalid('email') }}" id="default-01" placeholder="Enter your email address">
                             @showError('email')
                         </div><!-- .foem-group -->
+                        
+                               <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="default-01">Username</label>
+                            </div>
+                            <input type="text" name="username" class="form-control form-control-lg {{ form_invalid('username') }}" id="default-01" placeholder="Enter username">
+                            @showError('username')
+                        </div>
                                     <div class="form-group">
                             <div class="form-label-group">
                                 <label class="form-label" for="password">Password</label>
@@ -93,7 +104,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="nk-block-content text-center text-lg-left">
-                                        <p class="text-soft">&copy; {{date('Y')}} Acrabuscapital All Rights Reserved.</p>
+                                        <p class="text-soft">&copy; {{date('Y')}} Zenithcapital All Rights Reserved.</p>
                                     </div>
                                 </div>
                             </div>

@@ -126,12 +126,7 @@ $accordion-s3-inner-gap-md-x: $accordion-s3-head-gap-md-l;
 .accordion-s2{
     border: none;  
     .accordion-icon {
-        @if($rtl==false){
-            right: 0;
-        }
-        @if($rtl==true){
-            left: 0;
-        }
+        right: 0;
         &:before{
             content: $ni-minus;
         }

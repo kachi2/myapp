@@ -1,51 +1,46 @@
-<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-<div style="background-color:#efefef;font-family:'Ubuntu',sans-serif;font-size:15px;padding:50px 20px">
-    <table style="border:1px solid #e0e0e0;width:100%;max-width:500px;margin:auto;background-color:#fff">
+<div width="100%" style="margin:0;padding:0!important;background-color:#f5f6fa">
+<center style="width:100%;background-color:#f5f6fa">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#f5f6fa">
         <tbody><tr>
-            <td style="text-align:center;background-color: #000;">
-                <h2 style="color: #fff;"> {{ config('app.name') }} </h2>
-            </td> 
+            <td style="padding:30px 0">
+                <table style="width:100%;max-width:620px;margin:0 auto">
+        <tbody>
+        <tr>
+            <td style="text-align:center;padding-bottom:15px">
+                <img style="max-height:50px;width:auto" src="https://zenithcapital.cc/logo-dark.png" alt="Zenithcapital logo" class="CToWUd">
+            </td>
         </tr>
+        </tbody>
+    </table>
+                    <table style="width:100%;max-width:620px;margin:0 auto;background-color:#ffffff">
+        <tbody>
                 <tr>
-            <td style="text-align:center;font-weight:bold;margin:10px"><br>
-                <p>Hello {{ $user->name }}</p>
+            <td style="padding:10px 30px 10px">
+                Hello  {{ $deposit->user->username }},
+            </td>
+        </tr>
                 
-            </td>
-        </tr>
         <tr>
-            <td style="border-collapse:collapse;padding:10px">
-                <table width="100%" style="border-collapse:collapse">
-                    
-                    <tbody>
-                    <tr>
-                        <td style="padding:15px 10px;border:1px solid #f5f5f5;width:35%">
-                            <p> {!! nl2br($text) !!} </p>
-                        </td>                        
-                    </tr>
+            <td style="padding:0 30px">
+                <p>{!! nl2br($text) !!} </p>
+<p>If you have any issues or complaints regarding any transaction, kindly send us an email at support@zenithcapital.cc</p>
 
-                    
-                    
-                     
-                    
-                </tbody></table>
             </td>
         </tr>
-        
-                <tr>
-            <td style="text-align:center;padding:10px;font-size:12px">
-                If you have any issues or complaints regarding any transaction,
-                kindly send us an email at <a href="mailto:support@aldencapital.cc" target="_blank">support@aldencapital.</a>
-                <br><br>
-                Thank you for choosing our platform. <br>
-                Regards,
-                {{ config('app.name') }}.
-            </td>
-        </tr>
-        
-        <tr>
-            <td style="text-align:center;padding:20px 10px">
-                {{ config('app.name') }} 2021
+
+                </tbody>
+    </table>
+                <table style="width:100%;max-width:620px;margin:0 auto">
+    <tbody>
+    <tr>
+        <td style="text-align:center;padding:25px 20px 0">
+            <p style="font-size:13px">Zenithcapital © {{Date('Y')}}.</p>
+                    </td>
+    </tr>
+    </tbody>
+</table>
             </td>
         </tr>
     </tbody></table>
-</div>
+</center><div class="yj6qo"></div><div class="adL">
+</div></div>

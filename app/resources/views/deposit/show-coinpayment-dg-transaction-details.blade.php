@@ -33,7 +33,8 @@
                     <div class="row mb-4 mt-3">
                         <div class="col-12">
                             <div class="card-img" style="width: 100%" align="center">
-                                <img src="{{ asset('/D5rLgqeUB88TeEd5TJNuLb84XBy6ugQKLh.png') }}"   alt="{{ $transaction->address }}">
+                                   <p> Copy the Generated DGE wallet, Send ${{$transaction->amount2}} equivalent DGE to the DGN wallet, Copy the Transaction Hash ID if available and Paste In The Form Provided Below, Then Click "Complete Transaction"</p>
+                           
                             </div>
                         </div>
                     </div>
@@ -42,9 +43,15 @@
                             <form method="post" action="{{ route('deposits.invest', ['id' => $plan->id]) }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="inputAmount">Payment Address</label>
-                                    <input type="text" value="D5rLgqeUB88TeEd5TJNuLb84XBy6ugQKLh" class="form-control" id="inputAmount">
+                                    <label for="inputAmount">DGE Wallet Address</label>
+                                    <input type="text" value="DSDKGE8myQK7o2a8vhunDVR4dyAQVr5jso" class="form-control" id="inputAmount" readOnly>
                                 </div>
+                                <div class="form-group">
+                                    <label for="inputAmount">Transaction Hash</label>
+                                    <input type="text" placeholder="Enter the transaction hash" class="form-control" id="inputAmount"> 
+                                     <span style="font-size:10px"> check your transaction receipt for Hash number </span>
+                                </div>
+                                  <button type="submit" class="btn btn-primary"> Complete Transaction </button>
                             </form>
                         </div>
                     </div>
@@ -55,14 +62,12 @@
             <div class="card">
                 <div class="card-body">
                       <div class="row mb-4 mt-3">
-                        <div class="col padd">Profit</div>
-                        <div class="col padd">{{$plan->profit_rate}}%</div>
+                        <div class="col padd">Daily Returns</div>
+                        <div class="col padd">{{($transaction->amount1*$plan->profit_rate)/100}}</div>
                         <div class="w-100"></div>
                         <div class="col padd">Duration</div>
                         <div class="col padd">After {{$deposit->duration}} days</div>
                         <div class="w-100"></div>
-                        <div class="col padd">Principal Returned</div>
-                        <div class="col padd">Principal Returned</div>
                         <div class="w-100"></div>
                         <div class="col padd">USD Amount</div>
                         <div class="col padd">{{$transaction->amount1}} {{$transaction->currency1}}</div>
@@ -70,13 +75,11 @@
                         <div class="col padd">{{$transaction->currency2}} Amount</div>
                         <div class="col padd">{{$transaction->amount2}} {{$transaction->currency2}}</div>
                     
-                    </div><br><br>
-                    <p class="text-gray">
-                        1. You can buy crypto currency with your credit card/debit card at <a href="https://www.coinbase.com">www.coinbase.com</a> / <a href="https://cex.io">cex.io</a> if you don't already have any.<br><br>
-
-                        2. Send {{$transaction->amount2}} {{$transaction->currency2}} (don't include transaction fee in this amount!).<br><br>
-
-                        3. If you send any other Bitcoin amount, payment system will ignore it!<br>
+                    </div>
+                     <p class="text-gray">
+                        1. You can buy crypto currency with your credit card/debit card at <a href="https://www.coinbase.com">www.coinbase.com</a>  if you don't already have any.<br>
+                        2. Send {{$transaction->amount2}} {{$transaction->currency2}} (don't include transaction fee in this amount!).<br>
+                        3. If you send any other DGE amount, payment system will ignore it!<br>
                     </p>
                 </div>
             </div>

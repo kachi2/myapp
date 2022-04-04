@@ -152,10 +152,9 @@ $skin_menu_active_color:        $skin_accent;
 .badge-primary,
 .icon-circle,
 .noUi-connect,
-.nk-kycfm-label::after,
-.buysell-pm-label:after,
 .nk-msg-menu-item a:after,
-.ui-shady .nk-msg-item.active:after, .ui-shady .nk-msg-item.current:after {
+.ui-shady .nk-msg-item.active:after, .ui-shady .nk-msg-item.current:after, 
+.ui-softy .nk-msg-item.active:after, .ui-softy .nk-msg-item.current:after {
     background: $skin_accent;
 }
 .card-bordered.is-dark {
@@ -163,9 +162,6 @@ $skin_menu_active_color:        $skin_accent;
 }
 .card.is-dark {
     background: $skin_accent_dark;
-}
-.is-dark .nk-wg7-title, .is-dark .nk-wg7-note {
-    color: $skin_accent_light;
 }
 .user-avatar, [class^="user-avatar"]:not([class*="-group"]) {
     background: lighten($skin_accent, 10%);
@@ -198,7 +194,7 @@ $skin_menu_active_color:        $skin_accent;
 .nav-tabs .nav-item.active .nav-link,
 .nk-menu-footer .nk-menu-icon,
 .nk-menu-footer .nk-menu-link:hover,
-.nk-footer-copyright a:hover,
+.nk-footer-copyright a:hover
 
 .page-link:hover,
 .list-plain a:hover,
@@ -229,15 +225,6 @@ $skin_menu_active_color:        $skin_accent;
 .form-text-hint,
 .search-submit:hover,
 .nk-news-icon .icon,
-.nk-refwg-name .title,
-.nk-wg1-amount .amount,
-.nk-wgw-add a .title,
-.nk-wgw-actions a:hover span, 
-.nk-wgw-actions a:hover .icon,
-.nk-wg4-note span,
-.nk-kycfm-control:checked ~ .nk-kycfm-label .label-icon,
-.wallet-item-add a:hover .wallet-icon, 
-.wallet-item-add a:hover .wallet-name,
 .attach-item .icon,
 .attach-download:hover span,
 .nk-reply-meta-info .whom,
@@ -331,23 +318,11 @@ a:hover {
     background: $skin_accent;
     color: $white;
 }
-.icon-avatar, .nk-iv-scheme-icon.is-running {
+.icon-avatar{
     color: $skin_accent;
     background-color: mix($skin_accent, $white, 15%);
 }
-.is-dark .nk-wgw-icon {
-    background: mix($skin_accent, $white, 80%);
-}
-.is-dark .nk-wgw-balance .amount-sm, .is-dark .nk-wgw-actions a .icon, .is-dark .nk-wgw-more .btn-trigger {
-    color: $skin_accent_light;
-}
-.is-dark .nk-wgw-actions a {
-    color: $skin_accent_light;
-}
-.is-dark .nk-wgw-actions {
-    border-color: rgba($skin_accent_light, .4);
-}
-.is-dark .nk-wgw-more .btn-trigger:before, .is-theme .nk-quick-nav-icon:before {
+.is-theme .nk-quick-nav-icon:before {
     background-color: darken($skin_accent_dark, 10%);
 }
 
@@ -438,7 +413,8 @@ a:hover {
 .btn-outline-primary:not(:disabled):not(.disabled):active, 
 .btn-outline-primary:not(:disabled):not(.disabled).active, 
 .show > .btn-outline-primary.dropdown-toggle,
-.btn-primary.disabled, .btn-primary:disabled
+.btn-primary.disabled, .btn-primary:disabled,
+.invest-amount-control:checked ~ .invest-amount-label
 {
     background-color: $skin_accent;
     border-color: $skin_accent;
@@ -496,17 +472,15 @@ a:hover {
     color: mix($skin_accent, $white, 70%);
     background-color: mix($skin_accent, $white, 10%);
 }
-.is-theme .nk-sidebar-footer,.is-theme .nk-sidebar-profile-fixed{
+.is-theme .nk-sidebar-footer,.nk-apps-sidebar.is-theme,.is-theme .nk-sidebar-profile-fixed{
     background: $skin_sidebar_bg_theme;
     border-color: $skin_sidebar_bdr_theme;
 }
-.is-theme .wallet-name,.is-theme .wallet-icon,.is-theme .wallet-balance span,.is-theme .nk-menu-footer .nk-menu-link,.is-theme .sub-text,.is-theme .lead-text span {
+.is-theme .nk-menu-footer .nk-menu-link,.is-theme .sub-text,.is-theme .lead-text span {
     color: $skin_accent_light;
 }
-@media (min-width: 1200px){
-    .nk-sidebar.is-theme .nk-menu>li:hover>a, .nk-sidebar.is-theme .nk-menu>li.active>a, .nk-sidebar.is-theme .nk-menu>li.current-menu>a, .nk-sidebar.is-theme .nk-menu>li>a:hover,.is-theme .wallet-item a:before {
-        background: lighten($skin_accent_dark, 6%);
-    }
+.apps-menu .nk-menu-link:before{
+    background: $skin_accent;
 }
 
 .nav-switch-s2 .nav-link:hover, .nav-switch-s2 .nav-link:focus{
@@ -516,7 +490,7 @@ a:hover {
     color: $skin_base_color;
 }
 
-//@inbox
+//io-v130 @inbox
 .active .nk-ibx-menu-text, 
 .active .nk-ibx-menu-item .icon, 
 .nk-reply-form-nav li a:hover, 
@@ -526,7 +500,6 @@ a:hover {
 .nk-ibx-menu li.active {
     background: mix($skin_accent, $white, 8%);
 }
-
 //@File Manager
 .nk-fmg-menu li.active {
     background: mix($skin_accent, $white, 8%);

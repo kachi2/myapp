@@ -365,6 +365,8 @@ $chat-profile-width-sm: 280px;
                 font-family: $nk-dashlite-font;
                 position: absolute;
                 top: 50%;
+                font-size: 11px;
+                line-height: 10px;
                 @if($rtl==false){
                     left: 0;
                     transform: translate(-50%,-50%);
@@ -373,8 +375,6 @@ $chat-profile-width-sm: 280px;
                     right: 0;
                     transform: translate(50%,-50%);
                 }
-                font-size: 11px;
-                line-height: 10px;
                 opacity: .8;
             }
         }
@@ -712,8 +712,8 @@ $chat-profile-width-sm: 280px;
     position: relative;
     display: flex;
     overflow: hidden;
-    min-height: calc(100vh - (#{$header-height} + 64px));
-    max-height: calc(100vh - (#{$header-height} + 64px));
+    min-height: calc(100vh - #{$header-height});
+    max-height: calc(100vh - #{$header-height});
     background: $white;
     &-blank{
         display: flex;
@@ -725,12 +725,6 @@ $chat-profile-width-sm: 280px;
         &-icon{
             margin-bottom: 1.5rem;
         }
-    }
-    &-boxed{
-        border:1px solid $border-color;
-        border-radius: $border-radius;
-        min-height: calc(100vh - (#{$header-height} + 64px + 64px));
-        max-height: calc(100vh - (#{$header-height} + 64px + 64px));
     }
     &-aside{
         background: $white;
@@ -943,6 +937,9 @@ $chat-profile-width-sm: 280px;
     &-profile{
         position: absolute;
         top: 0;
+        width: $chat-profile-width;
+        height: 100%;
+        max-height: 100%;
         @if($rtl==false){
             right: 0;
             transform: translateX(100%);
@@ -951,14 +948,11 @@ $chat-profile-width-sm: 280px;
             left: 0;
             transform: translateX(-100%);
         }
-        width: $chat-profile-width;
-        height: 100%;
-        max-height: 100%;
         transition: transform .3s  ease-in-out;
         background: $white;
         z-index: 100;
         &-overlay{
-            position: absolute;
+            position: fixed;
             top: 0;
             right: 0;
             bottom: 0;
@@ -975,16 +969,8 @@ $chat-profile-width-sm: 280px;
 }
 
 
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(xs){
     .nk-chat{
-        border: none;
-        border-radius: 0;
-        min-height: calc(100vh - (#{$header-height} + 85px));
-        max-height: calc(100vh - (#{$header-height} + 85px));
-        &-boxed{
-            border:1px solid $border-color;
-            border-radius: $border-radius;
-        }
         &-head{
             padding: 0.75rem 1.25rem;
             &-user{
@@ -1114,22 +1100,30 @@ $chat-profile-width-sm: 280px;
         }
     }
 }
-@include media-breakpoint-up(xxl){
+@include media-breakpoint-up(xl){
     .nk-chat{
-        &-boxed{
-            min-height: calc(100vh - (#{$header-height} + 64px + 112px));
-            max-height: calc(100vh - (#{$header-height} + 64px + 112px));
-            .nk-chat-body{
-                &.profile-shown{
-                    @if($rtl==false){
-                        padding-right: 0;
-                    }
-                    @if($rtl==true){
-                        padding-left: 0;
-                    }
+        &-body{
+            &.profile-shown{
+                @if($rtl==false){
+                    padding-right: $chat-profile-width;
+                }
+                @if($rtl==true){
+                    padding-left: $chat-profile-width;
                 }
             }
         }
+        &-profile {
+            @if($rtl==false){
+                border-left: 1px solid $border-light;
+            }
+            @if($rtl==true){
+                border-right: 1px solid $border-light;
+            }
+        }
+    }
+}
+@include media-breakpoint-up(xxl){
+    .nk-chat{
         &-aside{
             width: $chat-aside-width-xl;
         }
@@ -1145,12 +1139,6 @@ $chat-profile-width-sm: 280px;
         }
         &-profile{
             width: $chat-profile-width-xl;
-            @if($rtl==false){
-                border-left: 1px solid $border-light;
-            }
-            @if($rtl==true){
-                border-right: 1px solid $border-light;
-            }
         }
     }
 }

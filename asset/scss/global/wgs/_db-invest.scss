@@ -65,7 +65,7 @@
 .nav-tabs{
     &-xs{
         .nav-link{
-            padding:  .75rem 0;
+            padding: .75rem 0;
             font-size: $fx-sz-13;
             font-weight: $fw-medium;
         }
@@ -157,7 +157,7 @@
     }
 }
 
-@media (min-width:768px) and (max-width:1540px), (max-width:359px){
+@media (min-width:768px) and (max-width:1350px), (max-width:359px){
     .invest-data{
         margin-top: 0.75rem;
         &-amount{
@@ -243,4 +243,4 @@
     }
 }
 
-} // @condition -e-
+} // @condition -e- 

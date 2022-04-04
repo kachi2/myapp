@@ -53,19 +53,17 @@
 
 .is-theme .user-name, .is-theme .nk-news-text p { color: #c5d6eb; }
 
-.card-tools-nav li a:before, .nav-tabs .nav-link:after, .progress-bar, .dot-primary, .alert-fill.alert-primary, .badge-primary, .icon-circle, .noUi-connect, .nk-kycfm-label::after, .buysell-pm-label:after, .nk-msg-menu-item a:after, .ui-shady .nk-msg-item.active:after, .ui-shady .nk-msg-item.current:after { background: #2263b3; }
+.card-tools-nav li a:before, .nav-tabs .nav-link:after, .progress-bar, .dot-primary, .alert-fill.alert-primary, .badge-primary, .icon-circle, .noUi-connect, .nk-msg-menu-item a:after, .ui-shady .nk-msg-item.active:after, .ui-shady .nk-msg-item.current:after, .ui-softy .nk-msg-item.active:after, .ui-softy .nk-msg-item.current:after { background: #2263b3; }
 
 .card-bordered.is-dark { border-color: #022c57; }
 
 .card.is-dark { background: #022c57; }
 
-.is-dark .nk-wg7-title, .is-dark .nk-wg7-note { color: #b2c9e4; }
-
 .user-avatar, [class^="user-avatar"]:not([class*="-group"]) { background: #307bd8; }
 
 .nk-news-item:hover .nk-news-text .icon { color: #307bd8; }
 
-.nk-menu-link:hover, .nk-menu-link:hover .nk-menu-icon, .nk-menu-item.active > .nk-menu-link .nk-menu-icon, .nk-menu-item.current-menu > .nk-menu-link .nk-menu-icon, .nk-menu-link:hover .count, .nk-menu-sub .nk-menu-link:hover, .nk-menu-sub .active > .nk-menu-link, .nk-menu-sm .nk-menu-link:hover, .nk-menu-main .nk-menu-link:hover, .nk-menu-main .nk-menu-link:focus, .nk-menu-main .nk-menu-item.active > .nk-menu-link, .nk-menu-main .nk-menu-item.current-menu > .nk-menu-link, .nk-menu-main .nk-menu-item:hover > .nk-menu-link, .is-light .nk-menu-link:hover, .is-light .active > .nk-menu-link, .active > .nk-menu-link, .active > .nk-menu-link .count, .nav-tabs .nav-link:focus, .nav-tabs .nav-link.active, .nav-tabs .nav-item.active .nav-link, .nk-menu-footer .nk-menu-icon, .nk-menu-footer .nk-menu-link:hover, .nk-footer-copyright a:hover, .page-link:hover, .list-plain a:hover, .link-check li a:hover, .link-list a:hover, .link-list-opt a:hover, .link-list-plain a:hover, .link-list-menu li.active > a, .link-list-menu a.active, .link-list-menu a:hover, .link-list-menu li.active > a .icon, .link-list-menu a.active .icon, .link-list-menu a:hover .icon, .link-list-menu li.active > a:after, .link-list-menu a.active:after, .link-list-menu a:hover:after, .list-checked li:before, .list-step li.list-step-current:before, .accordion-s2 .accordion-head .title, .accordion-s3 .accordion-head .title, .badge-outline-primary, .badge-dim.badge-primary, .badge-dot.badge-primary, .badge-dim.badge-outline-primary, .alert-primary, .form-clip, .form-text-hint, .search-submit:hover, .nk-news-icon .icon, .nk-refwg-name .title, .nk-wg1-amount .amount, .nk-wgw-add a .title, .nk-wgw-actions a:hover span, .nk-wgw-actions a:hover .icon, .nk-wg4-note span, .nk-kycfm-control:checked ~ .nk-kycfm-label .label-icon, .wallet-item-add a:hover .wallet-icon, .wallet-item-add a:hover .wallet-name, .attach-item .icon, .attach-download:hover span, .nk-reply-meta-info .whom, .nk-msg-tags li > span .icon, .nk-msg-menu-item a:hover, .nk-msg-menu-item.active a, .user-balance, .user-avatar[class*="-primary-dim"], .nk-order-ovwg-data.sell .amount, .nk-order-ovwg-data.sell .title .icon, .nk-wg-action-content p strong, a, .dropzone .dz-message-text span, .nk-switch-icon.active, .link-list-plain a .icon, .chat-upload-option a, .is-unread .chat-context .status, .add-opt:hover .sub-text, .add-opt:hover .icon, .icon[class*="bg-primary-dim"] { color: #2263b3; }
+.nk-menu-link:hover, .nk-menu-link:hover .nk-menu-icon, .nk-menu-item.active > .nk-menu-link .nk-menu-icon, .nk-menu-item.current-menu > .nk-menu-link .nk-menu-icon, .nk-menu-link:hover .count, .nk-menu-sub .nk-menu-link:hover, .nk-menu-sub .active > .nk-menu-link, .nk-menu-sm .nk-menu-link:hover, .nk-menu-main .nk-menu-link:hover, .nk-menu-main .nk-menu-link:focus, .nk-menu-main .nk-menu-item.active > .nk-menu-link, .nk-menu-main .nk-menu-item.current-menu > .nk-menu-link, .nk-menu-main .nk-menu-item:hover > .nk-menu-link, .is-light .nk-menu-link:hover, .is-light .active > .nk-menu-link, .active > .nk-menu-link, .active > .nk-menu-link .count, .nav-tabs .nav-link:focus, .nav-tabs .nav-link.active, .nav-tabs .nav-item.active .nav-link, .nk-menu-footer .nk-menu-icon, .nk-menu-footer .nk-menu-link:hover, .nk-footer-copyright a:hover .page-link:hover, .list-plain a:hover, .link-check li a:hover, .link-list a:hover, .link-list-opt a:hover, .link-list-plain a:hover, .link-list-menu li.active > a, .link-list-menu a.active, .link-list-menu a:hover, .link-list-menu li.active > a .icon, .link-list-menu a.active .icon, .link-list-menu a:hover .icon, .link-list-menu li.active > a:after, .link-list-menu a.active:after, .link-list-menu a:hover:after, .list-checked li:before, .list-step li.list-step-current:before, .accordion-s2 .accordion-head .title, .accordion-s3 .accordion-head .title, .badge-outline-primary, .badge-dim.badge-primary, .badge-dot.badge-primary, .badge-dim.badge-outline-primary, .alert-primary, .form-clip, .form-text-hint, .search-submit:hover, .nk-news-icon .icon, .attach-item .icon, .attach-download:hover span, .nk-reply-meta-info .whom, .nk-msg-tags li > span .icon, .nk-msg-menu-item a:hover, .nk-msg-menu-item.active a, .user-balance, .user-avatar[class*="-primary-dim"], .nk-order-ovwg-data.sell .amount, .nk-order-ovwg-data.sell .title .icon, .nk-wg-action-content p strong, a, .dropzone .dz-message-text span, .nk-switch-icon.active, .link-list-plain a .icon, .chat-upload-option a, .is-unread .chat-context .status, .add-opt:hover .sub-text, .add-opt:hover .icon, .icon[class*="bg-primary-dim"] { color: #2263b3; }
 
 a:hover { color: #1b5091; }
 
@@ -103,17 +101,9 @@ a:hover { color: #1b5091; }
 
 .nav-switch .nav-link.active { background: #2263b3; color: #ffffff; }
 
-.icon-avatar, .nk-iv-scheme-icon.is-running { color: #2263b3; background-color: #dee8f4; }
+.icon-avatar { color: #2263b3; background-color: #dee8f4; }
 
-.is-dark .nk-wgw-icon { background: #4e82c2; }
-
-.is-dark .nk-wgw-balance .amount-sm, .is-dark .nk-wgw-actions a .icon, .is-dark .nk-wgw-more .btn-trigger { color: #b2c9e4; }
-
-.is-dark .nk-wgw-actions a { color: #b2c9e4; }
-
-.is-dark .nk-wgw-actions { border-color: rgba(178, 201, 228, 0.4); }
-
-.is-dark .nk-wgw-more .btn-trigger:before, .is-theme .nk-quick-nav-icon:before { background-color: #011325; }
+.is-theme .nk-quick-nav-icon:before { background-color: #011325; }
 
 .btn-primary { background-color: #2263b3; border-color: #2263b3; }
 
@@ -143,7 +133,7 @@ a:hover { color: #1b5091; }
 
 .form-control-simple:focus { box-shadow: none; }
 
-.btn-primary.btn-dim:not(:disabled):not(.disabled):hover, .btn-dim.btn-outline-primary:not(:disabled):not(.disabled):hover, .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle, .btn-primary.disabled, .btn-primary:disabled { background-color: #2263b3; border-color: #2263b3; }
+.btn-primary.btn-dim:not(:disabled):not(.disabled):hover, .btn-dim.btn-outline-primary:not(:disabled):not(.disabled):hover, .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle, .btn-primary.disabled, .btn-primary:disabled, .invest-amount-control:checked ~ .invest-amount-label { background-color: #2263b3; border-color: #2263b3; }
 
 .form-focus-none:focus { border-color: transparent; box-shadow: none; }
 
@@ -163,11 +153,11 @@ a:hover { color: #1b5091; }
 
 .nk-menu-badge { color: #6492ca; background-color: #e9eff7; }
 
-.is-theme .nk-sidebar-footer, .is-theme .nk-sidebar-profile-fixed { background: #02274d; border-color: #03407f; }
+.is-theme .nk-sidebar-footer, .nk-apps-sidebar.is-theme, .is-theme .nk-sidebar-profile-fixed { background: #02274d; border-color: #03407f; }
 
-.is-theme .wallet-name, .is-theme .wallet-icon, .is-theme .wallet-balance span, .is-theme .nk-menu-footer .nk-menu-link, .is-theme .sub-text, .is-theme .lead-text span { color: #b2c9e4; }
+.is-theme .nk-menu-footer .nk-menu-link, .is-theme .sub-text, .is-theme .lead-text span { color: #b2c9e4; }
 
-@media (min-width: 1200px) { .nk-sidebar.is-theme .nk-menu > li:hover > a, .nk-sidebar.is-theme .nk-menu > li.active > a, .nk-sidebar.is-theme .nk-menu > li.current-menu > a, .nk-sidebar.is-theme .nk-menu > li > a:hover, .is-theme .wallet-item a:before { background: #033b75; } }
+.apps-menu .nk-menu-link:before { background: #2263b3; }
 
 .nav-switch-s2 .nav-link:hover, .nav-switch-s2 .nav-link:focus { color: #526484; }
 

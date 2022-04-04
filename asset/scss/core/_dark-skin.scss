@@ -13,8 +13,11 @@ body.dark-mode {
     &.bg-lighter, &.bg-light {
         background: $dark-body-bg-light !important;
     }
-    &.nk-body.ui-softy, &.nk-body.ui-shady{
+    &.nk-body.ui-softy, &.nk-body.ui-shady {
         background: $dark-body-bg !important;
+    }
+    &.nk-body.ui-clean{
+        background: $dark-card-bg !important;
     }
 }
 .dark-mode {
@@ -315,7 +318,7 @@ body.dark-mode {
     .border,.border-bottom, .border-top, .border-left, .border-right,
     .dropdown-inner + .dropdown-inner,.dropdown-head,.dropdown-foot,
     .preview-hr,.select2-container--default .select2-selection--single,
-    .ql-picker-options,.dropzone,
+    .ql-picker-options,
     .select2-container--default .select2-selection--multiple,.select2-dropdown,
     .select2-container--default .select2-search--dropdown .select2-search__field,
     .ui-timepicker-standard,.ql-toolbar,.ql-container,.note-editor,.note-toolbar,
@@ -325,13 +328,13 @@ body.dark-mode {
     .tox .tox-collection--list .tox-collection__group,
     .note-btn-group .note-btn,.note-statusbar,.nk-code-preview-box,.swal2-footer,
     .example-border-all > div, .btn-toolbar-sep, .page-link,
-    .table th, .table td, .table-bordered, .table-bordered th, .table-bordered td,.datatable-wrap,.nk-tb-head .nk-tb-col,
+    .table th, .table td, .table-bordered, .table-bordered th, .table-bordered td,.datatable-wrap,.nk-tb-head .nk-tb-col,.list-apps + .list-apps,
     .list-group-item,.modal-header,.modal-footer,.popover,.popover-header,
     .tagify__tag > div::before ,.tagify__tag:hover:not([readonly]) div::before,
     .nk-tb-item:not(:last-child) .nk-tb-col, .nk-activity-item:not(:last-child), 
     .nk-support-item:not(:last-child), .card-inner-group .card-inner:not(:last-child),
     .card-aside,.nav-tabs,.divider,.data-item:not(:last-child),.nk-footer,
-    .nav-switch-s2 .nav-link, .language-list li:not(:last-child) .language-item, .user-avatar-multiple .user-avatar {
+    .nav-switch-s2 .nav-link, .user-avatar-multiple .user-avatar {
         border-color: $dark-border-color !important;
     }
 
@@ -348,7 +351,7 @@ body.dark-mode {
 
     .table-active, .table-active > th, .table-active > td,
     .code-block .prettyprint,.list-group-item,.example-spacing-pd > div > span,
-    .custom-file-label::after,.ql-picker-options,.data-more:before,.search-wrap,.form-control,.input-mail,.dropzone,
+    .custom-file-label::after,.ql-picker-options,.data-more:before,
     .ui-state-hover,.note-editor.note-frame .note-statusbar, 
     .note-editor.note-airframe .note-statusbar,.swal2-popup, 
     .select2-container--default .select2-results__option--highlighted[aria-selected],
@@ -386,10 +389,6 @@ body.dark-mode {
     .datepicker table tr td.day:hover, .datepicker table tr td.day.focused,
     .datepicker .datepicker-switch:hover, .datepicker .prev:hover, .datepicker .next:hover, .datepicker tfoot tr th:hover {
         background: $dark-card-bg !important;
-    }
-
-    .search-wrap.search-wrap-extend, .search-wrap.search-wrap-extend .form-control {
-        background: $dark-body-bg !important;
     }
 
     .clipboard-success-message {
@@ -473,7 +472,7 @@ body.dark-mode {
     .tox .tox-collection__item-accessory{
         color: $base-500;
     }
-    .nk-menu-link, .link-dark, .link-list a{
+    .nk-menu-link, .link-dark, .nk-menu-main .nk-menu-sub .nk-menu-link, .link-list a{
         color: $base-400;
         &:hover{
             color: $accent-color;
@@ -490,6 +489,12 @@ body.dark-mode {
     .nk-menu-hr,.nk-menu-main .nk-menu-sub,.nk-sidebar .nk-menu > li .nk-menu-sub .nk-menu-sub,
     .user-avatar-group .user-avatar{
         border-color: $dark-border-color;
+    }
+    .nk-menu-main .nk-menu-sub{
+        background: lighten($sidebar-bg-dark-color,3%);
+    }
+    .nk-menu-main .nk-menu-sub .nk-menu-item:hover > a{
+        background-color: $sidebar-bg-dark-color;
     }
     .table .thead-light th,.page-item.disabled .page-link,.page-link:hover,.tb-odr-head,.tb-tnx-head,
     .custom-control-input[disabled] ~ .custom-control-label::before, .custom-control-input:disabled ~ .custom-control-label::before {
@@ -540,7 +545,7 @@ body.dark-mode {
             background: lighten($dark-card-bg, 12%);
         }
     }
-
+    
     .border-transparent{
         border-color: transparent !important;
     }
@@ -627,12 +632,19 @@ body.dark-mode {
         color: $white;
     }
     .nk-header,.nk-header.is-light:not([class*=bg-]),
+    .nk-apps-sidebar.is-light,.nk-apps-sidebar,.nk-apps-sidebar.is-dark,.nk-apps-sidebar.is-theme,
+    .is-light .nk-sidebar-footer,.nk-sidebar-profile-fixed,
     .nk-sidebar,.nk-sidebar.is-light,.nk-sidebar-head{
         border-color: $sidebar-border-dark-color !important;
     }
-    .nk-header,.nk-header.is-light:not([class*=bg-]),
-    .nk-sidebar,.nk-sidebar.is-light,.nk-header.is-theme:not([class*=bg-]){
+    
+    .nk-apps-sidebar.is-light,.nk-apps-sidebar,.nk-apps-sidebar.is-dark,.nk-apps-sidebar.is-theme,
+    .is-theme .nk-sidebar-footer,.is-light .nk-sidebar-footer,.nk-sidebar-footer,.nk-sidebar-profile-fixed{
         background: $sidebar-bg-dark-color;
+    }
+    .nk-sidebar,.nk-sidebar.is-light,.nk-header.is-theme:not([class*=bg-]),.nk-header,
+    .nk-header.is-light:not([class*=bg-]),.nk-header.is-dark:not([class*=bg-]){
+        background: lighten($sidebar-bg-dark-color,3%);
     }
 
     // Apps
@@ -876,6 +888,16 @@ body.dark-mode {
             }
         }
     }
+    &.ui-shady.npc-apps-messages .nk-msg-item.active, 
+    &.ui-shady.npc-apps-messages .nk-msg-item.current,
+    &.ui-clean.npc-apps-messages .nk-msg-item.active, 
+    &.ui-clean.npc-apps-messages .nk-msg-item.current {
+        background-color: lighten($dark-card-bg, 4%);
+    }
+    &.ui-clean.npc-apps-messages .nk-msg-aside, 
+    &.ui-clean.npc-apps-messages .nk-msg-nav {
+        background-color: $dark-body-bg;
+    }
 
     .nk-order-ovwg-data {
         &.buy {
@@ -899,59 +921,6 @@ body.dark-mode {
         background: rgba($black, .9);
     }
 
-    //Crypto
-    .nk-sidebar .nk-menu > li:hover > a, .nk-sidebar .nk-menu > li.active > a, 
-    .nk-sidebar .nk-menu > li.current-menu > a,.wallet-item a:before {
-        background: lighten($sidebar-bg-dark-color,5%);
-    }
-    .is-light .nk-sidebar-footer,.is-dark .nk-sidebar-footer,.is-theme .nk-sidebar-footer,.nk-sidebar-footer{
-        background: $sidebar-bg-dark-color;
-    }
-
-    .buysell-cc-choosen,.buysell-pm-list{
-        background: $dark-card-bg;
-    }
-    .nk-wgw-add a .add-icon:before{
-        background: $dark-body-bg;
-    }
-
-    .card.is-dark{
-        background: $accent-dark !important;
-        border-color: $accent-dark;
-    }
-    .tranx-item:not(:last-child),.nk-refwg .nk-refwg-invite,.nk-wgw-actions,
-    .card-custom-s1 .card-inner-group,.nk-kyc-app-icon .icon,.nk-kycfm-head:not(:last-child), 
-    .nk-kycfm-content:not(:last-child), .nk-kycfm-footer:not(:last-child){
-        border-color: $dark-border-color;
-    }
-    .nk-wg4-switcher > li > .dropdown > a, .buysell-cc-choosen,.nk-kycfm-label,
-    .buysell-cc-item:not(:last-child),.buysell-cc-dropdown .dropdown-menu,
-    .buysell-pm-list,.buysell-pm-item:not(:last-child),.buysell-overview-list,
-    .buysell-overview-item:not(:last-of-type){
-        border-color: lighten($dark-card-bg, 20%);
-    }
-    .buysell-pm-label:before {
-        border-color: lighten($dark-card-bg, 30%);
-    }
-    .nk-kycfm-count {
-        border-color: darken($base-400, 5%);
-        color: $base-400;
-    }
-
-    .tranx-label,.nk-wg1-title,.lead-text-lg,.is-dark .nk-wgw-balance .amount,.coin-name,.nk-wg7-stats .number-lg,.nk-wg7-stats .number,
-    .buysell-pm-label .pm-name,.nk-kyc-app-icon .icon,.wallet-balance,.nk-wg5-amount .amount{
-        color: $white !important;
-    }
-    .nk-wgw-balance .amount,.tranx-amount .number,.user-balance-alt, .tranx-amount .number-sm, .nk-wgw-actions a{
-        color: $base-300;
-    }
-    .nk-wgw-balance .amount-sm, .tranx-amount .number span {
-        color: $base-400;
-    }
-    .is-dark .nk-wgw-balance .amount-sm {
-        color: $accent-400;
-    }
-
     //Saparated Table / 
     .ui-bordered .nk-tb-list.is-separate .nk-tb-item > .nk-tb-col:first-child,
     .ui-bordered .nk-tb-list.is-separate .nk-tb-item > .nk-tb-col{
@@ -964,7 +933,6 @@ body.dark-mode {
     .nk-tb-list .tb-product .title {
         color: $white;
     }
-
 }
 
 @media (max-width: 576px) {

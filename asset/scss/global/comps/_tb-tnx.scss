@@ -75,7 +75,7 @@
         }
     }
     &-btns {
-        .btn + .btn {
+    	.btn + .btn {
             @if($rtl==false){
                 margin-left: .5rem;
             }

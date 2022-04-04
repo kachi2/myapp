@@ -21,7 +21,7 @@
                             <li class="text-black"><i class="fa fa-check"></i> 24x7 Support</li>              
                           </ul>
                           <div class="pricingTable-signup">
-                              <a href="{{ route('deposits.invest', ['id' => $plan->id]) }}" class="pricing_action">Choose plan</a>
+                              <a href="{{ route('deposits.invest', ['id' => encrypt($plan->id])) }}" class="pricing_action">Choose plan</a>
                           </div>
                       </div>
                   </div>

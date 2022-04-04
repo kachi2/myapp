@@ -10,81 +10,84 @@
                                     <div class="nk-block-head-content">
                                     </div>
                                 </div>
-                                <div class="row g-gs">
-                                    <div class="col-sm-4 col-lg-4 col-xl-4 col-xxl-4">
-                                        <div class="card card-bordered is-dark">
-                                            <div class="nk-wgw">
-                                                <div class="nk-wgw-inner">
-                                                    <a class="nk-wgw-name" href="#">
-                                                        <div class="nk-wgw-icon ">
-                                                            <em class="icon ni ni-sign-usd"></em>
+                                <div class="nk-block">
+                            <div class="row g-gs">
+                                    <div class="col-md-4">
+                                            <div class="card card card-bordered text-light is-dark h-100">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group align-start mb-0">
+                                                        <div class="card-title">
+                                                            <h6 class="subtitle text-light ">Accumulated Balance</h6>
                                                         </div>
-                                                        <h5 class="nk-wgw-title title">Account Balance</h5>
-                                                    </a>
-                                                    <div class="nk-wgw-balance">
-                                                        <div class="amount">{{ moneyFormat($user->wallet->amount, 'USD') }}</div>
+                                                        <div class="card-tools">
+                                                            <em class="card-hint icon ni ni-help-fill" data-toggle="tooltip" data-placement="left" title="Overview of your deposits and investments"></em>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-amount ">
+                                                        <span class="amount text-light"> <span class="currency currency-usd text-light">{{ moneyFormat($user->wallet->amount, 'USD') }}</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="invest-data">
                                                       
-                                                    </div>
-                                                </div>
-                                                <div class="nk-wgw-actions">
-                                                    <ul>
-                                                        <li><a href="#"><em class="icon ni ni-arrow-up-right"></em> <span>Total Account Balance</span></a></li>
-                                                    </ul>
-                                                </div>
-                                                
-                                            </div>
-                                        </div><!-- .card -->
-                                    </div>
-                                    
-                                     <div class="col-sm-4 col-lg-4 col-xl-4 col-xxl-4">
-                                        <div class="card card-bordered is-dark">
-                                            <div class="nk-wgw">
-                                                <div class="nk-wgw-inner">
-                                                    <a class="nk-wgw-name" href="#">
-                                                        <div class="nk-wgw-icon ">
-                                                            <em class="icon ni ni-sign-usd"></em>
+                                                        <div class="invest-data-ck">
+                                                            <canvas class="iv-data-chart" id="totalDeposit"></canvas>
                                                         </div>
-                                                        <h5 class="nk-wgw-title title">Accumulate Bonus</h5>
-                                                    </a>
-                                                    <div class="nk-wgw-balance">
-                                                        <div class="amount">{{ moneyFormat($user->wallet->bonus, 'USD') }}</div>
-                                                      
                                                     </div>
                                                 </div>
-                                                <div class="nk-wgw-actions">
-                                                    <ul>
-                                                        <li><a href="#"><em class="icon ni ni-arrow-up-right"></em> <span>Total Bonus Balance</span></a></li>
-                                                    </ul>
-                                                </div>
-                                                
-                                            </div>
-                                        </div><!-- .card -->
+                                            </div><!-- .card -->
                                     </div>
-                                    
-                                     <div class="col-sm-4 col-lg-4 col-xl-4 col-xxl-4">
-                                        <div class="card card-bordered is-dark">
-                                            <div class="nk-wgw">
-                                                <div class="nk-wgw-inner">
-                                                    <a class="nk-wgw-name" href="#">
-                                                        <div class="nk-wgw-icon ">
-                                                            <em class="icon ni ni-sign-usd"></em>
+                                    <div class="col-md-4">
+                                            <div class="card card card-bordered text-light is-dark h-100">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group align-start mb-0">
+                                                        <div class="card-title">
+                                                            <h6 class="subtitle text-light ">Accumulated Bonus</h6>
                                                         </div>
-                                                        <h5 class="nk-wgw-title title">Accumulate Referral Earnings</h5>
-                                                    </a>
-                                                    <div class="nk-wgw-balance">
-                                                        <div class="amount">{{ moneyFormat($user->wallet->referrals, 'USD') }}</div>
-                                                     
+                                                        <div class="card-tools">
+                                                            <em class="card-hint icon ni ni-help-fill" data-toggle="tooltip" data-placement="left" title="Overview of your deposits and investments"></em>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-amount ">
+                                                        <span class="amount text-light"> <span class="currency currency-usd text-light">{{ moneyFormat($user->wallet->bonus, 'USD') }}</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="invest-data">
+                                                       
+                                                        <div class="invest-data-ck">
+                                                            <canvas class="iv-data-chart" id="totalDeposit"></canvas>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="nk-wgw-actions">
-                                                    <ul>
-                                                        <li><a href="#"><em class="icon ni ni-arrow-up-right"></em> <span>Total Referrals Earnings</span></a></li>
-                                                    </ul>
-                                                </div>
-                                                
-                                            </div>
-                                        </div><!-- .card -->
+                                            </div><!-- .card -->
                                     </div>
+                                    <div class="col-md-4">
+                                            <div class="card card card-bordered text-light is-dark h-100">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group align-start mb-0">
+                                                        <div class="card-title">
+                                                            <h6 class="subtitle text-light ">Accumulated Referals Earnings</h6>
+                                                        </div>
+                                                        <div class="card-tools">
+                                                            <em class="card-hint icon ni ni-help-fill" data-toggle="tooltip" data-placement="left" title="Overview of your deposits and investments"></em>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-amount ">
+                                                        <span class="amount text-light"> <span class="currency currency-usd text-light">{{ moneyFormat($user->wallet->referrals, 'USD') }}</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="invest-data">
+                                                       
+                                                        <div class="invest-data-ck">
+                                                            <canvas class="iv-data-chart" id="totalDeposit"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .card -->
+                                    </div>
+
+                            </div>
+                                    
+                                   
                                     
                                     <!-- .col -->
                                   <!-- .col -->
@@ -198,124 +201,7 @@
                             </div>
                             <!-- .nk-block -->
 
-                             <div class="nk-block nk-block-lg">
-                                <div class="row gy-gs">
-                                  
-                                    <div class="col-md-6">
-                                        <div class="card-head">
-                                            <div class="card-title  mb-0">
-                                                <h5 class="title">Deposit History</h5>
-                                            </div>
-                                        </div><!-- .card-head -->
-                                        <div class="tranx-list card card-bordered">
-                                            <div class="tranx-item">
-                                                <div class="tranx-col">
-                                                    <div class="tranx-info">
-                                                        <div class="tranx-data">
-                                                            <div class="tranx-label">Total Deposits</div>
-                                                            <div class="tranx-date">{{ moneyFormat($total_deposits, 'USD') }}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tranx-col">
-                                                    <div class="tranx-amount">
-                                                        <div class="number">{{ moneyFormat($total_deposits, 'USD') }}</div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .tranx-item -->
-                                            <div class="tranx-item">
-                                                <div class="tranx-col">
-                                                    <div class="tranx-info">
-                                                        <div class="tranx-data">
-                                                            <div class="tranx-label">Active Deposits<span class="tranx-icon sm"><img src="./images/coins/eth.svg" alt=""></span></div>
-                                                            <div class="tranx-date">{{ moneyFormat($active_deposits, 'USD') }}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tranx-col">
-                                                    <div class="tranx-amount">
-                                                        <div class="number">{{ moneyFormat($active_deposits, 'USD') }}</div>
-                                                      
-                                                    </div>
-                                                </div>
-                                            </div><!-- .tranx-item -->
-                                            <div class="tranx-item">
-                                                <div class="tranx-col">
-                                                    <div class="tranx-info">
-                                                        <div class="tranx-data">
-                                                            <div class="tranx-label">Last Deposits </div>
-                                                            <div class="tranx-date">{{ moneyFormat($last_deposit, 'USD') }}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tranx-col">
-                                                    <div class="tranx-amount">
-                                                        <div class="number">{{ moneyFormat($last_deposit, 'USD') }} </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .tranx-item -->
-                                            <!-- .tranx-item -->
-                                        </div><!-- .tranx-list -->
-                                    </div>
-                                     <div class="col-md-6">
-                                        <div class="card-head">
-                                            <div class="card-title  mb-0">
-                                                <h5 class="title">Withdrawal History</h5>
-                                            </div>
-                                        </div><!-- .card-head -->
-                                        <div class="tranx-list card card-bordered">
-                                            <div class="tranx-item">
-                                                <div class="tranx-col">
-                                                    <div class="tranx-info">
-                                                        <div class="tranx-data">
-                                                            <div class="tranx-label">Total Withdrawal</div>
-                                                            <div class="tranx-date">{{ moneyFormat($total_withdrawals, 'USD') }}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tranx-col">
-                                                    <div class="tranx-amount">
-                                                        <div class="number">{{ moneyFormat($total_withdrawals, 'USD') }}</div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .tranx-item -->
-                                            <div class="tranx-item">
-                                                <div class="tranx-col">
-                                                    <div class="tranx-info">
-                                                        <div class="tranx-data">
-                                                            <div class="tranx-label">Pending Withdrawal<span class="tranx-icon sm"><img src="./images/coins/eth.svg" alt=""></span></div>
-                                                            <div class="tranx-date">{{ moneyFormat($pending_withdrawals, 'USD') }}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tranx-col">
-                                                    <div class="tranx-amount">
-                                                        <div class="number">{{ moneyFormat($pending_withdrawals, 'USD') }}</div>
-                                                      
-                                                    </div>
-                                                </div>
-                                            </div><!-- .tranx-item -->
-                                            <div class="tranx-item">
-                                                <div class="tranx-col">
-                                                    <div class="tranx-info">
-                                                        <div class="tranx-data">
-                                                            <div class="tranx-label">Last Withdrawal </div>
-                                                            <div class="tranx-date">{{ moneyFormat($last_withdrawal, 'USD') }}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tranx-col">
-                                                    <div class="tranx-amount">
-                                                        <div class="number">{{ moneyFormat($last_withdrawal, 'USD') }} </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .tranx-item -->
-                                            <!-- .tranx-item -->
-                                        </div><!-- .tranx-list -->
-                                    </div><!-- .col -->
-                                    <!-- .col -->
-                                </div><!-- .row -->
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
