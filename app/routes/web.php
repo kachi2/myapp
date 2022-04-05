@@ -75,3 +75,8 @@ Route::get('blockchain/callback', 'BlockChainPaymentController@callback')->name(
 
 Route::get('user/packages', 'HomeController@packages')->name('user.packages');
 Route::get('/user/clear/notifications', 'WalletController@clearNotifications')->name('create.notifications');
+
+Route::domain('app.zenithcapital.cc')->group(function(){
+Route::get('/', 'MBHomeController@index')->name('mb.index');
+
+});
