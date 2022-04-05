@@ -1,4 +1,4 @@
-@extends('layout.mobile')
+@extends('layouts.mobile')
 
 @section('content')
 
