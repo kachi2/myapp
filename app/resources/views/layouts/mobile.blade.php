@@ -29,10 +29,10 @@
 </head>
 
 
-@include('partial.mobilenav')
+@include('partials.mobilenav')
 
 @yield('content')
-@include('partial.mobile-sidebar')
+@include('partials.mobile-sidebar')
 
 
 
