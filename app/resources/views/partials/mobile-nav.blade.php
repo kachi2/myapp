@@ -10,7 +10,7 @@
             ==================================== -->
             <header class="default heade-sticky">
                 <div class="un-title-page">
-                    <h1>Home Styles</h1>
+                    <h1>Zenithcapital</h1>
                 </div>
                 <div class="un-block-right">
                     <div class="un-notification">
@@ -22,7 +22,7 @@
                     <div class="un-user-profile">
                         <a href="page-my-profile.html" aria-label="profile">
                             <picture>
-                                <img class="img-avatar" src="images/avatar/11.jpg" alt="img account">
+                                <img class="img-avatar" src="{{asset('/mobile/images/avatar/11.jpg')}}" alt="img account">
                             </picture>
                         </a>
                     </div>
