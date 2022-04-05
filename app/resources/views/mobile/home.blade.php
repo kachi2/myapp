@@ -1,8 +1,6 @@
 @extends('layouts.mobile')
 
 @section('content')
-
-
    <section class="un-section-seller margin-t-20">
                 <!-- un-block-auther -->
                 <div class="un-block-creators margin-t-20">
@@ -18,8 +16,7 @@
                                     <div class="media-profile">
                                         <figure class="image-avatar">
                                             <picture>
-                                                <source srcset="images/avatar/22.webp" type="image/webp">
-                                                <img src="images/avatar/22.jpg" alt="">
+                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
@@ -41,8 +38,7 @@
                                     <div class="media-profile">
                                         <figure class="image-avatar">
                                             <picture>
-                                                <source srcset="images/avatar/18.webp" type="image/webp">
-                                                <img src="images/avatar/18.jpg" alt="">
+                                                <img src="{{asset('mobile/images/avatar/18.jpg')}}" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
@@ -64,8 +60,7 @@
                                     <div class="media-profile">
                                         <figure class="image-avatar">
                                             <picture>
-                                                <source srcset="images/avatar/14.webp" type="image/webp">
-                                                <img src="images/avatar/14.jpg" alt="">
+                                                <img src="{{asset('mobile/images/avatar/14.jpg')}}" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
@@ -87,8 +82,7 @@
                                     <div class="media-profile">
                                         <figure class="image-avatar">
                                             <picture>
-                                                <source srcset="images/avatar/5.webp" type="image/webp">
-                                                <img src="images/avatar/5.png" alt="">
+                                                <img src="{{asset('mobile/images/avatar/5.png')}}" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
@@ -110,8 +104,7 @@
                                     <div class="media-profile">
                                         <figure class="image-avatar">
                                             <picture>
-                                                <source srcset="images/avatar/13.webp" type="image/webp">
-                                                <img src="images/avatar/13.jpg" alt="">
+                                                <img src="{{asset('mobile/images/avatar/13.jpg')}}" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
@@ -154,8 +147,7 @@
                                     <a href="page-collectibles-details.html" class="body-card">
                                         <div class="cover-nft">
                                             <picture>
-                                                <source srcset="images/other/26.webp" type="image/webp">
-                                                <img class="img-cover" src="images/other/26.jpg" alt="image NFT">
+                                                <img class="img-cover" src="{{asset('mobile/images/other/26.jpg')}}" alt="image NFT">
                                             </picture>
                                             <div class="icon-type">
                                                 <i class="ri-vidicon-line"></i>
@@ -176,8 +168,7 @@
                                         <div class="creator-name">
                                             <div class="image-user">
                                                 <picture>
-                                                    <source srcset="images/avatar/14.webp" type="image/webp">
-                                                    <img class="img-avatar" src="images/avatar/14.jpg" alt="">
+                                                    <img class="img-avatar" src="{{asset('mobile/images/avatar/14.jpg')}}" alt="">
                                                 </picture>
                                                 <div class="icon">
                                                     <i class="ri-checkbox-circle-fill"></i>
@@ -210,8 +201,7 @@
                                     <a href="page-collectibles-details.html" class="body-card">
                                         <div class="cover-nft">
                                             <picture>
-                                                <source srcset="images/other/14.webp" type="image/webp">
-                                                <img class="img-cover" src="images/other/14.jpg" alt="image NFT">
+                                                <img class="img-cover" src="{{asset('mobile/images/other/14.jpg')}}" alt="image NFT">
                                             </picture>
                                             <div class="countdown-time">
                                                 <span>08H 38M 16S</span>
@@ -229,8 +219,7 @@
                                         <div class="creator-name">
                                             <div class="image-user">
                                                 <picture>
-                                                    <source srcset="images/avatar/21.webp" type="image/webp">
-                                                    <img class="img-avatar" src="images/avatar/21.jpg" alt="">
+                                                    <img class="img-avatar" src="{{asset('mobile/images/avatar/21.jpg')}}" alt="">
                                                 </picture>
                                                 <div class="icon">
                                                     <i class="ri-checkbox-circle-fill"></i>
@@ -263,8 +252,7 @@
                                     <a href="page-collectibles-details.html" class="body-card">
                                         <div class="cover-nft">
                                             <picture>
-                                                <source srcset="images/other/27.webp" type="image/webp">
-                                                <img class="img-cover" src="images/other/27.jpg" alt="image NFT">
+                                                <img class="img-cover" src="{{asset('mobile/images/other/27.jpg')}}" alt="image NFT">
                                             </picture>
                                             <div class="countdown-time">
                                                 <span>08H 38M 16S</span>
@@ -282,8 +270,7 @@
                                         <div class="creator-name">
                                             <div class="image-user">
                                                 <picture>
-                                                    <source srcset="images/avatar/13.webp" type="image/webp">
-                                                    <img class="img-avatar" src="images/avatar/13.jpg" alt="">
+                                                    <img class="img-avatar" src="{{asset('mobile/images/avatar/13.jpg')}}" alt="">
                                                 </picture>
                                                 <div class="icon">
                                                     <i class="ri-checkbox-circle-fill"></i>
@@ -316,8 +303,7 @@
                                     <a href="page-collectibles-details.html" class="body-card">
                                         <div class="cover-nft">
                                             <picture>
-                                                <source srcset="images/other/16.webp" type="image/webp">
-                                                <img class="img-cover" src="images/other/16.jpg" alt="image NFT">
+                                                <img class="img-cover" src="{{asset('mobile/images/other/16.jpg')}}" alt="image NFT">
                                             </picture>
                                             <div class="icon-type">
                                                 <i class="ri-vidicon-line"></i>
@@ -336,8 +322,7 @@
                                         <div class="creator-name">
                                             <div class="image-user">
                                                 <picture>
-                                                    <source srcset="images/avatar/17.webp" type="image/webp">
-                                                    <img class="img-avatar" src="images/avatar/17.jpg" alt="">
+                                                    <img class="img-avatar" src="{{asset('mobile/images/avatar/17.jpg')}}" alt="">
                                                 </picture>
                                                 <div class="icon">
                                                     <i class="ri-checkbox-circle-fill"></i>
@@ -370,8 +355,7 @@
                                     <a href="page-collectibles-details.html" class="body-card">
                                         <div class="cover-nft">
                                             <picture>
-                                                <source srcset="images/other/21.webp" type="image/webp">
-                                                <img class="img-cover" src="images/other/21.jpg" alt="image NFT">
+                                                <img class="img-cover" src="{{asset('mobile/images/other/21.jpg')}}" alt="image NFT">
                                             </picture>
                                             <div class="countdown-time">
                                                 <span>08H 38M 16S</span>
@@ -389,8 +373,7 @@
                                         <div class="creator-name">
                                             <div class="image-user">
                                                 <picture>
-                                                    <source srcset="images/avatar/19.webp" type="image/webp">
-                                                    <img class="img-avatar" src="images/avatar/19.jpg" alt="">
+                                                    <img class="img-avatar" src="{{asset('mobile/images/avatar/19.jpg')}}" alt="">
                                                 </picture>
                                                 <div class="icon">
                                                     <i class="ri-checkbox-circle-fill"></i>
@@ -423,8 +406,7 @@
                                     <a href="page-collectibles-details.html" class="body-card">
                                         <div class="cover-nft">
                                             <picture>
-                                                <source srcset="images/other/6.webp" type="image/webp">
-                                                <img class="img-cover" src="images/other/6.jpg" alt="image NFT">
+                                                <img class="img-cover" src="{{asset('mobile/images/other/6.jpg')}}" alt="image NFT">
                                             </picture>
                                             <div class="icon-type">
                                                 <i class="ri-vidicon-line"></i>
@@ -445,8 +427,7 @@
                                         <div class="creator-name">
                                             <div class="image-user">
                                                 <picture>
-                                                    <source srcset="images/avatar/18.webp" type="image/webp">
-                                                    <img class="img-avatar" src="images/avatar/18.jpg" alt="">
+                                                    <img class="img-avatar" src="{{asset('mobile/images/avatar/18.jpg')}}" alt="">
                                                 </picture>
                                                 <div class="icon">
                                                     <i class="ri-checkbox-circle-fill"></i>
@@ -501,8 +482,7 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <source srcset="images/avatar/13.webp" type="image/webp">
-                                        <img class="avt-img" src="images/avatar/13.jpg" alt="">
+                                        <img class="avt-img" src="{{asset('mobile/images/avatar/13.jpg')}}" alt="">
                                     </picture>
                                     <div class="txt-user">
                                         <h5>Richard Noga</h5>
@@ -518,8 +498,7 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <source srcset="images/avatar/7.webp" type="image/webp">
-                                        <img class="avt-img" src="images/avatar/7.jpg" alt="">
+                                        <img class="avt-img" src="{{asset('mobile/images/avatar/7.jpg')}}" alt="">
                                     </picture>
                                     <div class="txt-user">
                                         <h5>Tito_Calab</h5>
@@ -535,8 +514,7 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <source srcset="images/avatar/4.webp" type="image/webp">
-                                        <img class="avt-img" src="images/avatar/4.jpg" alt="">
+                                        <img class="avt-img" src="{{asset('mobile/images/avatar/4.jpg')}}" alt="">
                                     </picture>
                                     <div class="txt-user">
                                         <h5>Settimio Loggia</h5>
@@ -552,8 +530,7 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <source srcset="images/avatar/1.webp" type="image/webp">
-                                        <img class="avt-img" src="images/avatar/1.jpg" alt="user">
+                                        <img class="avt-img" src="{{asset('mobile/images/avatar/1.jpg')}}" alt="user">
                                     </picture>
                                     <div class="txt-user">
                                         <h5>Vinicius O.</h5>
