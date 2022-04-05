@@ -1,3 +1,4 @@
+   
     <div class="modal sidebarMenu -left fade" id="mdllSidebar-connected" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
@@ -28,22 +29,20 @@
                         <div class="un-balance">
                             <div class="content-balance">
                                 <div class="head-balance">
-                                    <h4>My Balance</h4>
+                                    <h4>Main Wallet</h4>
                                     <a class="btn link-addBalance" data-bs-toggle="modal" data-bs-dismiss="modal"
                                         data-bs-target="#mdllAddETH">
                                         <i class="ri-add-fill"></i>
                                     </a>
                                 </div>
-                                <p class="no-balance">3,650 ETH</p>
+                                <p class="no-balance">{{moneyFormat(111111, 'USD')}}</p>
                             </div>
                         </div>
                         <button type="button" class="btn btn-sm-size bg-white text-dark rounded-pill"
                             data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#mdllUploadItem">
-                            Create
+                            View All
                         </button>
                     </div>
-
-
                 </div>
                 <div class="modal-body">
                     <ul class="nav flex-column -active-links">
@@ -55,7 +54,7 @@
                                 <div class="icon_active">
                                     <i class="ri-compass-fill"></i>
                                 </div>
-                                <span class="title_link">Discover</span>
+                                <span class="title_link">My Wallets</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -66,9 +65,7 @@
                                 <div class="icon_active">
                                     <i class="ri-home-5-fill"></i>
                                 </div>
-                                <span class="title_link">Home Styles</span>
-
-                                <span class="xs-badge">8</span>
+                                <span class="title_link">Campaign</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -79,11 +76,7 @@
                                 <div class="icon_active">
                                     <i class="ri-pages-fill"></i>
                                 </div>
-                                <span class="title_link">Page Packs</span>
-
-                                <div class="badge-circle">
-                                    <span class="doted_item"></span>
-                                </div>
+                                <span class="title_link">Withdraw Funds</span>
                             </a>
                         </li>
 
@@ -95,7 +88,19 @@
                                 <div class="icon_active">
                                     <i class="ri-layout-2-fill"></i>
                                 </div>
-                                <span class="title_link">Components</span>
+                                <span class="title_link">Markets</span>
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="app-components.html">
+                                <div class="icon_current">
+                                    <i class="ri-layout-2-line"></i>
+                                </div>
+                                <div class="icon_active">
+                                    <i class="ri-layout-2-fill"></i>
+                                </div>
+                                <span class="title_link">Task Center</span>
 
                             </a>
                         </li>
@@ -103,6 +108,28 @@
                         <label class="title__label">other</label>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="page-about.html">
+                                <div class="icon_current">
+                                    <i class="ri-file-info-line"></i>
+                                </div>
+                                <div class="icon_active">
+                                    <i class="ri-file-info-fill"></i>
+                                </div>
+                                <span class="title_link">Security</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="homepage.html" class="nav-link">
+                                <div class="icon_current">
+                                    <i class="ri-logout-box-r-line"></i>
+                                </div>
+                                <div class="icon_active">
+                                    <i class="ri-logout-box-r-fill"></i>
+                                </div>
+                                <span class="title_link">Settings</span>
+                            </a>
+                        </li>
+                          <li class="nav-item">
                             <a class="nav-link" href="page-help.html">
                                 <div class="icon_current">
                                     <i class="ri-questionnaire-line"></i>
@@ -113,20 +140,7 @@
                                 <span class="title_link">Help Center</span>
                             </a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="page-about.html">
-                                <div class="icon_current">
-                                    <i class="ri-file-info-line"></i>
-                                </div>
-                                <div class="icon_active">
-                                    <i class="ri-file-info-fill"></i>
-                                </div>
-                                <span class="title_link">About Unic.</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a href="homepage.html" class="nav-link">
                                 <div class="icon_current">
                                     <i class="ri-logout-box-r-line"></i>
@@ -156,122 +170,4 @@
             </div>
         </div>
     </div>
-    <!-- ===================================
-      START THE SIDEBAR MENU - guest MODAL
-    ==================================== -->
-    <div class="modal sidebarMenu -left -guest fade" id="mdllSidebar-guest" tabindex="-1"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="welcome_em">
-                        <h2>Welcome to Unic<span>.</span></h2>
-                        <p>
-                            Connect wallet to browse, Buy, Sell, and create NFTs items.
-                        </p>
-                        <a href="page-connect-wallet.html" class="btn btn-md-size bg-primary text-white rounded-pill">
-                            Connect wallet
-                        </a>
-                    </div>
-                    <button type="button" class="btn btnClose" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="ri-close-fill"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <ul class="nav flex-column -active-links">
-                        <li class="nav-item">
-                            <a class="nav-link" href="homepage.html">
-                                <div class="icon_current">
-                                    <i class="ri-compass-line"></i>
-                                </div>
-                                <div class="icon_active">
-                                    <i class="ri-compass-fill"></i>
-                                </div>
-                                <span class="title_link">Discover</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="app-homes.html">
-                                <div class="icon_current">
-                                    <i class="ri-home-5-line"></i>
-                                </div>
-                                <div class="icon_active">
-                                    <i class="ri-home-5-fill"></i>
-                                </div>
-                                <span class="title_link">Home Styles</span>
-
-                                <span class="xs-badge">8</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="app-pages.html">
-                                <div class="icon_current">
-                                    <i class="ri-pages-line"></i>
-                                </div>
-                                <div class="icon_active">
-                                    <i class="ri-pages-fill"></i>
-                                </div>
-                                <span class="title_link">Page Packs</span>
-
-                                <div class="badge-circle">
-                                    <span class="doted_item"></span>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="app-components.html">
-                                <div class="icon_current">
-                                    <i class="ri-layout-2-line"></i>
-                                </div>
-                                <div class="icon_active">
-                                    <i class="ri-layout-2-fill"></i>
-                                </div>
-                                <span class="title_link">Components</span>
-
-                            </a>
-                        </li>
-
-                        <label class="title__label">other</label>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="page-help.html">
-                                <div class="icon_current">
-                                    <i class="ri-questionnaire-line"></i>
-                                </div>
-                                <div class="icon_active">
-                                    <i class="ri-questionnaire-fill"></i>
-                                </div>
-                                <span class="title_link">Help Center</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="page-about.html">
-                                <div class="icon_current">
-                                    <i class="ri-file-info-line"></i>
-                                </div>
-                                <div class="icon_active">
-                                    <i class="ri-file-info-fill"></i>
-                                </div>
-                                <span class="title_link">About Unic.</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <div class="em_darkMode_menu">
-                        <label class="text" for="switchDark2">
-                            <h3>Dark Mode</h3>
-                            <p>Browsing in night mode</p>
-                        </label>
-                        <label class="switch_toggle toggle_lg theme-switch" for="switchDark2">
-                            <input type="checkbox" class="switchDarkMode theme-switch" id="switchDark2"
-                                aria-describedby="switchDark2" aria-describedby="switchDark2">
-                            <span class="handle"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  

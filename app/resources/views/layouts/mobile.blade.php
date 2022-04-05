@@ -33,6 +33,7 @@
 
 @yield('content')
 
+  </div>
  <footer class="un-bottom-navigation filter-blur">
             <div class="em_body_navigation border-0 -active-links">
                 <div class="item_link">

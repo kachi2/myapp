@@ -1,10 +1,7 @@
 @extends('layouts.mobile')
-
 @section('content')
-   <section class="un-section-seller margin-t-20">
-                <!-- un-block-auther -->
+            <section class="un-section-seller margin-t-20">
                 <div class="un-block-creators margin-t-20">
-                    <!-- Swiper -->
                     <div class="swiper swiperCreators">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -16,7 +13,7 @@
                                     <div class="media-profile">
                                         <figure class="image-avatar">
                                             <picture>
-                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}" alt="">
+                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="20" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
@@ -52,10 +49,8 @@
                                 </a>
                             </div>
                             <div class="swiper-slide">
-                                <!-- un-item-seller -->
                                 <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="number">
-                                        03
+                                    <div class="number">03
                                     </div>
                                     <div class="media-profile">
                                         <figure class="image-avatar">

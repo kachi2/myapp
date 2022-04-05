@@ -14,8 +14,9 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::domain('app.zenithcapital.cc')->prefix('user')->group(function(){
+Route::domain('app.zenithcapital.local')->prefix('user')->group(function(){
     Route::get('/', 'MbHomeController@Index')->name('mb.index');
+
     });
 
 
