@@ -13,6 +13,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+Route::domain('app.zenithcapital.cc')->prefix('user')->group(function(){
+    Route::get('/', 'MbHomeController@Index')->name('mb.index');
+    });
+
+
 Route::get('/', 'WelcomeController@index')->name('index');
 
 Auth::routes(['verify' => true]);
@@ -76,7 +82,3 @@ Route::get('blockchain/callback', 'BlockChainPaymentController@callback')->name(
 Route::get('user/packages', 'HomeController@packages')->name('user.packages');
 Route::get('/user/clear/notifications', 'WalletController@clearNotifications')->name('create.notifications');
 
-Route::domain('app.zenithcapital.cc')->group(function(){
-Route::get('/', 'MBHomeController@index')->name('mb.index');
-
-});
