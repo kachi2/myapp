@@ -29,7 +29,7 @@
 </head>
 
 
-@include('partials.mobilenav')
+@include('partials.mobile-nav')
 
 @yield('content')
 @include('partials.mobile-sidebar')
