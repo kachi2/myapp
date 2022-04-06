@@ -4,13 +4,9 @@
                 <div class="un-block-creators margin-t-20">
                     <div class="swiper swiperCreators">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <!-- un-item-seller -->
+                            <div class="swiper-slide p-1" >
                                 <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="number">
-                                        01
-                                    </div>
-                                    <div class="media-profile">
+                                    <div class="media-profile"  style="background:#000; color:#fff">
                                         <figure class="image-avatar">
                                             <picture>
                                                 <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="20" alt="">
@@ -26,92 +22,48 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="swiper-slide">
-                                <!-- un-item-seller -->
+                            <!-- next one -->
+
+                                 <div class="swiper-slide p-1" style="background:#000; color:#fff">
                                 <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="number">
-                                        02
-                                    </div>
-                                    <div class="media-profile">
+                                    <div class="media-profile"  >
                                         <figure class="image-avatar">
                                             <picture>
-                                                <img src="{{asset('mobile/images/avatar/18.jpg')}}" alt="">
+                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="20" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
                                             </div>
                                         </figure>
                                         <div class="text">
-                                            <h3>Camillo Ferrari</h3>
-                                            <p>5.3 ETH</p>
+                                            <h3>MelonPixel⚡</h3>
+                                            <p>19.4 ETH</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="swiper-slide">
+
+                            <!-- next block -->
+
+                                 <div class="swiper-slide p-1">
                                 <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="number">03
-                                    </div>
-                                    <div class="media-profile">
+                                    <div class="media-profile"  >
                                         <figure class="image-avatar">
                                             <picture>
-                                                <img src="{{asset('mobile/images/avatar/14.jpg')}}" alt="">
+                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="20" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
                                             </div>
                                         </figure>
                                         <div class="text">
-                                            <h3>🚀 Pingu</h3>
-                                            <p>3.9 ETH</p>
+                                            <h3>MelonPixel⚡</h3>
+                                            <p>19.4 ETH</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="swiper-slide">
-                                <!-- un-item-seller -->
-                                <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="number">
-                                        04
-                                    </div>
-                                    <div class="media-profile">
-                                        <figure class="image-avatar">
-                                            <picture>
-                                                <img src="{{asset('mobile/images/avatar/5.png')}}" alt="">
-                                            </picture>
-                                            <div class="icon-verify">
-                                                <i class="ri-checkbox-circle-fill"></i>
-                                            </div>
-                                        </figure>
-                                        <div class="text">
-                                            <h3>Julian Co.</h3>
-                                            <p>2.8 ETH</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <!-- un-item-seller -->
-                                <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="number">
-                                        05
-                                    </div>
-                                    <div class="media-profile">
-                                        <figure class="image-avatar">
-                                            <picture>
-                                                <img src="{{asset('mobile/images/avatar/13.jpg')}}" alt="">
-                                            </picture>
-                                            <div class="icon-verify">
-                                                <i class="ri-checkbox-circle-fill"></i>
-                                            </div>
-                                        </figure>
-                                        <div class="text">
-                                            <h3>Tito_Calab</h3>
-                                            <p>2.7 ETH</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            <!-- next wallet -->
                         </div>
                     </div>
                 </div>
