@@ -4,9 +4,9 @@
                 <div class="un-block-creators margin-t-20">
                     <div class="swiper swiperCreators">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide p-1" >
+                            <div class="swiper-slide p-1"style="background:#000; color:#fff" >
                                 <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="media-profile"  style="background:#000; color:#fff">
+                                    <div class="media-profile"  >
                                         <figure class="image-avatar">
                                             <picture>
                                                 <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="20" alt="">
@@ -45,7 +45,7 @@
 
                             <!-- next block -->
 
-                                 <div class="swiper-slide p-1">
+                                 <div class="swiper-slide p-1" style="background:#000; color:#fff">
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
                                         <figure class="image-avatar">
