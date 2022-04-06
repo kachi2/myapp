@@ -4,7 +4,7 @@
                 <div class="un-block-creators margin-t-20">
                     <div class="swiper swiperCreators">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide p-1"style="background:#000; color:#fff" >
+                            <div class="swiper-slide p-2"style="background:#000; color:#fff; margin-left:15px" >
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
                                         <figure class="image-avatar">
@@ -24,7 +24,7 @@
                             </div>
                             <!-- next one -->
 
-                                 <div class="swiper-slide p-1" style="background:#000; color:#fff">
+                                 <div class="swiper-slide p-2" style="background:#000; color:#fff">
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
                                         <figure class="image-avatar">
@@ -45,7 +45,7 @@
 
                             <!-- next block -->
 
-                                 <div class="swiper-slide p-1" style="background:#000; color:#fff">
+                                 <div class="swiper-slide p-2" style="background:#000; color:#fff">
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
                                         <figure class="image-avatar">
