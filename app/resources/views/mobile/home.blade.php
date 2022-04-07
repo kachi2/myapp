@@ -18,6 +18,24 @@
                                     <div class="media-profile"  >
                                        
                                         <div class="text" >
+                                            <h3 style="color:#fff">Main Wallet</h3>
+                                            <p style="color:#fff">{{moneyFormat(5000,'USD')}}</p>
+                                        </div>
+                                         <figure class="image-avatar">
+                                            <picture>
+                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="10" alt="">
+                                            </picture>
+                                        </figure>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- next one -->
+                                <div class="swiper-slide p-2"style="background:#191970; color:#fff; margin-left:15px" >
+                                <a href="page-creator-profile.html" class="un-item-seller">
+                                    <div class="media-profile"  >
+                                       
+                                        <div class="text" >
                                             <h3 style="color:#fff">Savest Wallet</h3>
                                             <p style="color:#fff">{{moneyFormat(5000,'USD')}}</p>
                                         </div>
@@ -160,7 +178,7 @@
                                     <div class="btn-like-click">
                                         <div class="btnLike">
                                             <input type="checkbox">
-                                            <span class="count-likes">Investment Campaign</span>
+                                            <span class="count-likes">Investify Campaign</span>
                                           
                                         </div>
                                     </div>
@@ -294,14 +312,10 @@
                 <!-- un-title-default -->
                 <div class="un-title-default">
                     <div class="text">
-                        <h2>Creators</h2>
-                        <p>You can follow many Creators</p>
+                        <h2>Transactions</h2>
+                        <p>Recent Transactions</p>
                     </div>
-                    <div class="un-block-right">
-                        <a href="page-creators.html" class="icon-back" aria-label="iconBtn">
-                            <i class="ri-arrow-drop-right-line"></i>
-                        </a>
-                    </div>
+                  
                 </div>
 
                 <div class="content-list-creatores">
@@ -310,16 +324,17 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <source srcset="images/avatar/13.webp" type="image/webp">
-                                        <img class="avt-img" src="images/avatar/13.jpg" alt="">
+                                        <img class="avt-img" src="{{asset('/mobile/images/avatar/13.jpg')}}" alt="">
                                     </picture>
                                     <div class="txt-user">
-                                        <h5>Richard Noga</h5>
+                                        <h5>Wallet Deposit</h5>
                                         <p>$9,500.32</p>
                                     </div>
                                 </div>
                                 <div class="other-option">
-                                    <div class="color-text rounded-pill bg-snow btn-xs-size">44 Item</div>
+                                
+                                    <div class="text-white rounded-pill bg-success  btn-xs-size">Credit</div>
+                                    <div class="color-text rounded-pill  btn-xs-size">2/2/2022 3:12pm</div>
                                 </div>
                             </a>
                         </li>
@@ -327,16 +342,17 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <source srcset="images/avatar/7.webp" type="image/webp">
-                                        <img class="avt-img" src="images/avatar/7.jpg" alt="">
+                                        <img class="avt-img" src="{{asset('/mobile/images/avatar/7.jpg')}}" alt="">
                                     </picture>
                                     <div class="txt-user">
-                                        <h5>Tito_Calab</h5>
+                                        <h5>Savest Withdrawal</h5>
                                         <p>$8,382.32</p>
                                     </div>
                                 </div>
                                 <div class="other-option">
-                                    <div class="color-text rounded-pill bg-snow btn-xs-size">37 Item</div>
+                                
+                                    <div class="text-white rounded-pill bg-danger  btn-xs-size">Debit</div>
+                                    <div class="color-text rounded-pill btn-xs-size">2/3/2022 8:23am</div>
                                 </div>
                             </a>
                         </li>
@@ -344,16 +360,15 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <source srcset="images/avatar/4.webp" type="image/webp">
-                                        <img class="avt-img" src="images/avatar/4.jpg" alt="">
+                                        <img class="avt-img" src="{{asset('/mobile/images/avatar/4.jpg')}}" alt="">
                                     </picture>
                                     <div class="txt-user">
-                                        <h5>Settimio Loggia</h5>
-                                        <p>$6,920.00</p>
+                                        <h5>Fund withdrawals</h5>
+                                        <p>$2,920.00</p>
                                     </div>
                                 </div>
                                 <div class="other-option">
-                                    <div class="color-text rounded-pill bg-snow btn-xs-size">30 Item</div>
+                                    <div class="color-text rounded-pill  btn-xs-size">2/3/2022 4:23pm</div>
                                 </div>
                             </a>
                         </li>
