@@ -13,7 +13,7 @@
                 <div class="un-block-creators margin-t-20">
                     <div class="swiper swiperCreators">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide p-2"style="background:#000; color:#fff; margin-left:15px" >
+                            <div class="swiper-slide p-2"style="background:#191970; color:#fff; margin-left:15px" >
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
                                        
@@ -31,7 +31,7 @@
                             </div>
                             <!-- next one -->
 
-                                 <div class="swiper-slide p-2" style="background:#000; color:#fff">
+                                 <div class="swiper-slide p-2" style="background:#191970; color:#fff">
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
                                         <div class="text">
@@ -50,7 +50,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="swiper-slide p-2" style="background:#000; color:#fff">
+                            <div class="swiper-slide p-2" style="background:#0000CD; color:#fff">
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
                                         <div class="text">
@@ -100,15 +100,15 @@
                        
                         <!-- item-sm-card-NFTs -->
                         <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
-                            <div class="cover-image">
+                            <div class="cover-image" style="background:blue">
                                 <picture>
-                                    <img class="big-image" src="{{asset('/mobile/images/other/30.jpg')}}" alt="">
+                                    <img class="big-image" src="{{asset('/mobile/images/bg.jpg')}}" alt="">
                                 </picture>
                                 <div class="content-text">
                                     <div class="btn-like-click">
                                         <div class="btnLike">
                                             <input type="checkbox">
-                                            <span class="count-likes">Savest Campaign</span>
+                                            <span class="count-likes" style="font-weight:bolder">Savest Campaign</span>
                                           
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@
                          <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
                             <div class="cover-image">
                                 <picture>
-                                    <img class="big-image" src="{{asset('/mobile/images/other/30.jpg')}}" alt="">
+                                    <img class="big-image" src="{{asset('/mobile/images/pg.jpg')}}" alt="">
                                 </picture>
                                 <div class="content-text">
                                     <div class="btn-like-click">
@@ -159,7 +159,7 @@
                         <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
                             <div class="cover-image">
                                 <picture>
-                                    <img class="big-image" src="{{asset('/mobile/images/other/30.jpg')}}" alt="">
+                                    <img class="big-image" src="{{asset('/mobile/images/pk.jpg')}}" alt="">
                                 </picture>
                                 <div class="content-text">
                                     <div class="btn-like-click">
@@ -188,7 +188,7 @@
                         <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
                             <div class="cover-image">
                                 <picture>
-                                    <img class="big-image" src="{{asset('/mobile/images/other/30.jpg')}}" alt="">
+                                    <img class="big-image" src="{{asset('/mobile/images/mx.jpg')}}" alt="">
                                 </picture>
                                 <div class="content-text">
                                     <div class="btn-like-click">
@@ -248,8 +248,7 @@
                                     <div class="media-profile">
                                         <figure class="image-avatar">
                                             <picture>
-                                                <source srcset="images/avatar/22.webp" type="image/webp">
-                                                <img src="images/avatar/22.jpg" alt="">
+                                                <img src="{{asset('/mobile/images/avatar/22.jpg')}}" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
@@ -271,8 +270,7 @@
                                     <div class="media-profile">
                                         <figure class="image-avatar">
                                             <picture>
-                                                <source srcset="images/avatar/18.webp" type="image/webp">
-                                                <img src="images/avatar/18.jpg" alt="">
+                                             <img src="{{asset('/mobile/images/avatar/18.jpg')}}" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
@@ -285,75 +283,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="swiper-slide">
-                                <!-- un-item-seller -->
-                                <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="number">
-                                        03
-                                    </div>
-                                    <div class="media-profile">
-                                        <figure class="image-avatar">
-                                            <picture>
-                                                <source srcset="images/avatar/14.webp" type="image/webp">
-                                                <img src="images/avatar/14.jpg" alt="">
-                                            </picture>
-                                            <div class="icon-verify">
-                                                <i class="ri-checkbox-circle-fill"></i>
-                                            </div>
-                                        </figure>
-                                        <div class="text">
-                                            <h3>🚀 Pingu</h3>
-                                            <p>3.9 ETH</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <!-- un-item-seller -->
-                                <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="number">
-                                        04
-                                    </div>
-                                    <div class="media-profile">
-                                        <figure class="image-avatar">
-                                            <picture>
-                                                <source srcset="images/avatar/5.webp" type="image/webp">
-                                                <img src="images/avatar/5.png" alt="">
-                                            </picture>
-                                            <div class="icon-verify">
-                                                <i class="ri-checkbox-circle-fill"></i>
-                                            </div>
-                                        </figure>
-                                        <div class="text">
-                                            <h3>Julian Co.</h3>
-                                            <p>2.8 ETH</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <!-- un-item-seller -->
-                                <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="number">
-                                        05
-                                    </div>
-                                    <div class="media-profile">
-                                        <figure class="image-avatar">
-                                            <picture>
-                                                <source srcset="images/avatar/13.webp" type="image/webp">
-                                                <img src="images/avatar/13.jpg" alt="">
-                                            </picture>
-                                            <div class="icon-verify">
-                                                <i class="ri-checkbox-circle-fill"></i>
-                                            </div>
-                                        </figure>
-                                        <div class="text">
-                                            <h3>Tito_Calab</h3>
-                                            <p>2.7 ETH</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
