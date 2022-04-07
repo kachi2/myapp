@@ -16,15 +16,16 @@
                             <div class="swiper-slide p-2"style="background:#000; color:#fff; margin-left:15px" >
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
-                                        <figure class="image-avatar">
-                                            <picture>
-                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="20" alt="">
-                                            </picture>
-                                        </figure>
+                                       
                                         <div class="text" >
-                                            <h3 style="color:#fff">Savest Wallet⚡</h3>
+                                            <h3 style="color:#fff">Savest Wallet</h3>
                                             <p style="color:#fff">{{moneyFormat(5000,'USD')}}</p>
                                         </div>
+                                         <figure class="image-avatar">
+                                            <picture>
+                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="10" alt="">
+                                            </picture>
+                                        </figure>
                                     </div>
                                 </a>
                             </div>
@@ -33,36 +34,38 @@
                                  <div class="swiper-slide p-2" style="background:#000; color:#fff">
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
+                                        <div class="text">
+                                             <h3 style="color:#fff">Investment Wallet</h3>
+                                            <p style="color:#fff">{{moneyFormat(500,'USD')}}</p>
+                                        </div>
+                                        
                                         <figure class="image-avatar">
                                             <picture>
-                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="20" alt="">
+                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="10" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
                                             </div>
                                         </figure>
-                                        <div class="text">
-                                             <h3 style="color:#fff">Investment Wallet⚡</h3>
-                                            <p style="color:#fff">{{moneyFormat(500,'USD')}}</p>
-                                        </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="swiper-slide p-2" style="background:#000; color:#fff">
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
+                                        <div class="text">
+                                             <h3 style="color:#fff">SafeLock Wallet</h3>
+                                            <p style="color:#fff">{{moneyFormat(5000,'USD')}}</p>
+                                        </div>
+                                        
                                         <figure class="image-avatar">
                                             <picture>
-                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="20" alt="">
+                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="10" alt="">
                                             </picture>
                                             <div class="icon-verify">
                                                 <i class="ri-checkbox-circle-fill"></i>
                                             </div>
                                         </figure>
-                                        <div class="text">
-                                             <h3 style="color:#fff">SafeLock Wallet⚡</h3>
-                                            <p style="color:#fff">{{moneyFormat(5000,'USD')}}</p>
-                                        </div>
                                     </div>
                                 </a>
                             </div>
