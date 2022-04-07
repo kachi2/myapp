@@ -327,7 +327,7 @@
                                   <div class="text-white rounded-pill debit" style=""></div>
                                     </picture>
                                     <div class="txt-user">
-                                        <h5>Withdraw made</h5>
+                                        <p>Withdraw made</p>
                                         <p>Date: 22/2/2022 8:3pm</p>
                                     </div>
                                 </div>
@@ -335,7 +335,7 @@
                                 
                                     <div class="color-text rounded-pill font-size-12" > <span class="debit_text">$2,000.00  </span><br>
                                     
-                                    Bal: $3,500
+                                    $3,500
                                     </div>
                                 </div>
                             </a>
@@ -347,14 +347,15 @@
                                         <div class="text-white rounded-pill credit"></div>
                                     </picture>
                                     <div class="txt-user">
-                                        <h5>Savest Withdrawal</h5>
-                                        <p>$8,382.32</p>
+                                        <p>Interest Payment on your savest deposit
+                                        <small> (Calculated daily) </small></p>
+                                        <p>Date: Tues, 2/22/2022 23:36:18</p>
                                     </div>
                                 </div>
                                 <div class="other-option">
                                 <div class="color-text rounded-pill font-size-12" > <span class="credit_text">$2,000.00  </span><br>
                                     
-                                    Bal: $3,500
+                                     $3,500
                                     </div>
 
                                 </div>
