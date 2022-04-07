@@ -10,7 +10,7 @@
                         <div class="image_user">
                             <picture>
                                
-                            <img src="images/avatar/11.jpg" alt="image">
+                            <img src="{{asset('/mobile/images/avatar/11.jpg')}}" alt="image">
                   </picture>
                         </div>
                         <div class="text-user">
@@ -140,6 +140,7 @@
                                 <span class="title_link">Help Center</span>
                             </a>
                         </li>
+                        
                          <li class="nav-item">
                             <a href="homepage.html" class="nav-link">
                                 <div class="icon_current">
