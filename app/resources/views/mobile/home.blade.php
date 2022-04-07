@@ -30,7 +30,23 @@
                                 </a>
                             </div>
                             <!-- next one -->
-
+                            <div class="swiper-slide p-2" style="background:#191970; color:#fff">
+                                <a href="page-creator-profile.html" class="un-item-seller">
+                                    <div class="media-profile"  >
+                                        <div class="text">
+                                             <h3 style="color:#fff">SafeLock Wallet</h3>
+                                            <p style="color:#fff">{{moneyFormat(5000,'USD')}}</p>
+                                        </div>
+                                        
+                                        <figure class="image-avatar">
+                                            <picture>
+                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="10" alt="">
+                                            </picture>
+                                        </figure>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- next one -->
                                  <div class="swiper-slide p-2" style="background:#191970; color:#fff">
                                 <a href="page-creator-profile.html" class="un-item-seller">
                                     <div class="media-profile"  >
@@ -43,32 +59,11 @@
                                             <picture>
                                                 <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="10" alt="">
                                             </picture>
-                                            <div class="icon-verify">
-                                                <i class="ri-checkbox-circle-fill"></i>
-                                            </div>
                                         </figure>
                                     </div>
                                 </a>
                             </div>
-                            <div class="swiper-slide p-2" style="background:#0000CD; color:#fff">
-                                <a href="page-creator-profile.html" class="un-item-seller">
-                                    <div class="media-profile"  >
-                                        <div class="text">
-                                             <h3 style="color:#fff">SafeLock Wallet</h3>
-                                            <p style="color:#fff">{{moneyFormat(5000,'USD')}}</p>
-                                        </div>
-                                        
-                                        <figure class="image-avatar">
-                                            <picture>
-                                                <img src="{{asset('mobile/images/avatar/22.jpg')}}"  height="10" alt="">
-                                            </picture>
-                                            <div class="icon-verify">
-                                                <i class="ri-checkbox-circle-fill"></i>
-                                            </div>
-                                        </figure>
-                                    </div>
-                                </a>
-                            </div>
+                           
                             <!-- next wallet -->
                         </div>
                     </div>
@@ -118,7 +113,7 @@
                                         <picture>
                                             <img class="sm-user" src="{{asset('/mobile/images/avatar/10.jpg')}}" alt="">
                                         </picture>
-                                        <span>Savest savings</span>
+                                        <span>Daily Savings</span>
                                     </div>
                                     <div class="number-eth">
                                         <span class="main-price">15% p.a</span>
@@ -136,7 +131,7 @@
                                     <div class="btn-like-click">
                                         <div class="btnLike">
                                             <input type="checkbox">
-                                            <span class="count-likes">Savest Campaign</span>
+                                            <span class="count-likes">SafeLock Campaign</span>
                                           
                                         </div>
                                     </div>
@@ -146,11 +141,11 @@
                                         <picture>
                                             <img class="sm-user" src="{{asset('/mobile/images/avatar/10.jpg')}}" alt="">
                                         </picture>
-                                        <span>Savest savings</span>
+                                        <span>Lock Funds </span>
                                     </div>
                                     <div class="number-eth">
-                                        <span class="main-price">15% p.a</span>
-                                        <span>free transfer, instant withdrawals</span>
+                                        <span class="main-price">25% p.a</span>
+                                        <span>Lock Funds for certain period</span>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +160,7 @@
                                     <div class="btn-like-click">
                                         <div class="btnLike">
                                             <input type="checkbox">
-                                            <span class="count-likes">Savest Campaign</span>
+                                            <span class="count-likes">Investment Campaign</span>
                                           
                                         </div>
                                     </div>
@@ -175,10 +170,10 @@
                                         <picture>
                                             <img class="sm-user" src="{{asset('/mobile/images/avatar/10.jpg')}}" alt="">
                                         </picture>
-                                        <span>Savest savings</span>
+                                        <span>Invest Funds</span>
                                     </div>
                                     <div class="number-eth">
-                                        <span class="main-price">15% p.a</span>
+                                        <span class="main-price">profit from 8% weekly</span>
                                         <span>free transfer, instant withdrawals</span>
                                     </div>
                                 </div>
@@ -194,7 +189,7 @@
                                     <div class="btn-like-click">
                                         <div class="btnLike">
                                             <input type="checkbox">
-                                            <span class="count-likes">Savest Campaign</span>
+                                            <span class="count-likes">Target Campaign</span>
                                           
                                         </div>
                                     </div>
@@ -204,11 +199,11 @@
                                         <picture>
                                             <img class="sm-user" src="{{asset('/mobile/images/avatar/10.jpg')}}" alt="">
                                         </picture>
-                                        <span>Savest savings</span>
+                                        <span>Savings Target</span>
                                     </div>
                                     <div class="number-eth">
-                                        <span class="main-price">15% p.a</span>
-                                        <span>free transfer, instant withdrawals</span>
+                                        <span class="main-price">20% p.a</span>
+                                        <span>Set savings target, and strive to meet target with a period</span>
                                     </div>
                                 </div>
                             </div>
@@ -225,8 +220,8 @@
                 <!-- un-title-default -->
                 <div class="un-title-default">
                     <div class="text">
-                        <h2>Best Sellers</h2>
-                        <p>Best seller of this week's NFTs</p>
+                        <h2>Martket Updates</h2>
+                        <p>coins prices </p>
                     </div>
                     <div class="un-block-right">
                         <a href="page-best-seller.html" class="icon-back" aria-label="iconBtn">
