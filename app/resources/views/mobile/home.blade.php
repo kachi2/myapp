@@ -1,5 +1,14 @@
 @extends('layouts.mobile')
 @section('content')
+         <section class="margin-t-20 unList-creatores">
+                <!-- un-title-default -->
+                <div class="un-title-default">
+                    <div class="text">
+                        <h2>Hi Michael</h2>
+                        <p>Howdy! stay safe</p>
+                    </div>
+                </div> 
+            </section>
             <section class="un-section-seller margin-t-20">
                 <div class="un-block-creators margin-t-20">
                     <div class="swiper swiperCreators">
@@ -62,83 +71,294 @@
                     </div>
                 </div>
             </section>
+      
+            <!-- ===================================
+              START THE BORDER SECTIONS
+            ==================================== -->
+            
+            <!-- ===================================
+              START THE RANDOM NFTS
+            ==================================== -->
             <section class="unSwiper-cards margin-t-20">
                 <!-- un-title-default -->
                 <div class="un-title-default">
                     <div class="text">
-                        <h2>Discover</h2>
-                        <p>Be on the lookout for the latest NFTs</p>
+                        <h2>Campaign</h2>
+                        <p>Choose the best savings that suits you.</p>
                     </div>
                     <div class="un-block-right">
-                        <a href="page-search-grid.html" class="icon-back" aria-label="iconBtn">
+                        <a href="page-search-random.html" class="icon-back" aria-label="iconBtn">
                             <i class="ri-arrow-drop-right-line"></i>
                         </a>
                     </div>
                 </div>
-                <div class="content-cards-NFTs margin-t-20">
-                    <div class="swiper cardGradual">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <!-- item-card-gradual -->
-                                <div class="item-card-gradual">
-                                    <!-- <div class="head-card"></div> -->
-                                    <a href="page-collectibles-details.html" class="body-card">
-                                        <div class="cover-nft">
-                                            <picture>
-                                                <img class="img-cover" src="{{asset('mobile/images/other/26.jpg')}}" alt="image NFT">
-                                            </picture>
-                                            <div class="icon-type">
-                                                <i class="ri-vidicon-line"></i>
-                                            </div>
-                                            <div class="countdown-time">
-                                                <span>08H 38M 16S</span>
-                                            </div>
+                <div class="discover-nft-random margin-t-20">
+                    <div class="content-NFTs-body">
+                       
+                        <!-- item-sm-card-NFTs -->
+                        <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
+                            <div class="cover-image">
+                                <picture>
+                                    <img class="big-image" src="{{asset('/mobile/images/other/30.jpg')}}" alt="">
+                                </picture>
+                                <div class="content-text">
+                                    <div class="btn-like-click">
+                                        <div class="btnLike">
+                                            <input type="checkbox">
+                                            <span class="count-likes">Savest Campaign</span>
+                                          
                                         </div>
-                                        <div class="title-card-nft">
-                                            <div class="side-one">
-                                                <h2>The Dark Corner</h2>
-                                                <p>8 Editions Minted</p>
-                                            </div>
-                                            <div class="side-other">
-                                                <span class="no-sales">3 for sale</span>
-                                            </div>
-                                        </div>
-                                        <div class="creator-name">
-                                            <div class="image-user">
-                                                <picture>
-                                                    <img class="img-avatar" src="{{asset('mobile/images/avatar/14.jpg')}}" alt="">
-                                                </picture>
-                                                <div class="icon">
-                                                    <i class="ri-checkbox-circle-fill"></i>
-                                                </div>
-                                            </div>
-                                            <h3>Settimio Loggia</h3>
-                                        </div>
-                                    </a>
-                                    <div class="footer-card">
-                                        <div class="starting-bad">
-                                            <h4>2.78 ETH</h4>
-                                            <span>Starting Bid</span>
-                                        </div>
-                                        <div class="btn-like-click">
-                                            <div class="btnLike">
-                                                <input type="checkbox">
-                                                <span class="count-likes">195</span>
-                                                <i class="ri-heart-3-line"></i>
-
-                                            </div>
-                                        </div>
-
+                                    </div>
+                                </div>
+                                <div class="user-text">
+                                    <div class="user-avatar">
+                                        <picture>
+                                            <img class="sm-user" src="{{asset('/mobile/images/avatar/10.jpg')}}" alt="">
+                                        </picture>
+                                        <span>Savest savings</span>
+                                    </div>
+                                    <div class="number-eth">
+                                        <span class="main-price">15% p.a</span>
+                                        <span>free transfer, instant withdrawals</span>
                                     </div>
                                 </div>
                             </div>
-                           
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
+                        </a>
+                         <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
+                            <div class="cover-image">
+                                <picture>
+                                    <img class="big-image" src="{{asset('/mobile/images/other/30.jpg')}}" alt="">
+                                </picture>
+                                <div class="content-text">
+                                    <div class="btn-like-click">
+                                        <div class="btnLike">
+                                            <input type="checkbox">
+                                            <span class="count-likes">Savest Campaign</span>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-text">
+                                    <div class="user-avatar">
+                                        <picture>
+                                            <img class="sm-user" src="{{asset('/mobile/images/avatar/10.jpg')}}" alt="">
+                                        </picture>
+                                        <span>Savest savings</span>
+                                    </div>
+                                    <div class="number-eth">
+                                        <span class="main-price">15% p.a</span>
+                                        <span>free transfer, instant withdrawals</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                       
+                        <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
+                            <div class="cover-image">
+                                <picture>
+                                    <img class="big-image" src="{{asset('/mobile/images/other/30.jpg')}}" alt="">
+                                </picture>
+                                <div class="content-text">
+                                    <div class="btn-like-click">
+                                        <div class="btnLike">
+                                            <input type="checkbox">
+                                            <span class="count-likes">Savest Campaign</span>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-text">
+                                    <div class="user-avatar">
+                                        <picture>
+                                            <img class="sm-user" src="{{asset('/mobile/images/avatar/10.jpg')}}" alt="">
+                                        </picture>
+                                        <span>Savest savings</span>
+                                    </div>
+                                    <div class="number-eth">
+                                        <span class="main-price">15% p.a</span>
+                                        <span>free transfer, instant withdrawals</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                       
+                        <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
+                            <div class="cover-image">
+                                <picture>
+                                    <img class="big-image" src="{{asset('/mobile/images/other/30.jpg')}}" alt="">
+                                </picture>
+                                <div class="content-text">
+                                    <div class="btn-like-click">
+                                        <div class="btnLike">
+                                            <input type="checkbox">
+                                            <span class="count-likes">Savest Campaign</span>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-text">
+                                    <div class="user-avatar">
+                                        <picture>
+                                            <img class="sm-user" src="{{asset('/mobile/images/avatar/10.jpg')}}" alt="">
+                                        </picture>
+                                        <span>Savest savings</span>
+                                    </div>
+                                    <div class="number-eth">
+                                        <span class="main-price">15% p.a</span>
+                                        <span>free transfer, instant withdrawals</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                       
+                       
                     </div>
                 </div>
             </section>
+            <!-- ===================================
+              START THE BEST SELLER
+            ==================================== -->
+            <section class="un-section-seller margin-y-20">
+                <!-- un-title-default -->
+                <div class="un-title-default">
+                    <div class="text">
+                        <h2>Best Sellers</h2>
+                        <p>Best seller of this week's NFTs</p>
+                    </div>
+                    <div class="un-block-right">
+                        <a href="page-best-seller.html" class="icon-back" aria-label="iconBtn">
+                            <i class="ri-arrow-drop-right-line"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- un-block-auther -->
+                <div class="un-block-creators margin-t-20">
+                    <!-- Swiper -->
+                    <div class="swiper swiperCreators">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <!-- un-item-seller -->
+                                <a href="page-creator-profile.html" class="un-item-seller">
+                                    <div class="number">
+                                        01
+                                    </div>
+                                    <div class="media-profile">
+                                        <figure class="image-avatar">
+                                            <picture>
+                                                <source srcset="images/avatar/22.webp" type="image/webp">
+                                                <img src="images/avatar/22.jpg" alt="">
+                                            </picture>
+                                            <div class="icon-verify">
+                                                <i class="ri-checkbox-circle-fill"></i>
+                                            </div>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>MelonPixel⚡</h3>
+                                            <p>19.4 ETH</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- un-item-seller -->
+                                <a href="page-creator-profile.html" class="un-item-seller">
+                                    <div class="number">
+                                        02
+                                    </div>
+                                    <div class="media-profile">
+                                        <figure class="image-avatar">
+                                            <picture>
+                                                <source srcset="images/avatar/18.webp" type="image/webp">
+                                                <img src="images/avatar/18.jpg" alt="">
+                                            </picture>
+                                            <div class="icon-verify">
+                                                <i class="ri-checkbox-circle-fill"></i>
+                                            </div>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>Camillo Ferrari</h3>
+                                            <p>5.3 ETH</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- un-item-seller -->
+                                <a href="page-creator-profile.html" class="un-item-seller">
+                                    <div class="number">
+                                        03
+                                    </div>
+                                    <div class="media-profile">
+                                        <figure class="image-avatar">
+                                            <picture>
+                                                <source srcset="images/avatar/14.webp" type="image/webp">
+                                                <img src="images/avatar/14.jpg" alt="">
+                                            </picture>
+                                            <div class="icon-verify">
+                                                <i class="ri-checkbox-circle-fill"></i>
+                                            </div>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>🚀 Pingu</h3>
+                                            <p>3.9 ETH</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- un-item-seller -->
+                                <a href="page-creator-profile.html" class="un-item-seller">
+                                    <div class="number">
+                                        04
+                                    </div>
+                                    <div class="media-profile">
+                                        <figure class="image-avatar">
+                                            <picture>
+                                                <source srcset="images/avatar/5.webp" type="image/webp">
+                                                <img src="images/avatar/5.png" alt="">
+                                            </picture>
+                                            <div class="icon-verify">
+                                                <i class="ri-checkbox-circle-fill"></i>
+                                            </div>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>Julian Co.</h3>
+                                            <p>2.8 ETH</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- un-item-seller -->
+                                <a href="page-creator-profile.html" class="un-item-seller">
+                                    <div class="number">
+                                        05
+                                    </div>
+                                    <div class="media-profile">
+                                        <figure class="image-avatar">
+                                            <picture>
+                                                <source srcset="images/avatar/13.webp" type="image/webp">
+                                                <img src="images/avatar/13.jpg" alt="">
+                                            </picture>
+                                            <div class="icon-verify">
+                                                <i class="ri-checkbox-circle-fill"></i>
+                                            </div>
+                                        </figure>
+                                        <div class="text">
+                                            <h3>Tito_Calab</h3>
+                                            <p>2.7 ETH</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ===================================
+              START THE BORDER SECTIONS
+            ==================================== -->
+            <div class="border-sections-home"></div>
             <!-- ===================================
               START THE CREATORES
             ==================================== -->
@@ -162,7 +382,8 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <img class="avt-img" src="{{asset('mobile/images/avatar/13.jpg')}}" alt="">
+                                        <source srcset="images/avatar/13.webp" type="image/webp">
+                                        <img class="avt-img" src="images/avatar/13.jpg" alt="">
                                     </picture>
                                     <div class="txt-user">
                                         <h5>Richard Noga</h5>
@@ -178,7 +399,8 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <img class="avt-img" src="{{asset('mobile/images/avatar/7.jpg')}}" alt="">
+                                        <source srcset="images/avatar/7.webp" type="image/webp">
+                                        <img class="avt-img" src="images/avatar/7.jpg" alt="">
                                     </picture>
                                     <div class="txt-user">
                                         <h5>Tito_Calab</h5>
@@ -194,7 +416,8 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <img class="avt-img" src="{{asset('mobile/images/avatar/4.jpg')}}" alt="">
+                                        <source srcset="images/avatar/4.webp" type="image/webp">
+                                        <img class="avt-img" src="images/avatar/4.jpg" alt="">
                                     </picture>
                                     <div class="txt-user">
                                         <h5>Settimio Loggia</h5>
@@ -204,13 +427,14 @@
                                 <div class="other-option">
                                     <div class="color-text rounded-pill bg-snow btn-xs-size">30 Item</div>
                                 </div>
-                            </a> 
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <img class="avt-img" src="{{asset('mobile/images/avatar/1.jpg')}}" alt="user">
+                                        <source srcset="images/avatar/1.webp" type="image/webp">
+                                        <img class="avt-img" src="images/avatar/1.jpg" alt="user">
                                     </picture>
                                     <div class="txt-user">
                                         <h5>Vinicius O.</h5>
