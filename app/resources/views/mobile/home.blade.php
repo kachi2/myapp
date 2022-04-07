@@ -324,17 +324,19 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <img class="avt-img" src="{{asset('/mobile/images/avatar/13.jpg')}}" alt="">
+                                  <div class="text-white rounded-pill debit" style=""></div>
                                     </picture>
                                     <div class="txt-user">
-                                        <h5>Wallet Deposit</h5>
-                                        <p>$9,500.32</p>
+                                        <h5>Withdraw made</h5>
+                                        <p>Date: 22/2/2022 8:3pm</p>
                                     </div>
                                 </div>
                                 <div class="other-option">
                                 
-                                    <div class="text-white rounded-pill bg-success  btn-xs-size">Credit</div>
-                                    <div class="color-text rounded-pill  btn-xs-size">2/2/2022 3:12pm</div>
+                                    <div class="color-text rounded-pill font-size-12" > <span class="debit_text">$2,000.00  </span><br>
+                                    
+                                    Bal: $3,500
+                                    </div>
                                 </div>
                             </a>
                         </li>
@@ -342,7 +344,7 @@
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
-                                        <img class="avt-img" src="{{asset('/mobile/images/avatar/7.jpg')}}" alt="">
+                                        <div class="text-white rounded-pill credit"></div>
                                     </picture>
                                     <div class="txt-user">
                                         <h5>Savest Withdrawal</h5>
@@ -350,45 +352,15 @@
                                     </div>
                                 </div>
                                 <div class="other-option">
-                                
-                                    <div class="text-white rounded-pill bg-danger  btn-xs-size">Debit</div>
-                                    <div class="color-text rounded-pill btn-xs-size">2/3/2022 8:23am</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="page-creator-profile.html">
-                                <div class="item-user-img">
-                                    <picture>
-                                        <img class="avt-img" src="{{asset('/mobile/images/avatar/4.jpg')}}" alt="">
-                                    </picture>
-                                    <div class="txt-user">
-                                        <h5>Fund withdrawals</h5>
-                                        <p>$2,920.00</p>
+                                <div class="color-text rounded-pill font-size-12" > <span class="credit_text">$2,000.00  </span><br>
+                                    
+                                    Bal: $3,500
                                     </div>
-                                </div>
-                                <div class="other-option">
-                                    <div class="color-text rounded-pill  btn-xs-size">2/3/2022 4:23pm</div>
+
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="page-creator-profile.html">
-                                <div class="item-user-img">
-                                    <picture>
-                                        <source srcset="images/avatar/1.webp" type="image/webp">
-                                        <img class="avt-img" src="images/avatar/1.jpg" alt="user">
-                                    </picture>
-                                    <div class="txt-user">
-                                        <h5>Vinicius O.</h5>
-                                        <p>$4,500.32</p>
-                                    </div>
-                                </div>
-                                <div class="other-option">
-                                    <div class="color-text rounded-pill bg-snow btn-xs-size">20 Item</div>
-                                </div>
-                            </a>
-                        </li>
+                       
                     </ul>
                 </div>
             </section>
