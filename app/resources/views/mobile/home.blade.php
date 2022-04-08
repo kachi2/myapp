@@ -112,7 +112,7 @@
                     <div class="content-NFTs-body">
                        
                         <!-- item-sm-card-NFTs -->
-                        <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
+                        <a href="{{route('mb.campaign')}}" class="item-sm-card-NFTs">
                             <div class="cover-image" style="background:blue">
                                 <picture>
                                     <img class="big-image" src="{{asset('/mobile/images/bg.jpg')}}" alt="">
@@ -122,7 +122,6 @@
                                         <div class="btnLike">
                                             <input type="checkbox">
                                             <span class="count-likes" style="font-weight:bolder">Savest Campaign</span>
-                                          
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +139,7 @@
                                 </div>
                             </div>
                         </a>
-                         <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
+                         <a href="{{route('mb.campaign')}}" class="item-sm-card-NFTs">
                             <div class="cover-image">
                                 <picture>
                                     <img class="big-image" src="{{asset('/mobile/images/pg.jpg')}}" alt="">
@@ -169,7 +168,7 @@
                             </div>
                         </a>
                        
-                        <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
+                        <a href="{{route('mb.campaign')}}" class="item-sm-card-NFTs">
                             <div class="cover-image">
                                 <picture>
                                     <img class="big-image" src="{{asset('/mobile/images/pk.jpg')}}" alt="">
@@ -198,7 +197,7 @@
                             </div>
                         </a>
                        
-                        <a href="page-collectibles-details.html" class="item-sm-card-NFTs">
+                        <a href="{{route('mb.campaign')}}" class="item-sm-card-NFTs">
                             <div class="cover-image">
                                 <picture>
                                     <img class="big-image" src="{{asset('/mobile/images/mx.jpg')}}" alt="">
@@ -366,4 +365,5 @@
                 </div>
             </section>
         </div>
+        
 @endsection
