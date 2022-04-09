@@ -117,7 +117,7 @@
                                     <picture>
                                   <div class="text-white rounded-pill debit" style=""></div>
                                     </picture>
-                                    <div class="txt-user">
+                                    <div class="txt-user" >
                                         <p>Withdraw made</p>
                                         <p>Date: 22/2/2022 8:3pm</p>
                                     </div>
@@ -161,7 +161,7 @@
                                     <picture>
                                         <div class="text-white rounded-pill credit"></div>
                                     </picture>
-                                    <div class="txt-user">
+                                    <div class="txt-user" style="font-weight:0px; font-size:13px">
                                         <p>Interest Payment on your savest deposit
                                         <small> (Calculated daily) </small></p>
                                         <p>Date: Tues, 2/22/2022 23:36:18</p>
