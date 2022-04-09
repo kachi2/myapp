@@ -47,10 +47,10 @@
                                     <h4 style="color:green">$2,000.00</h4>
                                     <span>Avail Balance</span>
                                 </div>
-                                <button type="button"
-                                    class="btn btn-md-size effect-click bg-primary text-white rounded-pill">
-                                    Add Fund
-                                </button>
+                                  <button type="button" class="btn btn-md-size bg-primary text-white rounded-pill"
+                                data-bs-toggle="modal" data-bs-target="#mdllAddETH">
+                               Add Fund
+                            </button>
                             </div>
                         </div>
                     </div>
@@ -295,6 +295,117 @@
                         </div>
                     </div>
                 </div>
-                <!-- footer -->
             </section>
+
+    <div class="modal transition-bottom screenFull defaultModal mdlladd__rate fade" id="mdll_AddETH" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="title-modal">Add  Fund</h1>
+                    <button type="button" class="btn btnClose" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="ri-close-fill"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="content-upload-item">
+                        <div class="un-navMenu-default margin-t-30 p-0">
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-3">
+                                    <a class="nav-link effect-click" href="javascript: void(0)">
+                                        <div class="item-content-link">
+                                            <div class="icon color-text w-auto">
+                                                <i class="ri-money-dollar-circle-fill"></i>
+                                            </div>
+                                            <input class=" nav-link bg-snow" type="number" name="amount" placeholder="Enter Amount"> 
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item mb-0">
+                                    <a class="nav-link effect-click" href="javascript: void(0)">
+                                        <div class="item-content-link">
+                                            <div class="icon color-text w-auto">
+                                                <i class="ri-bank-card-line"></i>
+                                            </div>
+                                           <select class=" nav-link bg-snow"> 
+                                           <option> Select Payment Method</option>
+                                              <option> BTC</option>
+                                                 <option> LTE</option>
+                                                  <option> ETH</option>
+                                           </select>
+                                        </div>
+                                        
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0">
+                    <div class="env-pb"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal transition-bottom screenFull defaultModal mdlladd__rate fade" id="mdllAddETH" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="title-modal">To complete this transaction, please send the exact amount of 100.05 USD | 0.00237000 BTC to the address below</h1>
+                    <button type="button" class="btn btnClose" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="ri-close-fill"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="content-upload-item">
+                        <div class="un-navMenu-default margin-t-30 p-0">
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-3">
+                                    <a class="nav-link effect-click" href="javascript: void(0)">
+                                        <div class="item-content-link">
+                                           
+                                            <picture>
+                                            <img class="big-image"style="margin:30px" src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
+                                        </picture> 
+                                      
+                                        </div>
+                                    </a>
+                                </li>
+                                    <li class="nav-item mb-3">
+                                    <a class="nav-link effect-click" href="javascript: void(0)">
+                                        <div class="item-content-link">
+                                            <div class="icon color-text w-auto">
+                                                <i class="ri-exchange-box-line"></i>
+                                            </div>
+                                            <p>1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3</p>
+                                        </div>
+                                       
+                                    </a>
+                                </li>
+
+                                  <li class="nav-item mb-3">
+                                   
+                                           <center> 
+                                            <button class=" ml-5 btn btn-primary p-2"> Confirm Payment </button>
+                                        </center>
+                                </li>
+                              
+                            </ul>
+                           
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0">
+                    <div class="env-pb"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
