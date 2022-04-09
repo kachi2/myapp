@@ -111,194 +111,185 @@
                         <div class="tab-pane fade show active" id="pills-Info" role="tabpanel"
                             aria-labelledby="pills-Info-tab">
                             <ul class="nav flex-column nav-users-profile margin-t-20">
-                                <li class="nav-item">
-                                    <div class="nav-link">
-                                        <a href="page-creator-profile.html" class="item-user-img visited">
-                                            <div class="wrapper-image">
-                                                <picture>
-                                                    <source srcset="images/avatar/14.webp" type="image/webp">
-                                                    <img class="avt-img" src="images/avatar/14.jpg" alt="">
-                                                </picture>
-                                                <div class="icon"><i class="ri-checkbox-circle-fill"></i></div>
-                                            </div>
-                                            <div class="txt-user">
-                                                <h5>Creator</h5>
-                                                <p>Shelly Villa</p>
-                                            </div>
-                                        </a>
+                               <li class="nav-item">
+                            <a class="nav-link" href="page-creator-profile.html">
+                                <div class="item-user-img">
+                                    <picture>
+                                  <div class="text-white rounded-pill debit" style=""></div>
+                                    </picture>
+                                    <div class="txt-user">
+                                        <p>Withdraw made</p>
+                                        <p>Date: 22/2/2022 8:3pm</p>
                                     </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="nav-link">
-                                        <a href="page-creator-profile.html" class="item-user-img visited">
-                                            <div class="wrapper-image">
-                                                <picture>
-                                                    <source srcset="images/avatar/13.webp" type="image/webp">
-                                                    <img class="avt-img" src="images/avatar/13.jpg" alt="">
-                                                </picture>
-                                                <div class="icon"><i class="ri-checkbox-circle-fill"></i></div>
-                                            </div>
-                                            <div class="txt-user">
-                                                <h5>Owner</h5>
-                                                <p>Ausonio_Loi</p>
-                                            </div>
-                                        </a>
-                                        <div class="other-option">
-                                            <button type="button" class="btn btn-copy-address">
-                                                <input type="checkbox">
-                                                <span>0xe388...e162</span>
-                                                <div class="icon-box">
-                                                    <i class="ri-file-copy-2-line"></i>
-                                                </div>
-                                            </button>
-                                        </div>
+                                </div>
+                                <div class="other-option">
+                                
+                                    <div class="color-text rounded-pill font-size-12" > <span class="debit_text">$2,000.00  </span><br>
+                                    
+                                    $3,500
                                     </div>
-                                </li>
+                                </div>
+                            </a>
+                        </li>
+                                 <li class="nav-item">
+                            <a class="nav-link" href="page-creator-profile.html">
+                                <div class="item-user-img">
+                                    <picture>
+                                  <div class="text-white rounded-pill debit" style=""></div>
+                                    </picture>
+                                    <div class="txt-user">
+                                        <p>Withdraw made</p>
+                                        <p>Date: 22/2/2022 8:3pm</p>
+                                    </div>
+                                </div>
+                                <div class="other-option">
+                                
+                                    <div class="color-text rounded-pill font-size-12" > <span class="debit_text">$2,000.00  </span><br>
+                                    
+                                    $3,500
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
                             </ul>
                         </div>
                         <div class="tab-pane fade" id="pills-Owner" role="tabpanel" aria-labelledby="pills-Owner-tab">
                             <ul class="nav flex-column nav-users-profile margin-t-20">
-                                <li class="nav-item">
-                                    <div class="nav-link">
-                                        <a href="page-creator-profile.html" class="item-user-img visited">
-                                            <div class="wrapper-image">
-                                                <picture>
-                                                    <source srcset="images/avatar/13.webp" type="image/webp">
-                                                    <img class="avt-img" src="images/avatar/13.jpg" alt="">
-                                                </picture>
-                                                <div class="icon"><i class="ri-checkbox-circle-fill"></i></div>
-                                            </div>
-                                            <div class="txt-user">
-                                                <h5>Owner</h5>
-                                                <p>Ausonio_Loi</p>
-                                            </div>
-                                        </a>
-                                        <div class="other-option">
-                                            <button type="button" class="btn btn-copy-address">
-                                                <input type="checkbox">
-                                                <span>0xe388...e162</span>
-                                                <div class="icon-box">
-                                                    <i class="ri-file-copy-2-line"></i>
-                                                </div>
-                                            </button>
-                                        </div>
+                                 <li class="nav-item">
+                            <a class="nav-link" href="page-creator-profile.html">
+                                <div class="item-user-img">
+                                    <picture>
+                                        <div class="text-white rounded-pill credit"></div>
+                                    </picture>
+                                    <div class="txt-user">
+                                        <p>Interest Payment on your savest deposit
+                                        <small> (Calculated daily) </small></p>
+                                        <p>Date: Tues, 2/22/2022 23:36:18</p>
                                     </div>
-                                </li>
+                                </div>
+                                <div class="other-option">
+                                <div class="color-text rounded-pill font-size-12" > <span class="credit_text">$2,000.00  </span><br>
+                                    
+                                     $3,500
+                                    </div>
+
+                                </div>
+                            </a>
+                        </li>
                             </ul>
                         </div>
                         <div class="tab-pane fade" id="pills-History" role="tabpanel"
                             aria-labelledby="pills-History-tab">
                             <ul class="nav flex-column nav-users-profile margin-t-20">
-                                <li class="nav-item">
-                                    <div class="nav-link">
-                                        <a href="page-creator-profile.html" class="item-user-img visited">
-                                            <div class="wrapper-image">
-                                                <picture>
-                                                    <source srcset="images/avatar/8.webp" type="image/webp">
-                                                    <img class="avt-img" src="images/avatar/8.png" alt="">
-                                                </picture>
-                                            </div>
-                                            <div class="txt-user">
-                                                <h5>16 days ago</h5>
-                                                <p class="weight-400 size-14"><span class="color-text">Bought by</span>
-                                                    smally <span class="color-text">for</span> <span
-                                                        class="color-green">
-                                                        $300.00</span></p>
-                                            </div>
-                                        </a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="page-creator-profile.html">
+                                    <div class="item-user-img">
+                                        <picture>
+                                            <div class="text-white rounded-pill credit"></div>
+                                        </picture>
+                                        <div class="txt-user">
+                                            <p>Interest Payment on your savest deposit
+                                            <small> (Calculated daily) </small></p>
+                                            <p>Date: Tues, 2/22/2022 23:36:18</p>
+                                        </div>
                                     </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="nav-link">
-                                        <a href="page-creator-profile.html" class="item-user-img visited">
-                                            <div class="wrapper-image">
-                                                <picture>
-                                                    <source srcset="images/avatar/17.webp" type="image/webp">
-                                                    <img class="avt-img" src="images/avatar/17.jpg" alt="">
-                                                </picture>
-                                            </div>
-                                            <div class="txt-user">
-                                                <h5>24 days ago</h5>
-                                                <p class="weight-400 size-14">
-                                                    <span class="color-text">
-                                                        Bid placed by </span> Pingu
-                                                    <span class="color-text">for</span> <span class="color-green">
-                                                        $150.00</span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="nav-link">
-                                        <a href="page-creator-profile.html" class="item-user-img visited">
-                                            <div class="wrapper-image">
-                                                <picture>
-                                                    <source srcset="images/avatar/18.webp" type="image/webp">
-                                                    <img class="avt-img" src="images/avatar/18.jpg" alt="">
-                                                </picture>
-                                            </div>
-                                            <div class="txt-user">
-                                                <h5>26 days ago</h5>
-                                                <p class="weight-400 size-14">
-                                                    <span class="color-text">
-                                                        Bid placed by </span> Vinicius
-                                                    <span class="color-text">for</span> <span class="color-green">
-                                                        $250.00</span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </li>
+                                    <div class="other-option">
+                                    <div class="color-text rounded-pill font-size-12" > <span class="credit_text">$2,000.00  </span><br>
+                                        
+                                        $3,500
+                                        </div>
 
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="page-creator-profile.html">
+                                    <div class="item-user-img">
+                                        <picture>
+                                            <div class="text-white rounded-pill credit"></div>
+                                        </picture>
+                                        <div class="txt-user">
+                                            <p>Interest Payment on your savest deposit
+                                            <small> (Calculated daily) </small></p>
+                                            <p>Date: Tues, 2/22/2022 23:36:18</p>
+                                        </div>
+                                    </div>
+                                    <div class="other-option">
+                                    <div class="color-text rounded-pill font-size-12" > <span class="credit_text">$2,000.00  </span><br>
+                                        
+                                        $3,500
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="page-creator-profile.html">
+                                    <div class="item-user-img">
+                                        <picture>
+                                            <div class="text-white rounded-pill credit"></div>
+                                        </picture>
+                                        <div class="txt-user">
+                                            <p>Interest Payment on your savest deposit
+                                            <small> (Calculated daily) </small></p>
+                                            <p>Date: Tues, 2/22/2022 23:36:18</p>
+                                        </div>
+                                    </div>
+                                    <div class="other-option">
+                                    <div class="color-text rounded-pill font-size-12" > <span class="credit_text">$2,000.00  </span><br>
+                                        
+                                        $3,500
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
                             </ul>
                         </div>
                         <div class="tab-pane fade" id="pills-Bids" role="tabpanel" aria-labelledby="pills-Bids-tab">
                             <ul class="nav flex-column nav-users-profile margin-t-20">
-                                <li class="nav-item">
-                                    <div class="nav-link">
-                                        <a href="page-creator-profile.html" class="item-user-img visited">
-                                            <div class="wrapper-image">
-                                                <picture>
-                                                    <source srcset="images/avatar/12.webp" type="image/webp">
-                                                    <img class="avt-img" src="images/avatar/12.png" alt="">
-                                                </picture>
-                                            </div>
-                                            <div class="txt-user">
-                                                <h5>24 days ago</h5>
-                                                <p class="weight-400 size-14">
-                                                    Pingu
-                                                    <span class="color-text">
-                                                        bid for</span>
-                                                    <span class="color-green">
-                                                        $300.00</span>
-                                                </p>
-                                            </div>
-                                        </a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="page-creator-profile.html">
+                                    <div class="item-user-img">
+                                        <picture>
+                                            <div class="text-white rounded-pill credit"></div>
+                                        </picture>
+                                        <div class="txt-user">
+                                            <p>Interest Payment on your savest deposit
+                                            <small> (Calculated daily) </small></p>
+                                            <p>Date: Tues, 2/22/2022 23:36:18</p>
+                                        </div>
                                     </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="nav-link">
-                                        <a href="page-creator-profile.html" class="item-user-img visited">
-                                            <div class="wrapper-image">
-                                                <picture>
-                                                    <source srcset="images/avatar/7.webp" type="image/webp">
-                                                    <img class="avt-img" src="images/avatar/7.jpg" alt="">
-                                                </picture>
-                                            </div>
-                                            <div class="txt-user">
-                                                <h5>24 days ago</h5>
-                                                <p class="weight-400 size-14">
-                                                    Pingu
-                                                    <span class="color-text">
-                                                        bid for</span>
-                                                    <span class="color-green">
-                                                        $300.00</span>
-                                                </p>
-                                            </div>
-                                        </a>
+                                    <div class="other-option">
+                                    <div class="color-text rounded-pill font-size-12" > <span class="credit_text">$2,000.00  </span><br>
+                                        
+                                        $3,500
+                                        </div>
+
                                     </div>
-                                </li>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="page-creator-profile.html">
+                                    <div class="item-user-img">
+                                        <picture>
+                                            <div class="text-white rounded-pill credit"></div>
+                                        </picture>
+                                        <div class="txt-user">
+                                            <p>Interest Payment on your savest deposit
+                                            <small> (Calculated daily) </small></p>
+                                            <p>Date: Tues, 2/22/2022 23:36:18</p>
+                                        </div>
+                                    </div>
+                                    <div class="other-option">
+                                    <div class="color-text rounded-pill font-size-12" > <span class="credit_text">$2,000.00  </span><br>
+                                        
+                                        $3,500
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
                             </ul>
                         </div>
                     </div>
