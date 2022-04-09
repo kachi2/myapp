@@ -2,8 +2,8 @@
 @section('content')
 <div class="space-items"></div>
 
-                    <div class="bg-white padding-20">
-                        <div class="item-card-gradual">
+                    <div class="bg-white padding-20 ">
+                        <div class="item-card-gradual shadow-sm ">
                             <div class="head-card d-flex justify-content-between align-items-center">
                                 <div class="creator-name">
                                     <div class="image-user">
@@ -56,9 +56,9 @@
                     </div>
 
                     <div class="space-items"></div>
-            <section class="un-details-collectibles">
+            <section class="un-details-collectibles ">
                 <!-- head -->
-                <div class="head">
+                <div class="head shadow ">
                     <div class="title-card-text d-flex align-items-center justify-content-between">
                         <div class="text">
                             <h1>Withdraw Fund</h1>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="txt-price-coundown d-flex justify-content-between">
                         <div class="price">
-                            <h2>Total Savest Deposit</h2>
+                            <h2>Total Deposit</h2>
                             <p>$8,350 </p>
                         </div>
                         <div class="coundown">
@@ -78,7 +78,8 @@
                     </div>
                 </div>
                 <!-- body -->
-                <div class="body">
+                <div class="space-items"></div>
+                <div class="body shadow-sm">
                     <div class="description">
                         <p>
                             Transactions
