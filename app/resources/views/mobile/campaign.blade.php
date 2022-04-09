@@ -3,7 +3,7 @@
 <div class="space-items"></div>
 
                     <div class="bg-white padding-20 ">
-                        <div class="item-card-gradual shadow-sm ">
+                        <div class="item-card-gradual shadow   bg-white  ">
                             <div class="head-card d-flex justify-content-between align-items-center">
                                 <div class="creator-name">
                                     <div class="image-user">
@@ -58,15 +58,15 @@
                     <div class="space-items"></div>
             <section class="un-details-collectibles ">
                 <!-- head -->
-                <div class="head shadow ">
-                    <div class="title-card-text d-flex align-items-center justify-content-between">
+                <div class="head  ">
+                    <div class=" shadow-sm m-2 bg-white title-card-text d-flex align-items-center justify-content-between">
                         <div class="text">
                             <h1>Withdraw Fund</h1>
                             <p>Fund will be transferred to main wallet</p>
                         </div>
                         <span class="btn-xs-size bg-pink text-white ">Withdraw Now</span>
                     </div>
-                    <div class="txt-price-coundown d-flex justify-content-between">
+                    <div class="shadow  m-1 bg-white txt-price-coundown  d-flex justify-content-between">
                         <div class="price">
                             <h2>Total Deposit</h2>
                             <p>$8,350 </p>
@@ -79,7 +79,7 @@
                 </div>
                 <!-- body -->
                 <div class="space-items"></div>
-                <div class="body shadow-sm">
+                <div class="body shadow  m-3 bg-white">
                     <div class="description">
                         <p>
                             Transactions
