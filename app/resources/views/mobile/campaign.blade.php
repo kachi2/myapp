@@ -320,7 +320,7 @@
                                             <div class="icon color-text w-auto">
                                                 <i class="ri-money-dollar-circle-fill"></i>
                                             </div>
-                                            <input class=" nav-link bg-snow" type="number" name="amount" placeholder="Enter Amount"> 
+                                            <input  class="form-control" class=" nav-link bg-snow" type="number" name="amount" placeholder="Enter Amount"> 
                                         </div>
                                     </a>
                                 </li>
@@ -330,7 +330,7 @@
                                             <div class="icon color-text w-auto">
                                                 <i class="ri-bank-card-line"></i>
                                             </div>
-                                           <select class=" nav-link bg-snow"> 
+                                           <select class=" nav-link bg-snow" class="form-control"> 
                                            <option> Select Payment Method</option>
                                               <option> BTC</option>
                                                  <option> LTE</option>
@@ -359,21 +359,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="title-modal">To complete this transaction, please send the exact amount of 100.05 USD | 0.00237000 BTC to the address below</h1>
+                    <h1 class="title-modal" style="font-size:12px">To complete this transaction, please send the exact amount of 100.05 USD | 0.00237000 BTC to the address below</h1>
                     <button type="button" class="btn btnClose" data-bs-dismiss="modal" aria-label="Close">
                         <i class="ri-close-fill"></i>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="content-upload-item">
-                        <div class="un-navMenu-default margin-t-30 p-0">
+                        <div class="un-navMenu-default  p-0">
                             <ul class="nav flex-column">
                                 <li class="nav-item mb-3">
                                     <a class="nav-link effect-click" href="javascript: void(0)">
                                         <div class="item-content-link">
                                            
                                             <picture>
-                                            <img class="big-image"style="margin:30px" src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
+                                            <img class="big-image" style="margin-left:80px"  width="150px"  src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
                                         </picture> 
                                       
                                         </div>
