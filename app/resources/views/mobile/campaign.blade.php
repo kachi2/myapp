@@ -16,7 +16,7 @@
                                   <div class="btn-like-click">
                                     <div class="btnLike">
                                         <input type="checkbox">
-                                        <span class="count-likes btn-primary btn text-white">28.0% P.A</span>
+                                        <span class="count-likes btn-outline-primary btn ">28.0% P.A</span>
                                        
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                                     <h4 style="color:green">$2,000.00</h4>
                                     <span>Avail Balance</span>
                                 </div>
-                                  <button type="button" class="btn btn-md-size bg-primary text-white rounded-pill"
+                                  <button type="button" class="btn btn-sm bg-primary text-white "
                                 data-bs-toggle="modal" data-bs-target="#mdllAddETH">
                                Add Fund
                             </button>
@@ -64,7 +64,10 @@
                             <h1>Withdraw Fund</h1>
                             <p>Fund will be transferred to main wallet</p>
                         </div>
-                        <span class="btn-xs-size bg-pink text-white ">Withdraw Now</span>
+                          <button type="button" class="btn btn-sm bg-primary text-white "
+                                data-bs-toggle="modal" data-bs-target="#mdllEAddETH">
+                               Withdraw
+                            </button>
                     </div>
                     <div class="shadow  m-1 bg-white txt-price-coundown  d-flex justify-content-between">
                         <div class="price">
@@ -297,7 +300,7 @@
                 </div>
             </section>
 
-    <div class="modal transition-bottom screenFull defaultModal mdlladd__rate fade" id="mdll_AddETH" tabindex="-1"
+    <div class="modal transition-bottom screenFull defaultModal mdlladd__rate fade" id="mdllEAddETH" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -379,8 +382,8 @@
                                     <li class="nav-item mb-3">
                                     <a class="nav-link effect-click" href="javascript: void(0)">
                                         <div class="item-content-link">
-                                            <div class="icon color-text w-auto">
-                                                <i class="ri-exchange-box-line"></i>
+                                            <div class="icon-svg">
+                                                <img src="{{asset('/mobile/images/icons/facebook.svg')}}" alt="">
                                             </div>
                                             <p>1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3</p>
                                         </div>
@@ -391,10 +394,12 @@
                                   <li class="nav-item mb-3">
                                    
                                            <center> 
-                                            <button class=" ml-5 btn btn-primary p-2"> Confirm Payment </button>
+                                            <button class="  btn btn-primary p-2"> Confirm Payment </button>
                                         </center>
                                 </li>
-                              
+                                 <div class="countdown_code">
+                                    <p id="countdown" class="text_count"></p>
+                                </div>
                             </ul>
                            
                         </div>
