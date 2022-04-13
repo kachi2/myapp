@@ -104,11 +104,7 @@
                                 data-bs-target="#pills-History" type="button" role="tab" aria-controls="pills-History"
                                 aria-selected="false">Withdrawal</button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-Bids-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-Bids" type="button" role="tab" aria-controls="pills-Bids"
-                                aria-selected="false">Interest</button>
-                        </li>
+                        
                     </ul>
                     <div class="tab-content content-custome-data" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-Info" role="tabpanel"
@@ -249,52 +245,7 @@
                             </li>
                             </ul>
                         </div>
-                        <div class="tab-pane fade" id="pills-Bids" role="tabpanel" aria-labelledby="pills-Bids-tab">
-                            <ul class="nav flex-column nav-users-profile margin-t-20">
-                            <li class="nav-item">
-                                <a class="nav-link" href="page-creator-profile.html">
-                                    <div class="item-user-img">
-                                        <picture>
-                                            <div class="text-white rounded-pill credit"></div>
-                                        </picture>
-                                        <div class="txt-user">
-                                            <p>Interest Payment on your savest deposit
-                                            <small> (Calculated daily) </small></p>
-                                            <p>Date: Tues, 2/22/2022 23:36:18</p>
-                                        </div>
-                                    </div>
-                                    <div class="other-option">
-                                    <div class="color-text rounded-pill font-size-12" > <span class="credit_text">$2,000.00  </span><br>
-                                        
-                                        $3,500
-                                        </div>
-
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="page-creator-profile.html">
-                                    <div class="item-user-img">
-                                        <picture>
-                                            <div class="text-white rounded-pill credit"></div>
-                                        </picture>
-                                        <div class="txt-user">
-                                            <p>Interest Payment on your savest deposit
-                                            <small> (Calculated daily) </small></p>
-                                            <p>Date: Tues, 2/22/2022 23:36:18</p>
-                                        </div>
-                                    </div>
-                                    <div class="other-option">
-                                    <div class="color-text rounded-pill font-size-12" > <span class="credit_text">$2,000.00  </span><br>
-                                        
-                                        $3,500
-                                        </div>
-
-                                    </div>
-                                </a>
-                            </li>
-                            </ul>
-                        </div>
+                        
                     </div>
                 </div>
             </section>
