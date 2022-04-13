@@ -315,9 +315,7 @@
                                 <li class="nav-item mb-3">
                                     <a class="nav-link effect-click" href="javascript: void(0)">
                                         <div class="item-content-link">
-                                            <picture>
-                                            <img class="big-image" style="margin-left:80px"  width="100px"  src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
-                                        </picture> 
+                                            
                                         </div>
                                     </a>
                                 </li>
