@@ -312,14 +312,18 @@
                     <div class="content-upload-item">
                         <div class="un-navMenu-default  p-0">
                             <ul class="nav flex-column">
-                                <li class="nav-item " style="margin:auto">
-                                    <a class="" href="javascript: void(0)">
-                                        <div class="item-content-link">
+                                <li class="nav-item " style="margin:auto ">
+                                    <span class="" href="javascript: void(0)">
+                                        <div class="item-content-link" >
                                             <picture>
-                                            <img   src="{{asset('/mobile/images/hh.jpg')}}" alt="">
+                                            <img  style="max-width: 100px !important" src="{{asset('/mobile/images/hh.jpg')}}" alt="">
                                         </picture> 
+                                       
                                         </div>
-                                    </a>
+                                        <p style="text-decoration: none; color:#000">
+                                            0.002500 BTC 
+                                        </p>
+                                    </span>
                                 </li>
                                     <li class="nav-item mb-3">
                                     <a class="nav-link effect-click" href="javascript: void(0)">
