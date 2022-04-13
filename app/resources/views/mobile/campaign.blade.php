@@ -97,14 +97,13 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-Owner-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-Owner" type="button" role="tab" aria-controls="pills-Owner"
-                                aria-selected="false">Deposit</button>
+                                aria-selected="false">Deposits</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-History-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-History" type="button" role="tab" aria-controls="pills-History"
-                                aria-selected="false">Withdrawal</button>
+                                aria-selected="false">Withdrawals</button>
                         </li>
-                        
                     </ul>
                     <div class="tab-content content-custome-data" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-Info" role="tabpanel"
@@ -317,7 +316,7 @@
                                     <a class="nav-link effect-click" href="javascript: void(0)">
                                         <div class="item-content-link">
                                             <picture>
-                                            <img class="big-image" style="margin-left:80px"  width="150px"  src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
+                                            <img class="big-image" style="margin-left:80px"  width="100px"  src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
                                         </picture> 
                                         </div>
                                     </a>
