@@ -326,14 +326,16 @@
                                     </span>
                                 </li>
                                     <li class="nav-item mb-3">
-                                    <a class="nav-link effect-click" href="javascript: void(0)">
+                                    <a class="nav-link effect-click" href="">
                                         <div class="item-content-link">
                                             <div class="icon-svg">
                                                 <img src="{{asset('/mobile/images/icons/facebook.svg')}}" alt="">
                                             </div>
-                                            <p>1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3</p>
+                                            <input readonly="" type="text" class="form-control"  value="1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3">
                                         </div>
-                                       
+                                        <div class="form-clip clipboard-init nk-tooltip" data-clipboard-target="#wallet-address" title="" data-original-title="Copy" aria-describedby="tooltip52854">
+                                            <em class="click-to-copy icon ni ni-copy"></em>
+                                        </div>
                                     </a>
                                 </li>
 
