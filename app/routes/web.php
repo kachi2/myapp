@@ -8,13 +8,12 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
 */
 
 use Illuminate\Support\Facades\Route;
 
 
-Route::domain('app.zenithcapital.cc')->prefix('user')->group(function(){
+Route::domain('app.zenithcapital.local')->group(function(){
     Route::get('/', 'MbHomeController@Index')->name('mb.index');
     Route::get('/campaign', 'MbHomeController@Campaign')->name('mb.campaign');
 

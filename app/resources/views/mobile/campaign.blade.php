@@ -72,7 +72,7 @@
                     <div class="shadow  m-1 bg-white txt-price-coundown  d-flex justify-content-between">
                         <div class="price">
                             <h2>Total Deposit</h2>
-                            <p>$8,350 </p>
+                            <p>$8,350</p>
                         </div>
                         <div class="coundown">
                             <h3>Total Withdraw</h3>
@@ -320,7 +320,7 @@
                                             <div class="icon color-text w-auto">
                                                 <i class="ri-money-dollar-circle-fill"></i>
                                             </div>
-                                            <input  class="form-control" class=" nav-link bg-snow" type="number" name="amount" placeholder="Enter Amount"> 
+                                            <input  class="form-control"  type="number" name="amount" placeholder="Enter Amount"> 
                                         </div>
                                     </a>
                                 </li>
@@ -330,21 +330,18 @@
                                             <div class="icon color-text w-auto">
                                                 <i class="ri-bank-card-line"></i>
                                             </div>
-                                           <select class=" nav-link bg-snow" class="form-control"> 
+                                           <select class=" nav-link " class="form-control"> 
                                            <option> Select Payment Method</option>
                                               <option> BTC</option>
                                                  <option> LTE</option>
                                                   <option> ETH</option>
                                            </select>
                                         </div>
-                                        
                                     </a>
                                 </li>
                             </ul>
                         </div>
-
                     </div>
-
                 </div>
                 <div class="modal-footer border-0">
                     <div class="env-pb"></div>
