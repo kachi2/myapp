@@ -13,7 +13,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::domain('app.zenithcapital.local')->group(function(){
+Route::domain('app.zenithcapital.cc')->group(function(){
     Route::get('/', 'MbHomeController@Index')->name('mb.index');
     Route::get('/campaign', 'MbHomeController@Campaign')->name('mb.campaign');
 
