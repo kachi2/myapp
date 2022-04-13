@@ -316,7 +316,7 @@
                                     <a class="" href="javascript: void(0)">
                                         <div class="item-content-link">
                                             <picture>
-                                            <img   src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
+                                            <img   src="{{asset('/mobile/images/hh.jpg')}}" alt="">
                                         </picture> 
                                         </div>
                                     </a>
