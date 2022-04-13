@@ -312,11 +312,11 @@
                     <div class="content-upload-item">
                         <div class="un-navMenu-default  p-0">
                             <ul class="nav flex-column">
-                                <li class="nav-item " style="margin-left:25%">
+                                <li class="nav-item " style="margin:auto">
                                     <a class="" href="javascript: void(0)">
                                         <div class="item-content-link">
                                             <picture>
-                                            <img class="small-image"  src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
+                                            <img   src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
                                         </picture> 
                                         </div>
                                     </a>
