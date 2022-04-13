@@ -2,7 +2,7 @@
 @section('content')
 <div class="space-items"></div>
 
-                    <div class="bg-white padding-20 ">
+                    <div class="bg-white padding-5 ">
                         <div class="item-card-gradual shadow   bg-white  ">
                             <div class="head-card d-flex justify-content-between align-items-center">
                                 <div class="creator-name">
@@ -59,7 +59,7 @@
             <section class="un-details-collectibles ">
                 <!-- head -->
                 <div class="head  ">
-                    <div class=" shadow-sm m-2 bg-white title-card-text d-flex align-items-center justify-content-between">
+                    <div class=" bg-white title-card-text d-flex align-items-center justify-content-between">
                         <div class="text">
                             <h1>Withdraw Fund</h1>
                             <p>Fund will be transferred to main wallet</p>
@@ -69,7 +69,7 @@
                                Withdraw
                             </button>
                     </div>
-                    <div class="shadow  m-1 bg-white txt-price-coundown  d-flex justify-content-between">
+                    <div class="shadow  bg-white txt-price-coundown  d-flex justify-content-between">
                         <div class="price">
                             <h2>Total Deposit</h2>
                             <p>$8,350</p>
@@ -82,7 +82,7 @@
                 </div>
                 <!-- body -->
                 <div class="space-items"></div>
-                <div class="body shadow  m-3 bg-white">
+                <div class="body shadow  mt-2 bg-white">
                     <div class="description">
                         <p>
                             Transactions
@@ -110,12 +110,11 @@
                                 aria-selected="false">Interest</button>
                         </li>
                     </ul>
-
                     <div class="tab-content content-custome-data" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-Info" role="tabpanel"
                             aria-labelledby="pills-Info-tab">
                             <ul class="nav flex-column nav-users-profile margin-t-20">
-                               <li class="nav-item">
+                             <li class="nav-item">
                             <a class="nav-link" href="page-creator-profile.html">
                                 <div class="item-user-img">
                                     <picture>
@@ -406,4 +405,6 @@
             </div>
         </div>
     </div>
+
+    
 @endsection

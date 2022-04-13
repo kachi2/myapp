@@ -32,7 +32,7 @@
 @include('partials.mobile-nav')
 
 @yield('content')
-
+</div> 
  </div> 
  </div> 
  <footer class="un-bottom-navigation filter-blur">
