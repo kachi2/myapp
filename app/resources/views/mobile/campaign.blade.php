@@ -92,17 +92,17 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-Info-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-Info" type="button" role="tab" aria-controls="pills-Info"
-                                aria-selected="true">All</button>
+                                aria-selected="true">Deposits</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-Owner-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-Owner" type="button" role="tab" aria-controls="pills-Owner"
-                                aria-selected="false">Deposits</button>
+                                aria-selected="false">Withdrawals</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-History-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-History" type="button" role="tab" aria-controls="pills-History"
-                                aria-selected="false">Withdrawals</button>
+                                aria-selected="false">Profits</button>
                         </li>
                     </ul>
                     <div class="tab-content content-custome-data" id="pills-tabContent">
@@ -312,11 +312,11 @@
                     <div class="content-upload-item">
                         <div class="un-navMenu-default  p-0">
                             <ul class="nav flex-column">
-                                <li class="nav-item mb-3">
-                                    <a class="nav-link effect-click" href="javascript: void(0)">
+                                <li class="nav-item " style="margin-left:25%">
+                                    <a class="" href="javascript: void(0)">
                                         <div class="item-content-link">
                                             <picture>
-                                            <img class="big-image" style="margin-left:80px"   src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
+                                            <img class="small-image"  src="{{asset('/mobile/images/bgg.jpg')}}" alt="">
                                         </picture> 
                                         </div>
                                     </a>
