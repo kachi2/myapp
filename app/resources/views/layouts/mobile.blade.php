@@ -100,5 +100,6 @@
     <script src="{{asset('/mobile/assets/js/custom.js')}}"></script>
     <!-- PWA APP SERVICE REGISTRATION AND WORKS JS -->
     <script src="{{asset('/mobile/assets/js/pwa-services.js')}}"></script>
+    @yield('scripts')
 </body>
 </html>
