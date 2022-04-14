@@ -331,7 +331,8 @@
                                     <label>BTC Address</label>
                                     <div class="input_group">
                                         <input type="text" class="form-control"  id="addresses" value="1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3" placeholder="" readonly> 
-                                        <span type="submit" class=" btn btn btn-outline-secondary" onclick="copyText() ">Copy</span>
+                                        <i class="ri-file-copy-2-line" onclick="copyText() "></i>
+                                        
                                         <div class="icon">
                                             <i class="ri-twitter-fill"></i>
                                         </div>
@@ -342,7 +343,7 @@
                                             <button class=" btn btn-outline-primary p-2 " type="button" onclick="confirmPay()" > Confirm Payment </button>
                                         </center>
                                 </li>
-                                <div class="countdown_code">
+                                <div class="countdown_code" style="text-align: center">
                                     <p id="payOne" hidden>We are confirming your payment</p>
                                     <p id="countdown" class="text_count"> </p>
                                     <p id="payTwo" hidden>  you can close window, notification will be sent once payment is confirmed</p>
@@ -381,13 +382,12 @@ function copyText() {
     function confirmPay(){
 
   
-    var timeleft = 60;
+    var timeleft = 1000;
     var downloadTimer = setInterval(function () {
         if (timeleft <= 0) {
             clearInterval(downloadTimer);
-            document.getElementById("countdown").innerHTML = "<button typy='button' class='btn btn-resend'>Resend Code</button>";
-        } else {
-            document.getElementById("countdown").innerHTML = "Estimated Time" + timeleft + "s";
+         } else {
+            document.getElementById("countdown").innerHTML = "Estimated Time " + timeleft + "s";
         }
         timeleft -= 1;
         /*console.log(downloadTimer);*/
