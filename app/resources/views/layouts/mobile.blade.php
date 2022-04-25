@@ -1,105 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="format-detection" content="telephone=no">
-    <!-- <meta name="theme-color" content="#ffffff"> -->
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#222032" media="(prefers-color-scheme: dark)">
-    <title> @if(isset($title)) {{$title}} @else Home  @endif | {{config('app.name')}}</title>
-       <meta name="author" content="Zenith Capital">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <meta name="keywords" content="crypto, Trading, Cryptocurrency, Cryptocurrency Trading, Investments, Trading comapany, Brokers, Bitcoin, Bitcoin trading">
-    <meta name="description" content="{{config('app.name')}} is a highly trusted crypto Trading comapany, helping millions of individuals and firms across the globe to safely Trade and earn more with crypto currency.">
-  <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="images/favicon/icon-32x32.png" sizes="32x32">
-    <!-- IOS SUPPORT -->
-    <link rel="apple-touch-icon" href="images/favicon/icon-96x96.png">
-    <!-- CSS FILES -->
-    <link rel="stylesheet" href="{{asset('/mobile/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('/mobile/assets/css/remixicon.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/mobile/assets/vendors/swiper/swiper-bundle.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/mobile/assets/vendors/zuck_stories/zuck.min.css')}}">
-    <link rel="manifest" href="_manifest.json" />
-
-</head>
-
-
+        <meta charset="utf-8">
+        <meta name="description" content="Oban">
+        <meta name="keywords" content="HTML,CSS,JavaScript">
+        <meta name="author" content="HiBootstrap">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title></title>
+        <link rel="icon" href="{{asset('/mobile/images/favicon.png')}}" type="image/png" sizes="16x16">
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/bootstrap.min.css')}}" type="text/css" media="all" />
+        <!-- animate css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/animate.min.css')}}" type="text/css" media="all" />
+        <!-- owl carousel css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/owl.carousel.min.css')}}"  type="text/css" media="all" />
+        <link rel="stylesheet" href="{{asset('/mobile/css/owl.theme.default.min.css')}}"  type="text/css" media="all" />
+        <!-- boxicons css -->
+        <link rel='stylesheet' href="{{asset('/mobile/css/icofont.min.css')}}" type="text/css" media="all" />
+        <!-- flaticon css -->
+        <link rel='stylesheet' href="{{asset('/mobile/css/flaticon.css')}}" type="text/css" media="all" />
+        <!-- style css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/style.css')}}" type="text/css" media="all" />
+        <!-- responsive css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/responsive.css')}}" type="text/css" media="all" />
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
 @include('partials.mobile-nav')
 
-@yield('content')
-</div> 
- </div> 
- </div> 
- <footer class="un-bottom-navigation filter-blur">
-            <div class="em_body_navigation border-0 -active-links">
-                <div class="item_link">
-                    <a href="homepage.html" class="btn btn_navLink" aria-label="btnNavigation">
-                        <div class="icon_current">
-                            <i class="ri-home-5-line"></i>
-                        </div>
-                        <div class="icon_active">
-                            <i class="ri-home-5-fill"></i>
-                        </div>
-                    </a>
-                </div>
-                <div class="item_link">
-                    <a href="page-search-random.html" class="btn btn_navLink" aria-label="btnNavigation">
-                        <div class="icon_current">
-                            <i class="ri-search-2-line"></i>
-                        </div>
-                        <div class="icon_active">
-                            <i class="ri-search-2-fill"></i>
-                        </div>
-                    </a>
-                </div>
-                <div class="item_link">
-                    <button type="button" name="uploadItem" aria-label="uploadItem"
-                        class="btn btn_navLink without_active" data-bs-toggle="modal" data-bs-target="#mdllUploadItem"
-                        aria-label="btnNavigation">
-                        <div class="btn btnCircle_default">
-                            <i class="ri-add-line"></i>
-                        </div>
-                    </button>
-                </div>
-                <div class="item_link">
-                    <a href="page-favourit-random.html" class="btn btn_navLink" aria-label="btnNavigation">
-                        <div class="icon_current">
-                            <i class="ri-heart-3-line"></i>
-                        </div>
-                        <div class="icon_active">
-                            <i class="ri-heart-3-fill"></i>
-                        </div>
-                    </a>
-                </div>
-                <div class="item_link">
-                    <a href="page-account.html" class="btn btn_navLink" aria-label="btnNavigation">
-                        <div class="icon_current">
-                            <i class="ri-user-4-line"></i>
-                        </div>
-                        <div class="icon_active">
-                            <i class="ri-user-4-fill"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </footer>
-    </div>
+@yield('content') 
+
+@include('partials.mobile-footbar')
 @include('partials.mobile-sidebar')
-    <!-- JS FILES -->
-    <script src="{{asset('/mobile/assets/vendors/zuck_stories/zuck.min.js')}}"></script>
-    <script src="{{asset('/mobile/assets/vendors/smoothscroll/smoothscroll.min.js')}}"></script>
-    <script src="{{asset('/mobile/assets/vendors/swiper/swiper-bundle.min.js')}}"></script>
-    <script src="{{asset('/mobile/assets/vendors/nouislider/nouislider.min.js')}}"></script>
-    <script src="{{asset('/mobile/assets/vendors/nouislider/wNumb.min.js')}}"></script>
-    <script src="{{asset('/mobile/assets/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('/mobile/assets/js/custom.js')}}"></script>
-    <!-- PWA APP SERVICE REGISTRATION AND WORKS JS -->
-    <script src="{{asset('/mobile/assets/js/pwa-services.js')}}"></script>
-    @yield('scripts')
-</body>
+
+        <script src="{{asset('/mobile/js/jquery-3.5.1.min.js')}}"></script>
+        <script src="{{asset('/mobile/js/bootstrap.bundle.min.js')}}"></script>
+        <!-- owl carousel js -->
+        <script src="{{asset('/mobile/js/owl.carousel.min.js')}}"></script>
+        <!-- form ajazchimp js -->
+        <script src="{{asset('/mobile/js/jquery.ajaxchimp.min.js')}}"></script>
+        <!-- form validator js  -->
+        <script src="{{asset('/mobile/js/form-validator.min.js')}}"></script>
+        <!-- contact form js -->
+        <script src="{{asset('/mobile/js/contact-form-script.js')}}"></script>
+        <!-- main js -->
+        <script src="{{asset('/mobile/js/script.js')}}"></script>
+    </body>
 </html>
