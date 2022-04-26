@@ -13,11 +13,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::domain('app.zenithcapital.cc')->group(function(){
-    Route::get('/', 'MbHomeController@Index')->name('mb.index');
-    Route::get('/campaign', 'MbHomeController@Campaign')->name('mb.campaign');
 
-    });
 
 
 Route::get('/', 'WelcomeController@index')->name('index');
@@ -27,13 +23,16 @@ route::post('/user/register', 'Auth\RegisterController@create_user')->name('regi
 Route::get('complete-registration', 'Auth\CompleteRegistrationController@index')->name('complete_registration');
 Route::post('complete-registration', 'Auth\CompleteRegistrationController@update')->name('complete_registration');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/about', 'AboutController@index')->name('about');
 Route::get('/terms', 'TermsController@index')->name('terms');
 Route::get('/faq', 'FaqController@index')->name('faq');
 Route::get('/plans', 'WelcomeController@plans')->name('plans');
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::post('/contact', 'ContactController@store')->name('contact');
+
+Route::domain('app.zenithcapital.cc')->group(function(){
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('withdrawals', 'WithdrawController@index')->name('withdrawals');
 Route::get('withdrawals/request', 'WithdrawController@request')->name('withdrawals.request');
 Route::post('withdrawals/request', 'WithdrawController@store')->name('withdrawals.request');
@@ -83,3 +82,4 @@ Route::get('blockchain/callback', 'BlockChainPaymentController@callback')->name(
 Route::get('user/packages', 'HomeController@packages')->name('user.packages');
 Route::get('/user/clear/notifications', 'WalletController@clearNotifications')->name('create.notifications');
 
+});

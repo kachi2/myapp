@@ -8,7 +8,7 @@
                     <div class="add-card-inner">
                         <div class="add-card-item add-card-info">
                             <p>Main Wallet</p>
-                            <h3>$1,450.50</h3>
+                            <h3>{{ moneyFormat(auth()->user()->wallet->amount, 'USD') }}</h3>
                         </div>
                         <div class="add-card-item add-balance" data-bs-toggle="modal" data-bs-target="#addBalance">
                             <a href="#"><i class="flaticon-plus"></i></a>
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="feature-card-details">
                                     <p>Profits</p>
-                                    <h3>$485.50</h3>
+                                    <h3>{{ moneyFormat(auth()->user()->wallet->bonus, 'USD')}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -116,72 +116,28 @@
                 <!-- Transaction-section -->
                 <div class="transaction-section pb-15">
                     <div class="section-header">
-                        <h2>Transactions</h2>
+                        <h2>Recent Investment</h2>
                     </div>
+                    @forelse ($investment as $invst )
                     <div class="transaction-card mb-15">
                         <a href="transaction-details.html">
                             <div class="transaction-card-info">
                                 <div class="transaction-info-thumb">
-                                    <img src="assets/images/user-2.jpg" alt="user">
+                                    <span>{{substr($invst->plan->name,0,2)}}</span>
                                 </div>
                                 <div class="transaction-info-text">
-                                    <h3>Brenda Davis</h3>
-                                    <p>Transfer</p>
+                                    <h3>{{$invst->plan->name}} - <small>Daily {{$invst->profit_rate}}% </small></h3>
+                                    <p> {{$invst->duration}} Days |  <small><span class="btn-primary p-1 btn-sm">Active</span> </small></p>
                                 </div>
                             </div>
                             <div class="transaction-card-det negative-number">
-                                -$185.00
+                                {{moneyFormat($invst->amount, 'USD')}}<br> 
+                               <small> {{moneyFormat($invst->paid_amount, 'USD')}}<small>
                             </div>
                         </a>
                     </div>
-                    <div class="transaction-card mb-15">
-                        <a href="transaction-details.html">
-                            <div class="transaction-card-info">
-                                <div class="transaction-info-thumb">
-                                    <img src="assets/images/user-cm-logo-1.png" alt="user">
-                                </div>
-                                <div class="transaction-info-text">
-                                    <h3>Appstore Purchase</h3>
-                                    <p>App Purchase</p>
-                                </div>
-                            </div>
-                            <div class="transaction-card-det">
-                                -$159.99
-                            </div>
-                        </a>
-                    </div>
-                    <div class="transaction-card mb-15">
-                        <a href="transaction-details.html">
-                            <div class="transaction-card-info">
-                                <div class="transaction-info-thumb">
-                                    <img src="assets/images/user-1.jpg" alt="user">
-                                </div>
-                                <div class="transaction-info-text">
-                                    <h3>Martin Neely</h3>
-                                    <p>Transfer</p>
-                                </div>
-                            </div>
-                            <div class="transaction-card-det">
-                                +$170.00
-                            </div>
-                        </a>
-                    </div>
-                    <div class="transaction-card mb-15">
-                        <a href="transaction-details.html">
-                            <div class="transaction-card-info">
-                                <div class="transaction-info-thumb">
-                                    <img src="assets/images/user-3.jpg" alt="user">
-                                </div>
-                                <div class="transaction-info-text">
-                                    <h3>Mary McMillian</h3>
-                                    <p>Transfer</p>
-                                </div>
-                            </div>
-                            <div class="transaction-card-det">
-                                +$2573.00
-                            </div>
-                        </a>
-                    </div>
+                    @empty
+                    @endforelse
                 </div>
                
                 <!-- Send-money-section -->

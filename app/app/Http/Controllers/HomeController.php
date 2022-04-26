@@ -55,7 +55,7 @@ class HomeController extends Controller
              $data['profile']  = 100;
         }
 
-        return view('home', [
+        return view('mobile.home', [
             'user' => $user,
             'packages' => $packages,
             'total_deposits' => $totalDeposits,
