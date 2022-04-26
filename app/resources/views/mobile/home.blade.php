@@ -123,16 +123,16 @@
                         <a href="transaction-details.html">
                             <div class="transaction-card-info">
                                 <div class="transaction-info-thumb">
-                                    <span>{{substr($invst->plan->name,0,2)}}</span>
+                                    <span class="text-white">{{substr($invst->plan->name,0,2)}}</span>
                                 </div>
                                 <div class="transaction-info-text">
                                     <h3>{{$invst->plan->name}} - <small>Daily {{$invst->profit_rate}}% </small></h3>
                                     <p> {{$invst->duration}} Days |  <small><span class="btn-primary p-1 btn-sm">Active</span> </small></p>
                                 </div>
                             </div>
-                            <div class="transaction-card-det negative-number">
-                                {{moneyFormat($invst->amount, 'USD')}}<br> 
-                               <small> {{moneyFormat($invst->paid_amount, 'USD')}}<small>
+                            <div class="transaction-card-det ">
+                                <span class="positive-number">{{moneyFormat($invst->paid_amount, 'USD')}}</span><br> 
+                               <small class="negative-number">{{moneyFormat($invst->amount, 'USD')}}<small>
                             </div>
                         </a>
                     </div>
@@ -142,65 +142,7 @@
                
                 <!-- Send-money-section -->
                 <!-- Saving-goals-section -->
-                <div class="saving-goals-section pb-15">
-                    <div class="section-header">
-                        <h2>Top Investment Plan</h2>
-                    </div>
-                    <div class="progress-card progress-card-red mb-15">
-                        <div class="progress-card-info">
-                            <div class="circular-progress" data-note="50.85">
-                                <svg width="55" height="55" class="circle-svg">
-                                    <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-path"></circle>
-                                    <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-fill"></circle>
-                                </svg>
-                                <div class="percent">
-                                    <span class="percent-int">0</span>%
-                                </div>
-                            </div>
-                            <div class="progress-info-text">
-                                <h3>New Gadget</h3>
-                                <p>Lifestyle</p>
-                            </div>
-                        </div>
-                        <div class="progress-card-amount">$250.00</div>
-                    </div>
-                    <div class="progress-card progress-card-blue mb-15">
-                        <div class="progress-card-info">
-                            <div class="circular-progress" data-note="25">
-                                <svg width="55" height="55" class="circle-svg">
-                                    <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-path"></circle>
-                                    <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-fill"></circle>
-                                </svg>
-                                <div class="percent">
-                                    <span class="percent-int">0</span>%
-                                </div>
-                            </div>
-                            <div class="progress-info-text">
-                                <h3>New Apartment</h3>
-                                <p>Living</p>
-                            </div>
-                        </div>
-                        <div class="progress-card-amount">$5000.00</div>
-                    </div>
-                    <div class="progress-card progress-card-green mb-15">
-                        <div class="progress-card-info">
-                            <div class="circular-progress" data-note="75">
-                                <svg width="55" height="55" class="circle-svg">
-                                    <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-path"></circle>
-                                    <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-fill"></circle>
-                                </svg>
-                                <div class="percent">
-                                    <span class="percent-int">0</span>%
-                                </div>
-                            </div>
-                            <div class="progress-info-text">
-                                <h3>Education</h3>
-                                <p>Lifestyle</p>
-                            </div>
-                        </div>
-                        <div class="progress-card-amount">$1250.00</div>
-                    </div>
-                </div>
+               
             
                 <!-- Latest-news-section -->
             </div>
