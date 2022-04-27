@@ -156,15 +156,14 @@
                         
                             <div class="monthly-bill-card monthly-bill-card-green">
                                 <div class="monthly-bill-thumb">
-                                    <img src="{{asset('/mobile/images/cm-logo-1.png')}}" alt="logo">
+                                    <img src="{{asset('/mobile/images/user-5.jpg')}}" alt="logo">
                                 </div>
                                 <div class="monthly-bill-body">
                                     <h6>BTC Address</h6>
                                 </div>
-                                <input type="text" class="form-control"  id="addresses" value="1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3" placeholder="" readonly> 
-                                <i class="ri-file-copy-2-line" onclick="copyText() "></i>
-                                
+                                <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Address Copied" onclick="copyText()"  id="addresses" value="1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3" placeholder="" readonly>    
                             </div>
+                            
                       
                             <button type="submit" class="btn main-btn main-btn-lg full-width">Confirm Payment</button>
                         
@@ -185,4 +184,16 @@
 
 @push('modal')
 <div class="modal fade" tabindex="-1" role="dialog" id="ajax-modal"></div>
+@endpush
+
+@push('scripts')
+<script>
+function copyText() {
+    var copyText = document.getElementById("addresses");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy")
+    }
+</script>
+
 @endpush
