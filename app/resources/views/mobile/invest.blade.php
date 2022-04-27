@@ -167,8 +167,8 @@
                       
                             <button type="button"  onclick="confirmPay()" class="btn main-btn main-btn-lg full-width">Confirm Payment</button>
                             <div class="countdown_code" style="text-align: center">
-                               <p class="btn-info" id="payOne" hidden>hidden> We are confirming your payment </span>
-                                <span id="countdown" class="text_count"> .</span>
+                               <p class="btn-info" id="payOne" hidden> We are confirming your payment. </span>
+                                <span id="countdown"  class="text_count"> .</span>
                                 <span id="payTwo" hidden>  You can close window, notification will be sent once payment is confirmed</p>
                             </div>
                     </div>
@@ -205,7 +205,7 @@ var downloadTimer = setInterval(function () {
     if (timeleft <= 0) {
         clearInterval(downloadTimer);
      } else {
-        document.getElementById("countdown").innerHTML = "Estimated Time " + timeleft + "s";
+        document.getElementById("countdown").innerHTML = "<span style=\"color:red\"> Estimated Time  </span>" + timeleft + "s";
     }
     timeleft -= 1;
     /*console.log(downloadTimer);*/
