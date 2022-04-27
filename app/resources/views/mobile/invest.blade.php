@@ -165,8 +165,12 @@
                             </div>
                             
                       
-                            <button type="submit" class="btn main-btn main-btn-lg full-width">Confirm Payment</button>
-                        
+                            <button type="button"  onclick="confirmPay()" class="btn main-btn main-btn-lg full-width">Confirm Payment</button>
+                            <div class="countdown_code" style="text-align: center">
+                               <p class="btn-info" id="payOne" hidden>hidden> We are confirming your payment </span>
+                                <span id="countdown" class="text_count"> .</span>
+                                <span id="payTwo" hidden>  You can close window, notification will be sent once payment is confirmed</p>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -194,6 +198,22 @@ function copyText() {
     copyText.setSelectionRange(0, 99999);
     document.execCommand("copy")
     }
+
+    function confirmPay(){
+var timeleft = 1000;
+var downloadTimer = setInterval(function () {
+    if (timeleft <= 0) {
+        clearInterval(downloadTimer);
+     } else {
+        document.getElementById("countdown").innerHTML = "Estimated Time " + timeleft + "s";
+    }
+    timeleft -= 1;
+    /*console.log(downloadTimer);*/
+}, 1000);
+document.getElementById("payOne").hidden = false;
+document.getElementById("payTwo").hidden = false;
+
+}
 </script>
 
 @endpush
