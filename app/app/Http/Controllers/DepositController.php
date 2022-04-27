@@ -458,6 +458,10 @@ class DepositController extends Controller
         $packages = Package::with('plans')->get();
         $balance = $request->user()->wallet->amount;
         $bonus = $request->user()->wallet->bonus;
+        $investment = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->take(5)->get();
+
+        //adding more fields
+
 
         $breadcrumb = [
             [
@@ -471,7 +475,7 @@ class DepositController extends Controller
         ];
 
         if ($id == null) {
-            return view('deposit.select-plan', [
+            return view('mobile.packages', [
                 'breadcrumb' => $breadcrumb,
                 'plans' => $plans,
                 'packages' => $packages,
@@ -480,12 +484,13 @@ class DepositController extends Controller
             ]);
         }
         $plan = Plan::findOrFail($id);
-        return view('deposit.invest', [
+        return view('mobile.invest', [
             'breadcrumb' => $breadcrumb,
             'plan' => $plan,
             'plans' => $plans,
             'balance' => $balance,
-            'bonus' => $bonus
+            'bonus' => $bonus,
+            'investment' => $investment 
         ]);
     }
 

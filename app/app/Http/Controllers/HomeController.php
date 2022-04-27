@@ -71,6 +71,6 @@ class HomeController extends Controller
 
     public function packages(){
 
-        return view('packages')->with('packages', Package::with('plans')->get());
+        return view('mobile.packages')->with('packages', Package::with('plans')->get());
     }
 }

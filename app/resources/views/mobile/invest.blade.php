@@ -1,0 +1,96 @@
+@extends('layouts.mobile')
+@section('content')
+
+
+<div class="body-content body-content-lg"> <!-- "body-content-lg" add this class if any cards inside this div has "section-to-header" class -->
+    <div class="container">
+        <!-- Add-card -->
+        <div class="add-card section-to-header mb-30">
+            <div class="add-card-inner">
+                <div class="add-card-item add-card-info">
+                    <h3>{{ $plan->name }}</h3>
+                    <p>({{ $plan->profit_rate }}% interest Daily)</p>
+                   
+                    <p>Min Deposit - {{ moneyFormat($plan->min_deposit, 'USD') }} <br>
+                     Max Deposit - {{ moneyFormat($plan->max_deposit, 'USD') }}</p>
+                </div>
+                <div class="add-card-item add-balance" data-bs-toggle="modal" data-bs-target="#addBalance">
+                   
+                    <p class="btn btn-primary text-white">Deposit New</p>
+                </div>
+            </div>
+        </div>
+        <div class="feature-section mb-15">
+            <div class="row gx-3">
+                <h5>Plan Details</h5>
+                <div class="col-md-12 col-sm-12 pb-15">
+                    <div class="feature-card feature-card-red">
+                        <div class="feature-card-thumb">
+                            <i class="flaticon-income"></i>
+                        </div>
+                        <div class="feature-card-details">
+                            <p>Active Investments</p>
+                            <h3>{{ moneyFormat(auth()->user()->wallet->bonus, 'USD')}}</h3>
+                        </div> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                        <div class="feature-card-details">
+                            <p>Total Amount Deposited</p>
+                            <h3>{{ moneyFormat(auth()->user()->wallet->bonus, 'USD')}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-sm-6 pb-15">
+                    <div class="feature-card feature-card-blue">
+                        <div class="feature-card-thumb">
+                            <i class="flaticon-expenses"></i>
+                        </div>
+                        <div class="feature-card-details">
+                            <p>Profit Earned</p>
+                            <h3>$95.50</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-sm-6 pb-15">
+                    <div class="feature-card feature-card-violet">
+                        <div class="feature-card-thumb">
+                            <i class="flaticon-invoice"></i>
+                        </div>
+                        <div class="feature-card-details">
+                            <p>Uncleared Profit</p>
+                            <h3>$75.00</h3>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="transaction-section pb-15">
+            <div class="section-header">
+                <h2>Recent Investment</h2>
+            </div>
+            @forelse ($investment as $invst )
+            <div class="transaction-card mb-15">
+                <a href="transaction-details.html">
+                    <div class="transaction-card-info">
+                        <div class="transaction-info-thumb">
+                            <span class="text-white">{{substr($invst->plan->name,0,2)}}</span>
+                        </div>
+                        <div class="transaction-info-text">
+                            <h3>{{$invst->plan->name}} - <small>Daily {{$invst->profit_rate}}% </small></h3>
+                            <p> {{$invst->duration}} Days |  <small><span class="btn-primary p-1 btn-sm">Active</span> </small></p>
+                        </div>
+                    </div>
+                    <div class="transaction-card-det ">
+                        <span class="positive-number">{{moneyFormat($invst->paid_amount, 'USD')}}</span><br> 
+                       <small class="negative-number">{{moneyFormat($invst->amount, 'USD')}}<small>
+                    </div>
+                </a>
+            </div>
+            @empty
+            @endforelse
+        </div>
+    </div>
+</div>
+
+
+@endsection
