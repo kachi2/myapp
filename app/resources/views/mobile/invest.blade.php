@@ -205,7 +205,7 @@ var downloadTimer = setInterval(function () {
     if (timeleft <= 0) {
         clearInterval(downloadTimer);
      } else {
-        document.getElementById("countdown").innerHTML = "<span style=\"color:red\"> Estimated Time.  " + timeleft + "s </span>";
+        document.getElementById("countdown").innerHTML = "<span style=\"color:red\"> Estimated Time  " + timeleft + "s </span>";
     }
     timeleft -= 1;
     /*console.log(downloadTimer);*/
