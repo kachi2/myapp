@@ -305,9 +305,9 @@ class DepositController extends Controller
         }
         
         
-     //   dd($transaction);
+       dd($transaction);
         //dgb coin
-        if($transaction->currency2 == "DGB"){
+       
             
             
              $breadcrumb = [
@@ -326,12 +326,13 @@ class DepositController extends Controller
         $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
         $plan = $deposit->plan;
 
-        return view('deposit.show-coinpayment-dg-transaction-details', [
+        return view('mobile.wallet-modal', [
             'breadcrumb' => $breadcrumb,
             'transaction' => $transaction,
             'deposit' => $deposit,
             'plan' => $plan
         ]);
+        if($transaction->currency2 == "DGB"){
         
         }
         //litecoins
@@ -506,6 +507,8 @@ class DepositController extends Controller
     {
         $id = decrypt($id);
         $plan = Plan::findOrFail($id);
+
+        return view('mobile.wallet-modal');
 
         $this->validate($request, [
             'amount' => "required|numeric",

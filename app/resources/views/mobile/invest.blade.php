@@ -16,7 +16,7 @@
                 </div>
                 <div class="add-card-item add-balance" data-bs-toggle="modal" data-bs-target="#addBalance">
                    
-                    <p class="btn btn-primary text-white">Deposit New</p>
+                  <a href="#"  data-bs-toggle="modal" data-bs-target="#passwordModal">Deposit New</a>
                 </div>
             </div>
         </div>
@@ -89,8 +89,100 @@
             @empty
             @endforelse
         </div>
+        <form method="post" action="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}">
+            @csrf
+        <div class="modal fade" id="passworModal" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="container">
+                        <div class="modal-header">
+                            <div class="modal-header-title">
+                                <h5 class="modal-title">Start new Campaign</h5>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            
+                                <div class="form-group pb-15">
+                                    <label>Deposit Amount</label>
+                                    <div class="input-group">
+                                        <input type="text" name="amount" class="form-control" required placeholder="100">
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group pb-15">
+                                    <label>Select Payment Method</label>
+                                    <div class="input-group">
+                             
+                                        <select type="text" class="form-control {{ form_invalid('payment_method') }}" name="payment_method" id="inputPaymentMethod" aria-describedby="paymentMethodHelp">
+                                            @foreach(get_payment_methods() as $oKey => $oValue)
+                                                @if($oKey == 'wallet')
+                                                    @if(($balance + $bonus) >= $plan->min_deposit)
+                                                        <option {{ old('payment_method') == $oKey ? 'selected' : '' }} value="{{ $oKey }}">{{ $oValue }}</option>
+                                                    @endif
+                                                @else
+                                                    <option {{ old('payment_method') == $oKey ? 'selected' : '' }} value="{{ $oKey }}">{{ $oValue }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn main-btn main-btn-lg full-width">Proceed to Payment</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- payment modal -->
+
+    <form method="post" action="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}">
+        @csrf
+    <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="modal-header">
+                        <div class="modal-header-title">
+                            <h5 class="modal-title">Completed Payment</h5>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6> To complete this transaction, please send the exact amount of 100.05 USD | 0.00237000 BTC to the address below</h6>
+                        
+                        
+                            <div class="monthly-bill-card monthly-bill-card-green">
+                                <div class="monthly-bill-thumb">
+                                    <img src="{{asset('/mobile/images/cm-logo-1.png')}}" alt="logo">
+                                </div>
+                                <div class="monthly-bill-body">
+                                    <h6>BTC Address</h6>
+                                </div>
+                                <input type="text" class="form-control"  id="addresses" value="1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3" placeholder="" readonly> 
+                                <i class="ri-file-copy-2-line" onclick="copyText() "></i>
+                                
+                            </div>
+                      
+                            <button type="submit" class="btn main-btn main-btn-lg full-width">Confirm Payment</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <!-- end of payment modal -->
+
+<!-- end of wrapper -->
     </div>
 </div>
 
 
 @endsection
+
+@push('modal')
+<div class="modal fade" tabindex="-1" role="dialog" id="ajax-modal"></div>
+@endpush

@@ -35,6 +35,7 @@
 @include('partials.mobile-footbar')
 @include('partials.mobile-sidebar')
 
+@stack('modal')
         <script src="{{asset('/mobile/js/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('/mobile/js/bootstrap.bundle.min.js')}}"></script>
         <!-- owl carousel js -->
@@ -47,5 +48,6 @@
         <script src="{{asset('/mobile/js/contact-form-script.js')}}"></script>
         <!-- main js -->
         <script src="{{asset('/mobile/js/script.js')}}"></script>
+        @stack('scripts')
     </body>
 </html>
