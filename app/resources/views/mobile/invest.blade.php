@@ -72,8 +72,8 @@
             <div class="transaction-card mb-15">
                 <a href="transaction-details.html">
                     <div class="transaction-card-info">
-                        <div class="transaction-info-thumb">
-                            <span class="text-white">{{substr($invst->plan->name,0,2)}}</span>
+                        <div class="transaction-info-thumb" style="border-radius: 100%">
+                            <span class="text-white" style="font-size:15px">{{substr($invst->plan->name,0,2)}}</span>
                         </div>
                         <div class="transaction-info-text">
                             <h3>{{$invst->plan->name}} - <small>Daily {{$invst->profit_rate}}% </small></h3>
@@ -91,7 +91,7 @@
         </div>
         <form method="post" action="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}">
             @csrf
-        <div class="modal fade" id="passworModal" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
+        <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="container">
@@ -138,9 +138,8 @@
 
     <!-- payment modal -->
 
-    <form method="post" action="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}">
-        @csrf
-    <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
+
+    <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="container">
@@ -161,7 +160,7 @@
                                 <div class="monthly-bill-body">
                                     <h6>BTC Address</h6>
                                 </div>
-                                <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Address Copied" onclick="copyText()"  id="addresses" value="1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3" placeholder="" readonly>    
+                                <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="click to copy" onclick="copyText()"  id="addresses" value="1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3" placeholder="" readonly>    
                             </div>
                             
                       
@@ -176,14 +175,14 @@
             </div>
         </div>
     </div>
-</form>
+   
     <!-- end of payment modal -->
 
 <!-- end of wrapper -->
     </div>
 </div>
 
-
+@php  $modal = "200"@endphp
 @endsection
 
 @push('modal')
@@ -192,6 +191,17 @@
 
 @push('scripts')
 <script>
+
+var transaction = {!! json_encode($modal)!!}
+
+if(transaction){
+    $(function() {
+    $('#transactionModal').modal('show');
+});
+  
+}
+
+
 function copyText() {
     var copyText = document.getElementById("addresses");
     copyText.select();
@@ -200,7 +210,7 @@ function copyText() {
     }
 
     function confirmPay(){
-var timeleft = 1000;
+var timeleft = 300;
 var downloadTimer = setInterval(function () {
     if (timeleft <= 0) {
         clearInterval(downloadTimer);

@@ -508,7 +508,10 @@ class DepositController extends Controller
         $id = decrypt($id);
         $plan = Plan::findOrFail($id);
 
-        return view('mobile.wallet-modal');
+        return redirect()->back()->with(
+            ['modal' => true,
+            'transactions' => "this is the transaction"
+            ]);
 
         $this->validate($request, [
             'amount' => "required|numeric",
