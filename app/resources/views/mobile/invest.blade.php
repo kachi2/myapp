@@ -150,7 +150,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h6> To complete this transaction, please send the exact amount of 100.05 USD | 0.00237000 BTC to the address below</h6>
+                        <p style="font-size:12px"> To complete this transaction, please send the exact amount of 100.05 USD | 0.00237000 BTC to the address below</p>
                         
                         
                             <div class="monthly-bill-card monthly-bill-card-green">
@@ -166,7 +166,7 @@
                       
                             <button type="button"  onclick="confirmPay()" class="btn main-btn main-btn-lg full-width">Confirm Payment</button>
                             <div class="countdown_code" style="text-align: center">
-                               <p class="btn-info" id="payOne" hidden> We are confirming your payment. </span>
+                               <p style="font-size:12px" class="btn-info" id="payOne" hidden> We are confirming your payment. </span>
                                 <span id="countdown"  class="text_count"> .</span> <br>
                                 <span id="payTwo" hidden>  You can close window, notification will be sent once payment is confirmed</p>
                             </div>
