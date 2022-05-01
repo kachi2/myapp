@@ -40,6 +40,7 @@ return array(
     'Seld\\PharUtils\\' => array($vendorDir . '/seld/phar-utils/src'),
     'Seld\\JsonLint\\' => array($vendorDir . '/seld/jsonlint/src/Seld/JsonLint'),
     'Rukhsar\\ActiveRoute\\' => array($vendorDir . '/rukhsar/laravel-active-route/src'),
+    'RealRashid\\SweetAlert\\' => array($vendorDir . '/realrashid/sweet-alert/src'),
     'React\\Promise\\' => array($vendorDir . '/react/promise/src'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),

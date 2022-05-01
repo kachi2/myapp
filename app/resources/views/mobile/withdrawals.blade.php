@@ -13,7 +13,7 @@
                 </div>
                 <div class="add-card-item add-balance" data-bs-toggle="modal" data-bs-target="#addBalance">
                    
-                  <a href="#"  data-bs-toggle="modal" data-bs-target="#passwordModal">Request Withdrawal</a>
+                  <a href="#"  data-bs-toggle="modal" data-bs-target="#withdrawal">Request Withdrawal</a>
                 </div>
             </div>
         </div>
@@ -83,7 +83,66 @@
 
     <!-- payment modal -->
 
-
+    <form method="post" action="{{ route('withdrawals.request', ['tab' => 'crypto']) }}">
+        @csrf
+    <div class="modal fade" id="withdrawal" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="modal-header">
+                        <div class="modal-header-title">
+                            <h5 class="modal-title">Withdraw funds</h5>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                            <div class="form-group pb-15">
+                                <label>Deposit Amount</label>
+                                <div class="input-group">
+                                    <input type="text"  type="number" name="amount"   value="{{ old('amount') }}"class="form-control {{ is_tab('bitcoin', true) ? form_invalid('amount') : '' }}" required placeholder="100">
+                                    
+                                </div>
+                                @if(is_tab('bitcoin', true))
+                                @showError('amount')
+                            @endif
+                            </div>
+                            
+                            <div class="form-group pb-15">
+                                <label>Select Payment Method</label>
+                                <div class="input-group">
+                         
+                                    <select type="text" class="form-control {{ form_invalid('payment_method') }}" name="payment_method" id="inputPaymentMethod" aria-describedby="paymentMethodHelp">
+                                        @foreach(get_withdrawal_methods() as $oKey => $oValue)
+                                            @if($oKey == 'wallet')
+                                                    <option style="display: none;" {{ old('payment_method') == $oKey ? 'selected' : '' }} value="{{ $oKey }}">{{ $oValue }}</option>
+                                            @else
+                                                <option {{ old('payment_method') == $oKey ? 'selected' : '' }} value="{{ $oKey }}">{{ $oValue }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @if(is_tab('bitcoin', true))
+                                @showError('payment_method')
+                            @endif
+                            </div>
+                            <div class="form-group pb-15">
+                                <label>Wallet Address</label>
+                                <div class="input-group">
+                                    <input type="text" name="wallet_address" value="{{ old('wallet_address') }}"class="form-control {{ form_invalid('wallet_address') }}" required placeholder="wallet address">
+                                    
+                                </div>
+                                @if(is_tab('bitcoin', true))
+                                @showError('wallet_address')
+                            @endif
+                            </div>
+                            <button type="submit" class="btn main-btn main-btn-lg full-width">Submit Request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
    
     <!-- end of payment modal -->
 

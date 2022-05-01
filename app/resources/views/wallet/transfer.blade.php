@@ -9,16 +9,12 @@
                                         
                                     </div>
                                     <div class="nk-block-head-content">
-                                        <ul class="nk-block-tools gx-3">
-                                           
+                                        <ul class="nk-block-tools gx-3"> 
                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                   
     <div class="body-content row">
-
-      
         <div class="col-lg-5">
             <div class="card">
                 <div class="card-body" style="border:1px solid #eee">
@@ -27,7 +23,6 @@
                         <dt class="col-sm-9 font-weight-bold"> Transfer Earnings to Wallet</dt>
                         
                     </dl>
-
                     <div class="row">
                         <div class="col-sm-12">
                             <form method="post" action="{{ route('transfer.earnings') }}">

@@ -24,11 +24,13 @@
         <link rel="stylesheet" href="{{asset('/mobile/css/style.css')}}" type="text/css" media="all" />
         <!-- responsive css -->
         <link rel="stylesheet" href="{{asset('/mobile/css/responsive.css')}}" type="text/css" media="all" />
+        
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
     </head>
 @include('partials.mobile-nav')
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
 @yield('content') 
 

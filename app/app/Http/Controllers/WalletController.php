@@ -13,6 +13,7 @@ use App\Models\UserWallet;
 use App\User;
 use App\UserNotify;
 use Illuminate\Support\Facades\Session;
+use App\WalletTranfer;
 use Illuminate\Http\Request;
 use App\Models\Deposit;
 use Illuminate\Http\Response;
@@ -72,10 +73,12 @@ class WalletController extends Controller
         ];
 
         $balance = $request->user()->wallet->transferable_amount;
+        $tranfers = WalletTranfer::where('sender_id', $request->user()->id)->paginate();
 
-        return view('wallet.transfer', [
+        return view('mobile.transfer', [
             'breadcrumb' => $breadcrumb,
-            'balance' => $balance
+            'balance' => $balance,
+            'transfers' => $tranfers
         ]);
     }
 
@@ -103,8 +106,15 @@ class WalletController extends Controller
         $toUser = User::where('username', $request->input('username'))->firstOrfail();
         UserWallet::reduceAmount($request->user(), $request->input('amount'));
         UserWallet::addAmount($toUser, $request->input('amount'));
+        WalletTranfer::create([
+            'sender_id' => $request->user()->id,
+            'receiver_id' => $toUser->id,
+            'amount' => $request->input('amount'),
+            'sender_balance' => $request->user()->wallet
+        ]);
         Session::flash('msg', 'success');
         Session::flash('message', 'Transfer Completed Successfully');
+
         return redirect()->back()->with('success', 'Fund transferred successfully');
     }
 
@@ -130,7 +140,6 @@ class WalletController extends Controller
                 ]);
                 Session::flash('alert', 'success');
                 Session::flash('message', 'Transfer Completed Successfully');
-               
                 return redirect()->back()->with('success', 'Transfer Completed');
                 }else{
                     Session::flash('alert', 'error');

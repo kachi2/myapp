@@ -22,7 +22,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use SweetAlert;
+Use Alert;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -185,7 +185,7 @@ class WithdrawController extends Controller
         ]);
 
         UserWallet::reducePayoutAmount($request->user(), $amount);
-
+      
         try {
             $withdrawal->user->notify(new WithdrawalRequested($withdrawal));
         } catch (Exception $exception) {
@@ -221,6 +221,7 @@ class WithdrawController extends Controller
         }
         Session::flash('msg', 'success');
         Session::flash('message', 'Withdrawal request sent successfully.');
+     //   Alert::html('Html Title', 'Html Code', 'Type');
         return redirect()
             ->route('withdrawals')
             ->with('success', 'Withdrawal request successfully submitted.');

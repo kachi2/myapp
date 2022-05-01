@@ -34,6 +34,7 @@
         "kevupton/laravel-coinpayments": "^1.1",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
+        "realrashid/sweet-alert": "^5.0",
         "rukhsar/laravel-active-route": "^1.4"
     },
     "require-dev": {
