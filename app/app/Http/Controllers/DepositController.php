@@ -508,10 +508,9 @@ class DepositController extends Controller
         $id = decrypt($id);
         $plan = Plan::findOrFail($id);
 
-        return redirect()->back()->with(
-            ['modal' => true,
-            'transactions' => "this is the transaction"
-            ]);
+        return redirect()->route('deposits.invest')->with([
+            'modal' => "this is the modal here",
+        ]);
 
         $this->validate($request, [
             'amount' => "required|numeric",

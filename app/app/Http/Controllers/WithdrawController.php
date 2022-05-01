@@ -65,6 +65,8 @@ class WithdrawController extends Controller
     public function index(Request $request)
     {
         $query = Withdrawal::whereUserId($request->user()->id);
+        $pending = Withdrawal::where(['user_id' =>auth()->user()->id, 'status' => 0])->sum('amount');
+        $success = Withdrawal::where(['user_id' =>auth()->user()->id, 'status' => 1])->sum('amount');
 
         if ($request->input('search')) {
             $query->where(function (Builder $query) use ($request) {
@@ -96,7 +98,7 @@ class WithdrawController extends Controller
         if (count($sort) > 0 && in_array($sort[0], $this->sortable))
             $query = $query->orderBy($sort[0], $sort[1]);
 
-        $withdrawals = $query->paginate(20);
+        $withdrawals = $query->latest()->paginate(5);
 
         $breadcrumb = [
             [
@@ -105,9 +107,12 @@ class WithdrawController extends Controller
             ]
         ];
 
-        return view('withdrawal.withdrawals', [
+        return view('mobile.withdrawals', [
             'withdrawals' => $withdrawals,
-            'breadcrumb' => $breadcrumb
+            'breadcrumb' => $breadcrumb,
+            'pending' => $pending,
+            'success' => $success,
+            'total' => $query->sum('amount')
         ]);
     }
 
