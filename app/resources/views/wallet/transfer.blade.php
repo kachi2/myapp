@@ -37,7 +37,6 @@
                                         Select Earnings Type
                                     </small>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="inputAmount">Amount</label>
                                     <input type="number" name="amounts"

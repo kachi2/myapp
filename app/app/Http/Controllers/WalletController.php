@@ -73,7 +73,7 @@ class WalletController extends Controller
         ];
 
         $balance = $request->user()->wallet->transferable_amount;
-        $tranfers = WalletTranfer::where('sender_id', $request->user()->id)->paginate();
+        $tranfers = WalletTranfer::where('sender_id', $request->user()->id)->latest()->paginate(5);
 
         return view('mobile.transfer', [
             'breadcrumb' => $breadcrumb,
@@ -93,7 +93,7 @@ class WalletController extends Controller
     {
         $wallet = $request->user()->wallet->transferable_amount;
         $ss = Deposit::where('user_id', $request->user()->id)->sum('amount');
-        if($ss < 2000){
+        if($ss < 200){
             Session::flash('msg', 'danger');
             Session::flash('message', 'Request failed, your deposit history is too low for this service');
             return redirect()->back();
@@ -106,11 +106,12 @@ class WalletController extends Controller
         $toUser = User::where('username', $request->input('username'))->firstOrfail();
         UserWallet::reduceAmount($request->user(), $request->input('amount'));
         UserWallet::addAmount($toUser, $request->input('amount'));
+        $wallets = $request->user()->wallet->amount - $request->input('amount');
         WalletTranfer::create([
             'sender_id' => $request->user()->id,
             'receiver_id' => $toUser->id,
             'amount' => $request->input('amount'),
-            'sender_balance' => $request->user()->wallet
+            'sender_balance' => $wallets 
         ]);
         Session::flash('msg', 'success');
         Session::flash('message', 'Transfer Completed Successfully');

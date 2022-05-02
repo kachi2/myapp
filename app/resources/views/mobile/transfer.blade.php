@@ -50,21 +50,15 @@
                             <span class="text-white" style="font-size:15px"></span>
                         </div>
                         <div class="transaction-info-text">
-                            <h3>Ref:{{$transfer->receiver->username}}<small> <br>{{$transfer->created_at->format('d/m/y h:s A')}}</small>
+                            <h3>Transferred  to <small> {{$transfer->receiver->username}}</small>
                             </h3>
-                            <p> <div class="dot dot-success d-md-none"></div>
-                                @if( $withdrawal->status == \App\Models\Withdrawal::STATUS_PAID)
-                               <span class="btn-success p-1 " style="font-size:12px">Completed</span>
-                               @elseif ($withdrawal->status == \App\Models\Withdrawal::STATUS_CANCELED)
-                               <span class="btn-danger p-1" style="font-size:12px">Cancelled</span>
-                               @else
-                                <span class="btn-warning p-1" style="font-size:12px">Pending</span>
-                               @endif </small></p>
+                            <p><small class="positive-number">{{$transfer->created_at->format('d/m/y h:s A')}}<small></p>
                         </div>
                     </div>
                     <div class="transaction-card-det ">
-                        <span class="positive-number">{{ moneyFormat($transfer->amount, 'USD') }}</span><br> 
-                       <small class="positive-number">{{ moneyFormat($transfer->sender_balance, 'USD') }}<small>
+                        <span class="positive-number">  {{ moneyFormat($transfer->amount, 'USD') }} </span><br> 
+                        <span class="positive-number">  {{ moneyFormat($transfer->sender_balance, 'USD') }} </span><br>
+                      
                     </div>
                 </a>
             </div>
@@ -87,7 +81,7 @@
             @endforelse
         </div>
 
-        <form method="post" action="{{ route('withdrawals.request', ['tab' => 'crypto']) }}">
+        <form method="post" action="{{ route('transfer', ['tab' => 'crypto']) }}">
             @csrf
         <div class="modal fade" id="transfer" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -104,12 +98,11 @@
                                 <div class="form-group pb-15">
                                     <label>Amount</label>
                                     <div class="input-group">
-                                        <input type="text"  type="number" name="amount"   value="{{ old('amount') }}"class="form-control {{ is_tab('bitcoin', true) ? form_invalid('amount') : '' }}" required placeholder="100">
-                                        
+                                        <input   type="number" name="amount"   value="{{ old('amount') }}"class="form-control {{  form_invalid('amount') }}" required placeholder="100">
                                     </div>
-                                    @if(is_tab('bitcoin', true))
+                                    
                                     @showError('amount')
-                                @endif
+                               
                                 </div>
                                 <div class="form-group pb-15">
                                     <label>Username</label>
@@ -117,9 +110,9 @@
                                         <input type="text" name="username" value="{{ old('username') }}"class="form-control {{ form_invalid('username') }}" required placeholder="Enter Username">
                                         
                                     </div>
-                                    @if(is_tab('bitcoin', true))
+                                    
                                     @showError('username')
-                                @endif
+                                
                                 </div>
                                 <button type="submit" class="btn main-btn main-btn-lg full-width">Initiate Transfer</button>
                         </div>
