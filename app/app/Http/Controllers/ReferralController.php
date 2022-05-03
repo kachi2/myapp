@@ -80,7 +80,7 @@ class ReferralController extends Controller
             ]
         ];
 
-        return view('referral.referral', [
+        return view('mobile.bonus', [
             'referrals' => $referrals,
             'today_referrals' => $todayReferrals,
             'breadcrumb' => $breadcrumb

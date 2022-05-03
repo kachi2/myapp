@@ -73,12 +73,16 @@ class WalletController extends Controller
         ];
 
         $balance = $request->user()->wallet->transferable_amount;
-        $tranfers = WalletTranfer::where('sender_id', $request->user()->id)->latest()->paginate(5);
+        $tranfers = WalletTranfer::where('sender_id', $request->user()->id)->orwhere( 'receiver_id',$request->user()->id)->latest()->paginate(5);
+        $sent = WalletTranfer::where('sender_id', $request->user()->id)->sum('amount');
+        $received = WalletTranfer::where('receiver_id', $request->user()->id)->sum('amount');
 
         return view('mobile.transfer', [
             'breadcrumb' => $breadcrumb,
             'balance' => $balance,
-            'transfers' => $tranfers
+            'transfers' => $tranfers,
+            'sent' => $sent,
+            'received' => $received
         ]);
     }
 
@@ -104,6 +108,11 @@ class WalletController extends Controller
         ]);
 
         $toUser = User::where('username', $request->input('username'))->firstOrfail();
+        if($toUser->id == auth()->user()->id){
+            Session::flash('msg', 'danger');
+            Session::flash('message', 'You cannot tranfer funds to same account');
+            return redirect()->back();
+        }
         UserWallet::reduceAmount($request->user(), $request->input('amount'));
         UserWallet::addAmount($toUser, $request->input('amount'));
         $wallets = $request->user()->wallet->amount - $request->input('amount');
@@ -111,7 +120,7 @@ class WalletController extends Controller
             'sender_id' => $request->user()->id,
             'receiver_id' => $toUser->id,
             'amount' => $request->input('amount'),
-            'sender_balance' => $wallets 
+            'sender_balance' => $wallets
         ]);
         Session::flash('msg', 'success');
         Session::flash('message', 'Transfer Completed Successfully');
