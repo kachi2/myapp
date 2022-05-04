@@ -7,7 +7,8 @@
         <div class="add-card section-to-header mb-30">
             <div class="add-card-inner">
                 <div class="add-card-item add-card-info">
-                    <h3>Total Bonus <br> {{ moneyFormat(auth()->user()->wallet->amount, 'USD') }}</h3>
+                    <h3>Referral Earnings <br> {{ moneyFormat(get_stats()['all_time_referral_bonus'], 'USD') }}</h3>
+                    <p> Total referrals: {{ get_stats()['referral_count'] }} user(s)</p>
                 </div>
                 <div class="add-card-item add-balance" data-bs-toggle="modal" data-bs-target="#addBalance">
                    
@@ -17,65 +18,57 @@
         </div>
         <div class="transaction-section pb-15">
             <div class="section-header">
-                <h2>Task Center
-                    <hr style="width:100%; color:brown">
-                </h2>
+                
                
-                <p><small>Once you receive the task, the deadline countdown starts. Complete your task within the deadline to get your reward</small></p>
-            </div>
-
-      <div class="feature-section mb-15">
-            <div class="row gx-3">
-                <div class="col-md-12 col-sm-12">
-                    <div  style="align-items:initial; box-shadow:none" class="feature-card feature-card-red">
-                        <div class="feature-card-thumb">
-                            <i class="flaticon-income"></i>
-                        </div>
-                        
-                        <div class="feature-card-details">
-                            <div class="col-md-6 col-sm-6">
-                            <p style=color:#000>Trade and get reward atleast $50. get $1000 savings trial fund voucher
-                            </p> 
-                            <p> <small> <a href="#" data-bs-toggle="modal" data-bs-target="#centerModal">View Rules</a></small></p>
-                        </div>
-                        <div class="progress" style="height: 5px; width:50%">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 1%"></div>
-                          </div><p>0/1 completed</p>
-                          
-                            <p><span style=" btn-sm btn-warning"> Reward</span> <span class="btn-warning p-1"> 20 USD</span> </p>
-                            <p> <small> Expired in 23:23:232</small> <span class="float-end" style="color:green">Active</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            {{-- ///////// --}}
-            <hr>
-            <div class="row gx-3">
-                <div class="col-md-12 col-sm-12">
-                    <div  style="align-items:initial;box-shadow:none" class="feature-card feature-card-red">
-                        <div class="feature-card-thumb">
-                            <i class="flaticon-income"></i>
-                        </div>
-                        
-                        <div class="feature-card-details">
-                            <div class="col-md-6 col-sm-6">
-                            <p style=color:#000>Trade and get reward atleast $50. get $1000 savings trial fund voucher
-                            </p> 
-                            <p> <small> <a href="#" data-bs-toggle="modal" data-bs-target="#centerModal">View Rules</a></small></p>
-                        </div>
-                        <div class="progress" style="height: 5px; width:50%">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-                          </div><p>0/1 completed</p>
-                          
-                          <p><span style=" btn-sm btn-warning"> Reward</span> <span class="btn-warning p-1"> 20 USD</span> </p>
-                          <p> <small> Expired in 23:23:232</small> <span class="float-end" style="color:green">Active</span></p>
-                        </div>
-                    </div>
-                </div>
+                <p><small>Copy referral link below, get up to $20 per referral and 5% bonus from their initial deposit</small></p>
+                <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="click to copy" onclick="copyText()"  id="addresses" value="{{ auth_user()->ref_url }}" placeholder="" readonly>    
+                         
             </div>
         </div>
+
+        <div class="transaction-section pb-15">
+            <div class="section-header">
+                <h2>My Referrals</h2>
+            </div>
+            @forelse($referrals as $referral)
+            <div class="transaction-card mb-15">
+                <a href="transaction-details.html">
+                    <div class="transaction-card-info">
+                        <div class="transaction-info-thumb">
+                            <img src="assets/images/user-2.jpg" alt="user">
+                        </div>
+                        <div class="transaction-info-text">
+                            <h3>{{ $referral->user->username }}</h3>
+                            <p>Registered: {{ $referral->user->created_at->diffForHumans() }}</p>
+                        </div>
+                    </div>
+                    @if( $referral->has_deposit )
+                    <div class="transaction-card-det success">
+                        Deposit Made
+                    </div>
+                    @else
+                    <div class="transaction-card-det negative-number">
+                        No Deposit
+                    </div>
+                    @endif
+
+
+                </a>
+            </div>
+
+            @empty
+            <div class="transaction-card mb-15">
+                <a href="transaction-details.html">
+                    <div class="transaction-card-info">
+                        
+                        <div class="transaction-info-text">
+                            <h3>No data found</h3>
+                            
+                        </div>
+                    </div>
+                </a>
+            </div>
+        @endforelse
         </div>
     </div>
 </div>
@@ -83,3 +76,13 @@
 
 
 @endsection
+@push('scripts')
+<script>
+function copyText() {
+    var copyText = document.getElementById("addresses");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy")
+    }
+</script>
+@endpush

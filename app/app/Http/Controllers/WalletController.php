@@ -129,14 +129,16 @@ class WalletController extends Controller
     }
 
     public function TransferEarnings(Request $request){
+        $bonus = auth()->user()->wallet->bonus;
 
+       
        $this->validate($request, [
             'amounts' => 'required|integer|min:0',
             'bonus' => 'required|integer'
         ]);
 
         $ss = Deposit::where('user_id', $request->user()->id)->sum('amount');
-        if($ss < 5000){
+        if($ss < 50){
             Session::flash('msg', 'danger');
             Session::flash('message', 'Request failed, your deposit history is too low for this service');
             return redirect()->back();

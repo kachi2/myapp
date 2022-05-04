@@ -28,7 +28,7 @@
                                     <li><a href="{{ route('transfer') }}"><i class="flaticon-menu-1"></i>Send Money</a></li>
                                     <li><a href="{{ route('withdrawals') }}"><i class="flaticon-credit-card"></i>Withdrawal</a></li>
                                     <li><a href="{{ route('earn.bonus') }}"><i class="flaticon-credit-card"></i>Earn Bonus</a></li>
-                                    <li><a href="{{ route('referral') }}"><i class="flaticon-credit-card"></i>Earn Bonus</a></li>
+                                    <li><a href="{{ route('referral') }}"><i class="flaticon-credit-card"></i>Refer & Earn</a></li>
                                     <li><a href="my-cards.html"><i class="flaticon-credit-card"></i>Markets</a></li>
                                     <li><a href="{{ route('account') }}"><i class="flaticon-settings"></i> Settings</a></li>
                                     <li><a href="mailto:support@zenithcapital.cc"><i class="flaticon-call-center-agent"></i> Contact Us</a></li>

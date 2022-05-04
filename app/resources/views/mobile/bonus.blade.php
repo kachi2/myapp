@@ -35,16 +35,28 @@
                         
                         <div class="feature-card-details">
                             <div class="col-md-6 col-sm-6">
-                            <p style=color:#000>{{$task->name}} <a href="" style="font-size:9px" class="btn-primary p-1 float-end">@if($task->is_clicked)running @else @if($task->status == null)Start Task @else Closed @endif  @endif </a>
+                                <form action="{{route('bonus.initate', encrypt($task->plan_id))}}" method="get">
+                                    @csrf
+                            <p style=color:#000>{{$task->name}} 
+                                @if($task->metrics >= 100 && $task->status != 1) 
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#awardModal{{$task->id}}" style="font-size:9px" class="btn-info p-1 float-end"> Claim Reward  </button>  
+                                @elseif($task->metrics >= 10 && $task->metrics <= 100 && $task->status != 1 ) <button style="font-size:9px" class="btn-primary p-1 float-end"> running  </button> 
+                                @elseif($task->metrics <= 0 && $task->status != 1)
+                                <button type="submit" style="font-size:9px" class="btn-primary p-1 float-end">Start Task </button>
+                                @else 
+                                <span  style="font-size:9px" class="btn-danger p-1 float-end">Closed </span>
+                                @endif 
+                            <input type="hidden" name="task_id" value="{{$task->id}}">
                             </p> 
+                                </form>
                             <p> <small> <a href="#" data-bs-toggle="modal" data-bs-target="#centerModal{{$task->id}}">View Rules</a></small></p>
                         </div>
                         <div class="progress" style="height: 5px; width:50%">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:@if($task->is_clicked)5% @else 0% @endif "></div>
-                          </div><p>@if($task->is_clicked) initiated @else  @endif</p> 
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:@if($task->is_clicked){{$task->metrics}}% @else 0% @endif "></div>
+                          </div><p>@if($task->metrics >= 10 && $task->metrics < 100) initiated @elseif($task->metrics >= 100)  completed @else pending @endif</p> 
                           
                             <p><span style=" btn-sm btn-warning"> Reward</span> <span class="btn-warning p-1"> {{$task->reward}} USD</span> </p>
-                            <p> <small> Expired in {{$task->expires}}</small> <span class="float-end" style="color:green">@if($task->status == null)Active</span>@else <span class="p-1" style="color:#fff; background:rgb(208, 208, 212)">Expired</span> @endif</p>
+                            <p> <small> Expires in {{$task->expires}}</small> <span class="float-end" style="color:green">@if($task->expires >= now())Active</span>@else <span class="p-1" style="color:rgb(165, 164, 164); background:rgb(234, 234, 237)">Expired</span> @endif</p>
                         </div>
                     </div>
                 </div>
@@ -68,7 +80,25 @@
             </div>
         </div>
     </div>
-</div>   <hr>
+</div>   
+
+<div class="modal fade" id="awardModal{{$task->id}}" tabindex="-1" aria-labelledby="centerModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="container">
+                <div class="modal-header">
+                    <div class="modal-header-title">
+                        <h5 class="modal-title">Claim Bonus</h5>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Thanks for completing {{$task->name}}, <span class="btn-info"> {{$task->reward}}</span> will be sent to your bonus wallet within next 4hrs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <hr>
 <!-- end of container -->
             @empty
 
@@ -87,6 +117,7 @@
                     </div>
                 </div>
             </div>
+            </div>
                 
             @endforelse
             {{-- ///////// --}}
@@ -94,7 +125,35 @@
         </div>
         </div>
 
-
+        <form method="post" action="{{ route('transfer.earnings') }}">
+            @csrf
+        <div class="modal fade" id="transfer" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="container">
+                        <div class="modal-header">
+                            <div class="modal-header-title">
+                                <h5 class="modal-title">Transfer bonus to main wallet</h5>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" value="1" name="bonus">
+                                <div class="form-group pb-15">
+                                    <label>Amount</label>
+                                    <div class="input-group">
+                                        <input   type="number" name="amounts"   value="{{ old('amount') }}"class="form-control {{  form_invalid('amount') }}" required placeholder="100">
+                                    </div>
+                                    @showError('amount')
+                               
+                                </div>
+                                <button type="submit" class="btn main-btn main-btn-lg full-width">Transfer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
  
     </div>
 </div>

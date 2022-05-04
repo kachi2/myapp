@@ -12,6 +12,11 @@ namespace App\Http\Controllers;
 use App\Models\Referral;
 use App\Models\Testimony;
 use App\TaskCampaign;
+use App\Models\Package;
+use App\Models\Plan;
+use Illuminate\Support\Carbon;
+use App\Models\Deposit;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
@@ -57,7 +62,54 @@ class ReferralController extends Controller
                 'tasks' => $task
         ]);
      }
-
+     public function BonusInvest(Request $request, $id = null)
+     {
+         $task = TaskCampaign::where('id', $request->task_id)->first();
+         TaskCampaign::where('id', $task->id)->update([
+             'is_clicked' => 1,
+             'metrics' => 10
+         ]);
+        $id = decrypt($id);
+         $plans = Plan::with('package')->get();
+         $packages = Package::with('plans')->get();
+         $balance = $request->user()->wallet->amount;
+         $bonus = $request->user()->wallet->bonus;
+         $investment = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->take(5)->get();
+ 
+         //adding more fields
+ 
+ 
+         $breadcrumb = [
+             [
+                 'link' => route('deposits'),
+                 'title' => 'Deposits'
+             ],
+             [
+                 'link' => route('deposits.invest', ['id' => $id]),
+                 'title' => 'Invest'
+             ]
+         ];
+ 
+         if ($id == null) {
+             return view('mobile.packages', [
+                 'breadcrumb' => $breadcrumb,
+                 'plans' => $plans,
+                 'packages' => $packages,
+                 'balance' => $balance,
+                 'bonus' => $bonus
+             ]);
+         }
+         $plan = Plan::findOrFail($id);
+         return view('mobile.invest', [
+             'breadcrumb' => $breadcrumb,
+             'plan' => $plan,
+             'plans' => $plans,
+             'balance' => $balance,
+             'bonus' => $bonus,
+             'investment' => $investment 
+         ]);
+     }
+ 
 
     public function index(Request $request)
     {

@@ -50,6 +50,7 @@ Route::get('deposits/payment/confirmation/{id}','DepositController@saveHashNo')-
 Route::get('payouts', 'PayoutController@index')->name('payouts');
 Route::get('referral', 'ReferralController@index')->name('referral');
 Route::get('earnbonus', 'ReferralController@Bonus')->name('earn.bonus');
+Route::get('bonus/initate/{id}', 'ReferralController@BonusInvest')->name('bonus.initate');
 Route::get('referrals/refer', 'ReferralController@refer')->name('referrals.refer');
 Route::post('referrals/refer', 'ReferralController@send')->name('referrals.refer');
 
