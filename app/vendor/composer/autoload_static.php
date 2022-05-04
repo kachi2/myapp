@@ -685,6 +685,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\TaskCampaign' => __DIR__ . '/../..' . '/app/TaskCampaign.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\UserActivity' => __DIR__ . '/../..' . '/app/UserActivity.php',
         'App\\UserNotify' => __DIR__ . '/../..' . '/app/UserNotify.php',

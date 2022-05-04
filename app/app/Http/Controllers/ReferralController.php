@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Referral;
 use App\Models\Testimony;
+use App\TaskCampaign;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
@@ -48,6 +49,16 @@ class ReferralController extends Controller
      * @param Request $request
      * @return Response
      */
+
+     public function Bonus(){
+        $task = TaskCampaign::where('user_id', auth_user()->id)->get();
+        return view(
+            'mobile.bonus',[
+                'tasks' => $task
+        ]);
+     }
+
+
     public function index(Request $request)
     {
         $query = Referral::with(['user', 'referrer']);
@@ -80,7 +91,7 @@ class ReferralController extends Controller
             ]
         ];
 
-        return view('mobile.bonus', [
+        return view('mobile.referral', [
             'referrals' => $referrals,
             'today_referrals' => $todayReferrals,
             'breadcrumb' => $breadcrumb

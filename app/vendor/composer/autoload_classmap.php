@@ -99,6 +99,7 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\TaskCampaign' => $baseDir . '/app/TaskCampaign.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\UserActivity' => $baseDir . '/app/UserActivity.php',
     'App\\UserNotify' => $baseDir . '/app/UserNotify.php',
