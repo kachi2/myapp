@@ -6,6 +6,7 @@ use App\Models\Deposit;
 use App\Models\Package;
 use App\Models\Payout;
 use App\Models\UserWallet;
+use App\PlanProfit;
 use Closure;
 use Illuminate\Support\Facades\Cache;
 
@@ -86,7 +87,7 @@ class UpdatePayouts
                    ]);
                    $deposit->paid_amount =  $payableAmount + $deposit->paid_amount;
                    $deposit->save();
-                   UserWallet::addAmount($deposit->user, $payableAmount);
+                   PlanProfit::addAmount($deposit->user, $payableAmount, $deposit->plan_id);
                }
            }
 
@@ -104,7 +105,7 @@ class UpdatePayouts
                    $deposit->paid_amount = $deposit->profit;
                    $deposit->status = 1;
                    $deposit->save();
-                   UserWallet::addAmount($deposit->user, $amountToPay);
+                   PlanProfit::addAmount($deposit->user, $amountToPay,$deposit->plan_id);
                }
            }
        }

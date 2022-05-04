@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Deposit;
 use App\Models\Package;
+use App\Models\Payout;
 use App\Models\PendingDeposit;
 use App\Models\Setting;
 use App\Models\Plan;
@@ -17,6 +18,7 @@ use App\Models\UserWallet;
 use App\Modules\BlockChain;
 use App\Modules\PerfectMoney;
 use App\Notifications\InvestmentCreated;
+use App\PlanProfit;
 use App\User;
 use Exception;
 use Illuminate\Support\Facades\Session;
@@ -303,12 +305,6 @@ class DepositController extends Controller
         if (!$transaction) {
             $transaction = Transaction::where('txn_id', $id)->firstOrFail();
         }
-        
-        
-       dd($transaction);
-        //dgb coin
-       
-            
             
              $breadcrumb = [
             [
@@ -338,8 +334,6 @@ class DepositController extends Controller
         //litecoins
         
         if($transaction->currency2 == "LTC"){
-            
-            
              $breadcrumb = [
             [
                 'link' => route('deposits'),
@@ -355,7 +349,6 @@ class DepositController extends Controller
         
         $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
         $plan = $deposit->plan;
-
         return view('deposit.show-coinpayment-litecoins-transaction-details', [
             'breadcrumb' => $breadcrumb,
             'transaction' => $transaction,
@@ -378,18 +371,14 @@ class DepositController extends Controller
             ]
         ];
         
-        
-        
         $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
         $plan = $deposit->plan;
-
         return view('deposit.show-coinpayment-eth-transaction-details', [
             'breadcrumb' => $breadcrumb,
             'transaction' => $transaction,
             'deposit' => $deposit,
             'plan' => $plan
         ]);
-        
           //  }
          }
                 $breadcrumb = [
@@ -407,7 +396,6 @@ class DepositController extends Controller
         
         $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
         $plan = $deposit->plan;
-
         return view('deposit.show-coinpayment-transaction-details', [
             'breadcrumb' => $breadcrumb,
             'transaction' => $transaction,
@@ -415,9 +403,7 @@ class DepositController extends Controller
             'plan' => $plan
         ]);
    //}
-
     }
-
     /**
      * Update payouts.
      *
@@ -451,19 +437,34 @@ class DepositController extends Controller
          }
                     
      }
+
+     //payouts for individual investments 
+
+     public function PayoutsDetails($id = null){
+        $payouts = Payout::where('deposit_id', decrypt($id))->get();
+        $plan = Deposit::where('id', decrypt($id))->first();
+        $sum = Payout::where('deposit_id', decrypt($id))->sum('amount');
+        return view('mobile.payouts', 
+        [
+            'payouts'=>$payouts,
+            'plan' => $plan,
+            'sum' => $sum
+        ]);
+
+     }
     public function invest(Request $request, $id = null)
     {
-        
        $id = decrypt($id);
         $plans = Plan::with('package')->get();
         $packages = Package::with('plans')->get();
         $balance = $request->user()->wallet->amount;
         $bonus = $request->user()->wallet->bonus;
         $investment = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->take(5)->get();
+        $total = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->get();
+        $deposited = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->where('payment_method', '!=','wallet')->get();
+        $payouts = PlanProfit::where(['user_id'=>$request->user()->id, 'plan_id' => $id,])->paginate(5);
 
         //adding more fields
-
-
         $breadcrumb = [
             [
                 'link' => route('deposits'),
@@ -474,7 +475,6 @@ class DepositController extends Controller
                 'title' => 'Invest'
             ]
         ];
-
         if ($id == null) {
             return view('mobile.packages', [
                 'breadcrumb' => $breadcrumb,
@@ -491,7 +491,10 @@ class DepositController extends Controller
             'plans' => $plans,
             'balance' => $balance,
             'bonus' => $bonus,
-            'investment' => $investment 
+            'investment' => $investment,
+            'total' => $total,
+            'deposited' => $deposited,
+            'payouts' => $payouts 
         ]);
     }
 
@@ -507,17 +510,11 @@ class DepositController extends Controller
     {
         $id = decrypt($id);
         $plan = Plan::findOrFail($id);
-
-        return redirect()->route('deposits.invest')->with([
-            'modal' => "this is the modal here",
-        ]);
-
         $this->validate($request, [
             'amount' => "required|numeric",
             'payment_method' => 'required'
         ]);
     if($plan->min_deposit > $request->amount){
-        
          Session::flash('msg', 'error');
               Session::flash('message', 'Amount must be greater than $'.$plan->min_deposit); 
             return redirect()->back();
@@ -554,9 +551,7 @@ class DepositController extends Controller
               Session::flash('message', 'You dont have enough fund to invest on this plan'); 
             return redirect()->back();
         }
-
         UserWallet::reduceAmount($request->user(), $request->input('amount'));
-
         try {
             $deposit = $this->saveDeposit($ref, $plans, $request->user(), $amount, Deposit::PAYMENT_METHOD_WALLET);
         } catch (Exception $e) {
@@ -571,7 +566,7 @@ class DepositController extends Controller
         Session::flash('msg', 'success');
         Session::flash('message', 'Investment Initiated successfully'); 
        
-        return redirect()->route('deposits')->with('success', 'Investment added successfully');
+        return redirect()->back()->with('success', 'Investment added successfully');
     }
 
     protected function investFromCripto(Request $request, Plan $plan, $amount, $currency, $ref)

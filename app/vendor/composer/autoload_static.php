@@ -680,6 +680,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\Notifications\\WithdrawalRequested' => __DIR__ . '/../..' . '/app/Notifications/WithdrawalRequested.php',
         'App\\Observers\\DepositObserver' => __DIR__ . '/../..' . '/app/Observers/DepositObserver.php',
         'App\\Observers\\PendingDepositObserver' => __DIR__ . '/../..' . '/app/Observers/PendingDepositObserver.php',
+        'App\\PlanProfit' => __DIR__ . '/../..' . '/app/PlanProfit.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

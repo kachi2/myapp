@@ -94,6 +94,7 @@ return array(
     'App\\Notifications\\WithdrawalRequested' => $baseDir . '/app/Notifications/WithdrawalRequested.php',
     'App\\Observers\\DepositObserver' => $baseDir . '/app/Observers/DepositObserver.php',
     'App\\Observers\\PendingDepositObserver' => $baseDir . '/app/Observers/PendingDepositObserver.php',
+    'App\\PlanProfit' => $baseDir . '/app/PlanProfit.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

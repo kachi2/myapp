@@ -45,7 +45,8 @@
                         </div>
                         <div class="feature-card-details">
                             <p>Profit Earned</p>
-                            <h3>$95.50</h3>
+                            <h3>$95.50 <a href="" style="font-size:12px">Transfer</a></h3>
+                            
                         </div>
                     </div>
                 </div>
@@ -55,8 +56,8 @@
                             <i class="flaticon-invoice"></i>
                         </div>
                         <div class="feature-card-details">
-                            <p>Uncleared Profit</p>
-                            <h3>$75.00</h3>
+                            <p>Completed Investment</p>
+                            <h3>23 </h3>
                         </div>
                     </div>
                 </div>
@@ -70,26 +71,27 @@
             </div>
             @forelse ($investment as $invst )
             <div class="transaction-card mb-15">
-                <a href="transaction-details.html">
+                <a href="{{route('payouts.details', encrypt($invst->id))}}">
                     <div class="transaction-card-info">
                         <div class="transaction-info-thumb" style="border-radius: 100%">
                             <span class="text-white" style="font-size:15px">{{substr($invst->plan->name,0,2)}}</span>
                         </div>
                         <div class="transaction-info-text">
-                            <h3>{{$invst->plan->name}} - <small>Daily {{$invst->profit_rate}}% </small></h3>
-                            <p> {{$invst->duration}} Days |  <small><span class="btn-primary p-1 btn-sm">Active</span> </small></p>
+                            <h3>{{$invst->ref}} - <small>Daily {{$invst->profit_rate}}% </small></h3>
+                            <p> {{$invst->payment_method}} | Expires:<small>{{$invst->expires_at->diffForHumans()}} </small></p>
+                            <small style="font-size:12px"> view payouts</small>
                         </div>
                     </div>
                     <div class="transaction-card-det ">
-                        <span class="positive-number">{{moneyFormat($invst->paid_amount, 'USD')}}</span><br> 
-                       <small class="negative-number">{{moneyFormat($invst->amount, 'USD')}}<small>
+                        <span class="positive-number"> <i class="flaticon-income"> </i>{{moneyFormat($invst->paid_amount, 'USD')}}</span><br> 
+                       <small class="negative-number"><i class="flaticon-expenses"> </i>{{moneyFormat($invst->amount, 'USD')}}<small>
                     </div>
                 </a>
             </div>
             @empty
             @endforelse
         </div>
-        <form method="post" action="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}">
+        <form method="post" action="{{ route('deposits.invests', ['id' => encrypt($plan->id)]) }}">
             @csrf
         <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -196,7 +198,7 @@ var transaction = {!! json_encode($modal)!!}
 
 if(transaction){
     $(function() {
-    $('#transactionModal').modal('show');
+    $('#transactioModal').modal('show');
 });
   
 }
