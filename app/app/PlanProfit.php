@@ -15,21 +15,20 @@ class PlanProfit extends Model
     ];
    
 
-    
-    public static function addAmount($user, $amount, $planId=null)
+    public static function addAmount($user, $amount, $planId)
     {
-        $userWallet = (new PlanProfit)->where(['user_id'=> $user->id, 'plan_id'=>$amount])->first();
-        if (!$userWallet) {
-            $userWallet = PlanProfit::create([
+        $PlanWallet = (new PlanProfit)->where(['user_id'=> $user->id, 'plan_id'=>$planId])->first();
+        if (!$PlanWallet) {
+            $PlanWallet = PlanProfit::create([
                 'user_id' => $user->id,
                 'plan_id' => $planId,
                 'balance' => $amount,
                 'prev_balance' => 0,
             ]);
         } else {
-            $userWallet->balance = $userWallet->amount + $amount;
-            $userWallet->prev_balance = $userWallet->amount;
-            $userWallet->save();
+            $PlanWallet->balance = $PlanWallet->balance + $amount;
+            $PlanWallet->prev_balance = $PlanWallet->balance;
+            $PlanWallet->save();
         }
     }
 }

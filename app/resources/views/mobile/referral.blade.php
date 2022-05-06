@@ -35,7 +35,7 @@
                 <a href="transaction-details.html">
                     <div class="transaction-card-info">
                         <div class="transaction-info-thumb">
-                            <img src="assets/images/user-2.jpg" alt="user">
+                           <span style="color:aliceblue">{{strtoupper(substr($referral->user->username,0,2))}}</span> 
                         </div>
                         <div class="transaction-info-text">
                             <h3>{{ $referral->user->username }}</h3>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     @if( $referral->has_deposit )
-                    <div class="transaction-card-det success">
+                    <div class="transaction-card-det" style="color:green">
                         Deposit Made
                     </div>
                     @else

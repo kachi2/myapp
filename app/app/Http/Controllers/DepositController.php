@@ -459,10 +459,14 @@ class DepositController extends Controller
         $packages = Package::with('plans')->get();
         $balance = $request->user()->wallet->amount;
         $bonus = $request->user()->wallet->bonus;
-        $investment = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->take(5)->get();
-        $total = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->get();
+        $investment = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->take(10)->latest()->get();
+        $sum = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->sum('amount');
+     
+        $total = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->where('status', 0)->sum('amount');
+        $completed = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->where('status', 1)->get();
         $deposited = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->where('payment_method', '!=','wallet')->get();
-        $payouts = PlanProfit::where(['user_id'=>$request->user()->id, 'plan_id' => $id,])->paginate(5);
+        $payouts = PlanProfit::where(['user_id'=>$request->user()->id, 'plan_id' => $id,])->sum('balance');
+       
 
         //adding more fields
         $breadcrumb = [
@@ -494,7 +498,9 @@ class DepositController extends Controller
             'investment' => $investment,
             'total' => $total,
             'deposited' => $deposited,
-            'payouts' => $payouts 
+            'payouts' => $payouts,
+            'sum' => $sum, 
+            'completed' => $completed
         ]);
     }
 

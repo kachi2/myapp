@@ -55,6 +55,8 @@ Route::get('bonus/initate/{id}', 'ReferralController@BonusInvest')->name('bonus.
 Route::get('referrals/refer', 'ReferralController@refer')->name('referrals.refer');
 Route::post('referrals/refer', 'ReferralController@send')->name('referrals.refer');
 
+Route::get('/martets', 'HomeController@Markets')->name('home.markets');
+
 Route::get('testimonies', 'TestimonyController@index')->name('testimonies');
 Route::get('testimonies/add', 'TestimonyController@addTestimony')->name('testimonies.add');
 Route::post('testimonies/add', 'TestimonyController@storeTestimony')->name('testimonies.add');

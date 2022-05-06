@@ -87,7 +87,7 @@ class UpdatePayouts
                    ]);
                    $deposit->paid_amount =  $payableAmount + $deposit->paid_amount;
                    $deposit->save();
-                   PlanProfit::addAmount($deposit->user, $payableAmount, $deposit->plan_id);
+                   PlanProfit::addAmount($deposit->user, $payableAmount,$deposit->plan_id);
                }
            }
 

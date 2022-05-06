@@ -23,29 +23,16 @@
         <div class="feature-section mb-15">
             <div class="row gx-3">
                 <h5>Plan Details</h5>
-                <div class="col-md-12 col-sm-12 pb-15">
-                    <div class="feature-card feature-card-red">
-                        <div class="feature-card-thumb">
-                            <i class="flaticon-income"></i>
-                        </div>
-                        <div class="feature-card-details">
-                            <p>Active Investments</p>
-                            <h3>{{ moneyFormat(auth()->user()->wallet->bonus, 'USD')}}</h3>
-                        </div> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-                        <div class="feature-card-details">
-                            <p>Total Amount Deposited</p>
-                            <h3>{{ moneyFormat(auth()->user()->wallet->bonus, 'USD')}}</h3>
-                        </div>
-                    </div>
-                </div>
+              
                 <div class="col col-sm-6 pb-15">
                     <div class="feature-card feature-card-blue">
                         <div class="feature-card-thumb">
                             <i class="flaticon-expenses"></i>
                         </div>
                         <div class="feature-card-details">
-                            <p>Profit Earned</p>
-                            <h3>$95.50 <a href="" style="font-size:12px">Transfer</a></h3>
+                            <p>Payouts Earned</p>
+                            <h3>{{moneyFormat($payouts, 'USD')}}</h3>
+                            <a href="" style="font-size:12px"> Transfer</a>
                             
                         </div>
                     </div>
@@ -56,8 +43,10 @@
                             <i class="flaticon-invoice"></i>
                         </div>
                         <div class="feature-card-details">
-                            <p>Completed Investment</p>
-                            <h3>23 </h3>
+                            <p>Active Deposits</p>
+                            <h3>{{moneyFormat($total, 'USD')}} </h3>
+                            <br>
+                            
                         </div>
                     </div>
                 </div>
@@ -79,16 +68,25 @@
                         <div class="transaction-info-text">
                             <h3>{{$invst->ref}} - <small>Daily {{$invst->profit_rate}}% </small></h3>
                             <p> {{$invst->payment_method}} | Expires:<small>{{$invst->expires_at->diffForHumans()}} </small></p>
-                            <small style="font-size:12px"> view payouts</small>
+                            <small style="font-size: 10px; color:#999"> {{$invst->created_at}}</small><small style="font-size:12px"> view payouts</small>
                         </div>
                     </div>
-                    <div class="transaction-card-det ">
-                        <span class="positive-number"> <i class="flaticon-income"> </i>{{moneyFormat($invst->paid_amount, 'USD')}}</span><br> 
-                       <small class="negative-number"><i class="flaticon-expenses"> </i>{{moneyFormat($invst->amount, 'USD')}}<small>
+                    <div class="transaction-card-det">
+                        <span style="color:green">  </i>{{moneyFormat($invst->paid_amount, 'USD')}}</span><br> 
+                       <small class="negative-number"> </i>{{moneyFormat($invst->amount, 'USD')}}<small>
                     </div>
                 </a>
             </div>
             @empty
+            <div class="transaction-card mb-15">
+                <a href="transaction-details.html">
+                    <div class="transaction-card-info">
+                        <div class="transaction-info-text">
+                            <p>No record found</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
             @endforelse
         </div>
         <form method="post" action="{{ route('deposits.invests', ['id' => encrypt($plan->id)]) }}">
