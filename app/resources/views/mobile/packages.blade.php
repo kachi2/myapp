@@ -28,7 +28,7 @@
                     <p>(Min Deposit: {{ moneyFormat($plan->min_deposit, 'USD') }} | Max Deposit: {{ moneyFormat($plan->max_deposit, 'USD') }}).</p>
                 </div>
                 <div class="monthly-bill-footer monthly-bill-action">
-                    <a href="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}" class="btn main-btn">Pay Now</a>
+                    <a href="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}" class="btn main-btn">Deposit</a>
                     <p class="monthly-bill-price">{{ $plan->profit_rate }}% Daily</p>
                 </div>
             </div>
@@ -50,7 +50,7 @@
     </div>
     <div class="progress-card progress-card-red mb-15">
         <div class="progress-card-info">
-            <div class="circular-progress" data-note="50.85">
+            <div class="circular-progress" data-note="{{count($data['basic'])+60.1}}">
                 <svg width="55" height="55" class="circle-svg">
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-path"></circle>
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-fill"></circle>
@@ -60,15 +60,15 @@
                 </div>
             </div>
             <div class="progress-info-text">
-                <h3>New Gadget</h3>
-                <p>Lifestyle</p>
+                <h3>Basic Plan</h3>
+                <p></p>
             </div>
         </div>
-        <div class="progress-card-amount">$250.00</div>
+        <div class="progress-card-amount">{{number_format(count($data['basic']) * 1000)}} Investment in 7 days</div>
     </div>
     <div class="progress-card progress-card-blue mb-15">
         <div class="progress-card-info">
-            <div class="circular-progress" data-note="25">
+            <div class="circular-progress" data-note="{{count($data['basic'])+60.1}}">
                 <svg width="55" height="55" class="circle-svg">
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-path"></circle>
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-fill"></circle>
@@ -78,15 +78,14 @@
                 </div>
             </div>
             <div class="progress-info-text">
-                <h3>New Apartment</h3>
-                <p>Living</p>
+                <h3>Standard Plan</h3>
             </div>
         </div>
-        <div class="progress-card-amount">$5000.00</div>
+        <div class="progress-card-amount">{{number_format(count($data['standard']) * 1000)}} Investment in 7 days</div>
     </div>
     <div class="progress-card progress-card-green mb-15">
         <div class="progress-card-info">
-            <div class="circular-progress" data-note="75">
+            <div class="circular-progress" data-note="{{count($data['basic'])+60.1}}">
                 <svg width="55" height="55" class="circle-svg">
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-path"></circle>
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-fill"></circle>
@@ -96,11 +95,28 @@
                 </div>
             </div>
             <div class="progress-info-text">
-                <h3>Education</h3>
-                <p>Lifestyle</p>
+                <h3>Premium Plan</h3>
             </div>
         </div>
-        <div class="progress-card-amount">$1250.00</div>
+        <div class="progress-card-amount">{{number_format(count($data['premium']) * 1000)}} Investment in 7 days</div>
+    </div>
+
+    <div class="progress-card progress-card-green mb-15">
+        <div class="progress-card-info">
+            <div class="circular-progress" data-note="{{count($data['mega'])+60.1}}">
+                <svg width="55" height="55" class="circle-svg">
+                    <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-path"></circle>
+                    <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-fill"></circle>
+                </svg>
+                <div class="percent">
+                    <span class="percent-int">0</span>%
+                </div>
+            </div>
+            <div class="progress-info-text">
+                <h3>Mega Plan</h3>
+            </div>
+        </div>
+        <div class="progress-card-amount">{{number_format(count($data['mega']) + 1000)}} Investment in 7 days</div>
     </div>
 </div>
 </div>

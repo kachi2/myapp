@@ -89,6 +89,15 @@ class HomeController extends Controller
 
     public function packages(){
 
-        return view('mobile.packages')->with('packages', Package::with('plans')->get());
+        $data['basic'] = Deposit::where('plan_id', 1)->get();
+        $data['standard'] = Deposit::where('plan_id', 2)->get();
+        $data['premium'] = Deposit::where('plan_id', 3)->get();
+        $data['mega'] = Deposit::where('plan_id', 4)->get();
+        return view('mobile.packages')->with(
+            [
+                'packages' => Package::with('plans')->get(),
+                'data' => $data
+                
+        ]);
     }
 }
