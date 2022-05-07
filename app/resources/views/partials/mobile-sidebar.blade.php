@@ -7,10 +7,10 @@
                                 <img src="{{asset('/mobile/images/profile.png')}}"alt="profile">
                             </div>
                             <div class="sidebar-profile-text">
-                                <h3>{{strtoupper(auth()->user()->username)}}</h3>
+                                <h3>{{strtoupper(auth()->user()->username)}}     <span class="float-end" style="font-size:13px; color:#32CD32; font-weight:bolder; "> <i class="flaticon-check"> </i> Verified</span>
+                                </h3>
                                 <p><a href="tel:1545-8880">{{auth()->user()->email}}</a></p>
                             </div>
-                            <span class="float-end" style="font-size:8px; color:green; border:2px solid green; border-radius:5px"> <i class="flaticon-check"> </i> Verified</span>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -32,8 +32,10 @@
                                     <li><a href="{{ route('referral') }}"><i class="flaticon-credit-card"></i>Refer & Earn</a></li>
                                     <li><a href="{{route('home.markets')}}"><i class="flaticon-credit-card"></i>Markets</a></li>
                                     <li><a href="{{ route('account') }}"><i class="flaticon-settings"></i> Settings</a></li>
-                                    <li><a href="#"><i class="flaticon-logout"></i> Logout</a></li>
+                                    <li> <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout4').submit();"><i class="flaticon-logout"></i> Logout</a></li>
                                 </ul>
+                                <form id="frm-logout4" action="{{ route('logout') }}" method="POST" style="display: none;"> {{ csrf_field() }}
+                                </form> 
                             </div>
                         </div>
                     </div>

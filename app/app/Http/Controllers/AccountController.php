@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\UserActivity;
+use App\UserNotify;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
@@ -174,5 +175,12 @@ class AccountController extends Controller
     public function activity(){
         return view('account.activity')
         ->with('users', UserActivity::where('user_id', auth_user()->id)->latest()->take(10)->get());
+    }
+
+    public function UserNotifications(){
+        $notifications = UserNotify::where('user_id', auth_user()->id)->latest()->paginate(10);
+        return view('mobile.notify', [
+            'notifications' => $notifications
+        ]);
     }
 }

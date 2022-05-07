@@ -2172,7 +2172,7 @@ footer.footer-bg p a {
 }
 
 .side-modal-dialog .modal-body {
-  max-height: 485px;
+  max-height: 100%;
 }
 
 .modal-content {
@@ -2760,13 +2760,13 @@ footer.footer-bg p a {
   border-bottom: 1px solid rgba(54, 70, 205, 0.1);
 }
 
-.setting-list ul li a:after {
+/* .setting-list ul li a:after {
   content: "\f11f";
   font-family: Flaticon;
   position: absolute;
   right: 0;
   font-size: 12px;
-}
+} */
 
 .setting-list ul li a:hover {
   color: #3646cd;

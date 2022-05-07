@@ -8,7 +8,7 @@
                 <div class="user-setting-thumb-up">
                     <img src="{{asset('/mobile/images/profile.png')}}"alt="profile">
                 </div>
-                <p><span class="" style="font-size:12px; color:green; border:2px solid green; border-radius:5px"> <i class="flaticon-check"> </i> Verified</span></p>
+                <p><span class="" style="font-size:12px; color:#32CD32; font-weight:bolder"> <i class="flaticon-check"> </i> Verified</span></p>
             </div>
 
             <!-- Setting-list -->
@@ -40,10 +40,11 @@
                     <li>
                         <a href="#" data-bs-toggle="modal" data-bs-target="#passwordModal">Change Password</a>
                     </li>
+                    <li>
+                        <a href="#"  data-bs-toggle="modal" data-bs-target="#updatedetails">Update Account Details  </a>
+                    </li>
                 </ul>
-                
             </div>
-             <button class="btn mt-2 btn-outline-primary" data-bs-toggle="modal" data-bs-target="#updatedetails"> Update details</button>
             
            
              <form method="post" action="{{ route('setting.profile') }}" enctype="multipart/form-data">

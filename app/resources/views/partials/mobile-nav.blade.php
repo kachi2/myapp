@@ -32,8 +32,8 @@
                         </div>
                         <div class="appbar-item appbar-options">
                             <div class="appbar-option-item appbar-option-notification">
-                                <a href="notifications.html"><i class="flaticon-bell"></i></a>
-                                <span class="option-badge">5</span>
+                                <a href="{{route('user.notifications')}}"><i class="flaticon-bell"></i></a>
+                                <span class="option-badge">{{count($notification)}}</span>
                             </div>
                             <div class="appbar-option-item appbar-option-profile">
                                 <img src="{{asset('/mobile/images/profile.png')}}"alt="profile">

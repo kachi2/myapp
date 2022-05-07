@@ -3,19 +3,19 @@
             <div class="container">
                 <div class="navbar-content ">
                     <div class="navbar-content-item">
-                        <a href="index-2.html" class="active">
+                        <a href="{{route('home')}}" class="active">
                             <i class="flaticon-house"></i>
                             Home
                         </a>
                     </div>
                     <div class="navbar-content-item">
-                        <a href="pages.html">
+                        <a href="{{route('home.markets')}}">
                             <i class="flaticon-invoice"></i>
                             Markets
                         </a>
                     </div>
                     <div class="navbar-content-item">
-                        <a href="components.html">
+                        <a href="{{ route('user.packages') }}">
                             <i class="flaticon-menu-1"></i>
                             Packages
                         </a>
@@ -23,11 +23,11 @@
                     <div class="navbar-content-item">
                         <a href="my-cards.html">
                             <i class="flaticon-credit-card"></i>
-                            Wallets
+                           Support
                         </a>
                     </div>
                     <div class="navbar-content-item">
-                        <a href="settings.html">
+                        <a href="{{ route('account') }}">
                             <i class="flaticon-settings"></i>
                             Setting
                         </a>
