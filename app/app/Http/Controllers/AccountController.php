@@ -53,7 +53,7 @@ class AccountController extends Controller
         $pendingWithdrawals = $user->withdrawals()->whereStatus(Withdrawal::STATUS_PENDING)->sum('amount');
         $lastWithdrawal = $user->withdrawals()->where('status', '!=', Withdrawal::STATUS_CANCELED)->latest()->take(1)->sum('amount');
 
-        return view('account.account', [
+        return view('mobile.settings', [
             'user' => $user,
             'breadcrumb' => $breadcrumb,
             'total_deposits' => $totalDeposits,

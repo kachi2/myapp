@@ -4,12 +4,13 @@
                     <div class="modal-header sidebar-modal-header">
                         <div class="sidebar-profile-info">
                             <div class="sidebar-profile-thumb">
-                                <img src="assets/images/profile.jpg" alt="profile">
+                                <img src="{{asset('/mobile/images/profile.png')}}"alt="profile">
                             </div>
                             <div class="sidebar-profile-text">
                                 <h3>{{strtoupper(auth()->user()->username)}}</h3>
                                 <p><a href="tel:1545-8880">{{auth()->user()->email}}</a></p>
                             </div>
+                            <span class="float-end" style="font-size:8px; color:green; border:2px solid green; border-radius:5px"> <i class="flaticon-check"> </i> Verified</span>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>

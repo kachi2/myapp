@@ -36,7 +36,7 @@
                                 <span class="option-badge">5</span>
                             </div>
                             <div class="appbar-option-item appbar-option-profile">
-                                <a href="settings.html"><img src="{{asset('/mobile/images/profile.jpg')}}" alt="profile"></a>
+                                <img src="{{asset('/mobile/images/profile.png')}}"alt="profile">
                             </div>
                         </div>
                     </div>
