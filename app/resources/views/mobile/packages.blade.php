@@ -83,7 +83,7 @@
         </div>
         <div class="progress-card-amount">{{number_format(count($data['standard']) * 1000)}} Investment in 7 days</div>
     </div>
-    <div class="progress-card progress-card-green mb-15">
+    <div class="progress-card progress-card-yellow mb-15">
         <div class="progress-card-info">
             <div class="circular-progress" data-note="{{count($data['basic'])+60.1}}">
                 <svg width="55" height="55" class="circle-svg">

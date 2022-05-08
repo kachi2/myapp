@@ -1,113 +1,139 @@
- 
- @extends('layouts.auths')
- @section('content')
-  <div class="nk-app-root">
-        <!-- main @s -->
-        <div class="nk-main ">
-            <!-- wrap @s -->
-            <div class="nk-wrap nk-wrap-nosidebar">
-                <!-- content @s -->
-                <div class="nk-content ">
-                    <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
-                        <div class="brand-logo pb-4 text-center">
-                            
-                        </div>
-                        <div class="card card-bordered">
-                            <div class="card-inner card-inner-lg">
-                                <div class="nk-block-head">
-                                    <div class="nk-block-head-content">
-                                    <center>
-                                    <a href="{{route('index')}}" class="logo-link">
-                                <img class="logo-light logo-img logo-img-lg"width="100px"  src="{{asset('/logo-dark.png')}}" srcset="{{asset('/logo-dark.png')}} 2x" alt="logo">
-                                <img class="logo-dark logo-img logo-img-lg" width="100px" src="{{asset('logo-dark.png')}}" srcset="{{asset('/logo-dark.png')}} 2x" alt="logo-dark">
-                            </a>
-                            </center>
-                                        <h4 class="nk-block-title">Sign-In</h4>
-                                        <div class="nk-block-des">
-                                            <p>Access your account using your email and password.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form class="text-left" method="post" action="{{ route('login') }}">
-                            @csrf
-                                     <div class="form-group">
-                            <div class="form-label-group">
-                                <label class="form-label" for="default-01">Email</label>
-                            </div>
-                            <input type="text" name="email" class="form-control form-control-lg {{ form_invalid('email') }}" id="default-01" placeholder="Enter your email address">
-                            @showError('email')
-                        </div><!-- .foem-group -->
-                                    <div class="form-group">
-                            <div class="form-label-group">
-                                <label class="form-label" for="password">Password</label>
-                                @if (Route::has('password.request'))
-                                <a class="link link-primary link-sm" tabindex="-1" href="{{ route('password.request') }}">Forgot Password?</a>
-                                @endif
-                            </div>
-                                     <div class="form-control-wrap">
-                                <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch" data-target="password">
-                                    <em onclick="showPass() " class="passcode-icon icon-show icon ni ni-eye"></em>
-                                    <em onclick="hidePass()" class="passcode-icon icon-hide icon ni ni-eye-off"></em>
-                                </a>
-                                <input type="password" name="password" class="form-control form-control-lg {{ form_invalid('password') }}" id="password" placeholder="Enter your pasword">
-                              @showError('password')
-                            </div>
-                            <script>
-                                            function showPass() {
-                                        var x = document.getElementById("passwordLogin");
-                                        if (x.type === "password") {
-                                            x.type = "text";
-                                        } 
-                                        }
-                                             function hidePass() {
-                                        var x = document.getElementById("passwordLogin");
-                                        if (x.type === "text") {
-                                            x.type = "password";
-                                        } 
-                                        
-                                        }
-                                        </script>
-                                     </div><!-- .foem-group -->
-                                    <div class="form-group">
-                                        <button class="btn btn-lg btn-primary btn-block">Sign in</button>
-                                    </div>
-                                </form><!-- form -->
-                                <div class="form-note-s2 pt-4"> Don't have Account? <a href="{{route('register')}}">Create an account</a>
-                                </div>
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+        <meta charset="utf-8">
+        <meta name="description" content="Oban">
+        <meta name="keywords" content="HTML,CSS,JavaScript">
+        <meta name="author" content="HiBootstrap">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title></title>
+        <link rel="icon" href="{{asset('/mobile/images/favicon.png')}}" type="image/png" sizes="16x16">
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/bootstrap.min.css')}}" type="text/css" media="all" />
+        <!-- animate css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/animate.min.css')}}" type="text/css" media="all" />
+        <!-- owl carousel css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/owl.carousel.min.css')}}"  type="text/css" media="all" />
+        <link rel="stylesheet" href="{{asset('/mobile/css/owl.theme.default.min.css')}}"  type="text/css" media="all" />
+        <!-- boxicons css -->
+        <link rel='stylesheet' href="{{asset('/mobile/css/icofont.min.css')}}" type="text/css" media="all" />
+        <!-- flaticon css -->
+        <link rel='stylesheet' href="{{asset('/mobile/css/flaticon.css')}}" type="text/css" media="all" />
+        <!-- style css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/style.css')}}" type="text/css" media="all" />
+        <!-- responsive css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/responsive.css')}}" type="text/css" media="all" />
+        
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="preloader-wrapper">
+                <div class="preloader-content">
+                    <img src="assets/images/preloader-logo.png" alt="logo">
+                    <h3>Online Banking</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Preloader -->
+
+        <!-- Header-bg -->
+        <div class="header-bg header-bg-1"></div>
+        <!-- Header-bg -->
+
+        <!-- Appbar -->
+        <div class="fixed-top">
+            <div class="appbar-area sticky-black">
+                <div class="container">
+                    <div class="appbar-container">
+                        <div class="appbar-item appbar-actions">
+                            <div class="appbar-action-item">
+                              
                             </div>
                         </div>
-                    </div>
-                    <div class="nk-footer nk-auth-footer-full">
-                        <div class="container wide-lg">
-                            <div class="row g-3">
-                                <div class="col-lg-6 order-lg-last">
-                                    <ul class="nav nav-sm justify-content-center justify-content-lg-end">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{route('terms')}}">Terms & Condition</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{route('faq')}}">FAQ</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{route('contact')}}">Help?</a>
-                                        </li>
-                                      
-                                    </ul>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="nk-block-content text-center text-lg-left">
-                                        <p class="text-soft">&copy; {{date('Y')}} Zenithcapital. All Rights Reserved.</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="appbar-item appbar-page-title mx-auto">
+                            <h3>Sign In</h3>
                         </div>
                     </div>
                 </div>
-                <!-- wrap @e -->
             </div>
-            <!-- content @e -->
         </div>
-        <!-- main @e -->
-    </div>
+        <!-- Appbar -->
+        
+        <!-- Body-content -->
+       
+        <div class="body-content">
+            <div class="container">
+            
+                <!-- Page-header -->
 
-    @endsection
+                <!-- Authentication-section -->
+                <div style="height:50px"></div>
+                <div class="authentication-form pb-15">
+                      <form class="text-left" method="post" action="{{ route('login') }}">
+                        @csrf     <div class="form-group pb-15">
+                            <label>Email</label>
+                            <div class="input-group">
+                                <input type="text" name="email" class="form-control form-control-lg {{ form_invalid('email') }}" id="default-01" placeholder="Enter your email address">
+                                @showError('email')
+                                 <span class="input-group-text"><i class="flaticon-user-picture"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group pb-15">
+                            <label>Password</label>
+                            <div class="input-group">
+                                <input type="password" name="password" class="form-control password" required placeholder="**********">
+                                <span class="input-group-text reveal">
+                                    <i class="flaticon-invisible pass-close"></i>
+                                    <i class="flaticon-visibility pass-view"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="authentication-account-access pb-15">
+                            <div class="authentication-account-access-item">
+                                <div class="input-checkbox">
+                                    <input type="checkbox" id="check1">
+                                    <label for="check1">Remember Me!</label>
+                                </div>
+                            </div>
+                            <div class="authentication-account-access-item">
+                                <div class="authentication-link">
+                                    @if (Route::has('password.request'))
+                                    <a class="link link-primary link-sm" tabindex="-1" href="{{ route('password.request') }}">Forgot Password?</a>
+                                    @endif</div>
+                            </div>
+                        </div>
+                        <button class="btn main-btn main-btn-lg full-width mb-10">Sign In</button>
+                    </form>
+                    <div class="form-desc">Don’t have an account? <a href="{{route('register')}}">Sign Up Now!</a></div>
+                </div>
+                <!-- Authentication-section -->
+            </div>
+        </div>
+        <!-- Body-content -->
+
+       
+
+    
+
+
+        <script src="{{asset('/mobile/js/jquery-3.5.1.min.js')}}"></script>
+        <script src="{{asset('/mobile/js/bootstrap.bundle.min.js')}}"></script>
+        <!-- owl carousel js -->
+        <script src="{{asset('/mobile/js/owl.carousel.min.js')}}"></script>
+        <!-- form ajazchimp js -->
+        <script src="{{asset('/mobile/js/jquery.ajaxchimp.min.js')}}"></script>
+        <!-- form validator js  -->
+        <script src="{{asset('/mobile/js/form-validator.min.js')}}"></script>
+        <!-- contact form js -->
+        <script src="{{asset('/mobile/js/contact-form-script.js')}}"></script>
+        <!-- main js -->
+        <script src="{{asset('/mobile/js/script.js')}}"></script>
+      
+    </body>
+</html>

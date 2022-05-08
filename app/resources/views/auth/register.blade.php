@@ -1,121 +1,178 @@
- 
- @extends('layouts.auths')
- @section('content')
-  <div class="nk-app-root">
-        <!-- main @s -->
-        <div class="nk-main ">
-            <!-- wrap @s -->
-            <div class="nk-wrap nk-wrap-nosidebar">
-                <!-- content @s -->
-                <div class="nk-content ">
-                    <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
-                        <div class="brand-logo pb-4 text-center">
-                           
-                        </div>
-                        <div class="card card-bordered">
-                            <div class="card-inner card-inner-lg">
-                                <div class="nk-block-head">
-                                    <div class="nk-block-head-content">
-                                    <center>
-                                     <a href="{{route('index')}}" class="logo-link">
-                                <img class="logo-light logo-img logo-img-lg" width="100px"  src="{{asset('logo-dark.png')}}" srcset="{{asset('logo-dark.png')}} 2x" alt="logo">
-                                <img class="logo-dark logo-img logo-img-lg" width="100px" src="{{asset('logo-dark.png')}}" srcset="{{asset('logo-dark.png')}} 2x" alt="logo-dark">
-                            </a>
-                            </center>
-                                        <h4 class="nk-block-title">Register</h4>
-                                        <div class="nk-block-des">
-                                            <p>Create new account.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form class="text-left" method="post" action="{{ route('register_user') }}">
-                            @csrf
-                                     <div class="form-group">
-                            <div class="form-label-group">
-                                <label class="form-label" for="default-01">Email</label>
-                            </div>
-                            <input type="text" name="email" class="form-control form-control-lg {{ form_invalid('email') }}" id="default-01" placeholder="Enter your email address">
-                            @showError('email')
-                        </div><!-- .foem-group -->
-                        
-                               <div class="form-group">
-                            <div class="form-label-group">
-                                <label class="form-label" for="default-01">Username</label>
-                            </div>
-                            <input type="text" name="username" class="form-control form-control-lg {{ form_invalid('username') }}" id="default-01" placeholder="Enter username">
-                            @showError('username')
-                        </div>
-                                    <div class="form-group">
-                            <div class="form-label-group">
-                                <label class="form-label" for="password">Password</label>
-                                @if (Route::has('password.request'))
-                                <a class="link link-primary link-sm" tabindex="-1" href="{{ route('password.request') }}">Forgot Password?</a>
-                                @endif
-                            </div>
-                                     <div class="form-control-wrap">
-                                <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch" data-target="password">
-                                    <em onclick="showPass() " class="passcode-icon icon-show icon ni ni-eye"></em>
-                                    <em onclick="hidePass()" class="passcode-icon icon-hide icon ni ni-eye-off"></em>
-                                </a>
-                                <input type="password" name="password" class="form-control form-control-lg {{ form_invalid('password') }}" id="password" placeholder="Enter your pasword">
-                              @showError('password')
-                            </div>
-                            <script>
-                                            function showPass() {
-                                        var x = document.getElementById("passwordLogin");
-                                        if (x.type === "password") {
-                                            x.type = "text";
-                                        } 
-                                        }
-                                             function hidePass() {
-                                        var x = document.getElementById("passwordLogin");
-                                        if (x.type === "text") {
-                                            x.type = "password";
-                                        } 
-                                        
-                                        }
-                                        </script>
-                                     </div><!-- .foem-group -->
-                                    <div class="form-group">
-                                        <button class="btn btn-lg btn-primary btn-block">Register</button>
-                                    </div>
-                                </form><!-- form -->
-                                <div class="form-note-s2 pt-4"> Have Account? <a href="{{route('login')}}">login</a>
-                                </div>
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+        <meta charset="utf-8">
+        <meta name="description" content="Oban">
+        <meta name="keywords" content="HTML,CSS,JavaScript">
+        <meta name="author" content="HiBootstrap">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title></title>
+        <link rel="icon" href="{{asset('/mobile/images/favicon.png')}}" type="image/png" sizes="16x16">
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/bootstrap.min.css')}}" type="text/css" media="all" />
+        <!-- animate css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/animate.min.css')}}" type="text/css" media="all" />
+        <!-- owl carousel css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/owl.carousel.min.css')}}"  type="text/css" media="all" />
+        <link rel="stylesheet" href="{{asset('/mobile/css/owl.theme.default.min.css')}}"  type="text/css" media="all" />
+        <!-- boxicons css -->
+        <link rel='stylesheet' href="{{asset('/mobile/css/icofont.min.css')}}" type="text/css" media="all" />
+        <!-- flaticon css -->
+        <link rel='stylesheet' href="{{asset('/mobile/css/flaticon.css')}}" type="text/css" media="all" />
+        <!-- style css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/style.css')}}" type="text/css" media="all" />
+        <!-- responsive css -->
+        <link rel="stylesheet" href="{{asset('/mobile/css/responsive.css')}}" type="text/css" media="all" />
+        
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="preloader-wrapper">
+                <div class="preloader-content">
+                    <img src="assets/images/preloader-logo.png" alt="logo">
+                    <h3>Online Banking</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Preloader -->
+
+        <!-- Header-bg -->
+        <div class="header-bg header-bg-1"></div>
+        <!-- Header-bg -->
+
+        <!-- Appbar -->
+        <div class="fixed-top">
+            <div class="appbar-area sticky-black">
+                <div class="container">
+                    <div class="appbar-container">
+                        <div class="appbar-item appbar-actions">
+                            <div class="appbar-action-item">
+                                <a href="#" class="back-page"><i class="flaticon-left-arrow"></i></a>
                             </div>
                         </div>
-                    </div>
-                    <div class="nk-footer nk-auth-footer-full">
-                        <div class="container wide-lg">
-                            <div class="row g-3">
-                                <div class="col-lg-6 order-lg-last">
-                                    <ul class="nav nav-sm justify-content-center justify-content-lg-end">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{route('terms')}}">Terms & Condition</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{route('faq')}}">FAQ</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{route('contact')}}">Help?</a>
-                                        </li>
-                                      
-                                    </ul>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="nk-block-content text-center text-lg-left">
-                                        <p class="text-soft">&copy; {{date('Y')}} Zenithcapital All Rights Reserved.</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="appbar-item appbar-page-title mx-auto">
+                            <h3>Register</h3>
                         </div>
                     </div>
                 </div>
-                <!-- wrap @e -->
             </div>
-            <!-- content @e -->
         </div>
-        <!-- main @e -->
-    </div>
+        <!-- Appbar -->
+        
+        <!-- Body-content -->
+        <div class="body-content">
+            <div class="container">
+                <!-- Page-header -->
+                
+                <!-- Page-header -->
 
-    @endsection
+                <!-- Authentication-section -->
+                <div style="height:50px"></div>
+                <div class="authentication-form pb-15">
+                    <form class="text-left" method="post" action="{{ route('register_user') }}">
+                        @csrf
+                        <div class="form-group pb-15">
+                            <label>Username</label>
+                            <div class="input-group">
+                                <input type="text" name="username" class="form-control form-control-lg {{ form_invalid('username') }}" id="default-01" placeholder="Enter username">
+                                @showError('username')
+                                 <span class="input-group-text"><i class="flaticon-user-picture"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group pb-15">
+                            <label>Email</label>
+                            <div class="input-group">
+                                <input type="text" name="email" class="form-control form-control-lg {{ form_invalid('email') }}" id="default-01" placeholder="Enter your email address">
+                                @showError('email')
+                                  <span class="input-group-text"><i class="flaticon-email"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group pb-15">
+                            <label>Phone Number</label>
+                            <div class="input-group">
+                                <input type="text" name="phone" class="form-control form-control-lg {{ form_invalid('phone') }}" id="default-01" placeholder="Enter Phone Number">
+                                @showError('phone')
+                                  <span class="input-group-text"><i class="flaticon-call-center-agent"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group pb-15">
+                            <label>Password</label>
+                            <div class="input-group">
+                                <input type="password" name="password" class="form-control form-control-lg {{ form_invalid('password') }}" id="password" placeholder="Enter your pasword">
+                              @showError('password')
+                               <span class="input-group-text reveal">
+                                    <i class="flaticon-invisible pass-close"></i>
+                                    <i class="flaticon-visibility pass-view"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="authentication-account-access pb-15">
+                            <div class="authentication-account-access-item">
+                                <div class="input-checkbox">
+                                    <input type="checkbox" id="check1"required>
+                                    <label for="check1">I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#centerModal">Privacy Policy</a></label>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn main-btn main-btn-lg full-width mb-10">Register</button>
+                    </form>
+                    <div class="form-desc">Already have an account? <a href="{{route('login')}}">Sign In!</a></div>
+                </div>
+                <!-- Authentication-section -->
+
+
+                   <!-- Centermodal -->
+        <div class="modal fade" id="centerModal" tabindex="-1" aria-labelledby="centerModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="container">
+                        <div class="modal-header">
+                            <div class="modal-header-title">
+                                <h5 class="modal-title">Zenithcapital Terms of Use</h5>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                           
+                            <p class="mb-0">
+                                These Binance Terms of Use is entered into between you (hereinafter referred to as “you” or “your”) and Binance operators (as defined below). By accessing, downloading, using or clicking on “I agree” to accept any Binance Services (as defined below) provided by Binance (as defined below), you agree that you have read, understood and accepted all of the terms and conditions stipulated in these Terms of Use (hereinafter referred to as “these Terms”) as well as our Privacy Policy at www.binance.com/en/privacy. In addition, when using some features of the Services, you may be subject to specific additional terms and conditions applicable to those features.Please read the terms carefully as they govern your use of Binance Services.T
+                                <strong>HESE TERMS CONTAIN IMPORTANT PROVISIONS INCLUDING AN ARBITRATION PROVISION THAT REQUIRES ALL CLAIMS TO BE RESOLVED BY WAY OF LEGALLY BINDING ARBITRATION.The terms of the arbitration provision are set forth in Article 10, “Resolving Disputes: Forum, Arbitration, Class Action Waiver”, hereunder. As with any asset, the values of Digital Currencies (as defined below) may fluctuate significantly and there is a substantial risk of economic losses when purchasing, selling, holding or investing in Digital Currencies and their derivatives.BY MAKING USE OF BINANCE SERVICES, YOU ACKNOWLEDGE AND AGREE THAT: (1) YOU ARE AWARE OF THE RISKS ASSOCIATED WITH TRANSACTIONS OF DIGITAL CURRENCIES AND THEIR DERIVATIVES; (2) YOU SHALL ASSUME ALL RISKS RELATED TO THE USE OF BINANCE SERVICES AND TRANSACTIONS OF DIGITAL CURRENCIES AND THEIR DERIVATIVES; AND (3) BINANCE SHALL NOT BE LIABLE FOR ANY SUCH RISKS OR ADVERSE OUTCOMES.
+                                </strong>  By accessing, using or attempting to use Binance Services in any capacity, you acknowledge that you accept and agree to be bound by these Terms. If you do not agree, do not access Binance or utilize Binance services.
+                                I. Definitions
+                                1. Binance refers to an ecosystem comprising Binance websites (whose domain names include but are not limited to https://www.binance.com/en), mobile applications, clients, applets and other applications that are developed to offer Binance Services, and includes independently-operated platforms, websites and clients within the ecosystem (e.g. Binance’s Open Platform, Binance Launchpad, Binance Labs, Binance Charity, Binance DEX, Binance X, JEX, Trust Wallet, and fiat gateways). In case of any inconsistency between relevant terms of use of the above platforms and the contents of these Terms, the respective applicable terms of such platforms shall prevail.
+                                2. Binance Operators refer to all parties that run Binance, including but not limited to legal persons (including Binance UAB), unincorporated organizations and teams that provide Binance Services and are responsible for such services. For convenience, unless otherwise stated, references to “Binance” and “we” in these Terms specifically mean Binance Operators. UNDER THESE TERMS, BINANCE OPERATORS MAY CHANGE AS BINANCE’S BUSINESS ADJUSTS, IN WHICH CASE, THE CHANGED OPERATORS SHALL PERFORM THEIR OBLIGATIONS UNDER THESE TERMS WITH YOU AND PROVIDE SERVICES TO YOU, AND SUCH CHANGE DOES NOT AFFECT YOUR RIGHTS AND INTERESTS UNDER THESE TERMS. ADDITIONALLY, THE SCOPE OF BINANCE OPERATORS MAY BE EXPANDED DUE TO THE PROVISION OF NEW BINANCE SERVICES, IN WHICH CASE, IF YOU CONTINUE TO USE BINANCE SERVICES, IT IS DEEMED THAT YOU HAVE AGREED TO JOINTLY EXECUTE THESE TERMS WITH THE NEWLY ADDED BINANCE OPERATORS. IN CASE OF A DISPUTE, YOU SHALL DETERMINE THE ENTITIES BY WHICH THESE TERMS ARE PERFORMED WITH YOU AND THE COUNTERPARTIES OF THE DISPUTE, DEPENDING ON THE SPECIFIC SERVICES YOU USE AND THE PARTICULAR ACTIONS THAT AFFECT YOUR RIGHTS OR INTERESTS..</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+        <!-- Body-content -->
+
+
+   
+
+
+
+        <script src="{{asset('/mobile/js/jquery-3.5.1.min.js')}}"></script>
+        <script src="{{asset('/mobile/js/bootstrap.bundle.min.js')}}"></script>
+        <!-- owl carousel js -->
+        <script src="{{asset('/mobile/js/owl.carousel.min.js')}}"></script>
+        <!-- form ajazchimp js -->
+        <script src="{{asset('/mobile/js/jquery.ajaxchimp.min.js')}}"></script>
+        <!-- form validator js  -->
+        <script src="{{asset('/mobile/js/form-validator.min.js')}}"></script>
+        <!-- contact form js -->
+        <script src="{{asset('/mobile/js/contact-form-script.js')}}"></script>
+        <!-- main js -->
+        <script src="{{asset('/mobile/js/script.js')}}"></script>
+      
+    </body>
+</html>
