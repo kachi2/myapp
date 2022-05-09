@@ -56,7 +56,7 @@
 
         <div class="transaction-section pb-15">
             <div class="section-header">
-                <h2>Recent Investment</h2>
+                <h2>Investments</h2>
             </div>
             @forelse ($investment as $invst )
             <div class="transaction-card mb-15">
@@ -88,6 +88,7 @@
                 </a>
             </div>
             @endforelse
+           <span style="font-size:14px"> {{$investment->links()}} </span>
         </div>
         <form method="post" action="{{ route('deposits.invests', ['id' => encrypt($plan->id)]) }}">
             @csrf
@@ -179,6 +180,7 @@
     <!-- end of payment modal -->
 
 <!-- end of wrapper -->
+
     </div>
 </div>
 

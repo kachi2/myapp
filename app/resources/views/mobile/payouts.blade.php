@@ -11,9 +11,11 @@
                     <h3></h3>
                     <p></p>
                    
-                    <p> Paymennt Ref:<span class="btn-success p-1">{{$plan->ref}}</span>  <span class="float-end btn-warning p-1">  {{$plan->payment_method}} </span></p>
+                    <p> Paymennt Ref: {{$plan->ref}} </p>
+                    <p> Paymennt method: {{$plan->payment_method}} </p>
                      <p>Expires: {{$plan->expires_at->diffForHumans()}}  @if($plan->status == 1) <small class="float-end p-1 btn-info" > completed </small> @else <small class="float-end p-1 btn-info" > Active</small> @endif </p>
                     <p> <span class=""> Date Created: {{$plan->created_at}} </span> <span class=""></span></p>
+                    
 
                 </div>
             </div>
@@ -52,14 +54,15 @@
             </div>
             @forelse ($payouts as $invst )
             <div class="transaction-card mb-15">
-                <a href="transaction-details.html">
+                <a href="#">
                     <div class="transaction-card-info">
                         <div class="transaction-info-text">
-                            <p>{{$invst->ref}}</p>
+                            <p style="font-weight:bold">Ref: {{$invst->ref}}</p>
+                            <p>{{$invst->created_at}}</p>
                         </div>
                     </div>
                     <div class="transaction-card-det ">
-                        <span style="color:green"><i class="flaticon-income"> </i>{{moneyFormat($invst->amount, 'USD')}}</span><br> 
+                        <span style="color:green">{{moneyFormat($invst->amount, 'USD')}}</span><br> 
                     </div>
                 </a>
             </div>
@@ -74,6 +77,7 @@
                 </a>
             </div>
             @endforelse
+            <span style="font-size:14px"> {{$payouts->links()}} </span>
         </div>
         
 @endsection

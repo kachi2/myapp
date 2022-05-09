@@ -28,8 +28,8 @@
                     <p>(Min Deposit: {{ moneyFormat($plan->min_deposit, 'USD') }} | Max Deposit: {{ moneyFormat($plan->max_deposit, 'USD') }}).</p>
                 </div>
                 <div class="monthly-bill-footer monthly-bill-action">
-                    <a href="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}" class="btn main-btn">Deposit</a>
-                    <p class="monthly-bill-price">{{ $plan->profit_rate }}% Daily</p>
+                    <a href="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}" class="btn main-btn">Select Plan</a>
+                  
                 </div>
             </div>
         </div>

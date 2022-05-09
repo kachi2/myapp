@@ -65,7 +65,7 @@ class HomeController extends Controller
         $data['standard'] = Deposit::where('plan_id', 2)->get();
         $data['premium'] = Deposit::where('plan_id', 3)->get();
         $data['mega'] = Deposit::where('plan_id', 4)->get();
-        $data['investment'] = Deposit::where(['user_id' => $user->id])->take(3)->latest()->get();
+        $data['investment'] = Deposit::where(['user_id' => $user->id])->take(5)->latest()->get();
         
         if($user->first_name == null || $user->last_name == null || $user->country == null || $user->phone == null || $user->state == null){
              $data['profile']  = 50;

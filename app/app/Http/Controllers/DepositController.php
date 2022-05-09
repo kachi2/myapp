@@ -441,7 +441,7 @@ class DepositController extends Controller
      //payouts for individual investments 
 
      public function PayoutsDetails($id = null){
-        $payouts = Payout::where('deposit_id', decrypt($id))->get();
+        $payouts = Payout::where('deposit_id', decrypt($id))->simplePaginate(5);
         $plan = Deposit::where('id', decrypt($id))->first();
         $sum = Payout::where('deposit_id', decrypt($id))->sum('amount');
         return view('mobile.payouts', 
@@ -459,7 +459,7 @@ class DepositController extends Controller
         $packages = Package::with('plans')->get();
         $balance = $request->user()->wallet->amount;
         $bonus = $request->user()->wallet->bonus;
-        $investment = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->take(10)->latest()->get();
+        $investment = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->latest()->simplePaginate(5);
         $sum = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->sum('amount');
      
         $total = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->where('status', 0)->sum('amount');

@@ -22,7 +22,7 @@
                     <div class="row gx-3">
                         <div class="col pb-15">
                             <div class="option-card option-card-violet">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#withdraw">
+                                <a href="{{route('withdrawals')}}" >
                                     <div class="option-card-icon">
                                         <i class="flaticon-down-arrow"></i>
                                     </div>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col pb-15">
                             <div class="option-card option-card-yellow">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#sendMoney">
+                                <a href="{{route('transfer')}}" >
                                     <div class="option-card-icon">
                                         <i class="flaticon-right-arrow"></i>
                                     </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col pb-15">
                             <div class="option-card option-card-blue">
-                                <a href="my-cards.html">
+                                <a href="{{route('user.packages')}}">
                                     <div class="option-card-icon">
                                         <i class="flaticon-credit-card"></i>
                                     </div>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col pb-15">
                             <div class="option-card option-card-red">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#exchange">
+                                <a href="{{route('earn.bonus')}}">
                                     <div class="option-card-icon">
                                         <i class="flaticon-exchange-arrows"></i>
                                     </div>
@@ -120,19 +120,20 @@
                     </div>
                     @forelse ($investment as $invst )
                     <div class="transaction-card mb-15">
-                        <a href="transaction-details.html">
+                        <a href="{{route('payouts.details', encrypt($invst->id))}}">
                             <div class="transaction-card-info">
-                                <div class="transaction-info-thumb">
-                                    <span class="text-white">{{substr($invst->plan->name,0,2)}}</span>
+                                <div class="transaction-info-thumb" style="border-radius: 100%">
+                                    <span class="text-white" style="font-size:15px">{{substr($invst->plan->name,0,2)}}</span>
                                 </div>
                                 <div class="transaction-info-text">
-                                    <h3>{{$invst->plan->name}} - <small>Daily {{$invst->profit_rate}}% </small></h3>
-                                    <p> {{$invst->duration}} Days |  <small><span class="btn-primary p-1 btn-sm">Active</span> </small></p>
+                                    <h3>{{$invst->ref}} - <small>Daily {{$invst->profit_rate}}% </small></h3>
+                                    <p> {{$invst->payment_method}} | Expires:<small>{{$invst->expires_at->diffForHumans()}} </small></p>
+                                    <small style="font-size: 10px; color:#999"> {{$invst->created_at}}</small><small style="font-size:12px"> view payouts</small>
                                 </div>
                             </div>
-                            <div class="transaction-card-det ">
-                                <span class="positive-number">{{moneyFormat($invst->paid_amount, 'USD')}}</span><br> 
-                               <small class="negative-number">{{moneyFormat($invst->amount, 'USD')}}<small>
+                            <div class="transaction-card-det">
+                                <span style="color:green">  </i>{{moneyFormat($invst->paid_amount, 'USD')}}</span><br> 
+                               <small class="negative-number"> </i>{{moneyFormat($invst->amount, 'USD')}}<small>
                             </div>
                         </a>
                     </div>
