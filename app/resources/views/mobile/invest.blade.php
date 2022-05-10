@@ -146,7 +146,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p style="font-size:12px"> To complete this transaction, please send the exact amount of 100.05 USD | 0.00237000 BTC to the address below</p>
+                        <p style="font-size:12px"> To complete this transaction, please send the exact amount of <span id="amount1"> </span> | <span id="amount2"> </span> to the address below</p>
                         
                         
                             <div class="monthly-bill-card monthly-bill-card-green">
@@ -154,7 +154,7 @@
                                     <img src="{{asset('/mobile/images/')}}"  id="barcode" alt="logo">
                                 </div>
                                 <div class="monthly-bill-body">
-                                    <h6>BTC Address</h6>
+                                    <h6><span id="addName"></span> Address</h6>
                                 </div>
                                 <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="click to copy" onclick="copyText()"  id="addresses" value="" placeholder="" readonly>    
                             </div>
@@ -196,12 +196,16 @@ $('#DepositForm').submit(function(e){
             var xhr = submit_form('#DepositForm');
             xhr.done(function(result){
                 if(result){
-                    console.log(result);
+                   // console.log(result);
                    $('#addresses').attr('value',result.wallet.address);
                   $('#barcode').attr('src',img_url+'/'+result.wallet.barcode);
-                alert(img_url+'/'+result.wallet.barcode);
                     $('#transactionModal').modal("toggle");
                     $('#DepositModal').modal('hide');
+                    $('#addName').html(result.deposit.currency2);
+                    $('#amount1').html(result.deposit.amount +' '+ result.deposit.currency1 );
+                    $('#amount2').html(result.deposit.amount2 +' '+ result.deposit.currency2)
+                }else{
+                    
                 }
             });
         });
