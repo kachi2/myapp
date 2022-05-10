@@ -690,6 +690,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\UserActivity' => __DIR__ . '/../..' . '/app/UserActivity.php',
         'App\\UserNotify' => __DIR__ . '/../..' . '/app/UserNotify.php',
+        'App\\WalletAddress' => __DIR__ . '/../..' . '/app/WalletAddress.php',
         'App\\WalletTranfer' => __DIR__ . '/../..' . '/app/WalletTranfer.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Barryvdh\\LaravelIdeHelper\\Alias' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Alias.php',

@@ -104,6 +104,7 @@ return array(
     'App\\User' => $baseDir . '/app/User.php',
     'App\\UserActivity' => $baseDir . '/app/UserActivity.php',
     'App\\UserNotify' => $baseDir . '/app/UserNotify.php',
+    'App\\WalletAddress' => $baseDir . '/app/WalletAddress.php',
     'App\\WalletTranfer' => $baseDir . '/app/WalletTranfer.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Barryvdh\\LaravelIdeHelper\\Alias' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Alias.php',

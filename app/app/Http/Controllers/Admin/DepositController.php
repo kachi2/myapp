@@ -316,7 +316,7 @@ class DepositController extends Controller
             $notify->user_id = $deposit->user->id;
             $notify->message = 'Dear '.$deposit->user->username.','.' Your payment has been approved successfully, thanks for trusting us'; 
             $notify->save();
-        $deposit->user->notify(new InvestmentCreated($deposit));
+       // $deposit->user->notify(new InvestmentCreated($deposit));
            Session::flash('msg', 'success');
         Session::flash('message', 'Deposit Approved Successfully'); 
      

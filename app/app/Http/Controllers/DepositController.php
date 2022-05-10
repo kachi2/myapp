@@ -20,6 +20,7 @@ use App\Modules\PerfectMoney;
 use App\Notifications\InvestmentCreated;
 use App\PlanProfit;
 use App\User;
+use App\WalletAddress;
 use Exception;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Contracts\View\Factory;
@@ -300,108 +301,71 @@ class DepositController extends Controller
      * @param Transaction $transaction
      * @return Factory|View
      */
-    public function showCoinpaymentTransaction($id, Transaction $transaction = null)
+    public function showCoinpaymentTransaction($id = null, $ref=null)
     {
-        if (!$transaction) {
-            $transaction = Transaction::where('txn_id', $id)->firstOrFail();
-        }
             
-             $breadcrumb = [
-            [
-                'link' => route('deposits'),
-                'title' => 'Deposits'
-            ],
-            [
-                'link' => route('deposits.coinpayment_transaction', ['id', 'DSDKGE8myQK7o2a8vhunDVR4dyAQVr5jso']),
-                'title' => 'Deposit Transaction : ' . 'DSDKGE8myQK7o2a8vhunDVR4dyAQVr5jso'
-            ]
-        ];
-        
-        
-        
-        $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
-        $plan = $deposit->plan;
+        //         $breadcrumb = [
+        //     [
+        //         'link' => route('deposits'),
+        //         'title' => 'Deposits'
+        //     ],
+        //     [
+        //         'link' => route('mobile.invests', ['id', '1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3']),
+        //         'title' => 'Deposit Transaction : ' . '1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3'
+        //     ]
+        // ];
+        $id = decrypt($id);
+        dd($id);
+        $plans = Plan::with('package')->get();
+        $balance = auth()->user()->wallet->amount;
+        $bonus = auth()->user()->wallet->bonus;
+        $investment = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->latest()->simplePaginate(5);
+        $sum = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->sum('amount');
+        $total = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->where('status', 0)->sum('amount');
+        $completed = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->where('status', 1)->get();
+        $deposited = Deposit::where(['plan_id' => $id, 'user_id'=>auth()->user()->id])->where('payment_method', '!=','wallet')->get();
+        $payouts = PlanProfit::where(['user_id'=>auth()->user()->id, 'plan_id' => $id,])->sum('balance');
+       
+        $pending = PendingDeposit::where('ref', $ref)->first();
+        $wallet = WalletAddress::where('name', $pending->currency2)->first();
 
-        return view('mobile.wallet-modal', [
-            'breadcrumb' => $breadcrumb,
-            'transaction' => $transaction,
-            'deposit' => $deposit,
-            'plan' => $plan
+        //adding more fields
+        // $breadcrumb = [
+        //     [
+        //         'link' => route('deposits'),
+        //         'title' => 'Deposits'
+        //     ],
+        //     [
+        //         'link' => route('deposits.invest', ['id' => $id]),
+        //         'title' => 'Invest'
+        //     ]
+        // ];
+        $plan = Plan::findOrFail($id);
+        return view('mobile.invests', [
+          //  'breadcrumb' => $breadcrumb,
+            'plan' => $plan,
+            'plans' => $plans,
+            'balance' => $balance,
+            'bonus' => $bonus,
+            'wallet' => $wallet,
+            'pending' => $pending,
+            'investment' => $investment,
+            'total' => $total,
+            'deposited' => $deposited,
+            'payouts' => $payouts,
+            'sum' => $sum, 
+            'completed' => $completed
         ]);
-        if($transaction->currency2 == "DGB"){
+    
         
-        }
-        //litecoins
-        
-        if($transaction->currency2 == "LTC"){
-             $breadcrumb = [
-            [
-                'link' => route('deposits'),
-                'title' => 'Deposits'
-            ],
-            [
-                'link' => route('deposits.coinpayment_transaction', ['id', 'LhDbviHgM1RZrNBxbFceWZf6T6NPeELuny']),
-                'title' => 'Deposit Transaction : ' . 'LhDbviHgM1RZrNBxbFceWZf6T6NPeELuny'
-            ]
-        ];
-        
-        
-        
-        $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
-        $plan = $deposit->plan;
-        return view('deposit.show-coinpayment-litecoins-transaction-details', [
-            'breadcrumb' => $breadcrumb,
-            'transaction' => $transaction,
-            'deposit' => $deposit,
-            'plan' => $plan
-        ]);
-        
-        }
-        
-        //eth transactions
-         if($transaction->currency2 == "ETH"){
-             $breadcrumb = [
-            [
-                'link' => route('deposits'),
-                'title' => 'Deposits'
-            ],
-            [
-                'link' => route('deposits.coinpayment_transaction', ['id', '0xd5d4f313b28b5256a5bed2f00de3c4f9f1f7c3c0']),
-                'title' => 'Deposit Transaction : ' . '0xd5d4f313b28b5256a5bed2f00de3c4f9f1f7c3c0'
-            ]
-        ];
-        
-        $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
-        $plan = $deposit->plan;
-        return view('deposit.show-coinpayment-eth-transaction-details', [
-            'breadcrumb' => $breadcrumb,
-            'transaction' => $transaction,
-            'deposit' => $deposit,
-            'plan' => $plan
-        ]);
-          //  }
-         }
-                $breadcrumb = [
-            [
-                'link' => route('deposits'),
-                'title' => 'Deposits'
-            ],
-            [
-                'link' => route('deposits.coinpayment_transaction', ['id', '1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3']),
-                'title' => 'Deposit Transaction : ' . '1Kmtc9KGygUcYcW8RSBCKXCxuecmrRhtY3'
-            ]
-        ];
-        
-        
-        
-        $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
-        $plan = $deposit->plan;
-        return view('deposit.show-coinpayment-transaction-details', [
-            'breadcrumb' => $breadcrumb,
-            'transaction' => $transaction,
-            'deposit' => $deposit,
-            'plan' => $plan
-        ]);
+        // $deposit = PendingDeposit::whereRef($transaction->invoice)->firstOrFail();
+        // $plan = $deposit->plan;
+        // return view('deposit.show-coinpayment-transaction-details', [
+        //     'breadcrumb' => $breadcrumb,
+        //     'transaction' => $transaction,
+        //     'deposit' => $deposit,
+        //     'plan' => $plan
+        // ]);
    //}
     }
     /**
@@ -520,6 +484,8 @@ class DepositController extends Controller
             'amount' => "required|numeric",
             'payment_method' => 'required'
         ]);
+
+        
     if($plan->min_deposit > $request->amount){
          Session::flash('msg', 'error');
               Session::flash('message', 'Amount must be greater than $'.$plan->min_deposit); 
@@ -579,30 +545,40 @@ class DepositController extends Controller
     {
         $fee = $amount * self::ITEM_TAX_RATE/ 100;
         $cost = $amount + $fee;
-        $deposit = $this->savePendingDeposit($ref, $plan, $request->user(), $amount, $fee,  $cost, $currency);
-        
-        $additionalFields = [
-            'buyer_email' => 'mirandemyyichelle@gmail.com',
-            'buyer_name' => 'Investor',
-            'item_name' => 'Investments',
-            'item_number' => $deposit->id,
-            'invoice' => $ref,
-        ];
+        // $additionalFields = [
+        //     'buyer_email' => 'mirandemyyichelle@gmail.com',
+        //     'buyer_name' => 'Investor',
+        //     'item_name' => 'Investments',
+        //     'item_number' => $deposit->id,
+        //     'invoice' => $ref,
+        // ];
         try {
             /** @var Transaction $transaction */
-            $transaction = Coinpayments::createTransactionSimple($cost, self::ITEM_CURRENCY, $currency, $additionalFields);
-            //dd($transaction);
-      
-            Log::info($transaction);
-            Session::flash('msg', 'success');
-            Session::flash('message', 'Deposit Initiated Successfully'); 
-            return redirect()->route('deposits.coinpayment_transaction', ['id' => $transaction->txn_id]);
+            // $transaction = Coinpayments::createTransactionSimple($cost, self::ITEM_CURRENCY, $currency, $additionalFields);
+            // //dd($transaction);
+            // Log::info($transaction);
+            $cURLConnection = curl_init();
+        curl_setopt($cURLConnection, CURLOPT_URL, 'https://blockchain.info/tobtc?currency=USD&value='.$amount);
+        curl_setopt($cURLConnection, CURLOPT_HTTPHEADER, array(
+            "Content-Type: application/json",
+        ));
+        curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true); 
+        $se = curl_exec($cURLConnection);
+        curl_close($cURLConnection);  
+        $amount2 = json_decode($se, true);
+        $deposit = $this->savePendingDeposit($ref, $plan, $request->user(), $amount, $fee, $cost, $amount2, $currency);
+            
+        $wallet = WalletAddress::where('name', $currency)->first();
+            $data = [
+                'wallet' => $wallet,
+                'deposit' => $deposit
+            ];
+            return response()->json($data);
         } catch (Exception $exception) {
-            Log::error($exception);
-            $deposit->delete();
+            // Log::error($exception);
+            // $deposit->delete();
             Session::flash('msg', 'error');
             Session::flash('message', 'Unable to create deposit transaction'); 
-           
             return redirect()
                 ->back()
                 ->withInput();
@@ -610,33 +586,7 @@ class DepositController extends Controller
         
     }
 
-    protected function investFromPerfectMoney(Request $request, Plan $plan, $amount, $ref)
-    {
-        $fee = $amount * self::ITEM_TAX_RATE/ 100;
-        $cost = $amount + $fee;
-        $deposit = $this->savePendingDeposit($ref, $plan, $request->user(), $amount, $fee,  $cost, Deposit::PAYMENT_METHOD_PM);
-        $perfectMoney = new PerfectMoney();
-
-        $breadcrumb = [
-            [
-                'link' => route('deposits'),
-                'title' => 'Deposits'
-            ],
-            [
-                'link' => route('deposits.invest', ['id' => $plan->id]),
-                'title' => 'Invest'
-            ]
-        ];
-
-        return view('deposit.perfectmoney-proceed', [
-            'proceed_form' => $perfectMoney->makePayment([
-                'PAYMENT_AMOUNT' => $cost,
-                'PAYMENT_ID' => $deposit->id
-            ]),
-            'deposit' => $deposit,
-            'breadcrumb' => $breadcrumb
-        ]);
-    }
+ 
 
     /**
      * @param string $ref
@@ -687,11 +637,15 @@ class DepositController extends Controller
      * @param $paymentMethod
      * @return PendingDeposit|Model
      */
-    protected function savePendingDeposit($ref, Plan $plan, User $user, $amount, $fee, $verifying_amount, $paymentMethod) {
+    protected function savePendingDeposit($ref, Plan $plan, User $user, $amount, $fee, $verifying_amount, $amount2, $paymentMethod) {
         return PendingDeposit::create([
             'ref' => $ref,
             'user_id' => $user->id,
             'fee' => $fee,
+            'amount2'=> $amount2,
+            'amount1' => $amount,
+            'currency1' => 'USD',
+            'currency2' => $paymentMethod,
             'verifying_amount' => $verifying_amount,
             'plan_id' => $plan->id,
             'amount' => $amount,
@@ -701,4 +655,32 @@ class DepositController extends Controller
             'payment_period' => $plan->package->payment_period
         ]);
     }
+    protected function investFromPerfectMoney(Request $request, Plan $plan, $amount, $ref)
+    {
+    //     $fee = $amount * self::ITEM_TAX_RATE/ 100;
+    //     $cost = $amount + $fee;
+    //    // $deposit = $this->savePendingDeposit($ref, $plan, $request->user(), $amount, $fee,  $cost, Deposit::PAYMENT_METHOD_PM);
+    //     $perfectMoney = new PerfectMoney();
+
+    //     $breadcrumb = [
+    //         [
+    //             'link' => route('deposits'),
+    //             'title' => 'Deposits'
+    //         ],
+    //         [
+    //             'link' => route('deposits.invest', ['id' => $plan->id]),
+    //             'title' => 'Invest'
+    //         ]
+    //     ];
+
+    //     return view('deposit.perfectmoney-proceed', [
+    //         'proceed_form' => $perfectMoney->makePayment([
+    //             'PAYMENT_AMOUNT' => $cost,
+    //             'PAYMENT_ID' => $deposit->id
+    //         ]),
+    //         'deposit' => $deposit,
+    //         'breadcrumb' => $breadcrumb
+    //     ]);
+    // 
+}
 }

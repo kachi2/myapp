@@ -45,7 +45,7 @@
     <div class="section-header">
         <h2>Top Invested Plans
             <br>
-            <small style="font-size:12px; font-weight:200">  Weekly top investment plans</small>
+            <small style="font-size:12px; font-weight:200">  Weekly top Investment Plans</small>
         </h2>
     </div>
     <div class="progress-card progress-card-red mb-15">
@@ -64,7 +64,7 @@
                 <p></p>
             </div>
         </div>
-        <div class="progress-card-amount">{{number_format(count($data['basic']) * 1000)}} Investment in 7 days</div>
+        <div class="progress-card-amount">{{number_format(count($data['basic']) * 1000)}} Active Investments</div>
     </div>
     <div class="progress-card progress-card-blue mb-15">
         <div class="progress-card-info">
@@ -81,7 +81,7 @@
                 <h3>Standard Plan</h3>
             </div>
         </div>
-        <div class="progress-card-amount">{{number_format(count($data['standard']) * 1000)}} Investment in 7 days</div>
+        <div class="progress-card-amount">{{number_format(count($data['standard']) * 1000)}} Active Investments</div>
     </div>
     <div class="progress-card progress-card-yellow mb-15">
         <div class="progress-card-info">

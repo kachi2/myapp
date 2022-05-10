@@ -1,4 +1,4 @@
-<div class="modal fade"  role="document">
+<div class="modal fade"  id="walletModal" role="document">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="container">

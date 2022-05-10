@@ -38,6 +38,7 @@
 @include('partials.mobile-sidebar')
 
 @stack('modal')
+<script src="{{asset('/mobile/js/app.js')}}"></script>
         <script src="{{asset('/mobile/js/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('/mobile/js/bootstrap.bundle.min.js')}}"></script>
         <!-- owl carousel js -->

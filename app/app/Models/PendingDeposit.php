@@ -79,7 +79,10 @@ class PendingDeposit extends Model
         'payment_period',
         'payment_method',
         'status',
-        'hash_no'
+        'hash_no',
+        'currency1',
+        'currency2',
+        'amount2',
     ];
 
     /**
