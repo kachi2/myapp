@@ -22,6 +22,7 @@ use App\PlanProfit;
 use App\User;
 use App\WalletAddress;
 use Exception;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Database\Eloquent\Model;
@@ -416,6 +417,28 @@ class DepositController extends Controller
         ]);
 
      }
+     public function TransferPayouts(Request $request, $id){
+
+        $payouts = PlanProfit::where(['user_id' => auth_user()->id, 'plan_id' => decrypt($id)])->first();
+      //  dd($payouts);
+        if($request->amount < 0){
+            return back();
+        }
+        if($payouts->balance < $request->amount){
+
+            //return balance is too low for this service
+        }
+        $balance = $payouts->balance;
+        $newBalance = $balance - $request->amounts;
+        PlanProfit::where(['user_id' => auth_user()->id, 'plan_id' => decrypt($id)])
+                    ->update([
+                        'prev_balance' => $balance,
+                        'balance' => $newBalance
+                    ]);
+                UserWallet::addAmount(auth_user(), $request->amounts);
+                return back();
+     }
+
     public function invest(Request $request, $id = null)
     {
        $id = decrypt($id);
@@ -545,6 +568,21 @@ class DepositController extends Controller
     {
         $fee = $amount * self::ITEM_TAX_RATE/ 100;
         $cost = $amount + $fee;
+        $coins = $currency;
+        switch ($coins){
+            case "BTC":
+            $coins = "bitcoin";
+            break;
+            case "ETH":
+            $coins = "ethereum";
+            break;
+            case "LTC":
+            $coins = "litecoin";
+            break;   
+            case "USDT":
+            $coins = "tether";
+            break;
+        }
         // $additionalFields = [
         //     'buyer_email' => 'mirandemyyichelle@gmail.com',
         //     'buyer_name' => 'Investor',
@@ -558,16 +596,16 @@ class DepositController extends Controller
             // //dd($transaction);
             // Log::info($transaction);
             $cURLConnection = curl_init();
-        curl_setopt($cURLConnection, CURLOPT_URL, 'https://blockchain.info/tobtc?currency=USD&value='.$amount);
+        curl_setopt($cURLConnection, CURLOPT_URL, 'https://api.coingecko.com/api/v3/simple/price?ids='.$coins.'&vs_currencies=usd');
         curl_setopt($cURLConnection, CURLOPT_HTTPHEADER, array(
             "Content-Type: application/json",
         ));
         curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true); 
         $se = curl_exec($cURLConnection);
         curl_close($cURLConnection);  
-        $amount2 = json_decode($se, true);
-        $deposit = $this->savePendingDeposit($ref, $plan, $request->user(), $amount, $fee, $cost, $amount2, $currency);
-            
+        $resp = json_decode($se, true);
+        $amount2 = $amount / $resp[$coins]['usd'];
+      $deposit = $this->savePendingDeposit($ref, $plan, $request->user(), $amount, $fee, $cost, $amount2, $currency);    
         $wallet = WalletAddress::where('name', $currency)->first();
             $data = [
                 'wallet' => $wallet,

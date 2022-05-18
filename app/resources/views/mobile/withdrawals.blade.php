@@ -77,6 +77,15 @@
                 </a>
             </div>
             @empty
+            <div class="transaction-card mb-15">
+                <a href="transaction-details.html">
+                    <div class="transaction-card-info">
+                        <div class="transaction-info-text">
+                            <p>No record found</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
             @endforelse
         </div>
       

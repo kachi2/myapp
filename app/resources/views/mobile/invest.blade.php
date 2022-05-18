@@ -32,7 +32,7 @@
                         <div class="feature-card-details">
                             <p>Payouts Earned</p>
                             <h3>{{moneyFormat($payouts, 'USD')}}</h3>
-                            <a href="" style="font-size:12px"> Transfer</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#transfer" style="font-size:12px"> Transfer</a>
                             
                         </div>
                     </div>
@@ -173,13 +173,41 @@
     </div>
    
     <!-- end of payment modal -->
-
+    <form method="post" action="{{ route('transfer.payouts', encrypt($plan->id)) }}">
+        @csrf
+    <div class="modal fade" id="transfer" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="modal-header">
+                        <div class="modal-header-title">
+                            <h5 class="modal-title">Transfer Payouts to Main Wallet</h5>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" value="2" name="bonus">
+                            <div class="form-group pb-15">
+                                <label>Amount</label>
+                                <div class="input-group">
+                                    <input   type="number" name="amounts"   value="{{ old('amount') }}"class="form-control {{  form_invalid('amount') }}" required placeholder="100">
+                                </div>
+                                @showError('amount')
+                           
+                            </div>
+                            <button type="submit" class="btn main-btn main-btn-lg full-width">Transfer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 <!-- end of wrapper -->
 
     </div>
 </div>
 
-@php  $modal = "200"@endphp
+
 @endsection
 
 @push('scripts')
@@ -196,7 +224,7 @@ $('#DepositForm').submit(function(e){
             var xhr = submit_form('#DepositForm');
             xhr.done(function(result){
                 if(result){
-                   // console.log(result);
+                    console.log(result);
                    $('#addresses').attr('value',result.wallet.address);
                   $('#barcode').attr('src',img_url+'/'+result.wallet.barcode);
                     $('#transactionModal').modal("toggle");

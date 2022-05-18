@@ -7,7 +7,7 @@
             <div id="carouselTicker" class="carouselTicker">
                <ul class="carouselTicker__list">
                @if(count($coins) > 0)
-               @foreach ($coins as  $coin )
+               @foreach ($coins as $coin)
                   <li class="carouselTicker__item">
                      <div class="coin_info">
                         <div class="inner">

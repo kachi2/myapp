@@ -72,8 +72,8 @@
                                     <i class="flaticon-income"></i>
                                 </div>
                                 <div class="feature-card-details">
-                                    <p>Profits</p>
-                                    <h3>{{ moneyFormat(auth()->user()->wallet->bonus, 'USD')}}</h3>
+                                    <p>Payouts Balance</p>
+                                    <h3>{{ moneyFormat($payouts, 'USD')}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                                     <i class="flaticon-expenses"></i>
                                 </div>
                                 <div class="feature-card-details">
-                                    <p>Bonus</p>
+                                    <p>Total Bonus</p>
                                     <h3>$95.50</h3>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                                     <i class="flaticon-invoice"></i>
                                 </div>
                                 <div class="feature-card-details">
-                                    <p>Referal Income</p>
+                                    <p>Deposits</p>
                                     <h3>$75.00</h3>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                                     <i class="flaticon-savings"></i>
                                 </div>
                                 <div class="feature-card-details">
-                                    <p>Investments</p>
+                                    <p>Withdrawals</p>
                                     <h3>$285.00</h3>
                                 </div>
                             </div>
@@ -138,6 +138,16 @@
                         </a>
                     </div>
                     @empty
+                    <<div class="transaction-card mb-15">
+                        <a href="transaction-details.html">
+                            <div class="transaction-card-info">
+                                <div class="transaction-info-text">
+                                    <p>No record found</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
                     @endforelse
                 </div>
                

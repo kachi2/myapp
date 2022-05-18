@@ -43,6 +43,8 @@ Route::get('deposits/blockchain/transaction/{ref}', 'DepositController@showBlock
 Route::get('deposits/invest/{id?}', 'DepositController@invest')->name('deposits.invest');
 Route::post('deposits/invest/{id?}', 'DepositController@doInvest')->name('deposits.invests');
 Route::get('/payouts/details/{id?}', 'DepositController@PayoutsDetails')->name('payouts.details');
+Route::post('/transfer/payouts/{id}', 'DepositController@TransferPayouts')->name('transfer.payouts');
+
 Route::get('deposits/transactions', 'DepositController@showTransactions')->name('deposits.transactions');
 Route::get('deposits/{ref}', 'DepositController@show')->name('deposit');
 Route::get('deposits/transactions/{ref}', 'DepositController@showTransaction')->name('deposits.transaction');

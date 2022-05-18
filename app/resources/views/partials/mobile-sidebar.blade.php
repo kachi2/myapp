@@ -7,7 +7,7 @@
                                 <img src="{{asset('/mobile/images/profile.png')}}"alt="profile">
                             </div>
                             <div class="sidebar-profile-text">
-                                <h3>{{strtoupper(auth()->user()->username)}}     <span class="float-end" style="font-size:13px; color:#32CD32; font-weight:bolder; "> <i class="flaticon-check"> </i> Verified</span>
+                                <h3> <span style="font-weight:bolder"> {{strtoupper(auth()->user()->username)}}</span>     <span class="float-end" style="font-size:11px; color:#147814; font-weight:bolder; "> <i class="flaticon-check">Verified</i></span>
                                 </h3>
                                 <p><a href="tel:1545-8880">{{auth()->user()->email}}</a></p>
                             </div>

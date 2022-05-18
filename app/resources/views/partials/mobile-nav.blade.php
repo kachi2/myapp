@@ -25,9 +25,8 @@
                             </div>
                         </div>
                         <div class="appbar-item appbar-brand me-auto">
-                            <a href="index-2.html">
-                                <img src="{{asset('/mobile/images/logo.png')}}" alt="logo" class="main-logo">
-                                <img src="{{asset('/mobile/images/logo-hover.png')}}" alt="logo" class="hover-logo">
+                            <a href="{{route('home')}}">
+                                <h3 style="color:aliceblue"> Advent Capital</h3>
                             </a>
                         </div>
                         <div class="appbar-item appbar-options">
@@ -36,7 +35,9 @@
                                 <span class="option-badge">{{count($notification)}}</span>
                             </div>
                             <div class="appbar-option-item appbar-option-profile">
+                                <a href="{{route('account')}}">
                                 <img src="{{asset('/mobile/images/profile.png')}}"alt="profile">
+                                </a>
                             </div>
                         </div>
                     </div>
