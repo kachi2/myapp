@@ -45,8 +45,6 @@ Route::post('deposits/invest/{id?}', 'DepositController@doInvest')->name('deposi
 Route::get('/payouts/details/{id?}', 'DepositController@PayoutsDetails')->name('payouts.details');
 Route::post('/transfer/payouts/{id}', 'DepositController@TransferPayouts')->name('transfer.payouts');
 Route::get('/withdrawals/details/{id}', 'WithdrawController@Details')->name('withdrawals.details');
-
-
 Route::get('deposits/transactions', 'DepositController@showTransactions')->name('deposits.transactions');
 Route::get('deposits/{ref}', 'DepositController@show')->name('deposit');
 Route::get('deposits/transactions/{ref}', 'DepositController@showTransaction')->name('deposits.transaction');
