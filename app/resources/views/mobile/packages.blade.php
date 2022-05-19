@@ -7,9 +7,9 @@
 
 <div class="monthly-bill-section pb-15">
     <div class="section-header">
-        <h2>Investment Packages
+        <h2>Available Plans
             <br>
-            <small style="font-size:12px; font-weight:200">  Select Investment Plan that suits your saving plans</small>
+            <small style="font-size:12px; font-weight:200">  Select the Plan that suits your savings plan</small>
         </h2>
         
     </div>
@@ -20,15 +20,17 @@
         <div class="col-6 pb-15">
             <div class="monthly-bill-card monthly-bill-card-green">
                 <div class="monthly-bill-thumb">
-                    <img src="{{asset('/mobile/images/cm-logo-1.png')}}" alt="logo">
+                    <img src="{{asset('/mobile/images/'.$plan->image)}}" alt="logo">
                 </div>
                 <div class="monthly-bill-body">
                     <h3><a href="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}">{{ $plan->name }}</a></h3>
-                    <p>invest  and earn {{ $plan->profit_rate }}% interest Daily for 7 Days.</p>
-                    <p>(Min Deposit: {{ moneyFormat($plan->min_deposit, 'USD') }} | Max Deposit: {{ moneyFormat($plan->max_deposit, 'USD') }}).</p>
+                    <p>invest  and earn {{ $plan->profit_rate }}% interest
+                        <br> Period:  Daily for 7 Days.</p>
+                    <p>(Min Deposit: {{ moneyFormat($plan->min_deposit, 'USD') }} <br> 
+                        Max Deposit: {{ moneyFormat($plan->max_deposit, 'USD') }}).</p>
                 </div>
                 <div class="monthly-bill-footer monthly-bill-action">
-                    <a href="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}" class="btn main-btn">Select Plan</a>
+                    <a href="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}" class="btn main-btn">Deposit</a>
                   
                 </div>
             </div>

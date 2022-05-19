@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="feature-card-details">
                                     <p>Total Bonus</p>
-                                    <h3>$95.50</h3>
+                                    <h3>{{moneyFormat($bonus, 'USD')}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="feature-card-details">
                                     <p>Deposits</p>
-                                    <h3>$75.00</h3>
+                                    <h3>{{moneyFormat($total_invest, 'USD')}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="feature-card-details">
                                     <p>Withdrawals</p>
-                                    <h3>$285.00</h3>
+                                    <h3>{{moneyFormat($withdrawals, 'USD')}}</h3>
                                 </div>
                             </div>
                         </div>

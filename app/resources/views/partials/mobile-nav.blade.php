@@ -26,7 +26,8 @@
                         </div>
                         <div class="appbar-item appbar-brand me-auto">
                             <a href="{{route('home')}}">
-                                <h3 style="color:aliceblue"> Advent Capital</h3>
+                                <img src="{{asset('/mobile/images/logo.png')}}" alt="logo" class="main-logo">
+                                <img src="{{asset('/mobile/images/logo-hover.png')}}" alt="logo" class="hover-logo">
                             </a>
                         </div>
                         <div class="appbar-item appbar-options">
