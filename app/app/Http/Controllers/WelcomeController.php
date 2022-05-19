@@ -51,7 +51,7 @@ class WelcomeController
         $deposits = Deposit::with('user')->latest()->take(10)->get();
         $testimonies = Testimony::with('user')->whereStatus(Testimony::STATUS_APPROVED)->latest()->take(10)->get();
         $packages = Package::with('plans')->get();
-        return view('welcome', [
+        return view('login', [
             'withdrawals' => $withdrawals,
             'deposits' => $deposits,
             'testimonies' => $testimonies,
