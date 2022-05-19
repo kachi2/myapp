@@ -256,6 +256,12 @@ class WithdrawController extends Controller
         return redirect()
             ->back()->with('error', 'Unable to cancel the withdrawal request');
     }
+
+    public function Details($id){
+        return view('mobile.tranxdetails', [
+            'withdrawal' => Withdrawal::where('id', decrypt($id))->first()
+        ]);
+    }
     
     
 }

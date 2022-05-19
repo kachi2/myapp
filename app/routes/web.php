@@ -31,7 +31,7 @@ Route::get('/plans', 'WelcomeController@plans')->name('plans');
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::post('/contact', 'ContactController@store')->name('contact');
 
-Route::domain('app.zenithcapital.cc')->group(function(){
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('withdrawals', 'WithdrawController@index')->name('withdrawals');
 Route::get('withdrawals/request', 'WithdrawController@request')->name('withdrawals.request');
@@ -44,6 +44,8 @@ Route::get('deposits/invest/{id?}', 'DepositController@invest')->name('deposits.
 Route::post('deposits/invest/{id?}', 'DepositController@doInvest')->name('deposits.invests');
 Route::get('/payouts/details/{id?}', 'DepositController@PayoutsDetails')->name('payouts.details');
 Route::post('/transfer/payouts/{id}', 'DepositController@TransferPayouts')->name('transfer.payouts');
+Route::get('/withdrawals/details/{id}', 'WithdrawController@Details')->name('withdrawals.details');
+
 
 Route::get('deposits/transactions', 'DepositController@showTransactions')->name('deposits.transactions');
 Route::get('deposits/{ref}', 'DepositController@show')->name('deposit');
@@ -90,4 +92,3 @@ Route::get('blockchain/callback', 'BlockChainPaymentController@callback')->name(
 Route::get('user/packages', 'HomeController@packages')->name('user.packages');
 Route::get('/user/clear/notifications', 'WalletController@clearNotifications')->name('create.notifications');
 
-});

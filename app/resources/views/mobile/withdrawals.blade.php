@@ -52,7 +52,7 @@
             </div>
             @forelse ($withdrawals as $withdrawal )
             <div class="transaction-card mb-15">
-                <a href="transaction-details.html">
+                <a href="{{route('withdrawals.details', encrypt($withdrawal->id))}}">
                     <div class="transaction-card-info">
                         <div class="transaction-info-thumb" style="border-radius: 100%">
                             <span class="text-white" style="font-size:15px"></span>
