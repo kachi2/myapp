@@ -654,6 +654,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\Mail\\ContactUs' => __DIR__ . '/../..' . '/app/Mail/ContactUs.php',
         'App\\Mail\\MessageUsers' => __DIR__ . '/../..' . '/app/Mail/MessageUsers.php',
         'App\\Mail\\Register' => __DIR__ . '/../..' . '/app/Mail/Register.php',
+        'App\\Message' => __DIR__ . '/../..' . '/app/Message.php',
         'App\\Models\\BonusHistory' => __DIR__ . '/../..' . '/app/Models/BonusHistory.php',
         'App\\Models\\ContactUs' => __DIR__ . '/../..' . '/app/Models/ContactUs.php',
         'App\\Models\\Deposit' => __DIR__ . '/../..' . '/app/Models/Deposit.php',

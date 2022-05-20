@@ -68,6 +68,7 @@ return array(
     'App\\Mail\\ContactUs' => $baseDir . '/app/Mail/ContactUs.php',
     'App\\Mail\\MessageUsers' => $baseDir . '/app/Mail/MessageUsers.php',
     'App\\Mail\\Register' => $baseDir . '/app/Mail/Register.php',
+    'App\\Message' => $baseDir . '/app/Message.php',
     'App\\Models\\BonusHistory' => $baseDir . '/app/Models/BonusHistory.php',
     'App\\Models\\ContactUs' => $baseDir . '/app/Models/ContactUs.php',
     'App\\Models\\Deposit' => $baseDir . '/app/Models/Deposit.php',

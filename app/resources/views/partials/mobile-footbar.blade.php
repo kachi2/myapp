@@ -21,17 +21,18 @@
                         </a>
                     </div>
                     <div class="navbar-content-item">
-                        <a href="my-cards.html">
+                        <a href="{{ route('account') }}">
+                            <i class="flaticon-settings"></i>
+                            Account
+                        </a>
+                    </div>
+                    <div class="navbar-content-item">
+                        <a href="{{route('users.messages.index')}}">
                             <i class="flaticon-credit-card"></i>
                            Support
                         </a>
                     </div>
-                    <div class="navbar-content-item">
-                        <a href="{{ route('account') }}">
-                            <i class="flaticon-settings"></i>
-                            Setting
-                        </a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
