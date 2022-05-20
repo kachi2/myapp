@@ -42,9 +42,7 @@
                 </div>
                 
                 @endif
-              
                 @empty
-
 
                 @endforelse
 
