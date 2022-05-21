@@ -65,7 +65,6 @@ class HomeController extends Controller
         $ref_bonus = UserWallet::whereUserId($user->id)->sum('referrals');
         $data['bonus'] = $bonus + $ref_bonus;
         //dd($data['bonus']);
-        
 
         return view('mobile.home', [
             'user' => $user,
@@ -80,7 +79,6 @@ class HomeController extends Controller
     }
 
     public function packages(){
-
         $data['basic'] = Deposit::where('plan_id', 1)->get();
         $data['standard'] = Deposit::where('plan_id', 2)->get();
         $data['premium'] = Deposit::where('plan_id', 3)->get();
@@ -88,8 +86,7 @@ class HomeController extends Controller
         return view('mobile.packages')->with(
             [
                 'packages' => Package::with('plans')->get(),
-                'data' => $data
-                
+                'data' => $data  
         ]);
     }
 }

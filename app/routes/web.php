@@ -12,17 +12,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-
-
-
 Route::get('/', 'WelcomeController@index')->name('index');
-
 Auth::routes(['verify' => true]);
+
 route::post('/user/register', 'Auth\RegisterController@create_user')->name('register_user');
 Route::get('complete-registration', 'Auth\CompleteRegistrationController@index')->name('complete_registration');
 Route::post('complete-registration', 'Auth\CompleteRegistrationController@update')->name('complete_registration');
-
 
 Route::get('/about', 'AboutController@index')->name('about');
 Route::get('/terms', 'TermsController@index')->name('terms');
@@ -30,7 +25,6 @@ Route::get('/faq', 'FaqController@index')->name('faq');
 Route::get('/plans', 'WelcomeController@plans')->name('plans');
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::post('/contact', 'ContactController@store')->name('contact');
-
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('withdrawals', 'WithdrawController@index')->name('withdrawals');
@@ -66,7 +60,6 @@ Route::post('testimonies/add', 'TestimonyController@storeTestimony')->name('test
 Route::get('testimonies/{id}/edit', 'TestimonyController@editTestimony')->name('testimonies.edit');
 Route::post('testimonies/{id}/edit', 'TestimonyController@updateTestimony')->name('testimonies.edit');
 Route::post('testimonies/{id}/delete', 'TestimonyController@destroyTestimony')->name('testimonies.delete');
-
 Route::get('internal-transfer', 'WalletController@transfer')->name('transfer');
 Route::post('internal-transfer', 'WalletController@doTransfer')->name('transfer');
 Route::post('bonus-transfer', 'WalletController@TransferEarnings')->name('transfer.earnings');
@@ -83,14 +76,10 @@ Route::get('token', 'TokenController@index')->name('token');
 Route::post('token', 'TokenController@generate')->name('token');
 
 Route::get('user-photo/{id}/{file_name}', 'AccountController@showPhoto')->name('user.photo');
-
 Route::get('perfect-money/callback', 'PerfectMoneyController@validateIpn')->name('perfect_money.callback');
 Route::get('blockchain/callback', 'BlockChainPaymentController@callback')->name('blockchain.callback');
-
 Route::get('user/packages', 'HomeController@packages')->name('user.packages');
 Route::get('/user/clear/notifications', 'WalletController@clearNotifications')->name('create.notifications');
-
-
 Route::get('/user/messages', 'MessageController@index')->name('users.messages.index');
 Route::post('/user/send/message', 'MessageController@SendMessage')->name('users.send.message');
 

@@ -45,13 +45,10 @@
                 @endforelse
             </div>
         </div>
-
         <!-- Inbox-area -->
-
         <!-- Inbox-compose-area -->
         <div class="inbox-compose-area">
             <div class="container">
-                
                 <div class="row align-items-center">
                     <div class="col-12">
                         <div class="inbox-compose-item">
