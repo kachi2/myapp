@@ -40,17 +40,11 @@
                         </div>
                     </div>
                 </div>
-                
                 @endif
                 @empty
-
                 @endforelse
-
             </div>
         </div>
-
-       
-
 
         <!-- Inbox-area -->
 
