@@ -28,13 +28,27 @@
         <link rel="stylesheet" href="{{asset('/mobile/css/style.css')}}" type="text/css" media="all" />
         <!-- responsive css -->
         <link rel="stylesheet" href="{{asset('/mobile/css/responsive.css')}}" type="text/css" media="all" />
-        
-        <!--[if IE]>
+         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+
+        <link rel="manifest" href="manifest.json">
+        <script>
+       if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('serviceworker.js', {
+            scope: '.'
+        }).then(function (registration) {
+            // Registration was successful
+            console.log('Laravel PWA: ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+            // registration failed :(
+            console.log('Laravel PWA: ServiceWorker registration failed: ', err);
+        });
+    }
+        </script>
+       
     </head>
 @include('partials.mobile-nav')
-@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
 @yield('content') 
 
@@ -42,7 +56,6 @@
 @include('partials.mobile-sidebar')
 
 @stack('modal')
-<script src="{{asset('/mobile/js/app.js')}}"></script>
         <script src="{{asset('/mobile/js/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('/mobile/js/bootstrap.bundle.min.js')}}"></script>
         <!-- owl carousel js -->
@@ -55,6 +68,8 @@
         <script src="{{asset('/mobile/js/contact-form-script.js')}}"></script>
         <!-- main js -->
         <script src="{{asset('/mobile/js/script.js')}}"></script>
+
+       
         @stack('scripts')
 
         <!--Start of Tawk.to Script-->

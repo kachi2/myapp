@@ -24,7 +24,18 @@
         <link rel="stylesheet" href="{{asset('/mobile/css/style.css')}}" type="text/css" media="all" />
         <!-- responsive css -->
         <link rel="stylesheet" href="{{asset('/mobile/css/responsive.css')}}" type="text/css" media="all" />
-        
+        <link rel="manifest" href="manifest.json">
+        <script>
+            if('serviceworker' in navigator){
+                navigator.serviceWorker.register('serviceworker.js', {
+                    scope: '.'
+                }).then(function (registration){
+                    console.log('Service worker is registered with scope', registration.scope);
+                }, function(err){
+                    console.log('service worker registratin failed', err);
+                });
+            }
+        </script>
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
