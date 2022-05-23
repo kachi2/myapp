@@ -1,386 +1,600 @@
-@extends('layouts.landing', ['page_title' => 'Home', 'heading' => 'Home'])
+@extends('layouts.landing')
 @section('content')
-  @include('partials.landing-header') 
-   <section id="main-content" class="">
-         <div id="demos">
-            <h2 style="display:none;">heading</h2>
-            <div id="carouselTicker" class="carouselTicker">
-               <ul class="carouselTicker__list">
-               @if(count($coins) > 0)
-               @foreach ($coins as $coin)
-                  <li class="carouselTicker__item">
-                     <div class="coin_info">
-                        <div class="inner">
-                           <div class="coin_name">
-                              {{$coin['name']}}
-                              @if($coin['market_cap_change_percentage_24h'] > 0)
-                              <span class="update_change_plus">{{$coin['market_cap_change_percentage_24h']}}</span>
-                              @else
-                              <span class="update_change_minus">{{$coin['market_cap_change_percentage_24h']}}</span>
-                              @endif
-                           </div>
-                           <div class="coin_price">
-                             ${{number_format($coin['current_price'],2)}}
-                             @if($coin['price_change_24h'] > 0) 
-                             <span class="scsl__change_plus" style="color:lightgreen">{{$coin['price_change_24h']}}%</span>
-                             @else
-                             <span class="scsl__change_minus">{{$coin['price_change_24h']}}%</span>
-                             @endif
-                           </div>
-                           <div class="coin_time">
-                              ${{$coin['market_cap']}}
-                           </div>
-                        </div>
-                     </div>
-                  </li>  
-               @endforeach
-               @endif
-               </ul>
-            </div>
-         </div>
-      </section>
-      <!-- market value slider end -->
-      <!-- full slider parallax section -->
-      <section id="full_slider" class="full_slider_inner padding_0">
-         <div class="main_slider">
-            <div id="bootstrap-touch-slider" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
-               <!-- Wrapper For Slides -->
-               <div class="carousel-inner" role="listbox">
-                  <!-- first Slide -->
-                  <div class="item active">
-                     <!-- Slide Background -->
-                     <img src="{{asset('/frontend_assets/images/slider_img2.png')}}" alt="Zenithcapital slider" class="slide-image"/>
-                          
-                     <div class="container">
-                        <div class="row">
-                            
-                           <!-- Slide Text Layer -->
-                           <div class="slide-text slide_style_left white_fonts">
-                              <h2 data-animation="animated">Secured  and <span style="color: #e9d16f;"> Easy </span><br> Way to <span style="color: #e9d16f;"> Trade  </span><br> <span style="color: #e9d16f;">Crytocurrency</span></h2>
-                              <a href="{{route('register')}}" class="btn btn-default active">Get started</a>
-                                <span > <img style="margin-top:-220px; margin-left:380px; width:90%" src="{{asset('/asset/image2.PNG')}}"  ></span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <!-- Slide Background -->
-                     <img src="{{asset('/frontend_assets/images/slider_img1.png')}}" alt="Bootstrap Touch Slider" class="slide-image" />
-                     <div class="container">
-                        <div class="row">
-                           <!-- Slide Text Layer -->
-                           <div class="slide-text slide_style_left white_fonts">
-                              <h2 data-animation="animated">Crypto <span style="color: #e9d16f;">Trading</span><br> Platform You can  <br><span style="color: #e9d16f;">Trust</span> Always</h2>
-                              <a href="{{route('register')}}" class="btn btn-default active">Get started</a>
-                               <span > <img style="margin-top:-270px; margin-left:450px; width:90%" src="{{asset('/asset/image3.PNG')}}"  ></span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- second of Slide -->
+
+ <!-- Start New App Main Banner Wrap Area -->
+ <div class="new-app-main-banner-wrap-area">
+   <div class="container-fluid">
+       <div class="row align-items-center">
+           <div class="col-lg-6 col-md-12">
+               <div class="new-app-main-banner-wrap-content">
+                   <h1 style="font-size: 50px; font-weight:500">Deposit, Invest Cryptocurrencies and Earn Profits on Advent</h1>
+                   <p></p>
+                   <div class="app-btn-box">
+                       <a href="#" class="applestore-btn" target="_blank">
+                           <img src="{{asset('/frontend_assets/assets/img/apple-store.png')}}" alt="image">
+                           Download on the
+                           <span>Apple Store</span>
+                       </a>
+
+                       <a href="#" class="playstore-btn" target="_blank">
+                           <img src="{{asset('/frontend_assets/assets/img/play-store.png')}}" alt="image">
+                           Get It On
+                           <span>Google Play</span>
+                       </a>
+                   </div>
                </div>
-               <!-- End of Wrapper For Slides -->
-               <!-- Left Control -->
-               <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
-               <span class="fa fa-angle-left" aria-hidden="true"></span>
-               <span class="sr-only">Previous</span>
-               </a>
-               <!-- Right Control -->
-               <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
-               <span class="fa fa-angle-right" aria-hidden="true"></span>
-               <span class="sr-only">Next</span>
-               </a>
-            </div>
-            <!-- End  bootstrap-touch-slider Slider -->
-         </div>
-      </section>
-       <section class="layout_padding">
-         <div class="container">
-            <div class="row">
-            
-               <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="full our_work_type">
-                     <div class="center"><img src="{{asset('/frontend_assets/images/icon_3_b.png')}}" alt="#" /></div>
-                     <div class="center">
-                        <h4>Instant Trading</h4>
-                     </div>
-                     <div class="center">
-                        <p>Very simple and easy to use</p>
-                     </div>
-                  </div>
+           </div> 
+           <div class="col-lg-6 col-md-12">
+               <div class="new-app-main-banner-wrap-image" data-aos="fade-left" data-aos-duration="2000">
+                   <img src="{{asset('/frontend_assets/assets/img/phone.png')}}" width="600px" alt="image">
+
+                   <div class="wrap-image-shape-1">
+                       <img src="{{asset('frontend_assets/assets/img/more-home/banner/shape-3.png')}}" alt="image">
+                   </div>
+                   <div class="wrap-image-shape-2">
+                       <img src="{{asset('frontend_assets/assets/img/more-home/banner/shape-4.png')}}" alt="image">
+                   </div>
+                   <div class="banner-circle">
+                       <img src="{{asset('frontend_assets/assets/img/more-home/banner/banner-circle.png')}}" alt="image">
+                   </div>
                </div>
-               
-               <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="full our_work_type">
-                     <div class="center"><img src="{{asset('/frontend_assets/images/icon_2_b.png')}}" alt="#" /></div>
-                     <div class="center">
-                        <h4>No Hidden Fees</h4>
-                     </div>
-                     <div class="center">
-                        <p>We are operating a clearly 100% transparent system.</p>
-                     </div>
-                  </div>
-               </div>
-               
-               <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="full our_work_type">
-                     <div class="center"><img src="{{asset('/frontend_assets/images/icon_4_b.png')}}" alt="#" /></div>
-                     <div class="center">
-                        <h4>Secured and 24/7 Uptime</h4>
-                     </div>
-                     <div class="center">
-                        <p>Your privacy is our top priority.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="full our_work_type">
-                     <div class="center"><img src="{{asset('/frontend_assets/images/icon_1_b.png')}}" alt="#" /></div>
-                     <div class="center">
-                        <h4>24/7 Customer Care Support</h4>
-                     </div>
-                     <div class="center">
-                        <p>We are always here to assist you.</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-12">
-                  <hr>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- end section -->
-       <section class="layout_padding dark_bg">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="full">
-                     <div class="heading_main">
-                        <h2><span>Our Pricing Plan</span></h2>
-                        <p>Choose a plan that fits your lifestyle</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-             @foreach($packages as $package)
-            @foreach($package->plans as $plan)
-               <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="full">
-                     <div class="coin_selling_bt">
-                        <ul>
-                           <li><a class="active" href="#">{{ $package->name }}</a></li>
-                           <li><a href="#">{{ $plan->name }}</a></li>
-                        </ul>
-                        <div class="coin_price_table">
-                           <h3> {{$plan->profit_rate }}% Daily - 7 Days</h3>
-                             <p>Minimum Investment: {{ moneyFormat($plan->min_deposit, 'USD') }}</p>
-                           <p>Maximum Investment: {{ moneyFormat($plan->max_deposit, 'USD') }}</p>
-                           <div class="center">
-                              <a class="pay_btn" href="{{route('register')}}">Buy Now</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               @endforeach
-               @endforeach
-            </div>
-         </div>
-      </section>
-      
-      <section class="layout_padding ">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <div class="full">
-                        <h6 class="heading_style2">Fast and Reliable withdrawal System</h6>
-                        <hr>
-                        <h3 class="">Withdrawals are 100% automated, you can withdraw anytime, any day you desires. </h3>
-                     </div>
-                </div>
-                 <div class="col-md-6 col-sm-12 col-xs-12">
-                 <img src="{{asset('/asset/image7.PNG')}}" style="width:140%">
+           </div>
+       </div>
+   </div>
+
+   <div class="new-app-main-banner-wrap-shape">
+       <img src="assets/img/more-home/banner/shape-5.png" alt="image">
+   </div>
+</div>
+<!-- End New App Main Banner Wrap Area -->
+<div class="features-area pt-100 pb-75">
+   <div class="container">
+       <div class="row align-items-center">
+           <div class="col-lg-6 col-md-12">
+               <div class="features-inner-content">
+                   <span class="sub-title">Why Choose Us</span>
+                   <h2>Most Probably Included Best Features Ever</h2>
+                   <p>Here at Advent, we are committed to user protection with strict protocols and industry-leading technical measures.</p>
+                   <div class="btn-box">
+                     <a href="{{route('login')}}" class="default-btn">Get Started </a>
                  </div>
-            </div>
-        </div>
-    </section> 
-           <hr style="background:#000; height:20px">
-        
-      <section class="layout_padding ">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <div class="full">
-                        <h6 class="heading_style2"> 100% transparent system</h6>
-                        <hr>
-                        <h3 class="">You can cleary monitor your daily payouts, our system is trusted by over 5000 investors across the globe</h3>
-                     </div>
-                </div>
-                 <div class="col-md-6 col-sm-12 col-xs-12">
-                 <img src="{{asset('/asset/image6.PNG')}}" style="width:140%">
-                 </div>
-            </div>
-        </div>
-    </section>
-      <!-- section -->
-      <section class="layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="full">
-                     <div class="heading_main">
-                        <h2><span>Crypto Live Exchange Rates</span></h2>
-                     </div>
-                  </div>
                </div>
-            </div>
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="full table-responsive">
-                     <table class="table table-striped">
-                        <thead>
-                           <tr>
-                              <th>Symbol</th>
-                              <th>Name</th>
-                              <th>USD</th>
-                              <th>Change 1h</th>
-                              <th>Change 12h</th>
-                              <th>Change 24h</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($coins as $cc )
-                           <tr class="active_table">
-                              <td>{{strtoupper($cc['symbol'])}}</td>
-                              <td>{{$cc['name']}}</td>
-                              <td>{{number_format($cc['current_price'])}}</td>
-                            @if($cc['price_change_percentage_24h'] > 0)  <td style="color:lightgreen">{{$cc['price_change_percentage_24h']}}%</td> @else
-                            <td style="color:red">{{$cc['price_change_percentage_24h']}}%</td>
-                            @endif
+           </div>
+           <div class="col-lg-6 col-md-12 features-inner-list">
+               <div class="row justify-content-center">
+                   <div class="col-lg-6 col-sm-6">
+                       <div class="features-inner-card">
+                           <div class="icon">
+                               <i class="ri-eye-line"></i>
 
-                             @if($cc['market_cap_change_percentage_24h'] > 0)  <td style="color:lightgreen">{{$cc['market_cap_change_percentage_24h']}}%</td> @else
-                            <td style="color:red">{{$cc['market_cap_change_percentage_24h']}}%</td>
-                            @endif
+                               <h3>Expertize Managment</h3>
+                           </div>
+                           <p>We understands that crypto investment is a highly risky business, our trained expertize and robot systems enable us to make decisions</p>
+                       </div>
+                   </div>
 
-                             @if($cc['market_cap_change_percentage_24h'] > 0)  <td style="color:lightgreen">{{$cc['market_cap_change_percentage_24h']}}%</td> @else
-                            <td style="color:red">{{$cc['market_cap_change_percentage_24h']}}%</td>
-                            @endif
-                           </tr>
-                          @endforeach
-                         
-                        </tbody>
-                     </table>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- end section -->
-      <!-- section -->
-      
-      <section class="layout_padding dark_bg white_fonts">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="full">
-                     <div class="heading_main">
-                        <h2><span>Why Choose Zenithcapital?</span></h2>
-                        <p> Join the revolution and start earning</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row" style="margin-top:20px;">
-               <div class="col-md-4 col-sm-4 col-xs-12">
-                  <div class="full">
-                     <div class="cryto_feature">
-                        <ul>
-                           <li>
-                              <div class="pull-left"><img src="{{asset('/frontend_assets/images/f2.png')}}" alt="#" /></div>
-                              <div>
-                                 <h3>Seamless Transaction</h3>
-                                 <p>Providing 24/7 server uptime</p>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="pull-left"><img src="{{asset('/frontend_assets/images/f3.png')}}" alt="#" /></div>
-                              <div>
-                                 <h3>Secure and Stable</h3>
-                                 <p>Our user data and digital assets are secure with fully data encryption</p>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="pull-left"><img src="{{asset('/frontend_assets/images/f4.png')}}" alt="#" /></div>
-                              <div>
-                                 <h3>Amazing Returns</h3>
-                                 <p>We work with professional Bitcoin analysts with years of experience in Bitcoin trading to bring more returns to your Trading.</p>
-                              </div>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-4 col-xs-12">
-                  <div class="full digital_earth">
-                     <img src="{{asset('/frontend_assets/images/bg3_new.png')}}" alt="#" />
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-4 col-xs-12">
-                  <div class="full">
-                     <div class="cryto_feature right_text">
-                        <ul>
-                           <li>
-                              <div>
-                                 <h3>Cost Efficiency</h3>
-                                 <p>Reasonable trading fees for takers and all market makers</p>
-                              </div>
-                              <div class="pull-right"><img src="{{asset('/frontend_assets/images/f5.png')}}" alt="#" /></div>
-                           </li>
-                           <li>
-                              <div>
-                                 <h3>24/7 Trading</h3>
-                                 <p>Our Team are available 24h/7 to attend to your request</p>
-                              </div>
-                              <div class="pull-right"><img src="{{asset('/frontend_assets/images/f6.png')}}" alt="#" /></div>
-                           </li>
-                           <li>
-                              <div>
-                                 <h3>Free Consulting</h3>
-                                 <p>No matter what the issues is, your account can never be charged for support rendered</p>
-                              </div>
-                              <div class="pull-right"><img src="{{asset('/frontend_assets/images/f1.png')}}" alt="#" /></div>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- end section -->
-      <!-- section -->
-      <section class="layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="full">
-                     <div class="heading_main">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-2 col-sm-12 col-xs-12"></div>
-            </div>
-         </div>
-      </section>
-    
+                   <div class="col-lg-6 col-sm-6">
+                       <div class="features-inner-card with-box-shadow">
+                           <div class="icon">
+                               <i class="ri-stack-line"></i>
+                               
+                               <h3>Secured Investments</h3>
+                           </div>
+                           <p>Our user data and digital assets are secure stored in highly secured cloud system against DDoS attacks and our data are fully encrypted</p>
+                       </div>
+                   </div>
 
-  @include('partials.landing-footer')
+                   <div class="col-lg-6 col-sm-6">
+                       <div class="features-inner-card with-box-shadow">
+                           <div class="icon">
+                               <i class="ri-cloud-line"></i>
+                               
+                               <h3>Automated Withdrawals</h3>
+                           </div>
+                           <p>Your payouts are automatically sent to your wallet at the completion your compaign without human intervention.</p>
+                       </div>
+                   </div>
+
+                   <div class="col-lg-6 col-sm-6">
+                       <div class="features-inner-card">
+                           <div class="icon">
+                               <i class="ri-leaf-line"></i>
+                               
+                               <h3>Advanced Data Encryption</h3>
+                           </div>
+                           <p>Your transaction data is secured via end-to-end encryption, ensuring that only you have access to your personal information.</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- Start Features Area -->
+
+<!-- End Features Area -->
+
+<!-- Start Features Area -->
+<div class="features-area pb-75">
+   <div class="container">
+       <div class="row justify-content-center">
+           <div class="col-xl-3 col-lg-3 col-sm-3 col-md-3 col-6">
+               <div class="features-box-card">
+                   <div class="icon">
+                       <i class="ri-smartphone-line"></i>
+                   </div>
+                   <h3>User Friendly</h3>
+               </div>
+           </div>
+           <div class="col-xl-3 col-lg-3 col-sm-3 col-md-3 col-6">
+               <div class="features-box-card">
+                   <div class="icon bg2">
+                       <i class="ri-award-line"></i>
+                   </div>
+                   <h3>Award Winning App</h3>
+               </div>
+           </div>
+           <div class="col-xl-3 col-lg-3 col-sm-3 col-md-3 col-6">
+               <div class="features-box-card">
+                   <div class="icon">
+                       <i class="ri-fingerprint-line"></i>
+                   </div>
+                   <h3>Privacy Protected</h3>
+               </div>
+           </div>
+           <div class="col-xl-3 col-lg-3 col-sm-3 col-md-3 col-6">
+               <div class="features-box-card">
+                   <div class="icon bg2">
+                       <i class="ri-vip-diamond-line"></i>
+                   </div>
+                   <h3>Lifetime Update</h3>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- End Features Area -->
+
+<!-- Start App About Area -->
+<div class="app-about-area pb-100">
+   <div class="container">
+       <div class="row align-items-center">
+           <div class="col-lg-6 col-md-12">
+               <div class="app-about-image">
+                   <img src="assets/img/more-home/about/about-2.png" alt="image">
+               </div>
+           </div>
+
+           <div class="col-lg-6 col-md-12">
+               <div class="app-about-content">
+                   <span class="sub-title">ABOUT US</span>
+                   <h2>Most Probably You Are Getting Best App Ever</h2>
+                   <p>Cloud based storage for your data backup just log in with your mail account from play store and using whatever you want for your business purpose orem ipsum dummy text. Never missyour chance its just began.</p>
+                   <ul class="list">
+                       <li>
+                           <div class="icon bg-3">
+                               <i class="ri-award-line"></i>
+                           </div>
+                           <h3>Trusted and Reliable</h3>
+                           <p>Most provabily best you can trust on it, just log in with your mail account from play store and using whatever you want for your business.</p>
+                       </li>
+                       <li>
+                           <div class="icon bg-3">
+                               <i class="ri-download-cloud-2-line"></i>
+                           </div>
+                           <h3>Cloud Storage</h3>
+                           <p>Just log in with your mail account from play store and using whatever you want for your business purpose.</p>
+                       </li>
+                   </ul>
+                   <div class="btn-box">
+                       <a href="app-download.html" class="default-btn">Start Free Trial</a>
+                       <a href="features-1.html" class="link-btn">See All Features</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- End App About Area -->
+
+<!-- Start Key Features Area -->
+<div class="key-features-area bg-transparent-with-color pt-100 pb-100">
+   <div class="container">
+       <div class="section-title">
+           <span class="sub-title">KEY FEATURES</span>
+           <h2>Most Probably Included Best Features Ever</h2>
+       </div>
+
+       <div class="row justify-content-center">
+           <div class="col-xl-4 col-lg-6 col-sm-6 col-md-6">
+               <div class="key-features-card style-two">
+                   <div class="icon">
+                       <i class="ri-eye-line"></i>
+                   </div>
+                   <h3>High Resolution</h3>
+                   <p>Just log in with your mail account from play store and using whatever you want for your able business purpose.</p>
+               </div>
+           </div>
+           <div class="col-xl-4 col-lg-6 col-sm-6 col-md-6">
+               <div class="key-features-card bg-color-two style-two">
+                   <div class="icon bg2">
+                       <i class="ri-stack-line"></i>
+                   </div>
+                   <h3>Retina Ready Screen</h3>
+                   <p>Just log in with your mail account from play store and using whatever you want for your able business purpose.</p>
+               </div>
+           </div>
+           <div class="col-xl-4 col-lg-6 col-sm-6 col-md-6">
+               <div class="key-features-card style-two">
+                   <div class="icon">
+                       <i class="ri-leaf-line"></i>
+                   </div>
+                   <h3>Easy Editable Data</h3>
+                   <p>Just log in with your mail account from play store and using whatever you want for your able business purpose.</p>
+               </div>
+           </div>
+           <div class="col-xl-4 col-lg-6 col-sm-6 col-md-6">
+               <div class="key-features-card bg-color-two style-two">
+                   <div class="icon bg2">
+                       <i class="ri-secure-payment-line"></i>
+                   </div>
+                   <h3>Fully Secured</h3>
+                   <p>Just log in with your mail account from play store and using whatever you want for your able business purpose.</p>
+               </div>
+           </div>
+           <div class="col-xl-4 col-lg-6 col-sm-6 col-md-6">
+               <div class="key-features-card style-two">
+                   <div class="icon">
+                       <i class="ri-cloud-line"></i>
+                   </div>
+                   <h3>Cloud Storage</h3>
+                   <p>Just log in with your mail account from play store and using whatever you want for your able business purpose.</p>
+               </div>
+           </div>
+           <div class="col-xl-4 col-lg-6 col-sm-6 col-md-6">
+               <div class="key-features-card bg-color-two style-two">
+                   <div class="icon bg2">
+                       <i class="ri-pie-chart-2-line"></i>
+                   </div>
+                   <h3>Responsive Ready</h3>
+                   <p>Just log in with your mail account from play store and using whatever you want for your able business purpose.</p>
+               </div>
+           </div>
+       </div>
+
+       <div class="key-features-btn">
+           <a href="app-download.html" class="default-btn">Start Free Trial</a>
+       </div>
+   </div>
+</div>
+<!-- End Key Features Area --> 
+
+<!-- Start App Screenshots Area -->
+<div class="app-screenshots-area ptb-100">
+   <div class="container">
+       <div class="section-title">
+           <span class="sub-title">APP SCREENS</span>
+           <h2>Beautifully Crafted All App Screenshots</h2>
+       </div>
+       <div class="app-screenshots-slides owl-carousel owl-theme">
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots1.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots2.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots3.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots4.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots5.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots1.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots2.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots3.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots4.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots5.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots1.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots2.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots3.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots4.png" alt="screenshots">
+           </div>
+           <div class="single-screenshot-card">
+               <img src="assets/img/more-home/screenshots/screenshots5.png" alt="screenshots">
+           </div>
+       </div>
+   </div>
+</div>
+<!-- End App Screenshots Area -->
+
+<!-- Start App Video Area -->
+<div class="app-video-area pb-100">
+   <div class="container">
+       <div class="row align-items-center">
+           <div class="col-lg-6 col-md-12">
+               <div class="app-intro-video-box">
+                   <img src="assets/img/more-home/video/video-2.jpg" alt="video-img">
+                   <a href="https://www.youtube.com/watch?v=PWvPbGWVRrU" class="video-btn popup-video"><i class="ri-play-line"></i></a>
+
+                   <div class="intro-video-shape">
+                       <img src="assets/img/more-home/video/shape-3.png" alt="image">
+                   </div>
+               </div>
+           </div>
+
+           <div class="col-lg-6 col-md-12">
+               <div class="app-intro-video-content">
+                   <span class="sub-title">INTRO VIDEO</span>
+                   <h2>Watch Our Most Watched Pakap App Video</h2>
+                   <p>Cloud based storage for your data backup just log in with your mail account from play store and using whatever you want for your business purpose orem ipsum dummy text. Never missyour chance its just began. Cloud based storage for your data backup just log in with your mail account from play store and using whatever you want for your business purpose orem ipsum dummy text.Never missyour chance its just began.</p>
+                   <a href="contact.html" class="default-btn">Get Started</a>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- End App Video Area -->
+
+<!-- Start Gradient Funfacts Area -->
+<div class="gradient-funfacts-area pt-100 pb-75">
+   <div class="container">
+       <div class="row justify-content-center">
+           <div class="col-lg-3 col-sm-6 col-md-6">
+               <div class="single-funfacts-card">
+                   <div class="icon">
+                       <i class="ri-download-2-line"></i>
+                   </div>
+                   <p>Total Downloads</p>
+                   <h3><span class="odometer" data-count="10">00</span><span class="sign">M</span></h3>
+               </div>
+           </div>
+           <div class="col-lg-3 col-sm-6 col-md-6">
+               <div class="single-funfacts-card">
+                   <div class="icon">
+                       <i class="ri-star-fill"></i>
+                   </div>
+                   <p>Total Reviews</p>
+                   <h3><span class="odometer" data-count="799">00</span><span class="sign">K</span></h3>
+               </div>
+           </div>
+           <div class="col-lg-3 col-sm-6 col-md-6">
+               <div class="single-funfacts-card">
+                   <div class="icon">
+                       <i class="ri-global-line"></i>
+                   </div>
+                   <p>Worldwide Countries</p>
+                   <h3><span class="odometer" data-count="150">00</span><span class="sign">+</span></h3>
+               </div>
+           </div>
+           <div class="col-lg-3 col-sm-6 col-md-6">
+               <div class="single-funfacts-card">
+                   <div class="icon">
+                       <i class="ri-map-pin-user-line"></i>
+                   </div>
+                   <p>Active Users</p>
+                   <h3><span class="odometer" data-count="5">00</span><span class="sign">M</span></h3>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- End Gradient Funfacts Area -->
+
+<!-- Start New App Download Area -->
+<div class="new-app-download-wrap-area ptb-100">
+   <div class="container">
+       <div class="row align-items-center">
+           <div class="col-lg-6 col-md-12">
+               <div class="new-app-download-content">
+                   <span class="sub-title">DOWNLOAD APP</span>
+                   <h2>Let's Get Your Free Copy From Apple and Play Store</h2>
+                   <p>Instant free download from store Cloud based storage for your data backup just log in with your mail account from play store and using whatever you want for your business purpose orem ipsum dummy text.</p>
+                   <div class="btn-box color-wrap">
+                       <a href="#" class="playstore-btn" target="_blank">
+                           <img src="assets/img/play-store.png" alt="image">
+                           Get It On
+                           <span>Google Play</span>
+                       </a>
+                       <a href="#" class="applestore-btn" target="_blank">
+                           <img src="assets/img/apple-store.png" alt="image">
+                           Download on the
+                           <span>Apple Store</span>
+                       </a>
+                   </div>
+               </div>
+           </div>
+
+           <div class="col-lg-6 col-md-12">
+               <div class="new-app-download-image text-end" data-aos="fade-up">
+                   <img src="assets/img/more-home/app-download/download-2.png" alt="app-img">
+
+                   <div class="download-circle">
+                       <img src="assets/img/more-home/app-download/download-circle.png" alt="image">
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <div class="app-download-shape-1">
+       <img src="assets/img/more-home/app-download/shape-1.png" alt="image">
+   </div>
+   <div class="app-download-shape-2">
+       <img src="assets/img/more-home/app-download/shape-2.png" alt="image">
+   </div>
+</div>
+<!-- End New App Download Area -->
+
+<!-- Start Feedback Wrap Area -->
+<div class="feedback-wrap-area ptb-100">
+   <div class="container">
+       <div class="section-title">
+           <span class="sub-title">CLIENT REVIEWS</span>
+           <h2>What Our Customer Say About Us</h2>
+       </div>
+       <div class="feedback-swiper-wrap-slides swiper-container">
+           <div class="swiper-wrapper">
+               <div class="swiper-slide">
+                   <div class="single-feedback-wrap-item">
+                       <div class="rating">
+                           <h5>Theme Customization</h5>
+                           <div>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                           </div>
+                       </div>
+                       <p>‘Kiedo is the best digital agency in our area As a midsize software developent company we combine the best of both worlds. We have the focus and speed of the small it outsurcing companies.’</p>
+                       <div class="client-info">
+                           <img src="assets/img/user/user1.jpg" alt="user">
+                           <div class="title">
+                               <h3>Deanna Hodges</h3>
+                               <span>Spotify Developer</span>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+               <div class="swiper-slide">
+                   <div class="single-feedback-wrap-item">
+                       <div class="rating">
+                           <h5>Theme Customization</h5>
+                           <div>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                           </div>
+                       </div>
+                       <p>‘Kiedo is the best digital agency in our area As a midsize software developent company we combine the best of both worlds. We have the focus and speed of the small it outsurcing companies.’</p>
+                       <div class="client-info">
+                           <img src="assets/img/user/user2.jpg" alt="user">
+                           <div class="title">
+                               <h3>Deanna Hodges</h3>
+                               <span>Spotify Developer</span>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+               <div class="swiper-slide">
+                   <div class="single-feedback-wrap-item">
+                       <div class="rating">
+                           <h5>Theme Customization</h5>
+                           <div>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                               <i class="ri-star-fill"></i>
+                           </div>
+                       </div>
+                       <p>‘Kiedo is the best digital agency in our area As a midsize software developent company we combine the best of both worlds. We have the focus and speed of the small it outsurcing companies.’</p>
+                       <div class="client-info">
+                           <img src="assets/img/user/user3.jpg" alt="user">
+                           <div class="title">
+                               <h3>Deanna Hodges</h3>
+                               <span>Spotify Developer</span>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <!-- Add Pagination -->
+           <div class="swiper-button-next" data-aos="fade-right"></div>
+           <div class="swiper-button-prev" data-aos="fade-left"></div>
+       </div>
+   </div>
+</div>
+<!-- End Feedback Wrap Area -->
+
+<!-- Start App Pricing Area -->
+<div class="app-pricing-area pt-100 pb-75">
+   <div class="container">
+       <div class="row align-items-center">
+           <div class="col-lg-4 col-md-12">
+               <div class="app-pricing-section-title">
+                   <span class="sub-title">PRICING TABLE</span>
+                   <h2>No Hidden Charge Applied, Choose Your Plan</h2>
+                   <a href="pricing.html">See All Pricing Plan</a>
+               </div>
+           </div>
+           <div class="col-lg-8 col-md-12">
+               <div class="row align-items-center">
+                   <div class="col-lg-6 col-md-6 col-sm-6">
+                       <div class="single-app-pricing-box with-border-radius">
+                           <div class="title">
+                               <h3>Small Team</h3>
+                               <p>Powerful & awesome elements</p>
+                           </div>
+                           <span class="popular">Most Popular</span>
+                           <div class="price">
+                               $59 <span>/Month</span>
+                           </div>
+                           <div class="pricing-btn">
+                               <a href="#" class="default-btn">Purchase Plan</a>
+                           </div>
+                           <ul class="features-list">
+                               <li><i class="ri-check-line"></i> Up to 10 Website</li>
+                               <li><i class="ri-check-line"></i> Lifetime free Support</li>
+                               <li><i class="ri-check-line"></i> 10 GB Dedicated Hosting free</li>
+                               <li><i class="ri-check-line"></i> 24/7 Hours Support</li>
+                               <li><i class="ri-check-line"></i> SEO Optimized</li>
+                               <li><i class="ri-check-line"></i> Live Support</li>
+                           </ul>
+                       </div>
+                   </div>
+                   <div class="col-lg-6 col-md-6 col-sm-6">
+                       <div class="single-app-pricing-box with-border-radius">
+                           <div class="title">
+                               <h3>Business</h3>
+                               <p>Powerful & awesome elements</p>
+                           </div>
+                           <div class="price">
+                               $69 <span>/Month</span>
+                           </div>
+                           <div class="pricing-btn">
+                               <a href="#" class="default-btn">Purchase Plan</a>
+                           </div>
+                           <ul class="features-list">
+                               <li><i class="ri-check-line"></i> Up to 10 Website</li>
+                               <li><i class="ri-check-line"></i> Lifetime free Support</li>
+                               <li><i class="ri-check-line"></i> 10 GB Dedicated Hosting free</li>
+                               <li><i class="ri-check-line"></i> 24/7 Hours Support</li>
+                               <li><i class="ri-check-line"></i> SEO Optimized</li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- End App Pricing Area -->
+
 @endsection
 
 

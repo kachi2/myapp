@@ -5,8 +5,8 @@
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		  <title>
         @section('title')
-            {{ config('app.name') }} {{ $page_title ? ' - ' . $page_title : '' }}
-        @show
+            {{ config('app.name') }}
+        @show 
     </title>
 		 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,22 +17,17 @@
 	<link rel="icon" href="{{asset('/frontend_assets/images/fevicon/fav.png')}}" type="image/gif" />
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="{{asset('/frontend_assets/css/bootstrap.min.css')}}" />
-      <!-- Site CSS -->
-      <link rel="stylesheet" href="{{asset('/frontend_assets/css/style.css')}}" />
-      <!-- Responsive CSS -->
-      <link rel="stylesheet" href="{{asset('/frontend_assets/css/responsive.css')}}" />
-      <!-- Colors CSS -->
-      <link rel="stylesheet" href="{{asset('/frontend_assets/css/colors.css')}}" />
-      <!-- Custom CSS -->
-      <link rel="stylesheet" href="{{asset('/frontend_assets/css/custom.css')}}" />
-      <!-- Counter CSS -->
-      <link rel="stylesheet" href="{{asset('/frontend_assets/css/jquery.countdown.css')}}" />
-      <!-- Wow Animation CSS -->
-      <link rel="stylesheet" href="{{asset('/frontend_assets/css/animate.css')}}" />
-      <!-- Market value slider CSS -->
-      <link rel="stylesheet" type="text/css" href="{{asset('/frontend_assets/css/carouselTicker.css')}}" media="screen" />
-      <link href="{{asset('/frontend_assets/animate.css/3.5.2/animate.min.css')}}" rel="stylesheet" media="all">
-      
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/bootstrap.min.css')}}">
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/aos.css')}}">
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/all.min.css')}}">
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/odometer.min.css')}}">
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/remixicon.css')}}">
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/magnific-popup.min.css')}}">
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/meanmenu.min.css')}}">
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/swiper-bundle.min.css')}}">
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/owl.carousel.min.css')}}">
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/owl.theme.default.min.css')}}">
+      <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/style.css')}}">
       <style type="text/css">
  
  /*google translate Dropdown */
@@ -76,31 +71,31 @@
  }
  </script>
  <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
-
 	</head>
 		<body>
-
+        @include('partials.landing-header') 
         @yield('content')
+        @include('partials.landing-footer')
         @stack('scripts')
 		<!-- all js here -->
 
 		<!-- jquery latest version -->
-		<script src="{{asset('/frontend_assets/js/jquery.min.js')}}"></script>
-      <!-- custom js -->
-      <script src="{{asset('/frontend_assets/js/custom.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/jquery.min.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/swiper-bundle.min.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/magnific-popup.min.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/meanmenu.min.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/appear.min.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/odometer.min.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/form-validator.min.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/contact-form-script.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/ajaxchimp.min.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/aos.js')}}"></script>
+    <script src="{{asset('/frontend_assets/assets/js/main.js')}}"></script>
 
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/61e72346b84f7301d32bb46b/1fpne3jo7';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
+
  
 <!--End of Tawk.to Script-->	</body>
 </html>

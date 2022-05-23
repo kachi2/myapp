@@ -1,55 +1,57 @@
-<footer id="footer" class="footer_main">
+      <div class="footer-wrap-area pt-100">
          <div class="container">
-            <div class="row">
-               <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="footer_logo">
-                     <img src="{{asset('/frontend_assets/images/logos/logo_2.png')}}" alt="#" />
-                  </div>
-                  <p class="footer_desc">Cryptocurrency investment is a highly risky investment program, we have highly trained professional that invest your capital and makes return for you.</p>
-               </div>
-               <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="main-heading left_text">
-                     <h2>Quick links</h2>
-                  </div>
-                  <ul class="footer-menu" >
-                       <li><a href="{{route('index')}}"><i class="fa fa-angle-right"></i> Home</a></li>
-                              <li><a href="{{route('about')}}"><i class="fa fa-angle-right"></i> About Us</a></li>
-                              <li><a href="{{route('faq')}}"><i class="fa fa-angle-right"></i> FAQ</a></li>
-                              <li><a href="{{route('contact')}}"><i class="fa fa-angle-right"></i> Contact Us</a></li>
-                              <li><a href="{{route('terms')}}"><i class="fa fa-angle-right"></i> Terms & Conditions</a></li>
-                  </ul>
-               </div>
-               <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="main-heading left_text">
-                     <h2>Contact us</h2>
-                  </div>
-                  <p>ENGLAND, DN119QU, 1500 N LAMAR<br><a href="emailto:info@zenithcapital.cc">info@zenithcapital.cc</a></p>
-               </div>
-               <div class="col-md-3 col-sm-6 col-xs-12">
-                  <div class="main-heading left_text">
-                     <h2>Newsletter Signup</h2>
-                  </div>
-                  <p style="font-size: 17px;line-height: 24px;margin: 0;letter-spacing: 0px;">Get latest updates, news, surveys & offers</p>
-                  <div class="footer_mail-section" style="width: 90%;">
-                     <form>
-                        <fieldset>
-                           <div class="field">
-                              <input placeholder="Email" type="text">
-                              <button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
-                           </div>
-                        </fieldset>
-                     </form>
-                  </div>
-               </div>
-            </div>
+             <div class="row">
+                 <div class="col-lg-3 col-md-6 col-sm-6">
+                     <div class="single-footer-widget">
+                        <h3>Community</h3>
+                         <p class="footer_desc">Cryptocurrency investment is a highly risky investment program, we have highly trained professional that invest your capital and makes return for you.</p>
+                         <ul class="social-links">
+                             <li><a href="#" target="_blank"><i class="ri-facebook-fill"></i></a></li>
+                             <li><a href="#" target="_blank"><i class="ri-twitter-fill"></i></a></li>
+                             <li><a href="#" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
+                             <li><a href="#" target="_blank"><i class="ri-messenger-fill"></i></a></li>
+                             <li><a href="#" target="_blank"><i class="ri-github-fill"></i></a></li>
+                         </ul>
+                     </div>
+                 </div>
+                 <div class="col-lg-3 col-md-3 col-sm-6">
+                     <div class="single-footer-widget">
+                         <h3>Support</h3>
+                         <ul class="links-list">
+                           <li><a href="{{route('index')}}"><i class="fa fa-angle-right"></i> Home</a></li>
+                           <li><a href="{{route('about')}}"><i class="fa fa-angle-right"></i> About Us</a></li>
+                           <li><a href="{{route('faq')}}"><i class="fa fa-angle-right"></i> FAQ</a></li>
+                           <li><a href="{{route('contact')}}"><i class="fa fa-angle-right"></i> Contact Us</a></li>
+                           <li><a href="{{route('terms')}}"><i class="fa fa-angle-right"></i> Terms & Conditions</a></li>
+                         </ul>
+                     </div>
+                 </div>
+                 <div class="col-lg-2 col-md-3 col-sm-6">
+                     <div class="single-footer-widget">
+                         <h3>Useful Links</h3>
+                         <ul class="links-list">
+                             <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                             <li><a href="privacy-policy.html">Return Policy</a></li>
+                             <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                             <li><a href="how-it-works.html">How It Works?</a></li>
+                             <li><a href="contact.html">Contact Us</a></li>
+                         </ul>
+                     </div>
+                 </div>
+                 <div class="col-lg-3 col-md-6 col-sm-6">
+                     <div class="single-footer-widget">
+                         <h3>Newsletter</h3>
+                         <p>Best solution for your it startup business, consecteturadipiscing elit.</p>
+                         <form class="newsletter-form" data-toggle="validator">
+                             <input type="text" class="input-newsletter" placeholder="Your Email" name="EMAIL" required autocomplete="off">
+                             <button type="submit"><i class="ri-send-plane-2-line"></i></button>
+                             <div id="validator-newsletter" class="form-result"></div>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+             <div class="copyright-area">
+               <p class="text-center">All Rights Reserved. The Advent Capital &copy; 2019 - {{date('Y')}}.</p>
+             </div>
          </div>
-      </footer>
-      <div class="footer-bottom">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-xs-12 pull-left">
-                  <p class="text-center">All Rights Reserved. Zenithcapital &copy; 2019 - {{date('Y')}}.</p>
-               </div>
-            </div>
-         </div>
-      </div>
+     </div>
