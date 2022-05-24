@@ -1,167 +1,46 @@
-@extends('layouts.landing', ['page_title' => 'About Us', 'heading' => 'About Us', 'sub_heading' => 'Enjoy real benefits and rewards on your accrue mining.'])
+@extends('layouts.landing', ['page_title' => 'Terms and Condition'])
 @section('content')
-  @include('partials.landing-header') 
-     <!-- Banner Area Starts -->
-   <section id="main-content" class="">
-         <div id="demos">
-            <h2 style="display:none;">heading</h2>
-            <div id="carouselTicker" class="carouselTicker">
-               <ul class="carouselTicker__list">
-               @if(count($coins) > 0)
-               @foreach ($coins as  $coin )
-                  <li class="carouselTicker__item">
-                     <div class="coin_info">
-                        <div class="inner">
-                           <div class="coin_name">
-                              {{$coin['name']}}
-                              @if($coin['market_cap_change_percentage_24h'] > 0)
-                              <span class="update_change_plus">{{$coin['market_cap_change_percentage_24h']}}</span>
-                              @else
-                              <span class="update_change_minus">{{$coin['market_cap_change_percentage_24h']}}</span>
-                              @endif
-                           </div>
-                           <div class="coin_price">
-                             ${{number_format($coin['current_price'],2)}}
-                             @if($coin['price_change_24h'] > 0) 
-                             <span class="scsl__change_plus" style="color:lightgreen">{{$coin['price_change_24h']}}%</span>
-                             @else
-                             <span class="scsl__change_minus">{{$coin['price_change_24h']}}%</span>
-                             @endif
-                           </div>
-                           <div class="coin_time">
-                              ${{$coin['market_cap']}}
-                           </div>
-                        </div>
-                     </div>
-                  </li>  
-               @endforeach
-               @endif
-               </ul>
-            </div>
-         </div>
-      </section>
-        <section id="inner_page_infor" class="innerpage_banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="full">
-                        <div class="inner_page_info">
-                            <h3>Terms & Conditions</h3>
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><i class="fa fa-angle-right"></i></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+ 
+<div class="p-4"></div>
+<div class="terms-conditions-area ptb-100">
+    <div class="container">
+        <div class="terms-conditions-content">
+            <h6>Advent Terms of Use <br> <small style="font-size:12px">Last revised: 4 May 2022</small></h6>
+               
+            <p>We may collect personal identification information from Users in a variety of ways, including, but not limited to, when Users visit our site, subscribe to the newsletter, fill out a form, 
+                and in connection with other activities, services, features or resources we make available on our Site. Users may be asked for, as appropriate, name, email address, 
+                mailing address, phone number. We will collect personal identification information from Users only if they voluntarily consent such information to us. 
+                Users can always refuse to supply personally identification information, except that it may prevent them from engaging in certain Site related activities.</p>
+            <h5>General permission to use and access and use limitations</h5>
+            <p>This site is provided by <strong>Pakap</strong>. <strong>Pakap</strong> collects information in several ways from different parts of this site.</p>
+            <p><strong>1.</strong> Complimentary ground shipping within 1 to 7 business days<br>
+                <strong>2.</strong> In-store collection available within 1 to 7 business days<br>
+                <strong>3.</strong> Next-day and Express delivery options also available<br>
+                <strong>4.</strong> Purchases are delivered in an orange box tied with a Bolduc ribbon, with the exception of certain items<br>
+                <strong>5.</strong> See the delivery FAQs for details on shipping methods, costs and delivery times
+            </p>
+            <h4>Confidential information</h4>
+            <p><strong>Pakap</strong> accepts the following payment methods:</p>
+                <li>Credit Card: <strong>Visa</strong>, <strong>MasterCard</strong>, <strong>Discover</strong>, <strong>American Express</strong>, <strong>JCB</strong>, <strong>Visa Electron</strong>. The total will be charged to your card when the order is shipped.</li>
+                <li><strong>Pakap</strong> features a Fast Checkout option, allowing you to securely save your credit card details so that you don't have to re-enter them for future purchases.</li>
+                <li>PayPal: Shop easily online without having to enter your credit card details on the website.Your account will be charged once the order is completed. To register for a PayPal account, visit the website <a href="#" target="_blank">paypal.com.</a></li>
+            </ul>
+            <h3>Linking to this Site</h3>
+            <p>Items returned within 14 days of their original shipment date in same as new condition will be eligible for a full refund or store credit. Refunds will be charged back form of payment used for purchase. Customer is responsible for shipping charges when making returns and shipping/handling fees of original purchase is non-refundable.</p>
+            <h2>Intellectual property</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget euismod erat, sit amet vulputate enim. Etiam enim tellus, maximus vel augue sed, pharetra hendrerit orci. Vivamus sed massa in nibh imperdiet mattis quis sed augue. Pellentesque erat metus, vestibulum nec nisl.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget euismod erat, sit amet vulputate enim. Etiam enim tellus.</p>
+            <h1>Security and storage</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget euismod erat, sit amet vulputate enim. Etiam enim tellus.</p>
+            <ol>
+                <li>Credit Card: <strong>Visa</strong>, <strong>MasterCard</strong>, <strong>Discover</strong>, <strong>American Express</strong>, <strong>JCB</strong>, <strong>Visa Electron</strong>. The total will be charged to your card when the order is shipped.</li>
+                <li><strong>Pakap</strong> features a Fast Checkout option, allowing you to securely save your credit card details so that you don't have to re-enter them for future purchases.</li>
+                <li>PayPal: Shop easily online without having to enter your credit card details on the website.Your account will be charged once the order is completed. To register for a PayPal account, visit the website <a href="#" target="_blank">paypal.com.</a></li>
+            </ol>
+            <p>Last updated: January 25, 2021 at 24:00 pm</p>
         </div>
-    </section>
-        <!-- End breadcumb Area -->
-        <!-- about-area start -->
-        
-        <div class="about-area" style="padding-top:20px">
-            <div class="container">
-                <div class="row">
-                    <!-- column end -->
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="about-content">
-							<h3>Risk Notice</h3>
-                            <p style="text-align:left">Cryptocurrencies is a not backed or value guaranteed by any financial institution; when purchasing coins the customer assumes all risk the coins may become worthless in value.
-                            We at Acrabuscapital assumes this risk making it more safe for you to trade with us </p> </div>
-                    </div>
-                    <!-- column end -->
-                </div>
-            </div>
-        </div>
-  <div class="about-area ">
-            <div class="container">
-                <div class="row">
-                   
-                    <!-- column end -->
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="about-content">
-							<h3>Severability</h3>
-                             <p style="text-align:left">In the event any court shall declare any section or sections of this Agreement invalid or void, such declaration shall not invalidate the entire Agreement and all other paragraphs of the Agreement shall remain in full force and effect.</p>
-                              
-                        </div>
-                    </div>
-                    <!-- column end -->
-                </div>
-            </div>
-        </div>
+    </div>
+</div>
 
-         <div class="about-area">
-            <div class="container">
-                <div class="row">
-                   
-                    <!-- column end -->
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="about-content">
-							<h3>Customer input errors</h3>
-                             <p style="text-align:left">It is the sole responsibility of the customer to check the accuracy of information entered and saved on the website. Account details displayed on the order summary webpage will be the final transfer destination. In the case that this information is incorrect, and funds are transferred to an unintended destination, the company shall not reimburse the customer and shall not transfer additional funds. As such customers must ensure the Bitcoin address and bank information they enter is completely correct.</p>
-                              
-                        </div>
-                    </div>
-                    <!-- column end -->
-                </div>
-            </div>
-        </div>
 
-        <div class="about-area ">
-            <div class="container">
-                <div class="row">
-                   
-                    <!-- column end -->
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="about-content">
-							<h3>Binding Agreement</h3>
-                             <p style="text-align:left">The terms and provisions of this Agreement are binding upon Your heirs, successors, assigns, and other representatives. This Agreement may be executed in counterparts, each of which shall be considered to be an original, but both of which constitute the same Agreement..</p>
-                                                    
-                        </div>
-                    </div>
-                    <!-- column end -->
-                </div>
-            </div>
-        </div>
-
-         <div class="about-area ">
-            <div class="container">
-                <div class="row">
-                   
-                    <!-- column end -->
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="about-content">
-							<h3>Expired orders</h3>
-                             <p style="text-align:left">If the company receives payment for an order that has already expired, the company reserves the right to recalculate the Bitcoin to Thai Baht exchange rate at the time of processing the transfer to the customer. This may result in the customer receiving less bitcoins or Thai Baht than the original ordered amount</p>
-                              
-                        </div>
-                    </div>
-                    <!-- column end -->
-                </div>
-            </div>
-        </div>
-         <div class="about-area ">
-            <div class="container">
-                <div class="row">
-                   
-                    <!-- column end -->
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="about-content">
-							<h3>Choice of Law</h3>
-                         <p style="text-align:left">This Agreement, and its application and interpretation, shall be governed exclusively by the laws of the State of Georgia, without regard to its conflict of law rules. You consent to the exclusive jurisdiction of the federal and state courts located in or near Atlanta, Georgia for any dispute arising under this Agreement.</p>
-                              
-                        </div>
-                    </div>
-                    <!-- column end -->
-                </div>
-            </div>
-        </div>
-        <!-- about-area end -->
-        <!-- Start About Area -->
-       
-      
-        <!-- facts Section Ends -->
-  @include('partials.landing-footer')
 @endsection

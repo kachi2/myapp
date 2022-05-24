@@ -5,7 +5,7 @@
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		  <title>
         @section('title')
-            {{ config('app.name') }}
+            {{ $page_title? $page_title:  config('app.name')  }}
         @show 
     </title>
 		 <meta charset="UTF-8">
@@ -14,7 +14,7 @@
     <meta name="keywords" content="crypto, Trading, Cryptocurrency, Cryptocurrency Trading, Investments, Trading comapany, Brokers, Bitcoin, Bitcoin trading">
     <meta name="description" content="{{config('app.name')}} is a highly trusted crypto Trading comapany, helping millions of individuals and firms across the globe to safely Trade and earn more with crypto currency.">
 <meta name="google-site-verification" content="_cvnv3B2JCbGPq6_kmNxoIa_CisW_8P8S96-Bh2nN4Q" />
-	<link rel="icon" href="{{asset('/frontend_assets/images/fevicon/fav.png')}}" type="image/gif" />
+<link rel="icon" href="{{asset('/mobile/images/favicon.png')}}" type="image/png" sizes="16x16">
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="{{asset('/frontend_assets/css/bootstrap.min.css')}}" />
       <link rel="stylesheet" href="{{asset('/frontend_assets/assets/css/bootstrap.min.css')}}">
@@ -71,9 +71,10 @@
  }
  </script>
  <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
+
 	</head>
 		<body>
-        @include('partials.landing-header') 
+      @include('partials.landing-header') 
         @yield('content')
         @include('partials.landing-footer')
         @stack('scripts')

@@ -16,32 +16,30 @@
                  </div>
                  <div class="col-lg-3 col-md-3 col-sm-6">
                      <div class="single-footer-widget">
-                         <h3>Support</h3>
+                         <h3>Useful Links</h3>
                          <ul class="links-list">
                            <li><a href="{{route('index')}}"><i class="fa fa-angle-right"></i> Home</a></li>
                            <li><a href="{{route('about')}}"><i class="fa fa-angle-right"></i> About Us</a></li>
-                           <li><a href="{{route('faq')}}"><i class="fa fa-angle-right"></i> FAQ</a></li>
                            <li><a href="{{route('contact')}}"><i class="fa fa-angle-right"></i> Contact Us</a></li>
-                           <li><a href="{{route('terms')}}"><i class="fa fa-angle-right"></i> Terms & Conditions</a></li>
+                           <li><a href="{{route('terms')}}"><i class="fa fa-angle-right"></i>Become an Agent</a></li>
                          </ul>
                      </div>
                  </div>
-                 <div class="col-lg-2 col-md-3 col-sm-6">
+                 <div class="col-lg-3 col-md-3 col-sm-6">
                      <div class="single-footer-widget">
-                         <h3>Useful Links</h3>
+                         <h3>Support</h3>
                          <ul class="links-list">
                              <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                             <li><a href="privacy-policy.html">Return Policy</a></li>
                              <li><a href="terms-conditions.html">Terms & Conditions</a></li>
                              <li><a href="how-it-works.html">How It Works?</a></li>
-                             <li><a href="contact.html">Contact Us</a></li>
+                             <li><a href="contact.html">Submit a Request </a></li>
                          </ul>
                      </div>
                  </div>
                  <div class="col-lg-3 col-md-6 col-sm-6">
                      <div class="single-footer-widget">
                          <h3>Newsletter</h3>
-                         <p>Best solution for your it startup business, consecteturadipiscing elit.</p>
+                         <p>Signup to our Newsletter.</p>
                          <form class="newsletter-form" data-toggle="validator">
                              <input type="text" class="input-newsletter" placeholder="Your Email" name="EMAIL" required autocomplete="off">
                              <button type="submit"><i class="ri-send-plane-2-line"></i></button>

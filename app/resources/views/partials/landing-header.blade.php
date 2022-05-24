@@ -16,15 +16,15 @@
                         <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('/mobile/images/logo-hover.png')}}" width="100px" alt="logo"></a>
                         <div class="collapse navbar-collapse mean-menu">
                             <ul class="navbar-nav">
-                                <li class="nav-item"><a href="#" class="nav-link active">Home</a>
+                                <li class="nav-item"><a href="{{route('index')}}" class="nav-link active">Home</a>
                                   
                                 </li>
                               
-                                <li class="nav-item"><a href="contact.html" class="nav-link">About Us</a></li>
-                                <li class="nav-item"><a href="{{route('terms')}}" class="nav-link">FAQ</a></li>
-                                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                                <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About Us</a></li>
+                                <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact Us</a></li>
+                                <li class="nav-item"><a href="{{route('terms')}}" class="nav-link">Terms</a></li>
+                                <li class="nav-item"><a href="contact.html" class="nav-link">Privacy</a></li>
+                                <li class="nav-item"><a href="contact.html" class="nav-link">How it works</a></li>
 
                             </ul>
                             <div class="others-option">
