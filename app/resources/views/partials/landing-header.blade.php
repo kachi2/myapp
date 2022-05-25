@@ -27,7 +27,7 @@
 
                             </ul>
                             <div class="others-option">
-                             <span> <a href="{{route('login')}}"> Login </a></span>   <span><a href="{{route('login')}}">  Register</a> </span>  &nbsp;  <a href="{{route('user.agent')}}" class="default-btn">Become an Agent</a>
+                             <span> <a href="{{route('login')}}"> Login </a></span>   <span><a href="{{route('login')}}">  Register</a> </span>  &nbsp;  <a href="{{route('users.agent')}}" class="default-btn">Become an Agent</a>
                             </div>
                         </div>
                     </nav>
