@@ -19,7 +19,7 @@
 
                        <a href="#" class="playstore-btn" target="_blank">
                            <img src="{{asset('/frontend_assets/assets/img/play-store.png')}}" alt="image">
-                           Get it on
+                           Available Soon
                            <span>Google Play</span>
                        </a>
                    </div>
