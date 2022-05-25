@@ -6,7 +6,7 @@
     <div class="container">
         <div class="section-title">
             <h2>Get in Touch</h2>
-            <p>The IT industry offers a sea of options, from platforms, programming languages methodologies, technologies, tools, and more.</p>
+            <p>Please fill the form below and submit</p>
         </div>
         <div class="contact-form">
             <form id="contactForm">
