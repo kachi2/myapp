@@ -82,5 +82,6 @@ Route::get('user/packages', 'HomeController@packages')->name('user.packages');
 Route::get('/user/clear/notifications', 'WalletController@clearNotifications')->name('create.notifications');
 Route::get('/user/messages', 'MessageController@index')->name('users.messages.index');
 Route::post('/user/send/message', 'MessageController@SendMessage')->name('users.send.message');
+Route::get('/user/agent', 'MessageController@Agent')->name('users.agent');
 
 

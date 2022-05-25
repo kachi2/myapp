@@ -31,4 +31,8 @@ class MessageController extends Controller
 
 
     }
+
+    public function Agent(){
+        return view('agent');
+    }
 }

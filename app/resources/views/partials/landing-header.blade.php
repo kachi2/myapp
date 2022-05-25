@@ -24,9 +24,10 @@
                                 <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact Us</a></li>
                                 <li class="nav-item"><a href="{{route('terms')}}" class="nav-link">Privacy</a></li>
 
+
                             </ul>
                             <div class="others-option">
-                             <span> <a href="{{route('login')}}"> Login </a></span>   <span><a href="{{route('login')}}">  Register</a> </span>  &nbsp;  <a href="contact.html" class="default-btn">Become an Agent</a>
+                             <span> <a href="{{route('login')}}"> Login </a></span>   <span><a href="{{route('login')}}">  Register</a> </span>  &nbsp;  <a href="{{route('user.agent')}}" class="default-btn">Become an Agent</a>
                             </div>
                         </div>
                     </nav>
