@@ -47,8 +47,8 @@ class WithdrawalProcessed extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Pay-Out Proccessed #'.$this->withdrawal->ref)
-                    ->from('billing@zenithcapital.cc', 'Zenithcapital')
+                    ->subject('Pay-Out Proccessed '.$this->withdrawal->ref)
+                    ->from('billing@theadventcapital.com', 'Adventcapital')
                     ->view('emails.withdrawal-processed', ['withdrawal' => $this->withdrawal]);
     }
 

@@ -25,7 +25,7 @@
                 <div class="monthly-bill-body">
                     <h3><a href="{{ route('deposits.invest', ['id' => encrypt($plan->id)]) }}">{{ $plan->name }}</a></h3>
                     <p>invest  and earn {{ $plan->profit_rate }}% interest
-                        <br> Period:  Daily for 7 Days.</p>
+                        <br> Period:  Daily for {{ $package->duration }} Days.</p>
                     <p>(Min Deposit: {{ moneyFormat($plan->min_deposit, 'USD') }} <br> 
                         Max Deposit: {{ moneyFormat($plan->max_deposit, 'USD') }}).</p>
                 </div>

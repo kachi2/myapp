@@ -45,8 +45,8 @@ class InvestmentAdded extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Deposit Successful #'.$this->trade->ref)
-                    ->from('support@zenithcapital.cc', 'Zenithcapital')
+                    ->subject('Deposit Successful '.$this->trade->ref)
+                    ->from('support@theadventcapital.com', 'Adventcapital')
                     ->view('emails.deposit-created', ['deposit' => $this->trade]);
     }
 

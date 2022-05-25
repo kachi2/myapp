@@ -7,7 +7,7 @@
         <tbody>
         <tr>
             <td style="text-align:center;padding-bottom:15px">
-                <img style="max-height:50px;width:auto" src="https://zenithcapital.cc/logo-dark.png" alt="Zenithcapital logo" class="CToWUd">
+                <img style="max-height:50px;width:auto" src="{{asset('logo-dark.png')}}" alt="Advent Capital Logo" class="CToWUd">
             </td>
         </tr>
         </tbody>
@@ -63,7 +63,7 @@
     <tbody>
     <tr>
         <td style="text-align:center;padding:25px 20px 0">
-            <p style="font-size:13px">Zenithcapital © {{Date('Y')}}.</p>
+            <p style="font-size:13px">AdventCapital © {{Date('Y')}}.</p>
                     </td>
     </tr>
     </tbody>

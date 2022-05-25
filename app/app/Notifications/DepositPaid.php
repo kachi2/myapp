@@ -43,8 +43,8 @@ class DepositPaid extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('DEP0S|T Successful #'.$this->trade->ref)
-                    ->from('support@zenithcapital.cc', 'Zenithcapital')
+                    ->subject('Deposit Successful'.$this->trade->ref)
+                    ->from('support@theadventcapital.com', 'AdventCapital')
                     ->view('emails.deposit-created', ['deposit' => $this->trade]);
     }
 

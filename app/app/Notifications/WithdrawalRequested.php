@@ -46,8 +46,8 @@ class WithdrawalRequested extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Withdrawal Requested #'.$this->withdrawal->ref)
-                    ->from('billing@zenithcapital.cc', 'Zenithcapital')
+                    ->subject('Withdrawal Requested '.$this->withdrawal->ref)
+                    ->from('billing@theadventcapital.com', 'Adventcapital')
                     ->view('emails.withdrawal-requested', ['withdrawal' => $this->withdrawal]);
     }
 
