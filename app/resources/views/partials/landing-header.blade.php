@@ -16,7 +16,7 @@
                         <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('/mobile/images/logo-hover.png')}}" width="100px" alt="logo"></a>
                         <div class="collapse navbar-collapse mean-menu">
                             <ul class="navbar-nav">
-                                <li class="nav-item"><a href="{{route('index')}}" class="nav-link ">Home</a>
+                                <li class="nav-item"><a href="{{route('index')}}" class="nav-link active">Home</a>
                                   
                                 </li>
                               
@@ -27,7 +27,7 @@
 
                             </ul>
                             <div class="others-option">
-                             <span> <a href="{{route('login')}}"> Login </a></span>   <span><a href="{{route('login')}}">  Register</a> </span>  &nbsp;  <a href="{{route('users.agent')}}" class="btn btn-primary">Become an Agent</a>
+                             <span> <a href="{{route('login')}}"> Login </a></span>   <span><a href="{{route('login')}}">  Register</a> </span>  &nbsp;  <a href="{{route('users.agent')}}" class="default-btn">Become an Agent</a>
                             </div>
                         </div>
                     </nav>
