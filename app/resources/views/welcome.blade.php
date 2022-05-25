@@ -154,7 +154,7 @@
                     </li>
                    </ul>
                    <div class="btn-box">
-                       <a href="app-download.html" class="default-btn">Get Started</a>
+                       <a href="{{route('register')}}" class="default-btn">Get Started</a>
                    </div>
                </div>
            </div>
