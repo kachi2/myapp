@@ -22,9 +22,7 @@
                               
                                 <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About Us</a></li>
                                 <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact Us</a></li>
-                                <li class="nav-item"><a href="{{route('terms')}}" class="nav-link">Terms</a></li>
-                                <li class="nav-item"><a href="contact.html" class="nav-link">Privacy</a></li>
-                                <li class="nav-item"><a href="contact.html" class="nav-link">How it works</a></li>
+                                <li class="nav-item"><a href="{{route('terms')}}" class="nav-link">Privacy</a></li>
 
                             </ul>
                             <div class="others-option">

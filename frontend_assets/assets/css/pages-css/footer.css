@@ -1,5 +1,6 @@
 .footer-area {
-  background-color: var(--blackColor);
+  /* background-color: var(--blackColor); */
+  background-color: #F4F8FC;
   padding-top: 100px;
   padding-bottom: 90px;
 }
@@ -119,7 +120,7 @@
 }
 
 .footer-content .navbar-nav {
-  border-top: 1px solid #323747;
+  /* border-top: 1px solid #323747; */
   -webkit-box-orient: unset;
   -webkit-box-direction: unset;
       -ms-flex-direction: unset;
@@ -140,7 +141,7 @@
 
 .footer-content .navbar-nav .nav-item .nav-link {
   display: inline-block;
-  color: var(--whiteColor);
+  color: #000;
   margin: 0;
 }
 
@@ -157,7 +158,7 @@
 }
 
 .footer-content .copyright {
-  color: #b0b2b9;
+  color: #000;
 }
 
 .footer-content .copyright strong {

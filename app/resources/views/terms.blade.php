@@ -5,39 +5,40 @@
 <div class="terms-conditions-area ptb-100">
     <div class="container">
         <div class="terms-conditions-content">
-            <h6>Advent Terms of Use <br> <small style="font-size:12px">Last revised: 4 May 2022</small></h6>
+            <h6>Advent Privacy Notice</h6>
                
-            <p>We may collect personal identification information from Users in a variety of ways, including, but not limited to, when Users visit our site, subscribe to the newsletter, fill out a form, 
-                and in connection with other activities, services, features or resources we make available on our Site. Users may be asked for, as appropriate, name, email address, 
-                mailing address, phone number. We will collect personal identification information from Users only if they voluntarily consent such information to us. 
-                Users can always refuse to supply personally identification information, except that it may prevent them from engaging in certain Site related activities.</p>
-            <h5>General permission to use and access and use limitations</h5>
-            <p>This site is provided by <strong>Pakap</strong>. <strong>Pakap</strong> collects information in several ways from different parts of this site.</p>
-            <p><strong>1.</strong> Complimentary ground shipping within 1 to 7 business days<br>
-                <strong>2.</strong> In-store collection available within 1 to 7 business days<br>
-                <strong>3.</strong> Next-day and Express delivery options also available<br>
-                <strong>4.</strong> Purchases are delivered in an orange box tied with a Bolduc ribbon, with the exception of certain items<br>
-                <strong>5.</strong> See the delivery FAQs for details on shipping methods, costs and delivery times
+            <p>This Privacy Notice describes how Advent Capital collects and processes your personal information through the Advent Capital websites and applications that reference this Privacy Notice. Advent Capital refers to an ecosystem comprising Advent Capital websites (whose domain names include but are not limited to www.theadventcapital.com/).
+                This Privacy Policy applies to all platforms, websites, and departments of Advent Capital and Advent Capital Operators. By using Advent Capital Services, you are consenting to the collection, storage, processing and transfer of your personal information as described in this Privacy Policy.
+               </p>
+            <p style="font-weight:bold">What Personal Information does Advent Capital collect and process? Why does Advent Capital process my personal information ?</p>
+            <p>Your information we collect includes the following</p>
+            <p>mail address <br> name <br> gender<br>  home address <br> phone number<br> nationality <br> device ID <br> transactional information
             </p>
-            <h4>Confidential information</h4>
-            <p><strong>Pakap</strong> accepts the following payment methods:</p>
-                <li>Credit Card: <strong>Visa</strong>, <strong>MasterCard</strong>, <strong>Discover</strong>, <strong>American Express</strong>, <strong>JCB</strong>, <strong>Visa Electron</strong>. The total will be charged to your card when the order is shipped.</li>
-                <li><strong>Pakap</strong> features a Fast Checkout option, allowing you to securely save your credit card details so that you don't have to re-enter them for future purchases.</li>
-                <li>PayPal: Shop easily online without having to enter your credit card details on the website.Your account will be charged once the order is completed. To register for a PayPal account, visit the website <a href="#" target="_blank">paypal.com.</a></li>
-            </ul>
-            <h3>Linking to this Site</h3>
-            <p>Items returned within 14 days of their original shipment date in same as new condition will be eligible for a full refund or store credit. Refunds will be charged back form of payment used for purchase. Customer is responsible for shipping charges when making returns and shipping/handling fees of original purchase is non-refundable.</p>
-            <h2>Intellectual property</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget euismod erat, sit amet vulputate enim. Etiam enim tellus, maximus vel augue sed, pharetra hendrerit orci. Vivamus sed massa in nibh imperdiet mattis quis sed augue. Pellentesque erat metus, vestibulum nec nisl.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget euismod erat, sit amet vulputate enim. Etiam enim tellus.</p>
-            <h1>Security and storage</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget euismod erat, sit amet vulputate enim. Etiam enim tellus.</p>
-            <ol>
-                <li>Credit Card: <strong>Visa</strong>, <strong>MasterCard</strong>, <strong>Discover</strong>, <strong>American Express</strong>, <strong>JCB</strong>, <strong>Visa Electron</strong>. The total will be charged to your card when the order is shipped.</li>
-                <li><strong>Pakap</strong> features a Fast Checkout option, allowing you to securely save your credit card details so that you don't have to re-enter them for future purchases.</li>
-                <li>PayPal: Shop easily online without having to enter your credit card details on the website.Your account will be charged once the order is completed. To register for a PayPal account, visit the website <a href="#" target="_blank">paypal.com.</a></li>
-            </ol>
-            <p>Last updated: January 25, 2021 at 24:00 pm</p>
+
+            <p style="font-weight:bold">Can Children Use Advent Capital Services?</p>
+            <p>Advent Capital does not allow anyone under the age of 18 to use Advent Capital Services.</p>
+               
+            <p style="font-weight:bold">What About Cookies and Other Identifiers?</p>
+            <p>We use cookies and similar tools to enhance your user experience, provide our services, and understand how customers use our services so we can make improvements. Depending on applicable laws in the region you are located in, the cookie banner on your browser will tell you how to accept or refuse cookies.</p>
+          
+            <p style="font-weight:bold"> Does Advent Capital Share My Personal Information?</p>
+            <p>Information about our users is an important part of our business and we are not in the business of selling our users' personal information to others.   Advent Capital shares users' personal information only as described below and with the subsidiaries or affiliates of Advent Capital that are either subject to this Privacy Notice or follow practices at least as protective as those described in this Privacy Notice..</p>
+          
+          
+            <p style="font-weight:bold">How Secure is My Information?.</p>
+            <p>We design our systems with your security and privacy in mind.  We work to protect the security of your personal information during transmission by using encryption protocols and software.
+                We maintain physical, electronic and procedural safeguards in connection with the collection, storage and disclosure of your personal information. Our security procedures mean that we may ask you to verify your identity to protect you against unauthorised access to your account password. We recommend using a unique password for your Advent Capital account that is not utilized for other online accounts and to sign off when you finish using a shared computer.</p>
+           
+                <p style="font-weight:bold">  What Rights Do I Have?</p>
+                <ol>
+                <li><strong> Right to access: </strong>you have the right to obtain confirmation that your Data are processed and to obtain a copy of it as well as certain information related to its processing</li>
+                    <li><strong> Right to rectify:</strong> you can request the rectification of your Data which are inaccurate, and also add to it. You can also change your personal information in your Account at any time</li>
+                        <li><strong> Right to delete:</strong> you can, in some cases, have your Data deleted</li>
+                            <li><strong> Right to object: </strong>you can object, for reasons relating to your particular situation, to the processing of your Data. For instance, you have the right to object to commercial prospection</li>
+                            <li><strong>Right to withdraw your consent:</strong> for processing requiring your consent, you have the right to withdraw your consent at any time. Exercising this right does not affect the lawfulness of the processing based on the consent given before the withdrawal of the latter;</li>
+            
+                        </ol>
+            <p>Last updated: January 25, 2022 at 12:00 pm</p>
         </div>
     </div>
 </div>
