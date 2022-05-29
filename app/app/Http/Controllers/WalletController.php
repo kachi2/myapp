@@ -171,7 +171,7 @@ class WalletController extends Controller
         $bonus = auth()->user()->wallet->bonus;
 
         $validate =  validator::make($request->all(), [
-            'amounts' => 'required|integer|min:'.$bonus,
+            'amounts' => 'required|integer|min:0',
         ]);
 
         if($validate->fails()){
