@@ -17,7 +17,9 @@ use App\WalletTranfer;
 use Illuminate\Http\Request;
 use App\Models\Deposit;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use App\TaskCampaign;
 
 class WalletController extends Controller
 {
@@ -71,7 +73,6 @@ class WalletController extends Controller
                 'title' => 'Internal Transfer'
             ]
         ];
-
         $balance = $request->user()->wallet->transferable_amount;
         $tranfers = WalletTranfer::where('sender_id', $request->user()->id)->orwhere( 'receiver_id',$request->user()->id)->latest()->paginate(5);
         $sent = WalletTranfer::where('sender_id', $request->user()->id)->sum('amount');
@@ -98,20 +99,42 @@ class WalletController extends Controller
         $wallet = $request->user()->wallet->transferable_amount;
         $ss = Deposit::where('user_id', $request->user()->id)->sum('amount');
         if($ss < 200){
-            Session::flash('msg', 'danger');
-            Session::flash('message', 'Request failed, your deposit history is too low for this service');
-            return redirect()->back();
+            // Session::flash('msg', 'danger');
+            // Session::flash('message', 'Request failed, your deposit history is too low for this service');
+            // return redirect()->back();
+            $msg = 'Request failed, your deposit history is too low for this service';
+            $data = [
+               'msg' => $msg,
+               'alert' => 'error'
+           ];
+           return response()->json($data);
            }
-        $this->validate($request, [
+       $validate =  validator::make($request->all(), [
             'amount' => 'required|integer|max:' . $wallet,
             'username' => 'required|exists:users',
         ]);
 
+        if($validate->fails()){
+            $msg = $validate->errors()->first();
+            $data = [
+               'msg' => $msg,
+               'alert' => 'error'
+           ];
+           return response()->json($data);
+        }
+
         $toUser = User::where('username', $request->input('username'))->firstOrfail();
         if($toUser->id == auth()->user()->id){
-            Session::flash('msg', 'danger');
-            Session::flash('message', 'You cannot tranfer funds to same account');
-            return redirect()->back();
+            // Session::flash('msg', 'danger');
+            // Session::flash('message', 'You cannot tranfer funds to same account');
+            // return redirect()->back();
+            $msg = 'Request failed, You cannot tranfer funds to same account';
+            $data = [
+               'msg' => $msg,
+               'alert' => 'error'
+           ];
+           return response()->json($data);
+            
         }
         UserWallet::reduceAmount($request->user(), $request->input('amount'));
         UserWallet::addAmount($toUser, $request->input('amount'));
@@ -122,27 +145,43 @@ class WalletController extends Controller
             'amount' => $request->input('amount'),
             'sender_balance' => $wallets
         ]);
-        Session::flash('msg', 'success');
-        Session::flash('message', 'Transfer Completed Successfully');
+        // Session::flash('msg', 'success');
+        // Session::flash('message', 'Transfer Completed Successfully');
 
-        return redirect()->back()->with('success', 'Fund transferred successfully');
+        // return redirect()->back()->with('success', 'Fund transferred successfully');
+        $msg = 'Transfer Completed Successfully';
+        $data = [
+           'msg' => $msg,
+           'alert' => 'success'
+       ];
+       return response()->json($data);
     }
+
+
+    public function Bonus(){
+        $task = TaskCampaign::where('user_id', auth_user()->id)->get();
+        return view(
+            'mobile.bonus',[
+                'tasks' => $task
+        ]);
+     }
+
 
     public function TransferEarnings(Request $request){
         $bonus = auth()->user()->wallet->bonus;
 
-       
-       $this->validate($request, [
-            'amounts' => 'required|integer|min:0',
-            'bonus' => 'required|integer'
+        $validate =  validator::make($request->all(), [
+            'amounts' => 'required|integer',
         ]);
 
-        $ss = Deposit::where('user_id', $request->user()->id)->sum('amount');
-        if($ss < 50){
-            Session::flash('msg', 'danger');
-            Session::flash('message', 'Request failed, your deposit history is too low for this service');
-            return redirect()->back();
-           }
+        if($validate->fails()){
+            $msg = $validate->errors()->first();
+            $data = [
+               'msg' => $msg,
+               'alert' => 'error'
+           ];
+           return response()->json($data);
+        }
             if($request->bonus == 1){
                  $bonus = auth()->user()->wallet->bonus;
                 if($bonus >= $request->amounts){
@@ -150,31 +189,47 @@ class WalletController extends Controller
                     'bonus'=> $bonus - $request->input('amounts'),
                     'amount' => auth()->user()->wallet->amount + $request->input('amounts'),
                 ]);
-                Session::flash('alert', 'success');
-                Session::flash('message', 'Transfer Completed Successfully');
-                return redirect()->back()->with('success', 'Transfer Completed');
+                // Session::flash('alert', 'success');
+                // Session::flash('message', 'Transfer Completed Successfully');
+                // return redirect()->back()->with('success', 'Transfer Completed');
+
+                $msg = 'Transfer Completed Successfully';
+                $data = [
+                   'msg' => $msg,
+                   'alert' => 'success'
+               ];
+               return response()->json($data);
                 }else{
-                    Session::flash('alert', 'error');
-                    Session::flash('message', 'Transfer failed, Your Bonus Wallet is less than'.' $'.$request->amounts);
-                    return redirect()->back()->with('error', 'Your Bonus Wallet is less than'.' $'.$request->amounts);
-                }
+                    $msg = 'Transfer failed, Your Bonus Wallet is less than'.' $'.$request->amounts;
+                    $data = [
+                       'msg' => $msg,
+                       'alert' => 'error'
+                   ];
+                    return response()->json($data);
+                   }
                }else {
-               $bonus = auth()->user()->wallet->referrals;
-               if($bonus >= $request->amounts){
-               $userBonus = UserWallet::where('user_id', auth()->user()->id)->update([
-                'referrals'=> $bonus - $request->input('amounts'),
+               $bonuss = auth()->user()->wallet->referrals;
+               if($bonuss >= $request->amounts){
+                 UserWallet::where('user_id', auth()->user()->id)->update([
+                'referrals'=> $bonuss - $request->input('amounts'),
                 'amount' => auth()->user()->wallet->amount + $request->input('amounts'),
             ]);
-            Session::flash('alert', 'success');
-            Session::flash('message', 'Transfer Completed Successfully');
-            return redirect()->back()->with('success', 'Transfer Completed');
+            $msg = 'Transfer Completed Successfully';
+            $data = [
+               'msg' => $msg,
+               'alert' => 'success'
+           ];
+            return response()->json($data);
         }else{
-            Session::flash('alert', 'error');
-            Session::flash('message', 'Transfer failed, Your Bonus Wallet is less than'.' $'.$request->amounts);
-            return redirect()->back()->with('error', 'Your Referral Wallet is less than'.' $'.$request->amounts);
+            $msg = 'Transfer failed, Your Bonus Wallet is less than'.' $'.$request->amounts;
+            $data = [
+               'msg' => $msg,
+               'alert' => 'success'
+           ];
+            return response()->json($data);
         }
                }
-        $user_balance = $bonus = $request->user()->wallet->bonus;
+      //  $user_balance = $bonus = $request->user()->wallet->bonus;
     }
 
     public function clearNotifications(){

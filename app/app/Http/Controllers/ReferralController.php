@@ -55,13 +55,7 @@ class ReferralController extends Controller
      * @return Response
      */
 
-     public function Bonus(){
-        $task = TaskCampaign::where('user_id', auth_user()->id)->get();
-        return view(
-            'mobile.bonus',[
-                'tasks' => $task
-        ]);
-     }
+    
      public function BonusInvest(Request $request, $id = null)
      {
          $task = TaskCampaign::where('id', $request->task_id)->first();

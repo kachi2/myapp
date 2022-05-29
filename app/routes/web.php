@@ -46,7 +46,6 @@ Route::get('deposits/payment/confirmation/{id}','DepositController@saveHashNo')-
 
 Route::get('payouts', 'PayoutController@index')->name('payouts');
 Route::get('referral', 'ReferralController@index')->name('referral');
-Route::get('earnbonus', 'ReferralController@Bonus')->name('earn.bonus');
 Route::get('bonus/initate/{id}', 'ReferralController@BonusInvest')->name('bonus.initate');
 Route::get('referrals/refer', 'ReferralController@refer')->name('referrals.refer');
 Route::post('referrals/refer', 'ReferralController@send')->name('referrals.refer');
@@ -63,6 +62,7 @@ Route::post('testimonies/{id}/delete', 'TestimonyController@destroyTestimony')->
 Route::get('internal-transfer', 'WalletController@transfer')->name('transfer');
 Route::post('internal-transfer', 'WalletController@doTransfer')->name('transfer');
 Route::post('bonus-transfer', 'WalletController@TransferEarnings')->name('transfer.earnings');
+Route::get('earnbonus', 'WalletController@Bonus')->name('earn.bonus'); 
 
 Route::get('account', 'AccountController@index')->name('account');
 Route::get('account/activities', 'AccountController@activity')->name('account.activities');

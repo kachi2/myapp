@@ -213,6 +213,7 @@
 @endpush
 
 @push('scripts')
+
 <script>
    var img_url = {!! json_encode(asset('/mobile/images/')) !!};
 
@@ -222,13 +223,15 @@ $('#DepositForm').submit(function(e){
             var xhr = submit_form('#DepositForm');
             xhr.done(function(result){
                 if(result){
-                    console.log(result);
+                  //  console.log(result);
                     if(result.alert){
                         swal({
                         type:result.alert,
                         text: result.msg
-                        }),
-                   console.log(result);
+                        }).then(function(){ 
+                        location.reload();
+                        });
+                    // console.log(result);
                     }else{
                    $('#addresses').attr('value',result.wallet.address);
                   $('#barcode').attr('src',img_url+'/'+result.wallet.barcode);
