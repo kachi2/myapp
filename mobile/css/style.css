@@ -3143,7 +3143,7 @@ footer.footer-bg p a {
   color: #fff;
 }
 
-.notification-card a:after {
+/* .notification-card a:after {
   content: "\f11f";
   font-family: Flaticon;
   position: absolute;
@@ -3155,7 +3155,7 @@ footer.footer-bg p a {
   color: #111111;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
-}
+} */
 
 .notification-card-thumb {
   -webkit-box-flex: 0;

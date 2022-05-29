@@ -224,7 +224,7 @@ class WalletController extends Controller
             $msg = 'Transfer failed, Your Bonus Wallet is less than'.' $'.$request->amounts;
             $data = [
                'msg' => $msg,
-               'alert' => 'success'
+               'alert' => 'error'
            ];
             return response()->json($data);
         }

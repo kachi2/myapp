@@ -9,12 +9,12 @@
             @forelse($notifications as $notify)
             <div class="notification-item">
                 <div class="notification-card">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#notificationModal">
+                    <a href="#">
                         <div class="notification-card-thumb">
                             <i class="flaticon-bell"></i>
                         </div>
                         <div class="notification-card-details">
-                            <h3>{{$notify->message}}</h3>         
+                            <p>{{$notify->message}}</p>         
                             <p>{{$notify->created_at->DiffForHumans()}}</p>
                         </div>
                     </a>
@@ -23,7 +23,7 @@
            @empty
            <div class="notification-item">
             <div class="notification-card">
-                <a href="#" data-bs-toggle="modal" data-bs-target="#notificationModal">
+                <a href="#" >
                     <div class="notification-card-thumb">
                         <i class="flaticon-bell"></i>
                     </div>

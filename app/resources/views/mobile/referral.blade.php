@@ -72,7 +72,7 @@
         </div>
 
 
-        <form method="post" action="{{ route('transfer.earnings') }}">
+        <form method="post" action="{{ route('transfer.earnings') }}" id="transFrom">
             @csrf
         <div class="modal fade" id="transfer" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -117,3 +117,34 @@ function copyText() {
     }
 </script>
 @endpush
+
+
+@push('scripts')
+<script src="{{asset('/mobile/js/custom.js')}}"></script>
+@endpush
+@push('scripts')
+<script>
+    var img_url = {!! json_encode(asset('/mobile/images/')) !!};
+ 
+ 
+ $('#transFrom').submit(function(e){
+             e.preventDefault();
+             var xhr = submit_form('#transFrom');
+             xhr.done(function(result){
+                 if(result){
+                   console.log(result);
+                     if(result.alert){
+                         swal({
+                         type:result.alert,
+                         text: result.msg
+                         }).then(function(){ 
+                         location.reload();
+                         });
+                     // console.log(result);
+                     }
+                 }
+             });
+         });
+ </script>
+
+ @endpush
