@@ -1,7 +1,5 @@
 @extends('layouts.mobile')
 @section('content')
-
-
 <div class="body-content body-content-lg"> <!-- "body-content-lg" add this class if any cards inside this div has "section-to-header" class -->
     <div class="container">
         <!-- Add-card -->
@@ -225,6 +223,13 @@ $('#DepositForm').submit(function(e){
             xhr.done(function(result){
                 if(result){
                     console.log(result);
+                    if(result.alert){
+                        swal({
+                        type:result.alert,
+                        text: result.msg
+                        }),
+                   console.log(result);
+                    }else{
                    $('#addresses').attr('value',result.wallet.address);
                   $('#barcode').attr('src',img_url+'/'+result.wallet.barcode);
                     $('#transactionModal').modal("toggle");
@@ -232,6 +237,7 @@ $('#DepositForm').submit(function(e){
                     $('#addName').html(result.deposit.currency2);
                     $('#amount1').html(result.deposit.amount +' '+ result.deposit.currency1 );
                     $('#amount2').html(result.deposit.amount2 +' '+ result.deposit.currency2)
+                }
                 }else{
                     
                 }
@@ -265,6 +271,10 @@ document.getElementById("payOne").hidden = false;
 document.getElementById("payTwo").hidden = false;
 
 }
+
+
+
+
 </script>
 
 @endpush

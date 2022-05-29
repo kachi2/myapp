@@ -34,6 +34,7 @@ use Illuminate\Support\MessageBag;
 use Illuminate\View\View;
 use Kevupton\LaravelCoinpayments\Facades\Coinpayments;
 use Kevupton\LaravelCoinpayments\Models\Transaction;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DepositController extends Controller
 {
@@ -510,15 +511,27 @@ class DepositController extends Controller
 
         
     if($plan->min_deposit > $request->amount){
-         Session::flash('msg', 'error');
-              Session::flash('message', 'Amount must be greater than $'.$plan->min_deposit); 
-            return redirect()->back();
+        //  Session::flash('msg', 'error');
+        //  Session::flash('message', 'Amount must be greater than $'.$plan->min_deposit); 
+         $msg = 'Amount must be greater than $'.$plan->min_deposit;
+         $data = [
+            'msg' => $msg,
+            'alert' => 'error'
+        ];
+        return response()->json($data);
+            //return redirect()->back();
     }
     if($plan->max_deposit <  $request->amount){
         
-         Session::flash('msg', 'error');
-              Session::flash('message', 'Amount must be less than $'.$plan->max_deposit); 
-            return redirect()->back();
+        //  Session::flash('msg', 'error');
+        //       Session::flash('message', 'Amount must be less than $'.$plan->max_deposit); 
+        $msg = 'Amount must be less than $'.$plan->max_deposit;
+        $data = [
+           'msg' => $msg,
+           'alert' => 'error'
+       ];
+       return response()->json($data);
+            //return redirect()->back();
     }
         $amount = $request->input('amount');
         $paymentMethod = $request->input('payment_method');
@@ -542,9 +555,14 @@ class DepositController extends Controller
     {
         $userWallet = $request->user()->wallet;
         if ($userWallet->total_amount < $amount) {
-              Session::flash('msg', 'error');
-              Session::flash('message', 'You dont have enough fund to invest on this plan'); 
-            return redirect()->back();
+            //  Session::flash('msg', 'error');
+             // Session::flash('message', 'You dont have enough fund to invest on this plan'); 
+            $msg = 'You dont have enough fund to invest on this plan';
+             $data = [
+                'msg' => $msg,
+                'alert' => 'error'
+            ];
+            return response()->json($data);
         }
         UserWallet::reduceAmount($request->user(), $request->input('amount'));
         try {
@@ -552,16 +570,19 @@ class DepositController extends Controller
         } catch (Exception $e) {
             return redirect()->route('home')->withInput()->with('error', 'Unable to invest on plan');
         }
-
         try {
             $request->user()->notify(new InvestmentCreated($deposit));
         } catch (Exception $exception) {
-
         }
-        Session::flash('msg', 'success');
-        Session::flash('message', 'Investment Initiated successfully'); 
-       
-        return redirect()->back()->with('success', 'Investment added successfully');
+        // Session::flash('msg', 'success');
+        // Session::flash('message', 'Investment Initiated successfully'); 
+        $msg = 'Investment added successfully';
+        $data = [
+           'msg' => $msg,
+           'alert' => 'success'
+       ];
+       return response()->json($data);
+       // return redirect()->back()->with('success', 'Investment added successfully');
     }
 
     protected function investFromCripto(Request $request, Plan $plan, $amount, $currency, $ref)
@@ -607,19 +628,27 @@ class DepositController extends Controller
         $amount2 = $amount / $resp[$coins]['usd'];
       $deposit = $this->savePendingDeposit($ref, $plan, $request->user(), $amount, $fee, $cost, $amount2, $currency);    
         $wallet = WalletAddress::where('name', $currency)->first();
+        $msg = 'Investment added successfully';
             $data = [
                 'wallet' => $wallet,
-                'deposit' => $deposit
+                'deposit' => $deposit,
+                'msg' => $msg,
             ];
             return response()->json($data);
         } catch (Exception $exception) {
             // Log::error($exception);
             // $deposit->delete();
-            Session::flash('msg', 'error');
-            Session::flash('message', 'Unable to create deposit transaction'); 
-            return redirect()
-                ->back()
-                ->withInput();
+            // Session::flash('msg', 'error');
+            // Session::flash('message', 'Unable to create deposit transaction'); 
+            $msg = 'Unable to create deposit transaction';
+            $data = [
+               'msg' => $msg,
+               'alert' => 'error'
+           ];
+           return response()->json($data);
+            // return redirect()
+            //     ->back()
+            //     ->withInput();
         }
         
     }

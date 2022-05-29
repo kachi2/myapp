@@ -52,7 +52,7 @@
     </div>
     <div class="progress-card progress-card-red mb-15">
         <div class="progress-card-info">
-            <div class="circular-progress" data-note="{{count($data['basic'])+60.1}}">
+            <div class="circular-progress" data-note="{{count($data['basic'])+count($data['basic'])}}">
                 <svg width="55" height="55" class="circle-svg">
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-path"></circle>
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-fill"></circle>
@@ -62,15 +62,15 @@
                 </div>
             </div>
             <div class="progress-info-text">
-                <h3>Basic Plan</h3>
+                <h3>STARTER PLAN</h3>
                 <p></p>
             </div>
         </div>
-        <div class="progress-card-amount">{{number_format(count($data['basic']) * 1000)}} Active Investments</div>
+        <div class="progress-card-amount">{{number_format(count($data['basic']) * 100 + count($data['basic']))}} Active Investments</div>
     </div>
     <div class="progress-card progress-card-blue mb-15">
         <div class="progress-card-info">
-            <div class="circular-progress" data-note="{{count($data['basic'])+60.1}}">
+            <div class="circular-progress" data-note="{{count($data['basic'])+count($data['basic'])}}">
                 <svg width="55" height="55" class="circle-svg">
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-path"></circle>
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-fill"></circle>
@@ -80,14 +80,14 @@
                 </div>
             </div>
             <div class="progress-info-text">
-                <h3>Standard Plan</h3>
+                <h3>PREMIUM PLAN</h3>
             </div>
         </div>
-        <div class="progress-card-amount">{{number_format(count($data['standard']) * 1000)}} Active Investments</div>
+        <div class="progress-card-amount">{{number_format(count($data['standard']) * 100 + count($data['standard']) )}} Active Investments</div>
     </div>
     <div class="progress-card progress-card-yellow mb-15">
         <div class="progress-card-info">
-            <div class="circular-progress" data-note="{{count($data['basic'])+60.1}}">
+            <div class="circular-progress" data-note="{{count($data['basic'])+count($data['basic'])}}">
                 <svg width="55" height="55" class="circle-svg">
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-path"></circle>
                     <circle cx="28" cy="27" r="25" class="circle-progress circle-progress-fill"></circle>
@@ -97,10 +97,10 @@
                 </div>
             </div>
             <div class="progress-info-text">
-                <h3>Premium Plan</h3>
+                <h3>PROFESSIONAL PLAN</h3>
             </div>
         </div>
-        <div class="progress-card-amount">{{number_format(count($data['premium']) * 1000)}} Investment in 7 days</div>
+        <div class="progress-card-amount">{{number_format(count($data['premium']) * 100 + count($data['premium']))}} Active Investments</div>
     </div>
 
     <div class="progress-card progress-card-green mb-15">
@@ -115,10 +115,10 @@
                 </div>
             </div>
             <div class="progress-info-text">
-                <h3>Mega Plan</h3>
+                <h3>MEGA PLAN</h3>
             </div>
         </div>
-        <div class="progress-card-amount">{{number_format(count($data['mega']) + 1000)}} Investment in 7 days</div>
+        <div class="progress-card-amount">{{number_format(count($data['mega']) + 100 + count($data['mega']))}} Active Investments</div>
     </div>
 </div>
 </div>

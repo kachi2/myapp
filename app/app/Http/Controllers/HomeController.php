@@ -58,7 +58,6 @@ class HomeController extends Controller
         $activeDeposits = Deposit::whereUserId($user->id)->whereStatus(Deposit::STATUS_ACTIVE)->sum('amount');
         $lastDeposit = Deposit::whereUserId($user->id)->latest()->take(1)->sum('amount');
         $data['withdrawals'] = Withdrawal::where(['status' => '1', 'user_id'=>$user->id])->sum('amount');
-
         $payouts = PlanProfit::where('user_id', $user->id)->sum('balance');
         $data['investment'] = Deposit::where(['user_id' => $user->id])->take(5)->latest()->get();
         $bonus = UserWallet::whereUserId($user->id)->sum('bonus');

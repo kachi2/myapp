@@ -28,6 +28,9 @@
         <link rel="stylesheet" href="{{asset('/mobile/css/style.css')}}" type="text/css" media="all" />
         <!-- responsive css -->
         <link rel="stylesheet" href="{{asset('/mobile/css/responsive.css')}}" type="text/css" media="all" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+      
          <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -48,6 +51,8 @@
         </script>
        
     </head>
+    <body>
+{{-- @include('partials.preloader') --}}
 @include('partials.mobile-nav')
 
 @yield('content') 
@@ -67,11 +72,9 @@
         <!-- contact form js -->
         <script src="{{asset('/mobile/js/contact-form-script.js')}}"></script>
         <!-- main js -->
-        <script src="{{asset('/mobile/js/script.js')}}"></script>
-
-       
-        @stack('scripts')
-
+        <script src="{{asset('/mobile/js/script.js')}}"></script> 
+        
+@stack('scripts')
         <!--Start of Tawk.to Script-->
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">

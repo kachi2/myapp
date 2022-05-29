@@ -1,4 +1,5 @@
 @extends('layouts.mobile')
+
 @section('content')
 <div class="space-items"></div>
 
