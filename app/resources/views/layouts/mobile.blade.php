@@ -5,7 +5,7 @@
         <meta name="description" content="Oban">
         <meta name="keywords" content="HTML,CSS,JavaScript">
         <meta name="author" content="HiBootstrap">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
         <meta name="keywords" content="crypto, Trading, Cryptocurrency, Cryptocurrency Trading, Investments, Trading comapany, Brokers, Bitcoin, Bitcoin trading">
         <meta name="description" content="Advent Capital is a highly trusted crypto Trading comapany, helping millions of individuals and firms across the globe to safely Trade and earn more with crypto currency.">
