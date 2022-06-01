@@ -23,7 +23,7 @@
                                 <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About us</a></li>
                                 <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact us</a></li>
                                 <li class="nav-item"><a href="{{route('terms')}}" class="nav-link">Privacy</a></li>
-                                <li class="nav-item"><a href="https://cryptonewsupdate24.com/"  target="_blank" class="nav-link">Blogs</a></li>
+                                {{-- <li class="nav-item"><a href="https://cryptonewsupdate24.com/"  target="_blank" class="nav-link">Blogs</a></li> --}}
 
                             </ul>
                             <div class="others-option">
