@@ -1,6 +1,5 @@
 @extends('layouts.landing', ['page_title' => 'Contact Us'])
 @section('content')
-
 <div class="p-5"></div>
 <div class="contact-area ptb-100">
     <div class="container">
@@ -9,7 +8,13 @@
             <p>Please fill the form below and submit</p>
         </div>
         <div class="contact-form">
-            <form id="contactForm">
+            <form id="contactForm" method="post" action="{{route('contact.store')}}">
+                @csrf
+                @if(Session::has('msg')) 
+                
+                <span class="alert btn-success" role="alert">{{Session::get('msg')}} </span>
+
+                @endif
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">
@@ -43,7 +48,7 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <button type="submit" class="default-btn"><i class='bx bx-paper-plane'></i> Send Message</button>
-                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                       
                         <div class="clearfix"></div>
                     </div>
                 </div>

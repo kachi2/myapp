@@ -24,7 +24,7 @@ Route::get('/terms', 'TermsController@index')->name('terms');
 Route::get('/faq', 'FaqController@index')->name('faq');
 Route::get('/plans', 'WelcomeController@plans')->name('plans');
 Route::get('/contact', 'ContactController@index')->name('contact');
-Route::post('/contact', 'ContactController@store')->name('contact');
+Route::post('/contact/store', 'ContactController@store')->name('contact.store');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('withdrawals', 'WithdrawController@index')->name('withdrawals');

@@ -1,4 +1,4 @@
-@extends('layouts.landing', ['page_title' => 'Contact Us'])
+@extends('layouts.landing', ['page_title' => 'Agent Network'])
 @section('content')
 
 <div class="p-5"></div>
@@ -9,7 +9,7 @@
             <p>Please fill the form below and submit, our team will contact you as soon as possible.</p>
         </div>
         <div class="contact-form">
-            <form id="contactForm">
+            <form id="contactForm" method="post" action="{{route('contact.store')}}">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">

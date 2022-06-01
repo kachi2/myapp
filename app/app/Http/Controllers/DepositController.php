@@ -13,6 +13,7 @@ use App\Models\Package;
 use App\Models\Payout;
 use App\Models\PendingDeposit;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Plan;
 use App\Models\UserWallet;
 use App\Modules\BlockChain;
@@ -22,7 +23,6 @@ use App\PlanProfit;
 use App\User;
 use App\WalletAddress;
 use Exception;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Database\Eloquent\Model;
@@ -504,11 +504,14 @@ class DepositController extends Controller
     {
         $id = decrypt($id);
         $plan = Plan::findOrFail($id);
-        $this->validate($request, [
+        $validte = validator::make($request->all(), [
             'amount' => "required|numeric",
             'payment_method' => 'required'
         ]);
-
+        if($validte->fails()){
+            return response()->json($validte->errors->first());
+        }
+ 
         
     if($plan->min_deposit > $request->amount){
         //  Session::flash('msg', 'error');

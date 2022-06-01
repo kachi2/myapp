@@ -20,14 +20,14 @@
                                   
                                 </li>
                               
-                                <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About Us</a></li>
-                                <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact Us</a></li>
+                                <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About us</a></li>
+                                <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact us</a></li>
                                 <li class="nav-item"><a href="{{route('terms')}}" class="nav-link">Privacy</a></li>
-
+                                <li class="nav-item"><a href="https://cryptonewsupdate24.com/"  target="_blank" class="nav-link">Blogs</a></li>
 
                             </ul>
                             <div class="others-option">
-                             <span> <a href="{{route('login')}}"> Login </a></span>   <span><a href="{{route('login')}}">  Register</a> </span>  &nbsp;  <a href="{{route('users.agent')}}" class="default-btn">Become an Agent</a>
+                             <span> <a href="{{route('login')}}" style="font-size:14px; font-weight:bolder; color:blue"> LOGIN </a></span>   <span></span>  &nbsp;  <a href="{{route('register')}}" class="default-btn">Get Starterd</a>
                             </div>
                         </div>
                     </nav>
