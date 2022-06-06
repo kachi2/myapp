@@ -403,7 +403,6 @@ if (!function_exists('get_withdrawal_methods')) {
 }
 
 if (!function_exists('generate_token')) {
-
     function generate_token($length = 15)
     {
         $secureRandom = function ($min, $max)

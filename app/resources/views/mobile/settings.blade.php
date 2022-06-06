@@ -7,9 +7,17 @@
         <div class="page-header">
             <div style="width:100%">
             <div class="user-setting-thumb">
-                <div class="user-setting-thumb-up">
-                    <img src="{{asset('/mobile/images/profile.png')}}"alt="profile">
-                </div>
+                    <div class="user-setting-thumb-up">
+                        <img data-cfsrc="{{auth_user()->photo_url }}" alt="profile" src="{{auth_user()->photo_url }}">
+                    </div>
+                    <label for="upThumb">
+                        <i class="flaticon-camera"></i>
+                    </label>
+                    <form action="{{route('Store.photo')}}" method="post"  enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="image" id="upThumb" onchange="loadFile(event)" class="d-none">
+                </form>
+               
                 @if(auth()->user()->email_verified_at != null) 
             <span class="" style="font-size:12px; color:#32CD32; font-weight:bolder"> <i class="flaticon-check"> </i>  Verified</span>@else
                 <span class="" style="font-size:12px; color:#c81508; font-weight:bolder">  Unverified</span>
@@ -25,7 +33,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;
                         <button type="submit" class="icon btn-sm btn-primary">Resend Verification link</button></em>
                      </form>
                      @endif
@@ -172,4 +180,13 @@
 
 @endsection
 
+@push('script')
+
+<script>
+    var loadFile = function (event) {
+  var image = document.getElementById("output");
+  image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>
+@endpush
 

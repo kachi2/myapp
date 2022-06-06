@@ -76,6 +76,7 @@ Route::get('token', 'TokenController@index')->name('token');
 Route::post('token', 'TokenController@generate')->name('token');
 
 Route::get('user-photo/{id}/{file_name}', 'AccountController@showPhoto')->name('user.photo');
+Route::post('user-photo/store', 'AccountController@StorePhoto')->name('Store.photo');
 Route::get('perfect-money/callback', 'PerfectMoneyController@validateIpn')->name('perfect_money.callback');
 Route::get('blockchain/callback', 'BlockChainPaymentController@callback')->name('blockchain.callback');
 Route::get('user/packages', 'HomeController@packages')->name('user.packages');

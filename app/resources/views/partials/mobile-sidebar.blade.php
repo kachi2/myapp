@@ -4,7 +4,7 @@
                     <div class="modal-header sidebar-modal-header">
                         <div class="sidebar-profile-info">
                             <div class="sidebar-profile-thumb">
-                                <img src="{{asset('/mobile/images/profile.png')}}"alt="profile">
+                                <img src="{{auth_user()->photo_url }}" alt="profile">
                             </div>
                             <div class="sidebar-profile-text">
                                 <h3> <span style="font-weight:bolder"> {{strtoupper(auth()->user()->username)}}</span>     <span class="float-end" style="font-size:11px; color:#147814; font-weight:bolder; "> <i class="flaticon-check">Verified</i></span>

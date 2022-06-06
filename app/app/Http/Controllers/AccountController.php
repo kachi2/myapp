@@ -158,17 +158,25 @@ class AccountController extends Controller
      */
     public function showPhoto(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-
+        $user = User::findorfail($id);
         $img = Image::make(Storage::path($user->image_path));
-
         $height = $request->input('height');
         $width = $request->input('width');
-
         if ($height || $width) {
             $img->resize($width, $height);
         }
+        return $img->response();
+    }
 
+    public function StorePhoto(Request $request)
+    {
+        $user = User::where('user_id', auth_user()->id)->first();
+        $img = Image::make(Storage::path($user->image_path));
+        $height = $request->input('height');
+        $width = $request->input('width');
+        if ($height || $width) {
+            $img->resize($width, $height);
+        }
         return $img->response();
     }
 
