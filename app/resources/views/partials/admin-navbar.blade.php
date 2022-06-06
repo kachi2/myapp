@@ -3,8 +3,8 @@
         <div class="nk-apps-sidebar is-dark">
             <div class="nk-apps-brand">
                 <a href="html/index.html" class="logo-link">
-                    <img class="logo-light logo-img" src="{{asset('/logo2.png')}}" srcset="{{asset('/logo2.png')}} 2x" alt="logo">
-                    <img class="logo-dark logo-img" src="{{asset('/logo2.png')}}" srcset="{{asset('/logo2.png')}} 2x" alt="logo-dark">
+                    <img class="logo-light logo-img" src="{{asset('/logo-black.png')}}" srcset="{{asset('/logo-black.png')}} 2x" alt="logo">
+                    <img class="logo-dark logo-img" src="{{asset('/logo-black.png')}}" srcset="{{asset('/logo-black.png')}} 2x" alt="logo-dark">
                 </a>
             </div>
             <div class="nk-sidebar-element">
@@ -118,11 +118,11 @@
                             <div class="nk-header-app-name">
                                 <div class="nk-header-app-logo">
                             
-                                          <img class="logo-dark logo-img" src="{{asset('/logo2.png')}}" srcset="{{asset('/logo2.png')}} 2x" alt="logo-dark">
+                                          <img class="logo-dark logo-img" src="{{asset('/logo-black.png')}}" srcset="{{asset('/logo-black.png')}} 2x" alt="logo-dark">
                                 </div>
                                 <div class="nk-header-app-info">
                                     <span class="sub-text">Think Richly</span>
-                                    <span class="lead-text">Zenith Capital</span>
+                                    <span class="lead-text">AdventCapital</span>
                                 </div>
                             </div>
                             <div class="nk-header-menu is-light">

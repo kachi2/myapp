@@ -13,9 +13,7 @@
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{asset('/asset/css/dashlite.css?ver=2.2.0 ')}}">
     <link id="skin-default" rel="stylesheet" href="{{asset('/assets/css/theme.css?ver=2.2.0 ')}}">
-    
       <style type="text/css">
- 
  /*google translate Dropdown */
  
  #google_translate_element select{
