@@ -27,14 +27,14 @@
         </div>
         <div style="text-align:center" >
             @if(auth()->user()->email_verified_at == null) 
-                    <form method="POST" action="http://app.zenithcapital.cc/email/resend" class="authentication-form" id="verify">
+                    <form method="POST" action="{{ route('verification.resend') }}" class="authentication-form" id="verify">
                        @csrf                                       
                     <em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;
-                        <button type="submit" class="icon btn-sm btn-primary">Resend Verification link</button></em>
+                        <button type="submit" class="icon btn-sm btn-outline-primary">Resend Verification link</button></em>
                      </form>
                      @endif
                  </div>

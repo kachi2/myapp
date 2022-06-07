@@ -28,7 +28,7 @@
                             </div>
                             <div class="appbar-option-item appbar-option-profile">
                                 <a href="{{route('account')}}">
-                                <img src="{{asset('/mobile/images/profile.png')}}"alt="profile">
+                                <img src="{{auth_user()->photo_url }}"alt="profile">
                                 </a>
                             </div>
                         </div>
