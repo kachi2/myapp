@@ -170,14 +170,16 @@ class AccountController extends Controller
 
     public function StorePhoto(Request $request)
     {
-        $user = User::where('user_id', auth_user()->id)->first();
-        $img = Image::make(Storage::path($user->image_path));
-        $height = $request->input('height');
-        $width = $request->input('width');
-        if ($height || $width) {
-            $img->resize($width, $height);
-        }
-        return $img->response();
+        $user = User::where('id', auth_user()->id)->first();
+        $image = request()->file('image');
+        $ext = $image->getClientOriginalExtension();
+        $file = md5(time()).'.'.$ext;
+        $image->move('images', $file);
+        //Image::make($request->file('image'))->resize(200,200)->save('images',$file);
+        $user->update([
+        'image_path' => $file
+        ]);
+        return back();
     }
 
     public function activity(){

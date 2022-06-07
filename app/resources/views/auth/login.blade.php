@@ -38,7 +38,7 @@
                         @csrf     <div class="form-group pb-15">
                             <label>Email</label>
                             <div class="input-group">
-                                <input type="text" name="email" class="form-control form-control-lg {{ form_invalid('email') }}" id="default-01" placeholder="Enter your email address">
+                                <input type="text" name="email"  value="{{old('email')}}" class="form-control form-control-lg {{ form_invalid('email') }}" id="default-01" placeholder="Enter your email address">
                                 @showError('email')
                                  <span class="input-group-text"><i class="flaticon-user-picture"></i></span>
                             </div>

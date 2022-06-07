@@ -28,7 +28,8 @@
                             </div>
                             <div class="appbar-option-item appbar-option-profile">
                                 <a href="{{route('account')}}">
-                                <img src="{{auth_user()->photo_url }}"alt="profile">
+                                    <img data-cfsrc="{{asset('images/'.auth()->user()->image_path)}}" alt="profile" src="{{asset('images/'.auth()->user()->image_path)}}">
+                   
                                 </a>
                             </div>
                         </div>

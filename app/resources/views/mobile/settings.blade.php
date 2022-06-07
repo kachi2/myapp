@@ -8,18 +8,18 @@
             <div style="width:100%">
             <div class="user-setting-thumb">
                     <div class="user-setting-thumb-up">
-                        <img data-cfsrc="{{auth_user()->photo_url }}" alt="profile" src="{{auth_user()->photo_url }}">
+                        <img data-cfsrc="{{asset('images/'.auth()->user()->image_path)}}" alt="profile" src="{{asset('images/'.auth()->user()->image_path)}}">
                     </div>
                     <label for="upThumb">
                         <i class="flaticon-camera"></i>
                     </label>
-                    <form action="{{route('Store.photo')}}" method="post"  enctype="multipart/form-data">
+                    <form action="{{route('Store.photo')}}" method="post" id="formImage"  enctype="multipart/form-data">
                     @csrf
-                    <input type="file" name="image" id="upThumb" onchange="loadFile(event)" class="d-none">
+                    <input type="file" name="image" id="upThumb" class="d-none">
                 </form>
                
                 @if(auth()->user()->email_verified_at != null) 
-            <span class="" style="font-size:12px; color:#32CD32; font-weight:bolder"> <i class="flaticon-check"> </i>  Verified</span>@else
+            <span style="font-size:13px; color:#117211; font-weight:bolder"> <i class="flaticon-check"> </i>  Verified</span>@else
                 <span class="" style="font-size:12px; color:#c81508; font-weight:bolder">  Unverified</span>
             @endif
             </div>
@@ -180,13 +180,15 @@
 
 @endsection
 
-@push('script')
+@push('scripts')
 
 <script>
-    var loadFile = function (event) {
-  var image = document.getElementById("output");
-  image.src = URL.createObjectURL(event.target.files[0]);
-};
+   
+   $('#formImage').on('change', function(){
+
+    $('#formImage').submit();
+
+   });
 </script>
 @endpush
 

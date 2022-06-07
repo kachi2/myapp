@@ -4,10 +4,16 @@
                     <div class="modal-header sidebar-modal-header">
                         <div class="sidebar-profile-info">
                             <div class="sidebar-profile-thumb">
-                                <img src="{{auth_user()->photo_url }}" alt="profile">
+                                <img data-cfsrc="{{asset('images/'.auth()->user()->image_path)}}" alt="profile" src="{{asset('images/'.auth()->user()->image_path)}}">
+                   
                             </div>
                             <div class="sidebar-profile-text">
-                                <h3> <span style="font-weight:bolder"> {{strtoupper(auth()->user()->username)}}</span>     <span class="float-end" style="font-size:11px; color:#147814; font-weight:bolder; "> <i class="flaticon-check">Verified</i></span>
+                                <h3> <span style="font-weight:bolder"> {{strtoupper(auth()->user()->username)}}</span>   
+                                      
+                                    @if(auth()->user()->email_verified_at != null) 
+                                    <span style="font-size:13px; color:#32CD32; font-weight:bolder">  Verified</span>@else
+                                        <span class="" style="font-size:12px; color:#c81508; font-weight:bolder">  Unverified</span>
+                                    @endif
                                 </h3>
                                 <p><a href="tel:1545-8880">{{auth()->user()->email}}</a></p>
                             </div>

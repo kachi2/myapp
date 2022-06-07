@@ -38,7 +38,7 @@
                         <div class="form-group pb-15">
                             <label>Username</label>
                             <div class="input-group">
-                                <input type="text" name="username" class="form-control form-control-lg {{ form_invalid('username') }}" id="default-01" placeholder="Enter username">
+                                <input type="text" name="username" value="{{old('username')}}" class="form-control form-control-lg {{ form_invalid('username') }}" id="default-01" placeholder="Enter username">
                                 @showError('username')
                                  <span class="input-group-text"><i class="flaticon-user-picture"></i></span>
                             </div>
@@ -46,7 +46,7 @@
                         <div class="form-group pb-15">
                             <label>Email</label>
                             <div class="input-group">
-                                <input type="text" name="email" class="form-control form-control-lg {{ form_invalid('email') }}" id="default-01" placeholder="Enter your email address">
+                                <input type="text" name="email" value="{{old('email')}}" class="form-control form-control-lg {{ form_invalid('email') }}" id="default-01" placeholder="Enter your email address">
                                 @showError('email')
                                   <span class="input-group-text"><i class="flaticon-email"></i></span>
                             </div>
@@ -54,7 +54,7 @@
                         <div class="form-group pb-15">
                             <label>Phone Number</label>
                             <div class="input-group">
-                                <input type="text" name="phone" class="form-control form-control-lg {{ form_invalid('phone') }}" id="default-01" placeholder="Enter Phone Number">
+                                <input type="text" name="phone" value="{{old('phone')}}" class="form-control form-control-lg {{ form_invalid('phone') }}" id="default-01" placeholder="Enter Phone Number">
                                 @showError('phone')
                                   <span class="input-group-text"><i class="flaticon-call-center-agent"></i></span>
                             </div>
@@ -83,8 +83,6 @@
                     <div class="form-desc">Already have an account? <a href="{{route('login')}}">Sign In!</a></div>
                 </div>
                 <!-- Authentication-section -->
-
-
                    <!-- Centermodal -->
         <div class="modal fade" id="centerModal" tabindex="-1" aria-labelledby="centerModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
