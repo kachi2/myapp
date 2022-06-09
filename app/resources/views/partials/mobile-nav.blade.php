@@ -1,11 +1,4 @@
- 
-        <!-- Preloader -->
-
-        <!-- Header-bg -->
         <div class="header-bg header-bg-1"></div>
-        <!-- Header-bg -->
-
-        <!-- Appbar -->
         <div class="fixed-top">
             <div class="appbar-area sticky-black">
                 <div class="container">
@@ -29,7 +22,6 @@
                             <div class="appbar-option-item appbar-option-profile">
                                 <a href="{{route('account')}}">
                                     <img data-cfsrc="{{asset('images/'.auth()->user()->image_path)}}" alt="profile" src="{{asset('images/'.auth()->user()->image_path)}}">
-                   
                                 </a>
                             </div>
                         </div>
@@ -37,4 +29,3 @@
                 </div>
             </div>
         </div>
-        <!-- Appbar -->
