@@ -139,7 +139,7 @@
                         </a>
                     </div>
                     @empty
-                    <<div class="transaction-card mb-15">
+                    <div class="transaction-card mb-15">
                         <a href="transaction-details.html">
                             <div class="transaction-card-info">
                                 <div class="transaction-info-text">
