@@ -12,8 +12,8 @@
                             <h3>{{ moneyFormat(auth()->user()->wallet->amount, 'USD') }}</h3>
                         </div>
                         <div class="add-card-item add-balance" data-bs-toggle="modal" data-bs-target="#addBalance">
-                            <a href="#"><i class="flaticon-plus"></i></a>
-                            <p>Add Fund</p>
+                            <a href="{{route('user.packages')}}"><i class="flaticon-plus"></i></a>
+                            <p>Invest</p>
                         </div>
                     </div>
                 </div>
