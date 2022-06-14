@@ -12,21 +12,21 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'WelcomeController@index')->name('index');
+// Route::get('/', 'WelcomeController@index')->name('index');
 Auth::routes(['verify' => true]);
 
-route::post('/user/register', 'Auth\RegisterController@create_user')->name('register_user');
-Route::get('complete-registration', 'Auth\CompleteRegistrationController@index')->name('complete_registration');
-Route::post('complete-registration', 'Auth\CompleteRegistrationController@update')->name('complete_registration');
+// route::post('/user/register', 'Auth\RegisterController@create_user')->name('register_user');
+// Route::get('complete-registration', 'Auth\CompleteRegistrationController@index')->name('complete_registration');
+// Route::post('complete-registration', 'Auth\CompleteRegistrationController@update')->name('complete_registration');
 
-Route::get('/about', 'AboutController@index')->name('about');
-Route::get('/terms', 'TermsController@index')->name('terms');
-Route::get('/faq', 'FaqController@index')->name('faq');
-Route::get('/plans', 'WelcomeController@plans')->name('plans');
-Route::get('/contact', 'ContactController@index')->name('contact');
-Route::post('/contact/store', 'ContactController@store')->name('contact.store');
+// Route::get('/about', 'AboutController@index')->name('about');
+// Route::get('/terms', 'TermsController@index')->name('terms');
+// Route::get('/faq', 'FaqController@index')->name('faq');
+// Route::get('/plans', 'WelcomeController@plans')->name('plans');
+// Route::get('/contact', 'ContactController@index')->name('contact');
+// Route::post('/contact/store', 'ContactController@store')->name('contact.store');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('withdrawals', 'WithdrawController@index')->name('withdrawals');
 Route::get('withdrawals/request', 'WithdrawController@request')->name('withdrawals.request');
 Route::post('withdrawals/request', 'WithdrawController@store')->name('withdrawals.request');
