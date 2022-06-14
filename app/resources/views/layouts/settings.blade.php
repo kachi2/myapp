@@ -16,7 +16,6 @@
         <div class="col-lg-5">
             <div class="card">
                 <div class="card-body">
-
                     <div class="row">
                         <div class="col-sm-12">
                             @yield('form')

@@ -8,7 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Commands\\cronEmail' => $baseDir . '/app/Console/Commands/cronEmail.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
-    'App\\DemoDeposit' => $baseDir . '/app/DemoDeposit.php',
     'App\\DemoUser' => $baseDir . '/app/DemoUser.php',
     'App\\DemoWithdrawal' => $baseDir . '/app/DemoWithdrawal.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -41,6 +40,7 @@ return array(
     'App\\Http\\Controllers\\DepositController' => $baseDir . '/app/Http/Controllers/DepositController.php',
     'App\\Http\\Controllers\\FaqController' => $baseDir . '/app/Http/Controllers/FaqController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\MessageController' => $baseDir . '/app/Http/Controllers/MessageController.php',
     'App\\Http\\Controllers\\PayoutController' => $baseDir . '/app/Http/Controllers/PayoutController.php',
     'App\\Http\\Controllers\\PerfectMoneyController' => $baseDir . '/app/Http/Controllers/PerfectMoneyController.php',
     'App\\Http\\Controllers\\ReferralController' => $baseDir . '/app/Http/Controllers/ReferralController.php',
@@ -106,6 +106,7 @@ return array(
     'App\\UserActivity' => $baseDir . '/app/UserActivity.php',
     'App\\UserNotify' => $baseDir . '/app/UserNotify.php',
     'App\\WalletAddress' => $baseDir . '/app/WalletAddress.php',
+    'App\\WalletDeposit' => $baseDir . '/app/WalletDeposit.php',
     'App\\WalletTranfer' => $baseDir . '/app/WalletTranfer.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Barryvdh\\LaravelIdeHelper\\Alias' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Alias.php',

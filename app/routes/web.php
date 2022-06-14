@@ -35,6 +35,7 @@ Route::get('deposits', 'DepositController@index')->name('deposits');
 Route::get('deposits/coinpayment/transaction/{id}', 'DepositController@showCoinpaymentTransaction')->name('deposits.coinpayment_transaction');
 Route::get('deposits/blockchain/transaction/{ref}', 'DepositController@showBlockChainTransaction')->name('deposits.blockchain_transaction');
 Route::get('deposits/invest/{id?}', 'DepositController@invest')->name('deposits.invest');
+Route::post('/wallet/deposits/request', 'WalletDepositController@investFromCripto')->name('wallet.deposits');
 Route::post('deposits/invest/{id?}', 'DepositController@doInvest')->name('deposits.invests');
 Route::get('/payouts/details/{id?}', 'DepositController@PayoutsDetails')->name('payouts.details');
 Route::post('/transfer/payouts/{id}', 'DepositController@TransferPayouts')->name('transfer.payouts');

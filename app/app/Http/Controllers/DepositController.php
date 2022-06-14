@@ -317,7 +317,7 @@ class DepositController extends Controller
         //     ]
         // ];
         $id = decrypt($id);
-        dd($id);
+       // dd($id);
         $plans = Plan::with('package')->get();
         $balance = auth()->user()->wallet->amount;
         $bonus = auth()->user()->wallet->bonus;

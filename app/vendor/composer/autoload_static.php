@@ -594,7 +594,6 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
     public static $classMap = array (
         'App\\Console\\Commands\\cronEmail' => __DIR__ . '/../..' . '/app/Console/Commands/cronEmail.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
-        'App\\DemoDeposit' => __DIR__ . '/../..' . '/app/DemoDeposit.php',
         'App\\DemoUser' => __DIR__ . '/../..' . '/app/DemoUser.php',
         'App\\DemoWithdrawal' => __DIR__ . '/../..' . '/app/DemoWithdrawal.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -627,6 +626,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\Http\\Controllers\\DepositController' => __DIR__ . '/../..' . '/app/Http/Controllers/DepositController.php',
         'App\\Http\\Controllers\\FaqController' => __DIR__ . '/../..' . '/app/Http/Controllers/FaqController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\MessageController' => __DIR__ . '/../..' . '/app/Http/Controllers/MessageController.php',
         'App\\Http\\Controllers\\PayoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/PayoutController.php',
         'App\\Http\\Controllers\\PerfectMoneyController' => __DIR__ . '/../..' . '/app/Http/Controllers/PerfectMoneyController.php',
         'App\\Http\\Controllers\\ReferralController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReferralController.php',
@@ -692,6 +692,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\UserActivity' => __DIR__ . '/../..' . '/app/UserActivity.php',
         'App\\UserNotify' => __DIR__ . '/../..' . '/app/UserNotify.php',
         'App\\WalletAddress' => __DIR__ . '/../..' . '/app/WalletAddress.php',
+        'App\\WalletDeposit' => __DIR__ . '/../..' . '/app/WalletDeposit.php',
         'App\\WalletTranfer' => __DIR__ . '/../..' . '/app/WalletTranfer.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Barryvdh\\LaravelIdeHelper\\Alias' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Alias.php',

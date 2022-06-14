@@ -14,7 +14,7 @@
                 </div>
                 <div class="add-card-item add-balance" data-bs-toggle="modal" data-bs-target="#addBalance">
                    
-                  <a href="#"  data-bs-toggle="modal" data-bs-target="#DepositModal">Deposit New</a>
+                  <a href="#"  data-bs-toggle="modal" data-bs-target="#DepositModal">Invest</a>
                 </div>
             </div>
         </div>

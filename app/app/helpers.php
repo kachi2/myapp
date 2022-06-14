@@ -387,6 +387,20 @@ if (!function_exists('get_payment_methods')) {
     }
 }
 
+if (!function_exists('get_payment_method')) {
+    /**
+     * @return array
+     */
+    function get_payment_method()
+    {
+        return [
+            Deposit::PAYMENT_METHOD_BTC => 'BTC',
+            Deposit::PAYMENT_METHOD_ETH => 'ETH',
+            Deposit::PAYMENT_METHOD_LTC => 'LTC',
+        ];
+    }
+}
+
 if (!function_exists('get_withdrawal_methods')) {
     /**
      * @return array
