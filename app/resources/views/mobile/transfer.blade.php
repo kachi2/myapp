@@ -147,7 +147,7 @@
                          type:result.alert,
                          text: result.msg
                          }).then(function(){ 
-                         location.reload();
+                         //location.reload();
                          });
                      // console.log(result);
                      }

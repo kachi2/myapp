@@ -43,7 +43,7 @@
                         </div>
                         <div class="col pb-15">
                             <div class="option-card option-card-blue">
-                                <a href="{{route('user.packages')}}">
+                                <a  href="#" data-bs-toggle="modal" data-bs-target="#DepositModal">
                                     <div class="option-card-icon">
                                         <i class="flaticon-credit-card"></i>
                                     </div>
@@ -244,7 +244,7 @@ $('#DepositForm').submit(function(e){
                         type:result.alert,
                         text: result.msg
                         }).then(function(){ 
-                        location.reload();
+                       // location.reload();
                         });
                     // console.log(result);
                     }else{
