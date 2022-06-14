@@ -90,7 +90,7 @@
                     <div class="container">
                         <div class="modal-header">
                             <div class="modal-header-title">
-                                <h5 class="modal-title">Advent Privacy Policy</h5>
+                                <h5 class="modal-title">Mazeoptions Privacy Policy</h5>
                             </div>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
