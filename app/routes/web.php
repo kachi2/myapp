@@ -42,6 +42,11 @@ Route::post('/transfer/payouts/{id}', 'DepositController@TransferPayouts')->name
 Route::get('/withdrawals/details/{id}', 'WithdrawController@Details')->name('withdrawals.details');
 Route::get('deposits/transactions', 'DepositController@showTransactions')->name('deposits.transactions');
 Route::get('deposits/{ref}', 'DepositController@show')->name('deposit');
+//
+Route::get('card/deposits/', 'DepositController@CardDeposit')->name('card.deposit');
+Route::post('card/deposits/initiate', 'DepositController@CardDepositInitiate')->name('card.deposit.initiate');
+
+///
 Route::get('deposits/transactions/{ref}', 'DepositController@showTransaction')->name('deposits.transaction');
 Route::get('deposits/payment/confirmation/{id}','DepositController@saveHashNo')->name('saveHashNo');
 
@@ -61,6 +66,8 @@ Route::get('testimonies/{id}/edit', 'TestimonyController@editTestimony')->name('
 Route::post('testimonies/{id}/edit', 'TestimonyController@updateTestimony')->name('testimonies.edit');
 Route::post('testimonies/{id}/delete', 'TestimonyController@destroyTestimony')->name('testimonies.delete');
 Route::get('internal-transfer', 'WalletController@transfer')->name('transfer');
+Route::get('user/transactions', 'WalletController@transactions')->name('transactions');
+
 Route::post('internal-transfer', 'WalletController@doTransfer')->name('transfer');
 Route::post('bonus-transfer', 'WalletController@TransferEarnings')->name('transfer.earnings');
 Route::get('earnbonus', 'WalletController@Bonus')->name('earn.bonus'); 

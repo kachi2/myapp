@@ -594,8 +594,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
     public static $classMap = array (
         'App\\Console\\Commands\\cronEmail' => __DIR__ . '/../..' . '/app/Console/Commands/cronEmail.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
-        'App\\DemoUser' => __DIR__ . '/../..' . '/app/DemoUser.php',
-        'App\\DemoWithdrawal' => __DIR__ . '/../..' . '/app/DemoWithdrawal.php',
+        'App\\Deposits' => __DIR__ . '/../..' . '/app/Deposits.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AboutController' => __DIR__ . '/../..' . '/app/Http/Controllers/AboutController.php',
         'App\\Http\\Controllers\\AccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/AccountController.php',
@@ -636,6 +635,7 @@ class ComposerStaticInit98a2fba65c18f955685b79d9c12a9a48
         'App\\Http\\Controllers\\TestimonyController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestimonyController.php',
         'App\\Http\\Controllers\\TokenController' => __DIR__ . '/../..' . '/app/Http/Controllers/TokenController.php',
         'App\\Http\\Controllers\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/WalletController.php',
+        'App\\Http\\Controllers\\WalletDepositController' => __DIR__ . '/../..' . '/app/Http/Controllers/WalletDepositController.php',
         'App\\Http\\Controllers\\WelcomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/WelcomeController.php',
         'App\\Http\\Controllers\\WithdrawController' => __DIR__ . '/../..' . '/app/Http/Controllers/WithdrawController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

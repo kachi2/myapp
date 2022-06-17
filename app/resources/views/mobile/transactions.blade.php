@@ -10,10 +10,7 @@
                     <h3>Main Wallet <br> {{ moneyFormat(auth()->user()->wallet->amount, 'USD') }}</h3>
                     
                 </div>
-                <div class="add-card-item add-balance" data-bs-toggle="modal" data-bs-target="#addBalance">
-                   
-                  <a href="#"  data-bs-toggle="modal" data-bs-target="#transfer">Transfer Funds</a>
-                </div>
+                
             </div>
         </div>
         <div class="feature-section mb-15">
@@ -38,7 +35,7 @@
 
         <div class="transaction-section pb-15">
             <div class="section-header">
-                <h2>Recent Transfers</h2>
+                <h2>Transactions</h2>
             </div>
             @forelse ($transfers as $transfer )
             <div class="transaction-card mb-15">
@@ -79,41 +76,7 @@
             @endforelse
         </div>
 
-        <form method="post" action="{{ route('transfer') }}" id="transferForm">
-            @csrf
-        <div class="modal fade" id="transfer" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="container">
-                        <div class="modal-header">
-                            <div class="modal-header-title">
-                                <h5 class="modal-title">Transfer funds</h5>
-                            </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            
-                                <div class="form-group pb-15">
-                                    <label>Amount</label>
-                                    <div class="input-group">
-                                        <input   type="number" name="amount"   value="{{ old('amount') }}"class="form-control {{  form_invalid('amount') }}" required placeholder="100">
-                                    </div>
-                                    @showError('amount')
-                                </div>
-                                <div class="form-group pb-15">
-                                    <label>Account Number</label>
-                                    <div class="input-group">
-                                        <input type="text" name="username" value="{{ old('username') }}"class="form-control {{ form_invalid('username') }}" required placeholder="Enter Account Number">       
-                                    </div>
-                                    @showError('username')
-                                </div>
-                                <button type="submit" class="btn main-btn main-btn-lg full-width">Transfer</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
+    
 <!-- end of container -->
     </div>
 </div>

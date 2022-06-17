@@ -15,13 +15,14 @@
                                     @endif
                                 </h3>
                                 <p><a href="tel:1545-8880">{{auth()->user()->email}}</a></p>
+                                <p><a href="tel:1545-8880">Account No:{{auth()->user()->btc}}</a></p>
                             </div>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="sidebar-profile-wallet">
-                        <div class="add-card-info">
-                            <p>Main Wallet</p>
+                    <div class="sidebar-profile-wallet" style="box-shadow:0px  5px #d7d5da;">
+                        <div class="add-card-info" >
+                            <p>Main Balance</p>
                             <h3>{{ moneyFormat(auth()->user()->wallet->amount, 'USD') }}</h3>
                         </div>
                     </div>
@@ -30,12 +31,11 @@
                             <div class="sidebar-nav-item">
                                 <ul class="sidebar-nav-list">
                                     <li><a href="{{ route('home') }}" class="active"><i class="flaticon-house"></i> Home</a></li>
-                                    <li><a href="{{ route('user.packages') }}"><i class="flaticon-invoice"></i>Packages</a></li>
-                                    <li><a href="{{ route('transfer') }}"><i class="flaticon-menu-1"></i>Send Money</a></li>
-                                    <li><a href="{{ route('withdrawals') }}"><i class="flaticon-credit-card"></i>Withdrawal</a></li>
+                                 
+                                    <li><a href="{{ route('transfer') }}"><i class="flaticon-menu-1"></i>Transfer</a></li>
+                                    <li><a href="{{ route('transactions') }}"><i class="flaticon-credit-card"></i>Transactions</a></li>
+                                    <li><a href="{{ route('card.deposit') }}"><i class="flaticon-credit-card"></i>Deposits</a></li>
                                     <li><a href="{{ route('earn.bonus') }}"><i class="flaticon-credit-card"></i>Earn Bonus</a></li>
-                                    <li><a href="{{ route('referral') }}"><i class="flaticon-credit-card"></i>Refer & Earn</a></li>
-                                    <li><a href="{{route('home.markets')}}"><i class="flaticon-credit-card"></i>Markets</a></li>
                                     <li><a href="{{ route('account') }}"><i class="flaticon-settings"></i> Settings</a></li>
                                     <li> <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout4').submit();"><i class="flaticon-logout"></i> Logout</a></li>
                                 </ul>

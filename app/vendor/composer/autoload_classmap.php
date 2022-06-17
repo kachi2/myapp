@@ -8,8 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Commands\\cronEmail' => $baseDir . '/app/Console/Commands/cronEmail.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
-    'App\\DemoUser' => $baseDir . '/app/DemoUser.php',
-    'App\\DemoWithdrawal' => $baseDir . '/app/DemoWithdrawal.php',
+    'App\\Deposits' => $baseDir . '/app/Deposits.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AboutController' => $baseDir . '/app/Http/Controllers/AboutController.php',
     'App\\Http\\Controllers\\AccountController' => $baseDir . '/app/Http/Controllers/AccountController.php',
@@ -50,6 +49,7 @@ return array(
     'App\\Http\\Controllers\\TestimonyController' => $baseDir . '/app/Http/Controllers/TestimonyController.php',
     'App\\Http\\Controllers\\TokenController' => $baseDir . '/app/Http/Controllers/TokenController.php',
     'App\\Http\\Controllers\\WalletController' => $baseDir . '/app/Http/Controllers/WalletController.php',
+    'App\\Http\\Controllers\\WalletDepositController' => $baseDir . '/app/Http/Controllers/WalletDepositController.php',
     'App\\Http\\Controllers\\WelcomeController' => $baseDir . '/app/Http/Controllers/WelcomeController.php',
     'App\\Http\\Controllers\\WithdrawController' => $baseDir . '/app/Http/Controllers/WithdrawController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

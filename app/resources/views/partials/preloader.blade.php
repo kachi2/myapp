@@ -2,7 +2,7 @@
   <div class="preloader">
     <div class="preloader-wrapper">
         <div class="preloader-content">
-            <img src="{{asset('/mobile/images/preloader-logo.png')}}" alt="logo">
+           <h1 style="color:#fff">Online Banking</h1>
         </div>
     </div>
 </div>

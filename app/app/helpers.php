@@ -169,6 +169,14 @@ if (!function_exists('generate_reference')) {
     }
 }
 
+if(!function_exists('generate_account')){
+    function generate_account(){
+        $num = rand(111111111, 999999999);
+        return $num;
+
+    }
+}
+
 
 if (!function_exists('auth_user')) {
     /**

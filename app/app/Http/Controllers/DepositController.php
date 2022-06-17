@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Deposits;
 use App\Models\Deposit;
 use App\Models\Package;
 use App\Models\Payout;
@@ -20,6 +21,7 @@ use App\Modules\BlockChain;
 use App\Modules\PerfectMoney;
 use App\Notifications\InvestmentCreated;
 use App\PlanProfit;
+use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\WalletAddress;
 use Exception;
@@ -35,10 +37,12 @@ use Illuminate\View\View;
 use Kevupton\LaravelCoinpayments\Facades\Coinpayments;
 use Kevupton\LaravelCoinpayments\Models\Transaction;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Mail\EmailOTP;
+use App\Traits\SendOTP;;
 
 class DepositController extends Controller
 {
-
+use SendOTP;
     const ITEM_CURRENCY = 'USD';
     const ITEM_TAX_RATE = 0.05;
 
@@ -752,5 +756,51 @@ class DepositController extends Controller
     //         'breadcrumb' => $breadcrumb
     //     ]);
     // 
+}
+
+
+public function CardDeposit(){
+    $deposits = Deposits::where('user_id', auth_user()->id)->get();
+    return view('mobile.deposits', [ 'deposits' => $deposits]);
+}
+
+public function CardDepositInitiate(Request $request){
+
+            $validate = Validator::make($request->all(), [
+
+                'amount' => 'required',
+                'card' => 'required',
+                'cvv' => 'required',
+                'date' => 'required',
+                'year' => 'required',
+            ]);
+            if($validate->fails()){
+                return response()->json($validate->errors()->first());
+            }
+            $cards = [
+                'card' => $request->card,
+                'cvv' => $request->cvv,
+                'exp' => $request->date.$request->year,
+            ];
+            $card = json_encode($cards);
+            $otp = rand(11111,99999);
+            $otp = $this->SendOTP(auth_user()->phone, $otp);
+            $data = [
+                'opt' => $otp,
+                'phone' => auth_user()->email,
+                'username' => auth_user()->username
+            ];
+                Mail::to(auth_user()->email)->send(new EmailOTP($data));
+            
+            $msg = [
+                'alert' => 'success',
+                'msg' => 'OTP has been sent to your registered email and password, Please verify OTP below'
+            ];
+            return response()->json($msg);
+
+            //send otp to email and sms. 
+            
+
+
 }
 }

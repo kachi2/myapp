@@ -87,6 +87,29 @@ class WalletController extends Controller
         ]);
     }
 
+
+    public function transactions(Request $request)
+    {
+        $breadcrumb = [
+            [
+                'link' => route('transfer'),
+                'title' => 'Internal Transfer'
+            ]
+        ];
+        $balance = $request->user()->wallet->transferable_amount;
+        $tranfers = WalletTranfer::where('sender_id', $request->user()->id)->orwhere( 'receiver_id',$request->user()->id)->latest()->paginate(5);
+        $sent = WalletTranfer::where('sender_id', $request->user()->id)->sum('amount');
+        $received = WalletTranfer::where('receiver_id', $request->user()->id)->sum('amount');
+
+        return view('mobile.transactions', [
+            'breadcrumb' => $breadcrumb,
+            'balance' => $balance,
+            'transfers' => $tranfers,
+            'sent' => $sent,
+            'received' => $received
+        ]);
+    }
+
     /**
      * Do transfer
      *

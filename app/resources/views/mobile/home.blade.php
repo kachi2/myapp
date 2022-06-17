@@ -8,13 +8,10 @@
                 <div class="add-card section-to-header mb-30">
                     <div class="add-card-inner">
                         <div class="add-card-item add-card-info">
-                            <p>Main Wallet</p>
+                            <p>Main Balance</p>
                             <h3>{{ moneyFormat(auth()->user()->wallet->amount, 'USD') }}</h3>
                         </div>
-                        <div class="add-card-item add-balance" data-bs-toggle="modal" data-bs-target="#addBalance">
-                            <a href="#"  data-bs-toggle="modal" data-bs-target="#DepositModal"><i class="flaticon-plus"></i></a>
-                            <p>Deposit</p>
-                        </div>
+                        
                     </div>
                 </div>
                 <!-- Add-card -->
@@ -73,7 +70,7 @@
                                     <i class="flaticon-income"></i>
                                 </div>
                                 <div class="feature-card-details">
-                                    <p>Payouts Balance</p>
+                                    <p>Total Received</p>
                                     <h3>{{ moneyFormat($payouts, 'USD')}}</h3>
                                 </div>
                             </div>
@@ -84,30 +81,8 @@
                                     <i class="flaticon-expenses"></i>
                                 </div>
                                 <div class="feature-card-details">
-                                    <p>Total Bonus</p>
+                                    <p>Total Transfers</p>
                                     <h3>{{moneyFormat($bonus, 'USD')}}</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-sm-6 pb-15">
-                            <div class="feature-card feature-card-violet">
-                                <div class="feature-card-thumb">
-                                    <i class="flaticon-invoice"></i>
-                                </div>
-                                <div class="feature-card-details">
-                                    <p>Deposits</p>
-                                    <h3>{{moneyFormat($total_invest, 'USD')}}</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-sm-6 pb-15">
-                            <div class="feature-card feature-card-green">
-                                <div class="feature-card-thumb">
-                                    <i class="flaticon-savings"></i>
-                                </div>
-                                <div class="feature-card-details">
-                                    <p>Withdrawals</p>
-                                    <h3>{{moneyFormat($withdrawals, 'USD')}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -117,24 +92,25 @@
                 <!-- Transaction-section -->
                 <div class="transaction-section pb-15">
                     <div class="section-header">
-                        <h2>Recent Investment</h2>
+                        <h2>Recent Transactions</h2>
                     </div>
-                    @forelse ($investment as $invst )
+                    @forelse ($transfers as $transfer )
                     <div class="transaction-card mb-15">
-                        <a href="{{route('payouts.details', encrypt($invst->id))}}">
+                        <a href="transaction-details.html">
                             <div class="transaction-card-info">
                                 <div class="transaction-info-thumb" style="border-radius: 100%">
-                                    <span class="text-white" style="font-size:15px">{{substr($invst->plan->name,0,2)}}</span>
+                                    <span class="text-white" style="font-size:15px"><?php if(isset($transfer->receiver_id) &&  $transfer->receiver_id != auth()->user()->id){ echo strtoupper(substr($transfer->receiver->username,0,2));}else{echo strtoupper(substr($transfer->sender->username,0,2)) ;}?></span>
                                 </div>
                                 <div class="transaction-info-text">
-                                    <h3>{{$invst->ref}} - <small>Daily {{$invst->profit_rate}}% </small></h3>
-                                    <p> {{$invst->payment_method}} | Expires:<small>{{$invst->expires_at->diffForHumans()}} </small></p>
-                                    <small style="font-size: 10px; color:#999"> {{$invst->created_at}}</small><small style="font-size:12px"> view payouts</small>
+                                    <p><?php if(isset($transfer->receiver_id) && $transfer->receiver_id == auth()->user()->id){echo "Received from "."<small>".$transfer->sender->username."</small>"; }else{echo "Transferred  to "."<small>".$transfer->receiver->username."</small>";}   ?>
+                                    </p>
+                                    <p><small class="positive-number">{{$transfer->created_at->format('d/m/y h:s A')}}<small></p>
                                 </div>
                             </div>
-                            <div class="transaction-card-det">
-                                <span style="color:green">  </i>{{moneyFormat($invst->paid_amount, 'USD')}}</span><br> 
-                               <small class="negative-number"> </i>{{moneyFormat($invst->amount, 'USD')}}<small>
+                            <div class="transaction-card-det ">
+                                <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){ echo "<span style=\"color:#000\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}else{ echo "<span style=\"color:green\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}?> <br> 
+                                <span class="negative-number">  <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){
+                                   echo moneyFormat($transfer->sender_balance, 'USD'); } ?></span><br>
                             </div>
                         </a>
                     </div>

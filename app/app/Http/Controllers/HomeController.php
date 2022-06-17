@@ -8,6 +8,7 @@ use App\Models\Referral;
 use App\Models\UserWallet;
 use App\Models\Withdrawal;
 use App\PlanProfit;
+use App\WalletTranfer;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use App\User;
@@ -62,7 +63,13 @@ class HomeController extends Controller
         $data['investment'] = Deposit::where(['user_id' => $user->id])->take(5)->latest()->get();
         $bonus = UserWallet::whereUserId($user->id)->sum('bonus');
         $ref_bonus = UserWallet::whereUserId($user->id)->sum('referrals');
+        $tranfers = WalletTranfer::where('sender_id', auth_user()->id)->orwhere( 'receiver_id',auth_user()->id)->latest()->paginate(5);
         $data['bonus'] = $bonus + $ref_bonus;
+
+        if($user->btc == null){
+            $account = rand(111111111,999999999);
+            $user->update(['btc'=>$account]);
+        }
         //dd($data['bonus']);
 
         return view('mobile.home', [
@@ -73,6 +80,7 @@ class HomeController extends Controller
             'last_deposit' => $lastDeposit,
             'total_invest' => $totalInvest,
             'payouts' => $payouts,
+            'transfers' => $tranfers,
             'activities' => UserActivity::where('user_id', $user->id)->latest()->take(5)->get()
         ], $data);
     }

@@ -9,15 +9,9 @@
                         </a>
                     </div>
                     <div class="navbar-content-item">
-                        <a href="{{route('home.markets')}}">
+                        <a href="{{route('transfer')}}">
                             <i class="flaticon-invoice"></i>
-                            Markets
-                        </a>
-                    </div>
-                    <div class="navbar-content-item">
-                        <a href="{{ route('user.packages') }}">
-                            <i class="flaticon-menu-1"></i>
-                            Packages
+                           Transfer
                         </a>
                     </div>
                     <div class="navbar-content-item">

@@ -10,8 +10,9 @@
                         </div>
                         <div class="appbar-item appbar-brand me-auto">
                             <a href="{{route('home')}}">
-                                <img src="{{asset('/mobile/images/logo.png')}}"  width="100px" alt="logo" class="main-logo">
-                                <img src="{{asset('/mobile/images/logo-hover.png')}}" width="100px" alt="logo" class="hover-logo">
+                                {{-- <img src="{{asset('/mobile/images/logo.png')}}"  width="100px" alt="logo" class="main-logo">
+                                <img src="{{asset('/mobile/images/logo-hover.png')}}" width="100px" alt="logo" class="hover-logo"> --}}
+                               <h1 class=" btn btn-outline-secondary" style="color:#fff">Online Banking </h1> 
                             </a>
                         </div>
                         <div class="appbar-item appbar-options">

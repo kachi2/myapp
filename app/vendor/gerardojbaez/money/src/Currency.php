@@ -842,7 +842,7 @@ class Currency
         'USD' => [
             'code' => 'USD',
             'title' => 'US Dollar',
-            'symbol' => '$',
+            'symbol' => '₦',
             'precision' => 2,
             'thousandSeparator' => ',',
             'decimalSeparator' => '.',
