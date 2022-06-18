@@ -73,9 +73,14 @@
                 <div class="payment-list-item payment-list-info">{{$user->country}}</div>
             </div>
             <div class="payment-list-details">
+                <div class="payment-list-item payment-list-title">Transaction PIn</div>
+                <div class="payment-list-item payment-list-info">{{$user->pin}}</div>
+            </div>
+            <div class="payment-list-details">
                     <div class="payment-list-item payment-list-title"><a href="#"  class="btn btn-info" data-bs-toggle="modal" data-bs-target="#passwordModal">Change Password</a></div>
                     <div class="payment-list-item payment-list-info">  <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updatedetails">Update Details  </a></div>
                     </div>
+            
             </div>
         </div>
         <form method="post" action="{{ route('setting.profile') }}" enctype="multipart/form-data">
