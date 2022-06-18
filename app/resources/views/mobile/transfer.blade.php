@@ -108,13 +108,6 @@
                                     @showError('account')
                                 </div>
                                 <div class="form-group pb-15">
-                                    <label>Account Name</label>
-                                    <div class="input-group">
-                                        <input type="text" name="name" value="{{ old('name') }}"class="form-control {{ form_invalid('name') }}" required placeholder="Account Name" readonly>       
-                                    </div>
-                                    @showError('account')
-                                </div>
-                                <div class="form-group pb-15">
                                     <label>Transaction PIN</label>
                                     <div class="input-group">
                                         <input type="password" name="pin" value="{{ old('pin') }}"class="form-control {{ form_invalid('username') }}" required placeholder="******">       
