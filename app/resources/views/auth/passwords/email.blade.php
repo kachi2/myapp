@@ -35,8 +35,7 @@
         <div class="preloader">
             <div class="preloader-wrapper">
                 <div class="preloader-content">
-                    <img src="{{asset('/mobile/images/preloader-logo.png')}}" alt="logo">
-                    <h3>Advent Capital</h3>
+                    <h1 class=" btn btn-outline-secondary" style="color:rgb(240, 239, 241)">Online Banking </h1>   
                 </div>
             </div>
         </div>
@@ -70,9 +69,7 @@
         <div class="body-content">
             <div class="container">
                 <div style="padding-left:35%">
-                    <a href="{{ route('index') }}">
-                        <img src="{{ asset('logo.png') }}" alt="" width="80"/>                                            
-                    </a>
+                    <h1 class=" btn btn-outline-secondary" style="color:rgb(39, 16, 105)">Online Banking </h1>   
                 </div>
                 <br>
                 <br>

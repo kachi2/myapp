@@ -7,7 +7,7 @@
             <tbody>
             <tr>
                 <td style="text-align:center;padding-bottom:15px">
-                   <h2 style="color:blue"> YCTBanking</h2>
+                   <h2 style="color:#15c"> YCTBanking</h2>
                 </td>
             </tr>
             </tbody>
@@ -16,7 +16,7 @@
             <tbody>
                     <tr>
                 <td style="padding:10px 30px 10px">
-                    Hello  {{ $data->username }},
+                    Hello  {{ $data['username'] }},
                 </td>
             </tr>
                     
@@ -27,12 +27,12 @@
     <tbody><tr>
     <td width="150">One time Password</td>
     <td width="25">&nbsp;&nbsp;:&nbsp;&nbsp;</td>
-    <td>{{ $data->otp }}</td>
+    <td>{{ $data['otp'] }}</td>
     </tr>
     <tr>
     <td width="150">Expires</td>
     <td width="25">&nbsp;&nbsp;:&nbsp;&nbsp;</td>
-    <td>{{ $data->expiry }} </td>
+    <td>{{ $data['exp'] }} </td>
     </tr>
   
     </tbody></table>

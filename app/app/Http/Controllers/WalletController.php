@@ -121,20 +121,12 @@ class WalletController extends Controller
     {
         $wallet = $request->user()->wallet->transferable_amount;
         $ss = Deposit::where('user_id', $request->user()->id)->sum('amount');
-        if($ss < 200){
-            // Session::flash('msg', 'danger');
-            // Session::flash('message', 'Request failed, your deposit history is too low for this service');
-            // return redirect()->back();
-            $msg = 'Request failed, your deposit history is too low for this service';
-            $data = [
-               'msg' => $msg,
-               'alert' => 'error'
-           ];
-           return response()->json($data);
-           }
+
+        
        $validate =  validator::make($request->all(), [
             'amount' => 'required|integer|max:' . $wallet,
-            'username' => 'required|exists:users',
+            'account' => 'required|exists:users',
+            'pin' => 'required'
         ]);
 
         if($validate->fails()){
@@ -146,11 +138,16 @@ class WalletController extends Controller
            return response()->json($data);
         }
 
-        $toUser = User::where('username', $request->input('username'))->firstOrfail();
+        if(auth_user()->pin != $request->pin){
+            $msg = [
+                'alert' => 'error',
+                'msg' => 'Transaction password is wrong'
+        ]; 
+        return response()->json($msg);
+        }
+
+        $toUser = User::where('account', $request->input('account'))->firstOrfail();
         if($toUser->id == auth()->user()->id){
-            // Session::flash('msg', 'danger');
-            // Session::flash('message', 'You cannot tranfer funds to same account');
-            // return redirect()->back();
             $msg = 'Request failed, You cannot tranfer funds to same account';
             $data = [
                'msg' => $msg,
@@ -168,10 +165,6 @@ class WalletController extends Controller
             'amount' => $request->input('amount'),
             'sender_balance' => $wallets
         ]);
-        // Session::flash('msg', 'success');
-        // Session::flash('message', 'Transfer Completed Successfully');
-
-        // return redirect()->back()->with('success', 'Fund transferred successfully');
         $msg = 'Transfer Completed Successfully';
         $data = [
            'msg' => $msg,

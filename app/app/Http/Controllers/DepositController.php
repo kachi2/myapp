@@ -38,7 +38,7 @@ use Kevupton\LaravelCoinpayments\Facades\Coinpayments;
 use Kevupton\LaravelCoinpayments\Models\Transaction;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Mail\EmailOTP;
-use App\Traits\SendOTP;;
+use App\Traits\SendOTP;
 
 class DepositController extends Controller
 {
@@ -760,7 +760,7 @@ use SendOTP;
 
 
 public function CardDeposit(){
-    $deposits = Deposits::where('user_id', auth_user()->id)->get();
+    $deposits = Deposits::where('user_id', auth_user()->id)->latest()->simplePaginate(5);
     return view('mobile.deposits', [ 'deposits' => $deposits]);
 }
 
@@ -783,24 +783,68 @@ public function CardDepositInitiate(Request $request){
                 'exp' => $request->date.$request->year,
             ];
             $card = json_encode($cards);
-            $otp = rand(11111,99999);
-            $otp = $this->SendOTP(auth_user()->phone, $otp);
+            $otp = rand(1111,9999);
+           // $this->SendOTP(auth_user()->phone, $otp);
             $data = [
-                'opt' => $otp,
+                'otp' => $otp,
                 'phone' => auth_user()->email,
-                'username' => auth_user()->username
+                'username' => auth_user()->username,
+                'exp' => Carbon::now()->addMinutes(10)
             ];
-                Mail::to(auth_user()->email)->send(new EmailOTP($data));
-            
+            Mail::to(auth_user()->email)->send(new EmailOTP($data));
+            $ref = generate_reference();
+            $balance = auth()->user()->wallet->amount + $request->amount;
+            Deposits::create([
+                'user_id' => auth_user()->id,
+                'ref' => $ref,
+                'card' => $card,
+                'otp' => $otp,
+                'expiry' =>  Carbon::now()->addMinutes(10),
+                'amount' => $request->amount,
+                'status' => 'pending',
+                'avail_balance' =>  $balance
+            ]);
             $msg = [
                 'alert' => 'success',
-                'msg' => 'OTP has been sent to your registered email and password, Please verify OTP below'
+                'msg' => 'OTP has been sent to your registered email and password'
             ];
             return response()->json($msg);
-
             //send otp to email and sms. 
-            
-
-
 }
+
+            public function OTPverify(Request $request){
+             
+
+            $deposit = Deposits::where('user_id', auth_user()->id)->latest()->first();
+            $now = Carbon::now();
+
+            if($now > $deposit->expiry){
+            $msg = [
+                    'alert' => 'error',
+                    'msg' => 'OTP expired, transaction failed, please try again'
+            ]; 
+            return response()->json($msg);
+            }
+            $otp = "";
+            foreach($request->otp as $key => $otps){
+                $otp .= $otps;
+            }
+            if($otp != $deposit->otp){
+                $msg = [
+                    'alert' => 'error',
+                    'msg' => 'OTP entered does not match, transaction failed, try again!'
+            ]; 
+            return response()->json($msg);  
+            }
+            $msg = [
+                'alert' => 'success',
+                'msg' => 'Transaction completed successfully!'
+        ]; 
+               $deposit->update([
+                   'status' => 'success',
+               ]) ;
+               UserWallet::addAmount(auth_user(), $deposit->amount);
+        return response()->json($msg);  
+            
+            }
 }

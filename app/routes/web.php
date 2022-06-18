@@ -45,6 +45,7 @@ Route::get('deposits/{ref}', 'DepositController@show')->name('deposit');
 //
 Route::get('card/deposits/', 'DepositController@CardDeposit')->name('card.deposit');
 Route::post('card/deposits/initiate', 'DepositController@CardDepositInitiate')->name('card.deposit.initiate');
+Route::post('card/deposits/complete', 'DepositController@OTPverify')->name('card.deposit.complete');
 
 ///
 Route::get('deposits/transactions/{ref}', 'DepositController@showTransaction')->name('deposits.transaction');

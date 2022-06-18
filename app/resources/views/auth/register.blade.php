@@ -24,9 +24,7 @@
             <div class="container">
                 <!-- Page-header -->
                 <center>
-                    <a href="{{ route('index') }}">
-                        <img src="{{ asset('logo.png') }}" alt="" width="80"/>                                            
-                    </a>
+                    <h1 class=" btn btn-outline-secondary" style="color:rgb(36, 18, 110)">Online Banking </h1> 
                 </center>
                 <!-- Page-header -->
 

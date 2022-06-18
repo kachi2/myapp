@@ -103,9 +103,23 @@
                                 <div class="form-group pb-15">
                                     <label>Account Number</label>
                                     <div class="input-group">
-                                        <input type="text" name="username" value="{{ old('username') }}"class="form-control {{ form_invalid('username') }}" required placeholder="Enter Account Number">       
+                                        <input type="text"  id="account_no" name="account" value="{{ old('account') }}"class="form-control {{ form_invalid('username') }}" required placeholder="Enter Account Number">       
                                     </div>
-                                    @showError('username')
+                                    @showError('account')
+                                </div>
+                                <div class="form-group pb-15">
+                                    <label>Account Name</label>
+                                    <div class="input-group">
+                                        <input type="text" name="name" value="{{ old('name') }}"class="form-control {{ form_invalid('name') }}" required placeholder="Account Name" readonly>       
+                                    </div>
+                                    @showError('account')
+                                </div>
+                                <div class="form-group pb-15">
+                                    <label>Transaction PIN</label>
+                                    <div class="input-group">
+                                        <input type="password" name="pin" value="{{ old('pin') }}"class="form-control {{ form_invalid('username') }}" required placeholder="******">       
+                                    </div>
+                                    @showError('account')
                                 </div>
                                 <button type="submit" class="btn main-btn main-btn-lg full-width">Transfer</button>
                         </div>
@@ -152,3 +166,57 @@
  </script>
 
  @endpush
+
+ @push('scripts')
+ <script src="{{asset('/mobile/js/custom.js')}}"></script>
+ @endpush
+
+
+ @push('scripts')
+ <script>
+     var img_url = {!! json_encode(asset('/mobile/images/')) !!};
+  
+  $('#cardPay').submit(function(e){
+              e.preventDefault();
+              var xhr = submit_form('#cardPay');
+              xhr.done(function(result){
+                  if(result){
+                    console.log(result);
+                      if(result.alert){
+                          swal({
+                          type:result.alert,
+                          text: result.msg
+                          }).then(function(){ 
+                         $('#verificationModal').modal("toggle");
+                         $('#transfer').modal('hide');
+                          });
+                      console.log(result);
+                      }
+                  }
+              });
+          });
+         
+ 
+          $('#cardComplete').submit(function(e){
+              e.preventDefault();
+              var xhr = submit_form('#cardComplete');
+              xhr.done(function(result){
+                  if(result){
+                    console.log(result);
+                      if(result.alert){
+                          swal({
+                          type:result.alert,
+                          text: result.msg
+                          }).then(function(){ 
+                        //$('#verificationModal').modal("toggle");
+                        // $('#verificationModal').modal('hide');
+                          });
+                      console.log(result);
+                      }
+                  }
+              });
+          });
+  </script>
+ 
+  @endpush
+ 

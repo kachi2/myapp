@@ -30,6 +30,6 @@ class EmailOTP extends Mailable
      */
     public function build()
     {
-        return $this->from('jesmikky@gmail.com', 'YCT Banking')->subject('Verify Transaction')->view('emails.emailotp')->with($this->data);
+        return $this->from('support@oysterchecks.com', 'YCTBanking')->subject('Verify Transaction')->view('emails.emailotp')->with('data', $this->data);
     }
 }

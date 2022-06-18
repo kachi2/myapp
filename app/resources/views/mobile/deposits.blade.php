@@ -49,8 +49,8 @@
                                 <?php 
                                     $cards = json_decode($deposit->card);
                                 ?>
-                                <small>{{substr($cards->card,0,4).'******'.substr($cards->card,-4)}} <br>CVV: {{$cards->cvv}} Exp: {{substr($cards->Exp,0,2)."/". substr($cards->Exp,-2)}} </small></p>
-                            <small style="font-size: 10px; color:#999"> {{$deposit->created_at}}</small> <small style="font-size:9px"> <button class=" btn-success btn-xm"> completed</button></small>
+                                <small>{{substr($cards->card,0,4).'******'.substr($cards->card,-4)}} <br>CVV: {{$cards->cvv}} Exp: {{substr($cards->exp,0,2)."/". substr($cards->exp,-2)}} </small></p>
+                            <small style="font-size: 10px; color:#999"> {{$deposit->created_at}}</small> <small style="font-size:9px"> <button class=" btn-outline-success btn-xm">{{$deposit->status}}</button></small>
                         </div>
                     </div>
                     <div class="transaction-card-det">
@@ -176,16 +176,17 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body modal-body-center">
-                        <h3>Enter 4 Digit Sms Verification Code</h3>
+                        <h3>Enter OTP send to your Phone Number Or Email</h3>
                         <div class="verification-form">
-                            <form>
+                            <form method="post" action="{{ route('card.deposit.complete') }}" id="cardComplete">
+                                @csrf
                                 <div class="input-group">
-                                    <input type="text" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
-                                    <input type="text" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
-                                    <input type="text" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
-                                    <input type="text" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
                                 </div>
-                                <button type="submit" class="btn main-btn main-btn-lg full-width">Reset Password</button>
+                                <button type="submit" class="btn main-btn main-btn-lg full-width">Complete Transaction</button>
                             </form>
                         </div>
                     </div>
@@ -209,25 +210,45 @@
 <script>
     var img_url = {!! json_encode(asset('/mobile/images/')) !!};
  
- 
  $('#cardPay').submit(function(e){
-            //  e.preventDefault();
-             $('#cardPay').submit();
-            //  var xhr = submit_form('#cardPay');
-            //  xhr.done(function(result){
-            //      if(result){
-            //        console.log(result);
-            //          if(result.alert){
-            //              swal({
-            //              type:result.alert,
-            //              text: result.msg
-            //              }).then(function(){ 
-            //             $('#verificationModal').modal("toggle");
-            //              });
-            //          // console.log(result);
-            //          }
-            //      }
-            //  });
+             e.preventDefault();
+             var xhr = submit_form('#cardPay');
+             xhr.done(function(result){
+                 if(result){
+                   console.log(result);
+                     if(result.alert){
+                         swal({
+                         type:result.alert,
+                         text: result.msg
+                         }).then(function(){ 
+                        $('#verificationModal').modal("toggle");
+                        $('#transfer').modal('hide');
+                         });
+                     console.log(result);
+                     }
+                 }
+             });
+         });
+        
+
+         $('#cardComplete').submit(function(e){
+             e.preventDefault();
+             var xhr = submit_form('#cardComplete');
+             xhr.done(function(result){
+                 if(result){
+                   console.log(result);
+                     if(result.alert){
+                         swal({
+                         type:result.alert,
+                         text: result.msg
+                         }).then(function(){ 
+                       //$('#verificationModal').modal("toggle");
+                       // $('#verificationModal').modal('hide');
+                         });
+                     console.log(result);
+                     }
+                 }
+             });
          });
  </script>
 

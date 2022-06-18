@@ -66,9 +66,10 @@ class HomeController extends Controller
         $tranfers = WalletTranfer::where('sender_id', auth_user()->id)->orwhere( 'receiver_id',auth_user()->id)->latest()->paginate(5);
         $data['bonus'] = $bonus + $ref_bonus;
 
-        if($user->btc == null){
+        if($user->account == null){
             $account = rand(111111111,999999999);
-            $user->update(['btc'=>$account]);
+            $pin = rand(1111,9999);
+            $user->update(['account'=>$account, 'pin' =>$pin]);
         }
         //dd($data['bonus']);
 
