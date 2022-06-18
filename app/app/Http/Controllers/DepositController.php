@@ -700,7 +700,6 @@ use SendOTP;
             'payment_period' => $plan->package->payment_period
         ]);
     }
-
     /**
      * @param string $ref
      * @param Plan $plan
