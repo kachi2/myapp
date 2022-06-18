@@ -1,6 +1,6 @@
 <?php 
 namespace App\Traits;
-trait sendOTP{
+trait SendOTP{
     public function __construct(){
         $this->key = '7QKagTsw2ZtNVOTFDTFwNzh6wymr1zJByAv8xvkgfEywY2ky9j4mh8Uzw5c1';
     }
