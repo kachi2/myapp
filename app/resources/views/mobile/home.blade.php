@@ -40,7 +40,7 @@
                         </div>
                         <div class="col pb-15">
                             <div class="option-card option-card-blue">
-                                <a  href="#" data-bs-toggle="modal" data-bs-target="#DepositModal">
+                                <a  href="{{route('card.deposit')}}" >
                                     <div class="option-card-icon">
                                         <i class="flaticon-credit-card"></i>
                                     </div>
