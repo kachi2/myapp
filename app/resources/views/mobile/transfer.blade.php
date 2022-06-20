@@ -42,15 +42,19 @@
             </div>
             @forelse ($transfers as $transfer )
             <div class="transaction-card mb-15">
-                <a href="transaction-details.html">
+                <a href="#">
                     <div class="transaction-card-info">
                         <div class="transaction-info-thumb" style="border-radius: 100%">
                             <span class="text-white" style="font-size:15px"><?php if(isset($transfer->receiver_id) &&  $transfer->receiver_id != auth()->user()->id){ echo strtoupper(substr($transfer->receiver->username,0,2));}else{echo strtoupper(substr($transfer->sender->username,0,2)) ;}?></span>
                         </div>
                         <div class="transaction-info-text">
-                            <p><?php if(isset($transfer->receiver_id) && $transfer->receiver_id == auth()->user()->id){echo "Received from "."<small>".$transfer->sender->username."</small>"; }else{echo "Transferred  to "."<small>".$transfer->receiver->username."</small>";}   ?>
+                            <p><?php if(isset($transfer->receiver_id) && $transfer->receiver_id == auth()->user()->id){echo "Received from "."<small>".$transfer->sender->account."</small>"; }else{echo "Transferred  to "."<small>".$transfer->receiver->account."</small>";}   ?>
                             </p>
+                            <p><small class="positive-number">Account Name: {{$transfer->receiver->username}}<small></p>
+                                <p><small class="positive-number">Bank: Internal Transfer<small></p>
+                                    <p><small class="positive-number">Status<button class=" btn-outline-success btn-xm">{{$transfer->status}}</button><small></p>
                             <p><small class="positive-number">{{$transfer->created_at->format('d/m/y h:s A')}}<small></p>
+                              
                         </div>
                     </div>
                     <div class="transaction-card-det ">
@@ -103,9 +107,19 @@
                                 <div class="form-group pb-15">
                                     <label>Account Number</label>
                                     <div class="input-group">
-                                        <input type="text"  id="account_no" name="account" value="{{ old('account') }}"class="form-control {{ form_invalid('username') }}" required placeholder="Enter Account Number">       
+                                        <input type="text"  id="account" name="account" value="{{ old('account') }}"class="form-control {{ form_invalid('username') }}" required placeholder="Enter Account Number">       
                                     </div>
                                     @showError('account')
+                                </div>
+                                <div class="form-group pb-15">
+                                    <label>Account Name</label>
+                                    <div class="input-group">
+                                        <input type="text"  id="account_name"  value="{{ old('account') }}"class="form-control {{ form_invalid('username') }}" readonly>       
+                                    </div>
+                                    @showError('account')
+                                    <div class="form-group-append">
+                                        <span class="input-group-text" id="load"></span>
+                                      </div>
                                 </div>
                                 <div class="form-group pb-15">
                                     <label>Transaction PIN</label>
@@ -114,13 +128,43 @@
                                     </div>
                                     @showError('account')
                                 </div>
-                                <button type="submit" class="btn main-btn main-btn-lg full-width">Transfer</button>
+                                <button type="submit" id="submitbtn" class="btn main-btn main-btn-lg full-width">Transfer</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </form>
+
+    <div class="modal fade show" id="verificationModal" tabindex="-1" aria-labelledby="verificationModal" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="modal-header">
+                        <div class="modal-header-title">
+                            <h5 class="modal-title">SMS Verification</h5>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body modal-body-center">
+                        <h3>Enter OTP send to your Phone Number Or Email</h3>
+                        <div class="verification-form">
+                            <form method="post" action="{{ route('card.transfer.complete') }}" id="TransferComplete">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                </div>
+                                <button type="submit" class="btn main-btn main-btn-lg full-width">Complete Transaction</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <!-- end of container -->
     </div>
 </div>
@@ -129,53 +173,21 @@
 
 
 @endsection
-
-@push('scripts')
-<script src="{{asset('/mobile/js/custom.js')}}"></script>
-@endpush
-@push('scripts')
-<script>
-    var img_url = {!! json_encode(asset('/mobile/images/')) !!};
- 
- 
- $('#transferForm').submit(function(e){
-             e.preventDefault();
-             var xhr = submit_form('#transferForm');
-             xhr.done(function(result){
-                 if(result){
-                   console.log(result);
-                     if(result.alert){
-                         swal({
-                         type:result.alert,
-                         text: result.msg
-                         }).then(function(){ 
-                         //location.reload();
-                         });
-                     // console.log(result);
-                     }
-                 }
-             });
-         });
- </script>
-
- @endpush
-
  @push('scripts')
  <script src="{{asset('/mobile/js/custom.js')}}"></script>
  @endpush
-
 
  @push('scripts')
  <script>
      var img_url = {!! json_encode(asset('/mobile/images/')) !!};
   
-  $('#cardPay').submit(function(e){
-              e.preventDefault();
-              var xhr = submit_form('#cardPay');
-              xhr.done(function(result){
+     $('#transferForm').submit(function(e){
+             e.preventDefault();
+             var xhr = submit_form('#transferForm');
+             xhr.done(function(result){
                   if(result){
                     console.log(result);
-                      if(result.alert){
+                      if(result.success){
                           swal({
                           type:result.alert,
                           text: result.msg
@@ -184,15 +196,22 @@
                          $('#transfer').modal('hide');
                           });
                       console.log(result);
+                      }else{
+                        swal({
+                          type:result.alert,
+                          text: result.msg
+                          }).then(function(){ 
+                        //  $('#verificationModal').modal("toggle");
+                        //  $('#transfer').modal('hide');
+                          });
                       }
                   }
               });
           });
          
- 
-          $('#cardComplete').submit(function(e){
+          $('#TransferComplete').submit(function(e){
               e.preventDefault();
-              var xhr = submit_form('#cardComplete');
+              var xhr = submit_form('#TransferComplete');
               xhr.done(function(result){
                   if(result){
                     console.log(result);
@@ -201,6 +220,7 @@
                           type:result.alert,
                           text: result.msg
                           }).then(function(){ 
+                        location.reload();
                         //$('#verificationModal').modal("toggle");
                         // $('#verificationModal').modal('hide');
                           });
@@ -209,6 +229,36 @@
                   }
               });
           });
+
+
+
+          $('#account').on('change', function(){
+            document.getElementById("load").hidden = false;
+              $('#load').html('<span class="spinner-grow text-success spinner-grow-sm" role="status" aria-hidden="true"></span> <span class="text-success" style="font-size:12px"> fetching Name... </span>');
+            var accounts = $('#account').val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+     //var form_data = $(this);
+        $.ajax({
+          url: "{{route('verifyTransferAccount')}}",
+          type:"get",
+          data:{
+            account:accounts, 
+          },
+           cache:false,
+          dataType: "json",
+          success:function(response){
+              console.log(response);
+         document.getElementById("load").hidden = true;
+            $('#account_name').attr('placeholder',response.msg);
+             document.getElementById('btnsubmit').disabled = true;
+          }
+         });
+   });
+   
   </script>
  
   @endpush

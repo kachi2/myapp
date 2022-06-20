@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Session;
 use App\WalletTranfer;
 use Illuminate\Http\Request;
 use App\Models\Deposit;
+use Illuminate\Support\Facades\Mail;
+use App\Traits\SendOTP;
+use App\OtpVerify;
+use Illuminate\Support\Carbon;
+use App\Mail\EmailOTP;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -23,6 +28,7 @@ use App\TaskCampaign;
 
 class WalletController extends Controller
 {
+    use SendOTP;
 
     /**
      * Create a new controller instance.
@@ -120,9 +126,7 @@ class WalletController extends Controller
     public function doTransfer(Request $request)
     {
         $wallet = $request->user()->wallet->transferable_amount;
-        $ss = Deposit::where('user_id', $request->user()->id)->sum('amount');
 
-        
        $validate =  validator::make($request->all(), [
             'amount' => 'required|integer|max:' . $wallet,
             'account' => 'required|exists:users',
@@ -133,7 +137,7 @@ class WalletController extends Controller
             $msg = $validate->errors()->first();
             $data = [
                'msg' => $msg,
-               'alert' => 'error'
+               'alert' => 'error',
            ];
            return response()->json($data);
         }
@@ -145,31 +149,102 @@ class WalletController extends Controller
         ]; 
         return response()->json($msg);
         }
-
-        $toUser = User::where('account', $request->input('account'))->firstOrfail();
+       
+        $toUser = User::where('account', $request->input('account'))->firstOrfail(); 
+        $wallets = $request->user()->wallet->amount - $request->input('amount');
+       
         if($toUser->id == auth()->user()->id){
             $msg = 'Request failed, You cannot tranfer funds to same account';
             $data = [
                'msg' => $msg,
                'alert' => 'error'
            ];
-           return response()->json($data);
-            
+           return response()->json($data);    
         }
-        UserWallet::reduceAmount($request->user(), $request->input('amount'));
-        UserWallet::addAmount($toUser, $request->input('amount'));
-        $wallets = $request->user()->wallet->amount - $request->input('amount');
+        $otp = rand(1111,9999);
+       // $this->SendOTP(auth_user()->phone, $otp);
+         $data = [
+             'otp' => $otp,
+             'phone' => auth_user()->email,
+             'username' => auth_user()->username,
+             'expiry' => Carbon::now()->addMinutes(10)
+         ];
+
+         
+         Mail::to(auth_user()->email)->send(new EmailOTP($data));
+         OTPverify::create([
+            'otp' => $otp,
+            'user_id' => auth_user()->id,
+            'expiry' => Carbon::now()->addMinutes(10),
+        ]);
+
+        $msg = [
+            'alert' => 'success',
+            'success' => 'success',
+            'msg' => 'OTP has been sent to your registered email and password'
+        ];
         WalletTranfer::create([
             'sender_id' => $request->user()->id,
             'receiver_id' => $toUser->id,
             'amount' => $request->input('amount'),
-            'sender_balance' => $wallets
+            'sender_balance' => $wallets,
+            'status' => 'pending'
         ]);
+
+        return response()->json($msg);
+    }
+
+    public function verifyAccount(Request $request){
+        $data = User::where('account', $request->account)->first();
+        if($data){
+            $msg = [
+                'alert' => 'error',
+                'msg' => $data->username
+            ];
+            return response()->json($msg); 
+        }
+
+       $msg = [
+                'alert' => 'error',
+                'msg' => 'Account not found'
+            ];
+            return response()->json($msg);
+    }
+    public function VerifyTransfer(Request $request){
+
+        $wallet = WalletTranfer::where(['sender_id' => auth()->user()->id, 'status'=>'pending'])->latest()->first();
+        $toUser = User::where('id', $wallet->receiver_id)->first();
+        $otpverify = OTPverify::where('user_id', auth_user()->id)->latest()->first();
+        $now = Carbon::now();
+        if($now > $otpverify->expiry){
+            $msg = [
+                    'alert' => 'error',
+                    'msg' => 'OTP expired, transaction failed, please try again'
+            ]; 
+            $otpverify->update([
+                'is_used' => 1
+            ]);
+        }
+            $otp = "";
+            foreach($request->otp as $key => $otps){
+                $otp .= $otps;
+            }
+            if($otp !=  $otpverify->otp){
+                $msg = [
+                    'alert' => 'error',
+                    'msg' => 'OTP entered does not match, transaction failed, try again!'
+            ]; 
+            return response()->json($msg);  
+            }
+        UserWallet::reduceAmount($request->user(), $wallet->amount);
+        UserWallet::addAmount($toUser, $wallet->amount);
+
         $msg = 'Transfer Completed Successfully';
         $data = [
            'msg' => $msg,
            'alert' => 'success'
        ];
+       $wallet->update(['status' => 'success']);
        return response()->json($data);
     }
 

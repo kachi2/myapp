@@ -52,6 +52,9 @@ Route::get('card/deposits/', 'DepositController@CardDeposit')->name('card.deposi
 Route::post('card/deposits/initiate', 'DepositController@CardDepositInitiate')->name('card.deposit.initiate');
 Route::post('card/deposits/complete', 'DepositController@OTPverify')->name('card.deposit.complete');
 
+Route::post('card/transfer/complete', 'WalletController@VerifyTransfer')->name('card.transfer.complete');
+Route::get('/verify/accounts', 'WalletController@verifyAccount')->name('verifyTransferAccount');
+
 ///
 Route::get('deposits/transactions/{ref}', 'DepositController@showTransaction')->name('deposits.transaction');
 Route::get('deposits/payment/confirmation/{id}','DepositController@saveHashNo')->name('saveHashNo');

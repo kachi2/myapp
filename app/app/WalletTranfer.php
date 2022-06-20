@@ -12,7 +12,8 @@ class WalletTranfer extends Model
         'sender_id',
         'receiver_id',
         'amount',
-        'sender_balance'
+        'sender_balance',
+        'status'
     ];
 
     public function sender(){
