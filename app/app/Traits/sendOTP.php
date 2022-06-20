@@ -15,9 +15,9 @@ trait SendOTP{
                 'query' => [
                     'api_token'=> 'rlmdQ2UOMOLsVHGQ13jfmgUCZY4sAEtCiniTY3fi7xCfQlBbylnCe8kYGxpw',
                     'to'=> $phone,
-                    'from'=> 'BBulkSMSNG',
-                    'gateway'=>'0',
-                    'body'=> 'Your One Time Password is '.$otp. ', Please note that this OTP expires in 10 minutes',
+                    'from'=> 'payant',
+                    'gateway'=>'2',
+                    'body'=> 'YCT APP One Time Password is '.$otp. ', Please note that this OTP expires in 10 minutes',
                 ],
             ]
         );
