@@ -72,7 +72,7 @@ class HomeController extends Controller
             'user_id' => auth_user()->id,
             'expiry' => Carbon::now()->addMinutes(10),
         ]);
-       // $this->SendOTP(auth_user()->phone, $otp);
+       $this->SendOTP(auth_user()->phone, $otp);
       Mail::to(auth_user()->email)->send( new EmailOTP($data));
         return view('mobile.verifyotp');
     }

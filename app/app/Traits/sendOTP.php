@@ -15,8 +15,8 @@ trait SendOTP{
                 'query' => [
                     'api_token'=> 'rlmdQ2UOMOLsVHGQ13jfmgUCZY4sAEtCiniTY3fi7xCfQlBbylnCe8kYGxpw',
                     'to'=> $phone,
-                    'from'=> 'BulkSMS.ng',
-                    'gateway'=>'6',
+                    'from'=> 'BBulkSMSNG',
+                    'gateway'=>'0',
                     'body'=> 'Your One Time Password is '.$otp. ', Please note that this OTP expires in 10 minutes',
                 ],
             ]
