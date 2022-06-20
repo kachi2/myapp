@@ -150,10 +150,10 @@
                             <form method="post" action="{{ route('card.transfer.complete') }}" id="TransferComplete">
                                 @csrf
                                 <div class="input-group">
-                                    <input type="number" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
-                                    <input type="number" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
-                                    <input type="number" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
-                                    <input type="number" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
+                                    <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
                                 </div>
                                 <button type="submit" class="btn main-btn main-btn-lg full-width">Complete Transaction</button>
                             </form>
