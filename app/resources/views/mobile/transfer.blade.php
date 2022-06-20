@@ -35,7 +35,6 @@
                 </div>
             </div>
         </div>
-
         <div class="transaction-section pb-15">
             <div class="section-header">
                 <h2>Recent Transfers</h2>
@@ -52,9 +51,8 @@
                             </p>
                             <p><small class="positive-number">Account Name: {{$transfer->receiver->username}}<small></p>
                                 <p><small class="positive-number">Bank: Internal Transfer<small></p>
-                                    <p><small class="positive-number">Status<button class=" btn-outline-success btn-xm">{{$transfer->status}}</button><small></p>
-                            <p><small class="positive-number">{{$transfer->created_at->format('d/m/y h:s A')}}<small></p>
-                              
+                                 <p><small class="positive-number">Status<button class=" btn-outline-success btn-xm">{{$transfer->status}}</button><small></p>
+                            <p><small class="positive-number">{{$transfer->created_at->format('d/m/y h:s A')}}<small></p>   
                         </div>
                     </div>
                     <div class="transaction-card-det ">

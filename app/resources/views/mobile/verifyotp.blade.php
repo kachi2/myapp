@@ -68,9 +68,6 @@
     </div>
 </div>
 
-
-
-<div>
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="container">
@@ -98,7 +95,8 @@
                             <button type="submit" class="btn main-btn main-btn-lg full-width">Verify and Login</button>
                         </form>
                         <br>
-                        OTP Expires in <span id="countdown"></span>
+                        OTP Expires in <span id="countdown"></span> <br>
+                        <small style="font-size:10px"> If you did not receive OTP, refresh page</small>
                     </div>
                 </div>
                 @if(Session::has('alert'))
@@ -111,7 +109,6 @@
             </div>
         </div>
     </div>
-</div>
 
 @endsection
 

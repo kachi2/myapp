@@ -44,6 +44,7 @@
         </div>
         <div class="header-bg header-bg-1"></div>
         @yield('content')
+        
         <script src="{{asset('/mobile/js/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('/mobile/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{asset('/mobile/js/owl.carousel.min.js')}}"></script>
