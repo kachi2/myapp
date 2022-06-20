@@ -39,6 +39,7 @@ use Kevupton\LaravelCoinpayments\Models\Transaction;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Mail\EmailOTP;
 use App\Traits\SendOTP;
+use App\OtpVerify;
 
 class DepositController extends Controller
 {
@@ -788,11 +789,17 @@ public function CardDepositInitiate(Request $request){
                 'otp' => $otp,
                 'phone' => auth_user()->email,
                 'username' => auth_user()->username,
-                'exp' => Carbon::now()->addMinutes(10)
+                'expiry' => Carbon::now()->addMinutes(10)
             ];
             Mail::to(auth_user()->email)->send(new EmailOTP($data));
             $ref = generate_reference();
             $balance = auth()->user()->wallet->amount + $request->amount;
+
+            OTPverify::create([
+                'otp' => $otp,
+                'user_id' => auth_user()->id,
+                'expiry' => Carbon::now()->addMinutes(10),
+            ]);
             Deposits::create([
                 'user_id' => auth_user()->id,
                 'ref' => $ref,
@@ -814,21 +821,25 @@ public function CardDepositInitiate(Request $request){
             public function OTPverify(Request $request){
              
 
+            $otpverify = OTPverify::where('user_id', auth_user()->id)->latest()->first();
             $deposit = Deposits::where('user_id', auth_user()->id)->latest()->first();
             $now = Carbon::now();
 
-            if($now > $deposit->expiry){
+            if($now > $otpverify->expiry){
             $msg = [
                     'alert' => 'error',
                     'msg' => 'OTP expired, transaction failed, please try again'
             ]; 
+            $otpverify->update([
+                'is_used' => 1
+            ]);
             return response()->json($msg);
             }
             $otp = "";
             foreach($request->otp as $key => $otps){
                 $otp .= $otps;
             }
-            if($otp != $deposit->otp){
+            if($otp !=  $otpverify->otp){
                 $msg = [
                     'alert' => 'error',
                     'msg' => 'OTP entered does not match, transaction failed, try again!'
@@ -842,6 +853,9 @@ public function CardDepositInitiate(Request $request){
                $deposit->update([
                    'status' => 'success',
                ]) ;
+               $otpverify->update([
+                'is_used' => 1
+            ]);
                UserWallet::addAmount(auth_user(), $deposit->amount);
         return response()->json($msg);  
             

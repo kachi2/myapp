@@ -10,13 +10,22 @@ use App\Models\Withdrawal;
 use App\PlanProfit;
 use App\WalletTranfer;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Carbon;
+use App\Mail\EmailOTP;
 use App\UserActivity;
+use App\OtpVerify;
+use App\Traits\SendOTP;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use Kevupton\LaravelCoinpayments\Models\Withdrawal as ModelsWithdrawal;
 
 class HomeController extends Controller
 {
+    use SendOTP;
     /**
      * Create a new controller instance.
      *
@@ -50,6 +59,61 @@ class HomeController extends Controller
              'coins' => $resp,
          ]);
      }
+
+     public function VerifyOTP(){
+        $otp = rand(1111,9999);
+        $data = [
+            'username' => auth_user()->username,
+            'otp' => $otp,
+            'expiry' => Carbon::now()->addMinutes(10),
+        ];
+        OTPverify::create([
+            'otp' => $otp,
+            'user_id' => auth_user()->id,
+            'expiry' => Carbon::now()->addMinutes(10),
+        ]);
+       // $this->SendOTP(auth_user()->phone, $otp);
+      Mail::to(auth_user()->email)->send( new EmailOTP($data));
+        return view('mobile.verifyotp');
+    }
+
+    public function OTPverify(Request $request){
+
+        $valid = validator::make($request->all(),[
+            'otp' => 'required'
+        ]);
+        if($valid->fails()){
+            Session::flash('alert', 'error');
+            Session::flash('msg', 'OTP is required');
+            return redirect()->back();
+        }
+        $otpverify = OTPverify::where('user_id', auth_user()->id)->latest()->first();
+        $now = Carbon::now();
+        if($now > $otpverify->expiry){
+            $otpverify->update([
+                'is_used' => 1
+            ]);
+            Session::flash('alert', 'error');
+            Session::flash('msg', 'OTP expired, please refresh page');
+            
+            return redirect()->back();
+            }
+            $otp = "";
+            foreach($request->otp as $key => $otps){
+                $otp .= $otps;
+            }
+            if($otp !=  $otpverify->otp){
+                Session::flash('alert', 'error');
+                Session::flash('msg', 'OTP does not match, please try again');
+                
+                return redirect()->back();
+            }
+               $otpverify->update([
+                'is_used' => 1
+            ]);
+            return redirect()->route('home');
+    }
+
     public function index()
     {
         $user = auth_user();
@@ -97,4 +161,5 @@ class HomeController extends Controller
                 'data' => $data  
         ]);
     }
+
 }

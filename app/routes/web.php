@@ -25,8 +25,13 @@ Route::get('/faq', 'FaqController@index')->name('faq');
 Route::get('/plans', 'WelcomeController@plans')->name('plans');
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::post('/contact/store', 'ContactController@store')->name('contact.store');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@VerifyOTP')->name('verify.otp');
+
+Route::get('/verifyotp', 'HomeController@VerifyOTP')->name('verify.otp');
+Route::post('/verify/login/otp', 'HomeController@OTPverify')->name('verify.login.otp');
+
 Route::get('withdrawals', 'WithdrawController@index')->name('withdrawals');
 Route::get('withdrawals/request', 'WithdrawController@request')->name('withdrawals.request');
 Route::post('withdrawals/request', 'WithdrawController@store')->name('withdrawals.request');

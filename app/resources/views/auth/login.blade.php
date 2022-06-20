@@ -25,7 +25,7 @@
         <div class="body-content">
             <div class="container">
                 <center>
-                    <h1 class=" btn btn-outline-secondary" style="color:rgb(39, 16, 105)">Online Banking </h1>                                           
+                    <h1 class=" btn btn-outline-secondary" style="color:rgb(39, 16, 105)">YCT Bank App</h1>                                           
                 
                 </center>
                 <!-- Page-header -->

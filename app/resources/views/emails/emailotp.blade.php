@@ -7,7 +7,7 @@
             <tbody>
             <tr>
                 <td style="text-align:center;padding-bottom:15px">
-                   <h2 style="color:#15c"> YCTBanking</h2>
+                   <h2 style="color:#15c"> YCT Bank App</h2>
                 </td>
             </tr>
             </tbody>
@@ -32,7 +32,7 @@
     <tr>
     <td width="150">Expires</td>
     <td width="25">&nbsp;&nbsp;:&nbsp;&nbsp;</td>
-    <td>{{ $data['exp'] }} </td>
+    <td>{{ $data['expiry'] }} </td>
     </tr>
   
     </tbody></table>
