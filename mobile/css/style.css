@@ -2155,7 +2155,7 @@ footer.footer-bg p a {
 }
 
 .modal-dialog.modal-dialog-centered {
-  width: 90%;
+  /* width: 90%; */
   min-height: calc(100% - -67px);
 }
 
