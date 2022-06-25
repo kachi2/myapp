@@ -72,7 +72,6 @@
                     </div>
                     <div class="transaction-card-det ">
                         <span class="positive-number">{{ moneyFormat($withdrawal->amount, 'USD') }}</span><br> 
-                       <small class="negative-number">{{ $withdrawal->formatted_payment_method }}<small>
                     </div>
                 </a>
             </div>
