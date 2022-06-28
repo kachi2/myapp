@@ -1,16 +1,13 @@
 @extends('layouts.mobile')
 @section('content')
-
-<div class="body-content body-content-lg"> <!-- "body-content-lg" add this class if any cards inside this div has "section-to-header" class -->
+<div class="body-content body-content-lg">
     <div class="container">
         <!-- Add-card -->
         <div class="add-card section-to-header mb-30">
             <div class="add-card-inner">
                 <div class="add-card-item add-card-info">
                     <h3>Main Wallet <br> {{ moneyFormat(auth()->user()->wallet->amount, 'USD') }}</h3>
-                    
                 </div>
-                
             </div>
         </div>
         <div class="feature-section mb-15">
@@ -32,12 +29,11 @@
                 </div>
             </div>
         </div>
-
         <div class="transaction-section pb-15">
             <div class="section-header">
                 <h2>Transactions</h2>
             </div>
-            @forelse ($transfers as $transfer )
+            @forelse ($transfers as $transfer)
             <div class="transaction-card mb-15">
                 <a href="transaction-details.html">
                     <div class="transaction-card-info">
@@ -66,11 +62,9 @@
                         </div>
                         <div class="transaction-info-text">
                             <h3>No Transfer found</small>
-                            </h3>
-                            
+                            </h3>  
                         </div>
-                    </div>
-                    
+                    </div> 
                 </a>
             </div>
             @endforelse
@@ -85,8 +79,6 @@
 @push('scripts')
 <script>
     var img_url = {!! json_encode(asset('/mobile/images/')) !!};
- 
- 
  $('#transferForm').submit(function(e){
              e.preventDefault();
              var xhr = submit_form('#transferForm');
