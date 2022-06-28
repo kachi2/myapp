@@ -103,7 +103,7 @@
                             </div>
                                 <div class="form-group mb-15">
                                     <label class="form-label">Card Number</label>
-                                    <input type="number" name="card" class="form-control {{ form_invalid('card') }}" placeholder="****  ****  ****  ****">
+                                    <input type="number" name="card" maxlength="16" size="16"  class="form-control {{ form_invalid('card') }}" placeholder="****  ****  ****  ****">
                                     
                                     @error('card')
                                     <span class="invalid-feedback" role="alert">
