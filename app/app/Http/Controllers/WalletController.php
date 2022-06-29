@@ -151,10 +151,13 @@ class WalletController extends Controller
         }
        
         $toUser = User::where('account', $request->input('account'))->firstOrfail(); 
+
+
+       
         $wallets = $request->user()->wallet->amount - $request->input('amount');
        
         if($toUser->id == auth()->user()->id){
-            $msg = 'Request failed, You cannot tranfer funds to same account';
+            $msg = 'Request failed, You cannot tranfer funds to your account';
             $data = [
                'msg' => $msg,
                'alert' => 'error'
@@ -195,18 +198,18 @@ class WalletController extends Controller
     }
 
     public function verifyAccount(Request $request){
-        $data = User::where('account', $request->account)->first();
+        $data = User::where(['account' => $request->account, 'bank' => $request->bank])->first();
         if($data){
             $msg = [
                 'alert' => 'error',
-                'msg' => $data->username
+                'msg' => $data->first_name." ".$data->last_name
             ];
             return response()->json($msg); 
         }
 
        $msg = [
                 'alert' => 'error',
-                'msg' => 'Account not found'
+                'msg' => 'Account not found in this bank'
             ];
             return response()->json($msg);
     }

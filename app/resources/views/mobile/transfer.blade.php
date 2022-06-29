@@ -49,16 +49,16 @@
                         <div class="transaction-info-text">
                             <p><?php if(isset($transfer->receiver_id) && $transfer->receiver_id == auth()->user()->id){echo "Received from "."<small>".$transfer->sender->account."</small>"; }else{echo "Transferred  to "."<small>".$transfer->receiver->account."</small>";}   ?>
                             </p>
-                            <p><small class="positive-number">Account Name: {{$transfer->receiver->username}}<small></p>
+                            <p><small class="positive-number">Account Name: {{$transfer->receiver->first_name . " " . $transfer->receiver->last_name}}<small></p>
                                 <p><small class="positive-number">Bank: Internal Transfer<small></p>
                                  <p><small class="positive-number">Status<button class=" btn-outline-success btn-xm">{{$transfer->status}}</button><small></p>
                             <p><small class="positive-number">{{$transfer->created_at->format('d/m/y h:s A')}}<small></p>   
                         </div>
                     </div>
                     <div class="transaction-card-det ">
-                        <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){ echo "<span style=\"color:#000\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}else{ echo "<span style=\"color:green\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}?> <br> 
-                        <span class="negative-number">  <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){
-                           echo moneyFormat($transfer->sender_balance, 'USD'); } ?></span><br>
+                        <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){ echo "<span style=\"color:#green\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}else{ echo "<span style=\"color:#000\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}?> <br> 
+                        <span class="positive-number">  <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){
+                          echo "Debit"; }else { echo " credit"; }?></span><br>
                     </div>
                 </a>
             </div>
@@ -70,8 +70,8 @@
                             <span class="text-white" style="font-size:15px"></span>
                         </div>
                         <div class="transaction-info-text">
-                            <h3>No Transfer found</small>
-                            </h3>
+                            <p>No Transfer found
+                            </p>
                             
                         </div>
                     </div>
@@ -103,6 +103,18 @@
                                     @showError('amount')
                                 </div>
                                 <div class="form-group pb-15">
+                                    <label>Bank Name</label>
+                                    <div class="input-group" >
+                                        <select  class="form-control" name="bank" id="bank"> 
+                                            <option value="Opay"> Opay</option>   
+                                            <option value="Palmpay"> Palmpay</option>   
+                                            <option value="GTB"> GTB</option>   
+                                            <option value="Access"> Access Bank</option>   
+                                        </select>   
+                                    </div>
+                                    @showError('bank')
+                                </div>
+                                <div class="form-group pb-15">
                                     <label>Account Number</label>
                                     <div class="input-group">
                                         <input type="text"  id="account" name="account" value="{{ old('account') }}"class="form-control {{ form_invalid('username') }}" required placeholder="Enter Account Number">       
@@ -112,11 +124,11 @@
                                 <div class="form-group pb-15">
                                     <label>Account Name</label>
                                     <div class="input-group">
-                                        <input type="text"  id="account_name"  value="{{ old('account') }}"class="form-control {{ form_invalid('username') }}" readonly>       
+                                        <input type="text"  id="account_name"  value="{{ old('account_name') }}"class="form-control {{ form_invalid('account_name') }}" readonly>       
                                     </div>
                                     @showError('account')
                                     <div class="form-group-append">
-                                        <span class="input-group-text" id="load"></span>
+                                        <span class="input-group-text" id="load" hidden></span>
                                       </div>
                                 </div>
                                 <div class="form-group pb-15">
@@ -234,6 +246,8 @@
             document.getElementById("load").hidden = false;
               $('#load').html('<span class="spinner-grow text-success spinner-grow-sm" role="status" aria-hidden="true"></span> <span class="text-success" style="font-size:12px"> fetching Name... </span>');
             var accounts = $('#account').val();
+            var banks = $('#bank').val();
+         
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -245,13 +259,14 @@
           type:"get",
           data:{
             account:accounts, 
+            bank:banks
           },
            cache:false,
           dataType: "json",
           success:function(response){
               console.log(response);
          document.getElementById("load").hidden = true;
-            $('#account_name').attr('placeholder',response.msg);
+            $('#account_name').attr('value',response.msg);
              document.getElementById('btnsubmit').disabled = true;
           }
          });

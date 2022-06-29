@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zxx" class="js">
+<html lang="zxx" >
 
 <head>
     <base href="">
     <meta charset="utf-8">
-      <meta name="author" content="Zenith Capital">
+      <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <meta name="keywords" content="crypto, Trading, Cryptocurrency, Cryptocurrency Trading, Investments, Trading comapany, Brokers, Bitcoin, Bitcoin trading">
-    <meta name="description" content="{{config('app.name')}} is a highly trusted crypto Trading comapany, helping millions of individuals and firms across the globe to safely Trade and earn more with crypto currency.">
+   <meta name="keywords" content="">
+    <meta name="description" content="">
   <!-- Fav Icon  -->
  <link rel="shortcut icon" href="{{asset('/fav.png')}}">
     <!-- Page Title  -->

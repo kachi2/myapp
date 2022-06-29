@@ -16,6 +16,7 @@
                                 </h3>
                                 <p><a href="tel:1545-8880">{{auth()->user()->email}}</a></p>
                                 <p><a href="tel:1545-8880">Account No:{{auth()->user()->account}}</a></p>
+                                <p><a href="tel:1545-8880">Bank:{{auth()->user()->bank}}</a></p>
                             </div>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

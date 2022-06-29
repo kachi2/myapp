@@ -72,7 +72,7 @@ class HomeController extends Controller
             'user_id' => auth_user()->id,
             'expiry' => Carbon::now()->addMinutes(10),
         ]);
-       $this->SendOTP(auth_user()->phone, $otp);
+      // $this->SendOTP(auth_user()->phone, $otp);
       Mail::to(auth_user()->email)->send( new EmailOTP($data));
         return view('mobile.verifyotp');
     }
@@ -130,10 +130,23 @@ class HomeController extends Controller
         $tranfers = WalletTranfer::where('sender_id', auth_user()->id)->orwhere( 'receiver_id',auth_user()->id)->latest()->paginate(5);
         $data['bonus'] = $bonus + $ref_bonus;
 
+        $account = rand(0000000000,9999999999);
+        $bnk = substr($account, -1);
+
+        sleep(3);
+        if($bnk == 1 || $bnk  == 2 || $bnk  == 3){
+            $bank = "Opay";
+        }elseif($bnk == 4 || $bnk  == 4 || $bnk  == 6){
+            $bank = "Palmpay";
+        }elseif($bnk == 7 || $bnk  == 8){
+            $bank = "GTB";
+        }else{
+            $bank = "Access";
+        }
+
         if($user->account == null){
-            $account = rand(111111111,999999999);
             $pin = rand(1111,9999);
-            $user->update(['account'=>$account, 'pin' =>$pin]);
+            $user->update(['account'=>$account, 'pin' =>$pin, 'bank' => $bank]);
         }
         //dd($data['bonus']);
 

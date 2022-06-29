@@ -19,15 +19,11 @@
             </div>
             <div class="payment-list-details">
                 <div class="payment-list-item payment-list-title">Wallet Address</div>
-                <div class="payment-list-item payment-list-info">{{$withdrawal->wallet_address}}</div>
+                <div class="payment-list-item payment-list-info">{{$withdrawal->account}}</div>
             </div>
             <div class="payment-list-details">
                 <div class="payment-list-item payment-list-title">Amount</div>
                 <div class="payment-list-item payment-list-info">{{moneyFormat($withdrawal->amount, 'USD')}}</div>
-            </div>
-            <div class="payment-list-details">
-                <div class="payment-list-item payment-list-title">Payment Method</div>
-                <div class="payment-list-item payment-list-info">{{$withdrawal->payment_method}}</div>
             </div>
             <div class="payment-list-details">
                 <div class="payment-list-item payment-list-title">Status</div>

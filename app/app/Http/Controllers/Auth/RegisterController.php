@@ -77,32 +77,31 @@ class RegisterController extends Controller
      */
     protected function create_user(Request $data)
     {
-        
+
          $validate = $this->validate($data, [
-            //'first_name' => ['required', 'string', 'max:120'],
-            //'last_name' => ['required', 'string', 'max:120'],
-            //'username' => ['required', 'alpha_num', 'max:120', 'unique:users'],
+            'first_name' => ['required', 'string', 'max:120'],
+            'last_name' => ['required', 'string', 'max:120'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-            'username' => ['required', 'alpha_num', 'max:120', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+          //  'username' => ['required', 'alpha_num', 'max:120', 'unique:users'],
         ]);
         
         if(!$validate){
             return back()->withInput($data->all())->InputErrors($validate);
         }
         
+        $username = $data['last_name'].rand(111,999);
         $create =  User::create([
-            //'first_name' => $data['first_name'],
-           // 'last_name' => $data['last_name'],
-           // 'username' => $data['username'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
-            'username' => $data['username'],
+            'username' => $username,
             'password' => Hash::make($data['password']),
         ]);
         
         if($create){
             $users = User::latest()->first();
-            $bonusAmount = 10;
+            $bonusAmount = 0;
         UserWallet::addBonus($users, $bonusAmount);
         Auth::login($users);
         return redirect()
