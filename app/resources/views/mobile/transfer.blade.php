@@ -240,8 +240,6 @@
               });
           });
 
-
-
           $('#account').on('change', function(){
             document.getElementById("load").hidden = false;
               $('#load').html('<span class="spinner-grow text-success spinner-grow-sm" role="status" aria-hidden="true"></span> <span class="text-success" style="font-size:12px"> fetching Name... </span>');

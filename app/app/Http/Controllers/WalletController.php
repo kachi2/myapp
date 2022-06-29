@@ -39,7 +39,6 @@ class WalletController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Display user wallet.
      *
@@ -48,6 +47,7 @@ class WalletController extends Controller
      */
     public function index(Request $request)
     {
+
         $balance = $request->user()->wallet->amount;
         $bonus = $request->user()->wallet->bonus;
 

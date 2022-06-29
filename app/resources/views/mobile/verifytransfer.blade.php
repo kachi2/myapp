@@ -10,17 +10,12 @@
                     <div class="modal-header-title">
                         <h6 class="modal-title">An OTP has been send to your registered phone or email</h5>
                     </div>
-                    
                 </div>
-               
-
                 <div class="modal-body modal-body-center">
-                   
                     <p>Enter OTP to complete Deposit</p>
                     <div class="verification-form">
                         <form method="post" action="{{ route('verify.login.otp') }}">
                             @csrf
-                            
                             <div class="input-group">
                                 <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
                                 <input type="text" name="otp[]" maxlength="1" size="1" pattern="[0-9]{1}" placeholder="*" class="verification-input">
