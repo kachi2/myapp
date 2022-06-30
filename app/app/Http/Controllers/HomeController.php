@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Carbon;
+use App\WalletDeposit;
+use App\Deposits;
 use App\Mail\EmailOTP;
 use App\UserActivity;
 use App\OtpVerify;
@@ -116,9 +118,15 @@ class HomeController extends Controller
 
     public function index()
     {
+
+        $otpverify = OTPverify::where('user_id', auth_user()->id)->latest()->first();
+        if($otpverify->is_used != 1){
+            return redirect()->route('verify.otp');
+        }
         $user = auth_user();
         $packages = Package::with('plans')->get();
-        $totalDeposits = Deposit::whereUserId($user->id)->sum('amount');
+        $totalDeposits = Deposits::where(['user_id' => auth_user()->id, 'status' => 'success'])->sum('amount');
+        $tranfer = WalletTranfer::where('sender_id', auth_user()->id)->sum('amount');
         $totalInvest = Deposit::whereUserId($user->id)->where('payment_method', '!=', 'WALLET')->sum('amount');
         $activeDeposits = Deposit::whereUserId($user->id)->whereStatus(Deposit::STATUS_ACTIVE)->sum('amount');
         $lastDeposit = Deposit::whereUserId($user->id)->latest()->take(1)->sum('amount');
@@ -163,6 +171,7 @@ class HomeController extends Controller
             'total_invest' => $totalInvest,
             'payouts' => $payouts,
             'transfers' => $tranfers,
+            'transfer' => $tranfer,
             'activities' => UserActivity::where('user_id', $user->id)->latest()->take(5)->get()
         ], $data);
     }

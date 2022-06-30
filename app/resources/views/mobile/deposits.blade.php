@@ -54,8 +54,12 @@
                         </div>
                     </div>
                     <div class="transaction-card-det">
+                        @if($deposit->status == 'pending')
+                        <span style="color:red">  </i>{{moneyFormat($deposit->amount, 'USD')}}</span><br> 
+                        @else
                         <span style="color:green">  </i>{{moneyFormat($deposit->amount, 'USD')}}</span><br> 
-                       <small class="negative-number"> </i>{{moneyFormat($deposit->avail_balance, 'USD')}}<small>
+                        @endif
+                      
                     </div>
                 </a>
             </div>

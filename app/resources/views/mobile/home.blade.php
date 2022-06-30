@@ -70,8 +70,8 @@
                                     <i class="flaticon-income"></i>
                                 </div>
                                 <div class="feature-card-details">
-                                    <p>Total Received</p>
-                                    <h3>{{ moneyFormat($payouts, 'USD')}}</h3>
+                                    <p>Total Transfered</p>
+                                    <h3>{{ moneyFormat($transfer, 'USD')}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -81,8 +81,8 @@
                                     <i class="flaticon-expenses"></i>
                                 </div>
                                 <div class="feature-card-details">
-                                    <p>Total Transfers</p>
-                                    <h3>{{moneyFormat($bonus, 'USD')}}</h3>
+                                    <p>Total Deposits</p>
+                                    <h3>{{moneyFormat($total_deposits, 'USD')}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                             <div class="transaction-card-det ">
                                 <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){ echo "<span style=\"color:#green\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}else{ echo "<span style=\"color:#000\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}?> <br> 
                                 <span class="positive-number">  <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){
-                                  echo "Debit"; }else { echo " credit"; }?></span><br>
+                                  echo "<p style=\"color:red\"> Debit </p>"; }else { echo " <p style=\"color:green\"> credit</p>"; }?></span><br>
                             </div>
                         </a>
                     </div>

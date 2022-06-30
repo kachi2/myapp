@@ -52,7 +52,7 @@
                     <div class="transaction-card-det ">
                         <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){ echo "<span style=\"color:#green\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}else{ echo "<span style=\"color:#000\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}?> <br> 
                         <span class="positive-number">  <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){
-                          echo "Debit"; }else { echo " credit"; }?></span><br>
+                          echo "<p style=\"color:red\"> Debit </p>"; }else { echo " <p style=\"color:green\"> credit</p>"; }?></span><br>
                     </div>
                 </a>
             </div>
