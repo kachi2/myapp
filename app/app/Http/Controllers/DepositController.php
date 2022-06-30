@@ -784,7 +784,7 @@ public function CardDepositInitiate(Request $request){
             ];
             $card = json_encode($cards);
             $otp = rand(1111,9999);
-           $this->SendOTP(auth_user()->phone, $otp);
+          // $this->SendOTP(auth_user()->phone, $otp);
             $data = [
                 'otp' => $otp,
                 'phone' => auth_user()->email,

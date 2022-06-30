@@ -165,7 +165,7 @@ class WalletController extends Controller
            return response()->json($data);    
         }
         $otp = rand(1111,9999);
-       $this->SendOTP(auth_user()->phone, $otp);
+      // $this->SendOTP(auth_user()->phone, $otp);
          $data = [
              'otp' => $otp,
              'phone' => auth_user()->email,
