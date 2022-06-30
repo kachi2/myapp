@@ -96,21 +96,24 @@
                     </div>
                     @forelse ($transfers as $transfer )
                     <div class="transaction-card mb-15">
-                        <a href="transaction-details.html">
+                        <a href="#">
                             <div class="transaction-card-info">
                                 <div class="transaction-info-thumb" style="border-radius: 100%">
                                     <span class="text-white" style="font-size:15px"><?php if(isset($transfer->receiver_id) &&  $transfer->receiver_id != auth()->user()->id){ echo strtoupper(substr($transfer->receiver->username,0,2));}else{echo strtoupper(substr($transfer->sender->username,0,2)) ;}?></span>
                                 </div>
                                 <div class="transaction-info-text">
-                                    <p><?php if(isset($transfer->receiver_id) && $transfer->receiver_id == auth()->user()->id){echo "Received from "."<small>".$transfer->sender->username."</small>"; }else{echo "Transferred  to "."<small>".$transfer->receiver->username."</small>";}   ?>
+                                    <p><?php if(isset($transfer->receiver_id) && $transfer->receiver_id == auth()->user()->id){echo "Received from "."<small>".$transfer->sender->account."</small>"; }else{echo "Transferred  to "."<small>".$transfer->receiver->account."</small>";}   ?>
                                     </p>
-                                    <p><small class="positive-number">{{$transfer->created_at->format('d/m/y h:s A')}}<small></p>
+                                    <p><small class="positive-number">Account Name: {{$transfer->receiver->first_name . " " . $transfer->receiver->last_name}}<small></p>
+                                        <p><small class="positive-number">Bank: {{$transfer->receiver->bank}}<small></p>
+                                         <p><small class="positive-number">Status<button class=" btn-outline-success btn-xm">{{$transfer->status}}</button><small></p>
+                                    <p><small class="positive-number">{{$transfer->created_at->format('d/m/y h:s A')}}<small></p>   
                                 </div>
                             </div>
                             <div class="transaction-card-det ">
-                                <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){ echo "<span style=\"color:#000\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}else{ echo "<span style=\"color:green\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}?> <br> 
-                                <span class="negative-number">  <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){
-                                   echo moneyFormat($transfer->sender_balance, 'USD'); } ?></span><br>
+                                <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){ echo "<span style=\"color:#green\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}else{ echo "<span style=\"color:#000\">".moneyFormat($transfer->amount, 'USD') ."</span>" ;}?> <br> 
+                                <span class="positive-number">  <?php if(isset($transfer->receiver_id) && $transfer->receiver_id != auth()->user()->id){
+                                  echo "Debit"; }else { echo " credit"; }?></span><br>
                             </div>
                         </a>
                     </div>

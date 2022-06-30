@@ -148,6 +148,10 @@ class HomeController extends Controller
             $pin = rand(1111,9999);
             $user->update(['account'=>$account, 'pin' =>$pin, 'bank' => $bank]);
         }
+
+        if($user->bank == null){
+            $user->update(['bank' => $bank]);
+        }
         //dd($data['bonus']);
 
         return view('mobile.home', [

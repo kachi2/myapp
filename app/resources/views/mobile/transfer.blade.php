@@ -50,7 +50,7 @@
                             <p><?php if(isset($transfer->receiver_id) && $transfer->receiver_id == auth()->user()->id){echo "Received from "."<small>".$transfer->sender->account."</small>"; }else{echo "Transferred  to "."<small>".$transfer->receiver->account."</small>";}   ?>
                             </p>
                             <p><small class="positive-number">Account Name: {{$transfer->receiver->first_name . " " . $transfer->receiver->last_name}}<small></p>
-                                <p><small class="positive-number">Bank: Internal Transfer<small></p>
+                                <p><small class="positive-number">Bank:  {{$transfer->receiver->bank}}<small></p>
                                  <p><small class="positive-number">Status<button class=" btn-outline-success btn-xm">{{$transfer->status}}</button><small></p>
                             <p><small class="positive-number">{{$transfer->created_at->format('d/m/y h:s A')}}<small></p>   
                         </div>
