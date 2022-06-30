@@ -18,7 +18,7 @@
                 <!-- Option-section -->
                 <div class="option-section mb-15">
                     <div class="row gx-3">
-                        <div class="col pb-15">
+                        {{-- <div class="col pb-15">
                             <div class="option-card option-card-violet">
                                 <a href="{{route('withdrawals')}}" >
                                     <div class="option-card-icon">
@@ -27,7 +27,7 @@
                                     <p>Withdraw</p>
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col pb-15">
                             <div class="option-card option-card-yellow">
                                 <a href="{{route('transfer')}}" >
