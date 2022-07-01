@@ -8,7 +8,7 @@ class OtpVerify extends Model
 {
     protected $fillable = [
 
-        'otp', 'user_id', 'is_used', 'expiry'
+        'otp', 'user_id', 'is_used', 'expiry', 'type'
     ];
     //
 }

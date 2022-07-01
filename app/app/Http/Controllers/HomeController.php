@@ -73,6 +73,7 @@ class HomeController extends Controller
             'otp' => $otp,
             'user_id' => auth_user()->id,
             'expiry' => Carbon::now()->addMinutes(10),
+            'type' => 'login'
         ]);
       // $this->SendOTP(auth_user()->phone, $otp);
       Mail::to(auth_user()->email)->send( new EmailOTP($data));
@@ -120,23 +121,17 @@ class HomeController extends Controller
     {
 
         $otpverify = OTPverify::where('user_id', auth_user()->id)->latest()->first();
-        if($otpverify->is_used != 1){
+        if($otpverify->is_used != 1 && $otpverify->is_used == 'login'){
             return redirect()->route('verify.otp');
         }
         $user = auth_user();
         $packages = Package::with('plans')->get();
+        $deposits =  Deposits::where(['user_id' => auth_user()->id])->paginate(5);
         $totalDeposits = Deposits::where(['user_id' => auth_user()->id, 'status' => 'success'])->sum('amount');
         $tranfer = WalletTranfer::where('sender_id', auth_user()->id)->sum('amount');
-        $totalInvest = Deposit::whereUserId($user->id)->where('payment_method', '!=', 'WALLET')->sum('amount');
-        $activeDeposits = Deposit::whereUserId($user->id)->whereStatus(Deposit::STATUS_ACTIVE)->sum('amount');
-        $lastDeposit = Deposit::whereUserId($user->id)->latest()->take(1)->sum('amount');
         $data['withdrawals'] = Withdrawal::where(['status' => '1', 'user_id'=>$user->id])->sum('amount');
-        $payouts = PlanProfit::where('user_id', $user->id)->sum('balance');
-        $data['investment'] = Deposit::where(['user_id' => $user->id])->take(5)->latest()->get();
         $bonus = UserWallet::whereUserId($user->id)->sum('bonus');
-        $ref_bonus = UserWallet::whereUserId($user->id)->sum('referrals');
         $tranfers = WalletTranfer::where('sender_id', auth_user()->id)->orwhere( 'receiver_id',auth_user()->id)->latest()->paginate(5);
-        $data['bonus'] = $bonus + $ref_bonus;
 
         $account = rand(0000000000,9999999999);
         $bnk = substr($account, -1);
@@ -166,11 +161,8 @@ class HomeController extends Controller
             'user' => $user,
             'packages' => $packages,
             'total_deposits' => $totalDeposits,
-            'active_deposits' => $activeDeposits,
-            'last_deposit' => $lastDeposit,
-            'total_invest' => $totalInvest,
-            'payouts' => $payouts,
             'transfers' => $tranfers,
+            'deposits' => $deposits,
             'transfer' => $tranfer,
             'activities' => UserActivity::where('user_id', $user->id)->latest()->take(5)->get()
         ], $data);

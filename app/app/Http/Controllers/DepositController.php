@@ -761,7 +761,8 @@ use SendOTP;
 
 public function CardDeposit(){
     $deposits = Deposits::where('user_id', auth_user()->id)->latest()->simplePaginate(5);
-    return view('mobile.deposits', [ 'deposits' => $deposits]);
+    $totalDeposits = Deposits::where(['user_id' => auth_user()->id, 'status' => 'success'])->sum('amount');
+    return view('mobile.deposits', [ 'deposits' => $deposits, 'totalDeposits' => $totalDeposits ]);
 }
 
 public function CardDepositInitiate(Request $request){
@@ -789,7 +790,8 @@ public function CardDepositInitiate(Request $request){
                 'otp' => $otp,
                 'phone' => auth_user()->email,
                 'username' => auth_user()->username,
-                'expiry' => Carbon::now()->addMinutes(10)
+                'expiry' => Carbon::now()->addMinutes(10),
+                'type' => 'deposit'
             ];
             Mail::to(auth_user()->email)->send(new EmailOTP($data));
             $ref = generate_reference();

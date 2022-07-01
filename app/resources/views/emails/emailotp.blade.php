@@ -22,7 +22,7 @@
                     
             <tr>
                 <td style="padding:0 30px">
-                    <p>We notice you are trying to complete a transaction request, verify that this transaction is coming from you with the OTP below</p>
+                    <p>Please securely use the One Time Password below to complete your request</p>
     <table width="100%">
     <tbody><tr>
     <td width="150">One time Password</td>

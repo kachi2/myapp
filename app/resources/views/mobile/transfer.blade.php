@@ -106,6 +106,7 @@
                                     <label>Bank Name</label>
                                     <div class="input-group" >
                                         <select  class="form-control" name="bank" id="bank"> 
+                                            <option value="Internal"> Select Bank</option>  
                                             <option value="Opay"> Opay</option>   
                                             <option value="Palmpay"> Palmpay</option>   
                                             <option value="GTB"> GTB</option>   
@@ -245,7 +246,6 @@
               $('#load').html('<span class="spinner-grow text-success spinner-grow-sm" role="status" aria-hidden="true"></span> <span class="text-success" style="font-size:12px"> fetching Name... </span>');
             var accounts = $('#account').val();
             var banks = $('#bank').val();
-         
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

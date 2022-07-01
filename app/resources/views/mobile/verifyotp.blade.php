@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="appbar-item appbar-page-title mx-auto">
-                    <h1 class=" btn btn-outline-secondary" style="color:rgb(243, 243, 245)">YCT Banking </h1>       
+                    <a href="{{route('home')}}"> <h1 class=" btn btn-outline-secondary" style="color:rgb(243, 243, 245)">YCT Banking </h1>   </a>    
                 </div>
             </div>
         </div>

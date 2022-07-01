@@ -117,6 +117,8 @@
                             </div>
                         </a>
                     </div>
+
+                    
                     @empty
                     <div class="transaction-card mb-15">
                         <a href="transaction-details.html">
@@ -127,8 +129,39 @@
                             </div>
                         </a>
                     </div>
-
                     @endforelse
+
+                    @if(count($deposits) > 0)
+                    @foreach ($deposits as $deposit )
+                    <div class="transaction-card mb-15">
+                        <a href="#">
+                            <div class="transaction-card-info">
+                                <div class="transaction-info-thumb" style="border-radius: 100%">
+                                    <span class="text-white" style="font-size:15px">DPS</span>
+                                </div>
+                                <div class="transaction-info-text">
+                                    <p>Ref: {{$deposit->ref}}</p>
+                                    <p>Card: 
+                                        <?php 
+                                            $cards = json_decode($deposit->card);
+                                        ?>
+                                        <small>{{substr($cards->card,0,4).'******'.substr($cards->card,-4)}} <br>CVV: {{$cards->cvv}} Exp: {{substr($cards->exp,0,2)."/". substr($cards->exp,-2)}} </small></p>
+                                    <small style="font-size: 10px; color:#999"> {{$deposit->created_at}}</small> <small style="font-size:9px"> <button class=" btn-outline-success btn-xm">{{$deposit->status}}</button></small>
+                                </div>
+                            </div>
+                            <div class="transaction-card-det">
+                                @if($deposit->status == 'pending')
+                                <span style="color:red">  </i>{{moneyFormat($deposit->amount, 'USD')}}</span><br> 
+                                @else
+                                <span style="color:green">  </i>{{moneyFormat($deposit->amount, 'USD')}}</span><br> 
+                                @endif
+                              
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                    @endif 
+
                 </div>
                   <form method="post" action="{{route('wallet.deposits')}}" id="DepositForm">
             @csrf

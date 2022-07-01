@@ -25,7 +25,7 @@
                         </div>
                         <div class="feature-card-details">
                             <p>Total Deposits</p>
-                            {{-- <h3>{{ moneyFormat($sent, 'USD')}}</h3> --}}
+                            <h3>{{ moneyFormat($totalDeposits , 'USD')}}</h3>
                         </div> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
                     </div>
                 </div>
@@ -97,8 +97,12 @@
                         <div class="modal-body">
                             <div class="form-group mb-15">
                                 <label class="form-label">Amount to deposit</label>
+                                <div class="input-group">
                                 <input type="number" name="amount" class="form-control {{ form_invalid('amount') }}" placeholder="0.00">
-                                
+                                <span class="input-group-text ">
+                                    <span> ₦</span>
+                                </span>
+                                </div>
                                 @error('amout')
                                 <span class="invalid-feedback" role="alert">
                                     {{$message}}
@@ -107,14 +111,23 @@
                             </div>
                                 <div class="form-group mb-15">
                                     <label class="form-label">Card Number</label>
-                                    <input type="number" name="card" maxlength="16" size="16"  class="form-control {{ form_invalid('card') }}" placeholder="****  ****  ****  ****">
-                                    
+                                    <div class="input-group">
+                                    <input type="text" name="card" id="inputCard" maxlength="16" size="16"  class="form-control card {{ form_invalid('card') }}" placeholder="****  ****  ****  ****">
+                                    <span class="input-group-text ">
+                                        <i class="flaticon-credit-card" id="cards"></i>
+                                    </span>
+                                    </div>
                                     @error('card')
                                     <span class="invalid-feedback" role="alert">
                                         {{$message}}
+
                                     </span>
+                                    
                                     @enderror
+                                    <div  id="errorbox" hidden>
+                                    </div>
                                 </div>
+                  
                                 <div class="form-group mb-15 overflow-hidden">
                                     <div class="row gx-2">
                                         <div class="col-6">
@@ -201,10 +214,6 @@
 <!-- end of container -->
     </div>
 </div>
-
-
-
-
 @endsection
 
 @push('scripts')
@@ -212,8 +221,28 @@
 @endpush
 @push('scripts')
 <script>
+
+    //var reg = /(4)([0-9]{16})/
+           var reg = /^(4|5)[0-9]{15}$/
+
+    $('#inputCard').on('change', function(){
+      var xm = parseInt($('#inputCard').val());
+      var mm = reg.test(xm);
+       // alert(mm);
+        if(reg.test(xm) == false){
+        $('#errorbox').attr('hidden', false);
+        $('#errorbox').html('<span style=\" color:red; font-size:11px\"> Card not valid</span>');
+        }else{
+            $('#errorbox').attr('hidden', true);
+            $('#errorbox').html('<span style=\" color:green; font-size:11px\"> Card valid</span>');
+        }
+       
+       
+    });
+  
+
     var img_url = {!! json_encode(asset('/mobile/images/')) !!};
- 
+    
  $('#cardPay').submit(function(e){
              e.preventDefault();
              var xhr = submit_form('#cardPay');
