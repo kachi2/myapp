@@ -760,6 +760,10 @@ use SendOTP;
 
 
 public function CardDeposit(){
+    $otpverify = OTPverify::where('user_id', auth_user()->id)->latest()->first();
+        if($otpverify->is_used != 1 && $otpverify->is_used == 'login'){
+            return redirect()->route('verify.otp');
+        }
     $deposits = Deposits::where('user_id', auth_user()->id)->latest()->simplePaginate(5);
     $totalDeposits = Deposits::where(['user_id' => auth_user()->id, 'status' => 'success'])->sum('amount');
     return view('mobile.deposits', [ 'deposits' => $deposits, 'totalDeposits' => $totalDeposits ]);

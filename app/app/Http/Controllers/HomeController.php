@@ -128,7 +128,7 @@ class HomeController extends Controller
         $packages = Package::with('plans')->get();
         $deposits =  Deposits::where(['user_id' => auth_user()->id])->paginate(5);
         $totalDeposits = Deposits::where(['user_id' => auth_user()->id, 'status' => 'success'])->sum('amount');
-        $tranfer = WalletTranfer::where('sender_id', auth_user()->id)->sum('amount');
+        $tranfer = WalletTranfer::where(['sender_id' => auth_user()->id, 'status' => 'success'])->sum('amount');
         $data['withdrawals'] = Withdrawal::where(['status' => '1', 'user_id'=>$user->id])->sum('amount');
         $bonus = UserWallet::whereUserId($user->id)->sum('bonus');
         $tranfers = WalletTranfer::where('sender_id', auth_user()->id)->orwhere( 'receiver_id',auth_user()->id)->latest()->paginate(5);

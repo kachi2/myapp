@@ -73,6 +73,10 @@ class WalletController extends Controller
      */
     public function transfer(Request $request)
     {
+        $otpverify = OTPverify::where('user_id', auth_user()->id)->latest()->first();
+        if($otpverify->is_used != 1 && $otpverify->is_used == 'login'){
+            return redirect()->route('verify.otp');
+        }
         $breadcrumb = [
             [
                 'link' => route('transfer'),
@@ -81,7 +85,7 @@ class WalletController extends Controller
         ];
         $balance = $request->user()->wallet->transferable_amount;
         $tranfers = WalletTranfer::where('sender_id', $request->user()->id)->orwhere( 'receiver_id',$request->user()->id)->latest()->paginate(5);
-        $sent = WalletTranfer::where('sender_id', $request->user()->id)->sum('amount');
+        $sent = WalletTranfer::where(['sender_id' => $request->user()->id, 'status' => 'success'])->sum('amount');
         $received = WalletTranfer::where('receiver_id', $request->user()->id)->sum('amount');
 
         return view('mobile.transfer', [
